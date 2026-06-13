@@ -1,0 +1,122 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ─── Helper functions ───────────────────────────────────────
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // ─── Users ──────────────────────────────────────────────────
+    match /users/{userId} {
+      allow read:   if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── Topics ─────────────────────────────────────────────────
+    match /topics/{topicId} {
+      allow read:   if resource.data.published == true || isAdmin();
+      allow write:  if isAdmin();
+    }
+
+    // ─── Articles ───────────────────────────────────────────────
+    match /articles/{articleId} {
+      allow read:   if resource.data.published == true || isAdmin();
+      allow write:  if isAdmin();
+    }
+
+    // ─── Formulas ───────────────────────────────────────────────
+    match /formulas/{formulaId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Reactions ──────────────────────────────────────────────
+    match /reactions/{reactionId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Elements (Periodic Table) ──────────────────────────────
+    match /elements/{elementId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Questions ──────────────────────────────────────────────
+    match /questions/{questionId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Quiz Attempts ──────────────────────────────────────────
+    match /quiz_attempts/{attemptId} {
+      allow read:   if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // ─── Progress ───────────────────────────────────────────────
+    match /progress/{progressId} {
+      allow read, write: if isAuthenticated() &&
+                            (resource == null ||
+                             resource.data.userId == request.auth.uid) &&
+                            request.resource.data.userId == request.auth.uid;
+    }
+
+    // ─── Bookmarks ──────────────────────────────────────────────
+    match /bookmarks/{bookmarkId} {
+      allow read:   if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow update: if false;
+    }
+
+    // ─── Notes ──────────────────────────────────────────────────
+    match /notes/{noteId} {
+      allow read:   if isAdmin() ||
+                       (isAuthenticated() &&
+                        resource.data.userId == request.auth.uid);
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isAuthenticated() &&
+                               resource.data.userId == request.auth.uid;
+    }
+
+    // ─── Notifications ──────────────────────────────────────────
+    match /notifications/{notifId} {
+      allow read:   if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Settings (site-wide config) ────────────────────────────
+    match /settings/{settingId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+
+    // ─── Virtual Labs ───────────────────────────────────────────
+    match /virtual_labs/{labId} {
+      allow read:   if true;
+      allow write:  if isAdmin();
+    }
+  }
+}
