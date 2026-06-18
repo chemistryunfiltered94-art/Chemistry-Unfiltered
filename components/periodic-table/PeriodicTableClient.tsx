@@ -179,13 +179,13 @@ export default function PeriodicTableClient() {
       {/* Table */}
       <div className="overflow-x-auto pb-4 px-2">
         <div className="min-w-max">
-          <div className="grid gap-1" style={{ gridTemplateColumns: "repeat(18, minmax(52px, 1fr))" }}>
+          <div className="grid gap-[3px]" style={{ gridTemplateColumns: "repeat(18, minmax(52px, 1fr))" }}>
             {elementGrid.map((row, ri) =>
               row.map((el, ci) => {
                 // Lanthanide/Actinide gap row markers
                 if (!el) {
-                  if (ri === 5 && ci === 2) return (
-                    <div key={`${ri}-${ci}`} className="col-span-14 flex items-center justify-center text-slate-500 text-xs py-1">
+                  if (ri === 7 && ci === 2) return (
+                    <div key={`${ri}-${ci}`} className="col-span-14 flex items-center justify-center text-slate-500 text-xs py-0.5">
                       ↓ ল্যান্থানাইড / অ্যাক্টিনাইড
                     </div>
                   );
@@ -205,7 +205,7 @@ export default function PeriodicTableClient() {
 
       {/* Count */}
       <p className="text-center text-slate-500 text-sm mt-4">
-        {filteredElements.length} টি মৌল দেখানো হচ্ছে (মোট ১১৮টি শীঘ্রই আসছে)
+        {filteredElements.length} টি মৌল দেখানো হচ্ছে (মোট ১১৮টি)
       </p>
 
       {/* Modal */}
