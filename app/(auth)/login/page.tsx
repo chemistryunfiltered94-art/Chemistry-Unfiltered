@@ -69,7 +69,7 @@ export default function LoginPage() {
               <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
                 <FlaskConical className="w-6 h-6 text-white" />
               </div>
-              <span className="font-bold text-xl text-white">ChemistryOS</span>
+              <span className="font-bold text-xl text-white">Chemistry Unfiltered</span>
             </Link>
             <h1 className="text-2xl font-bold text-white mb-1">স্বাগত ফিরে!</h1>
             <p className="text-slate-400 text-sm">তোমার অ্যাকাউন্টে লগইন করো</p>

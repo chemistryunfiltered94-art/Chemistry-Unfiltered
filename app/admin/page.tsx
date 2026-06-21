@@ -63,7 +63,7 @@ export default function AdminPage() {
             <LayoutDashboard className="w-6 h-6 text-primary-400" />
             <span className="text-primary-400 font-medium">অ্যাডমিন প্যানেল</span>
           </div>
-          <h1 className="text-3xl font-bold text-white">ChemistryOS Admin</h1>
+          <h1 className="text-3xl font-bold text-white">Chemistry Unfiltered Admin</h1>
           <p className="text-slate-400 mt-1">স্বাগতম, {user?.name}! সব কন্টেন্ট এখান থেকে পরিচালনা করো।</p>
         </motion.div>
 

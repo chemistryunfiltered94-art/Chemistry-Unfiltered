@@ -38,7 +38,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center">
                 <FlaskConical className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-lg text-white">ChemistryOS</span>
+              <span className="font-bold text-lg text-white">Chemistry Unfiltered</span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
               বাংলাদেশের সবচেয়ে সম্পূর্ণ Chemistry Learning Ecosystem।
@@ -89,7 +89,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-500 flex items-center gap-1">
-            © 2024 ChemistryOS। তৈরি করা হয়েছে{" "}
+            © 2024 Chemistry Unfiltered। তৈরি করা হয়েছে{" "}
             <Heart className="w-4 h-4 text-red-500 fill-red-500 mx-1" />
             দিয়ে বাংলাদেশে
           </p>

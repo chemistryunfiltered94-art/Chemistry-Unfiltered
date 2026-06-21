@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const baseUrl = "https://chemistryos.vercel.app";
+const baseUrl = "https://chemistry-unfiltered.vercel.app";
 
 const staticRoutes = [
   "/",

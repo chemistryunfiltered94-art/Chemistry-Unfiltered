@@ -66,7 +66,7 @@ export default function Navbar() {
               <FlaskConical className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="font-bold text-lg gradient-text">ChemistryOS</span>
+              <span className="font-bold text-lg gradient-text">Chemistry Unfiltered</span>
               <p className="text-xs text-slate-500 dark:text-slate-400 -mt-1 hidden sm:block">
                 রসায়ন শেখার প্ল্যাটফর্ম
               </p>

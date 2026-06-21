@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/", "/dashboard/", "/api/"],
       },
     ],
-    sitemap: "https://chemistryos.vercel.app/sitemap.xml",
+    sitemap: "https://chemistry-unfiltered.vercel.app/sitemap.xml",
   };
 }

@@ -48,7 +48,7 @@ export default function AdminSidebar() {
             <Logo className="w-4 h-4 text-white" />
           </div>
           <div>
-            <p className="font-bold text-white text-sm">ChemistryOS</p>
+            <p className="font-bold text-white text-sm">Chemistry Unfiltered</p>
             <p className="text-xs text-slate-400">Admin Panel</p>
           </div>
         </Link>

@@ -5,15 +5,15 @@ import { AuthProvider } from "@/components/shared/AuthProvider";
 
 export const metadata: Metadata = {
   title: {
-    default: "ChemistryOS — সম্পূর্ণ Chemistry Learning Platform",
-    template: "%s | ChemistryOS",
+    default: "Chemistry Unfiltered — সম্পূর্ণ Chemistry Learning Platform",
+    template: "%s | Chemistry Unfiltered",
   },
   description:
     "Chemistry শেখো সহজে। Interactive Periodic Table, Formula Library, Virtual Lab, Calculator, Question Bank — সব এক জায়গায়।",
   keywords: ["chemistry", "রসায়ন", "periodic table", "formula", "HSC", "SSC", "BNBC"],
-  authors: [{ name: "ChemistryOS Team" }],
+  authors: [{ name: "Chemistry Unfiltered Team" }],
   openGraph: {
-    title: "ChemistryOS — সম্পূর্ণ Chemistry Learning Platform",
+    title: "Chemistry Unfiltered — সম্পূর্ণ Chemistry Learning Platform",
     description: "Chemistry শেখো সহজে। Interactive Periodic Table, Formula Library, Virtual Lab এবং আরো অনেক কিছু।",
     type: "website",
     locale: "bn_BD",

@@ -138,7 +138,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const f = formulaDetails[id];
   if (!f) return { title: "Formula Not Found" };
   return {
-    title: `${f.nameBn} (${f.name}) — Formula | ChemistryOS`,
+    title: `${f.nameBn} (${f.name}) — Formula | Chemistry Unfiltered`,
     description: f.explanation.slice(0, 160),
   };
 }
