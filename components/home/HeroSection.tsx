@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, FlaskConical, Atom, Zap, BookOpen } from "lucide-react";
+import { useAuth } from "@/components/shared/AuthProvider";
+import AuthModal from "@/components/shared/AuthModal";
 
 const floatingElements = [
   { symbol: "H₂O", x: "10%", y: "20%", delay: 0 },
@@ -14,6 +18,17 @@ const floatingElements = [
 ];
 
 export default function HeroSection() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+
+  const handleStartLearning = () => {
+    if (user) {
+      router.push("/learn");
+    } else {
+      setAuthModalOpen(true);
+    }
+  };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* Animated background */}
@@ -100,14 +115,14 @@ export default function HeroSection() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
-          <Link
-            href="/learn"
+          <button
+            onClick={handleStartLearning}
             className="group flex items-center gap-2 px-8 py-4 gradient-bg text-white rounded-2xl font-semibold text-lg hover:opacity-90 transition-all hover:scale-105 shadow-2xl shadow-primary-500/30"
           >
             <BookOpen className="w-5 h-5" />
             শেখা শুরু করো
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </button>
           <Link
             href="/periodic-table"
             className="flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-2xl font-semibold text-lg hover:bg-white/20 transition-all hover:scale-105"
@@ -154,6 +169,12 @@ export default function HeroSection() {
           <div className="w-1.5 h-3 bg-white/50 rounded-full" />
         </div>
       </motion.div>
+
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        defaultTab="login"
+      />
     </section>
   );
 }

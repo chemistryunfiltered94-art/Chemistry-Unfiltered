@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import {
   LayoutDashboard, BookOpen, HelpCircle, FileText,
   Atom, FlaskConical, Users, Settings, ChevronRight,
-  FlaskConical as Logo,
 } from "lucide-react";
 
 const menuGroups = [
@@ -40,20 +39,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 min-h-screen bg-slate-900 border-r border-slate-700 flex flex-col">
-      {/* Logo */}
-      <div className="p-5 border-b border-slate-700">
-        <Link href="/admin" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-            <Logo className="w-4 h-4 text-white" />
-          </div>
-          <div>
-            <p className="font-bold text-white text-sm">Chemistry Unfiltered</p>
-            <p className="text-xs text-slate-400">Admin Panel</p>
-          </div>
-        </Link>
-      </div>
-
+    <aside className="hidden lg:flex w-64 fixed top-0 left-0 h-screen bg-slate-900 border-r border-slate-700 flex-col z-30 pt-[110px]">
       {/* Menu */}
       <nav className="flex-1 p-3 space-y-5 overflow-y-auto">
         {menuGroups.map((group) => (
