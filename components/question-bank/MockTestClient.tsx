@@ -3,19 +3,32 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Clock, CheckCircle, XCircle, RotateCcw, Trophy, ChevronLeft, ChevronRight, Flag } from "lucide-react";
+import { MCQ } from "@/types";
+import { getCategoryName } from "@/lib/constants";
 
-const allQuestions = [
-  { id:1,  q:"পানির pH কত?",                              opts:["6","7","8","14"],         ans:1, exp:"পানি নিরপেক্ষ, তাই pH = 7।",              cat:"ভৌত রসায়ন",  diff:"easy" },
-  { id:2,  q:"Avogadro সংখ্যার মান কত?",                  opts:["6.022×10²²","6.022×10²³","3.011×10²³","6.022×10²⁴"], ans:1, exp:"Nₐ = 6.022×10²³ mol⁻¹।", cat:"ভৌত রসায়ন",  diff:"easy" },
-  { id:3,  q:"হেবার পদ্ধতিতে কোন গ্যাস উৎপাদিত হয়?",    opts:["O₂","HNO₃","NH₃","HCl"], ans:2, exp:"N₂+3H₂⇌2NH₃ — অ্যামোনিয়া।",             cat:"শিল্প রসায়ন", diff:"medium" },
-  { id:4,  q:"pH 3 দ্রবণে [H⁺] কত?",                     opts:["3 mol/L","10⁻³ mol/L","10³ mol/L","0.3 mol/L"], ans:1, exp:"[H⁺]=10^(-pH)=10⁻³।", cat:"ভৌত রসায়ন",  diff:"medium" },
-  { id:5,  q:"কোনটি শক্তিশালী অ্যাসিড?",                  opts:["CH₃COOH","H₂CO₃","HCl","H₃PO₄"], ans:2, exp:"HCl সম্পূর্ণ আয়নিত হয়।",       cat:"ভৌত রসায়ন",  diff:"easy" },
-  { id:6,  q:"CH₄ অণুর আকৃতি কেমন?",                     opts:["রৈখিক","কৌণিক","টেট্রাহেড্রাল","ত্রিকোণীয় সমতল"], ans:2, exp:"CH₄ এ C sp³ হাইব্রিড।", cat:"অজৈব রসায়ন", diff:"medium" },
-  { id:7,  q:"Boyle-এর সূত্রে কোনটি স্থির থাকে?",        opts:["চাপ","তাপমাত্রা","আয়তন","মোল"],  ans:1, exp:"Boyle: স্থির T ও n তে P∝1/V।",      cat:"ভৌত রসায়ন",  diff:"easy" },
-  { id:8,  q:"STP তে 1 mol গ্যাসের আয়তন কত?",            opts:["11.2L","22.4L","44.8L","24L"],    ans:1, exp:"STP (0°C,1atm) তে 22.4L।",            cat:"ভৌত রসায়ন",  diff:"easy" },
-  { id:9,  q:"বেঞ্জিনে কতটি π বন্ধন আছে?",               opts:["2","3","6","9"],                  ans:1, exp:"বেঞ্জিনে ৩টি দ্বিবন্ধন → ৩টি π।",    cat:"জৈব রসায়ন",  diff:"medium" },
-  { id:10, q:"ΔG < 0 হলে বিক্রিয়া কী?",                  opts:["অস্বতঃস্ফূর্ত","স্বতঃস্ফূর্ত","সাম্যাবস্থায়","থেমে যায়"], ans:1, exp:"ΔG<0 → স্বতঃস্ফূর্ত।", cat:"তাপগতিবিদ্যা", diff:"hard" },
-];
+// Internal question shape used throughout this component (kept as-is to
+// minimize changes to the existing test-flow logic below).
+type LocalQuestion = {
+  id: string;
+  q: string;
+  opts: string[];
+  ans: number;
+  exp: string;
+  cat: string;
+  diff: string;
+};
+
+function toLocalQuestions(mcqs: MCQ[]): LocalQuestion[] {
+  return mcqs.map((m) => ({
+    id: m.id,
+    q: m.question,
+    opts: m.options,
+    ans: m.correctAnswer,
+    exp: m.explanation,
+    cat: getCategoryName(m.categoryId),
+    diff: m.difficulty,
+  }));
+}
 
 type Phase = "setup" | "test" | "result";
 
@@ -24,7 +37,12 @@ function formatTime(s: number) {
   return `${m.toString().padStart(2,"0")}:${sec.toString().padStart(2,"0")}`;
 }
 
-export default function MockTestPage() {
+interface Props {
+  mcqs: MCQ[];
+}
+
+export default function MockTestClient({ mcqs }: Props) {
+  const allQuestions = toLocalQuestions(mcqs);
   const [phase,    setPhase]    = useState<Phase>("setup");
   const [count,    setCount]    = useState(10);
   const [timeLimit,setTimeLimit]= useState(true);
@@ -122,9 +140,15 @@ export default function MockTestPage() {
             <p>✅ প্রতিটি সঠিক উত্তরে ১ নম্বর</p>
           </div>
 
-          <button onClick={startTest} className="w-full py-3.5 gradient-bg text-white rounded-2xl font-bold text-lg hover:opacity-90 transition-opacity shadow-xl">
-            পরীক্ষা শুরু করো →
-          </button>
+          {allQuestions.length === 0 ? (
+            <p className="text-center text-sm text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl py-3 px-4">
+              এখনো কোনো প্রশ্ন যোগ করা হয়নি। অ্যাডমিন প্যানেল থেকে প্রশ্ন যোগ করো।
+            </p>
+          ) : (
+            <button onClick={startTest} className="w-full py-3.5 gradient-bg text-white rounded-2xl font-bold text-lg hover:opacity-90 transition-opacity shadow-xl">
+              পরীক্ষা শুরু করো →
+            </button>
+          )}
         </div>
       </div>
     </div>

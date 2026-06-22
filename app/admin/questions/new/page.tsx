@@ -4,12 +4,15 @@ import { useState } from "react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { useRouter } from "next/navigation";
 import { createDocument } from "@/lib/firestore";
+import { useToast } from "@/hooks/useToast";
+import { Toast } from "@/components/ui/Toast";
 import Link from "next/link";
 import { ArrowLeft, Plus, X, Save } from "lucide-react";
 
 export default function AddQuestionPage() {
   const { isAdmin } = useAuth();
   const router = useRouter();
+  const { toast, showToast, hideToast } = useToast();
 
   const [question,   setQuestion]   = useState("");
   const [options,    setOptions]    = useState(["","","",""]);
@@ -18,6 +21,7 @@ export default function AddQuestionPage() {
   const [difficulty, setDifficulty] = useState("easy");
   const [exams,      setExams]      = useState<string[]>(["SSC"]);
   const [category,   setCategory]   = useState("physical-chemistry");
+  const [topicId,    setTopicId]    = useState("");
   const [saving,     setSaving]     = useState(false);
   const [success,    setSuccess]    = useState(false);
 
@@ -27,7 +31,7 @@ export default function AddQuestionPage() {
   const handleSave = async () => {
     if (!question.trim() || options.some(o=>!o.trim()) || !explanation.trim()) return;
     setSaving(true);
-    await createDocument("questions", {
+    const id = await createDocument("questions", {
       question: question.trim(),
       options: options.map(o=>o.trim()),
       correctAnswer: answer,
@@ -35,12 +39,22 @@ export default function AddQuestionPage() {
       difficulty,
       exam: exams,
       categoryId: category,
+      topicId: topicId.trim() || null,
     });
     setSaving(false);
-    setSuccess(true);
-    setTimeout(() => {
-      setQuestion(""); setOptions(["","","",""]); setAnswer(0); setExplanation(""); setSuccess(false);
-    }, 2000);
+
+    if (id) {
+      setSuccess(true);
+      showToast("success", "প্রশ্ন সফলভাবে যোগ হয়েছে।");
+      setTimeout(() => {
+        setQuestion(""); setOptions(["","","",""]); setAnswer(0); setExplanation(""); setSuccess(false);
+      }, 2000);
+    } else {
+      showToast(
+        "error",
+        "প্রশ্ন সংরক্ষণ করা যায়নি। admin role বা Firestore rules যাচাই করো। (Console-এ বিস্তারিত error আছে।)"
+      );
+    }
   };
 
   if (!isAdmin) return null;
@@ -117,6 +131,14 @@ export default function AddQuestionPage() {
             </div>
           </div>
 
+          {/* Topic link (optional) */}
+          <div className="mb-5">
+            <label className="block text-sm font-medium text-slate-300 mb-2">টপিক স্লাগ / আইডি (ঐচ্ছিক)</label>
+            <input value={topicId} onChange={e=>setTopicId(e.target.value)}
+              placeholder="যেমন: acid-base — কোনো নির্দিষ্ট টপিকের সাথে যুক্ত করতে চাইলে"
+              className="w-full px-4 py-2.5 bg-slate-700 border border-slate-600 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-primary-500 text-sm"/>
+          </div>
+
           {/* Exam Tags */}
           <div className="mb-6">
             <label className="block text-sm font-medium text-slate-300 mb-2">পরীক্ষার ধরন</label>
@@ -138,6 +160,8 @@ export default function AddQuestionPage() {
           </button>
         </div>
       </div>
+
+      <Toast toast={toast} onClose={hideToast} />
     </div>
   );
 }

@@ -3,11 +3,14 @@
 import { useState } from "react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { createDocument } from "@/lib/firestore";
+import { useToast } from "@/hooks/useToast";
+import { Toast } from "@/components/ui/Toast";
 import Link from "next/link";
 import { ArrowLeft, Save, Plus, X } from "lucide-react";
 
 export default function AddTopicPage() {
   const { isAdmin } = useAuth();
+  const { toast, showToast, hideToast } = useToast();
 
   const [title,        setTitle]        = useState("");
   const [slug,         setSlug]         = useState("");
@@ -34,7 +37,7 @@ export default function AddTopicPage() {
   const handleSave = async () => {
     if (!title.trim() || !slug.trim() || !summary.trim()) return;
     setSaving(true);
-    await createDocument("topics", {
+    const id = await createDocument("topics", {
       title: title.trim(),
       slug: slug.trim(),
       categoryId: category,
@@ -46,7 +49,6 @@ export default function AddTopicPage() {
         theory: theory.filter(t => t.trim()),
         applications: applications.filter(a => a.trim()),
         notes: notes.filter(n => n.trim()),
-        formulas: [],
         examples: [],
       },
       diagrams: [],
@@ -57,8 +59,17 @@ export default function AddTopicPage() {
       views: 0,
     });
     setSaving(false);
-    setSuccess(true);
-    setTimeout(() => setSuccess(false), 3000);
+
+    if (id) {
+      setSuccess(true);
+      showToast("success", "টপিক সফলভাবে সংরক্ষিত হয়েছে।");
+      setTimeout(() => setSuccess(false), 3000);
+    } else {
+      showToast(
+        "error",
+        "টপিক সংরক্ষণ করা যায়নি। তোমার অ্যাকাউন্টে admin role আছে কিনা এবং Firestore rules ঠিক আছে কিনা যাচাই করো। (Console-এ বিস্তারিত error দেখা যাবে।)"
+      );
+    }
   };
 
   if (!isAdmin) return null;
@@ -245,6 +256,8 @@ export default function AddTopicPage() {
           </button>
         </div>
       </div>
+
+      <Toast toast={toast} onClose={hideToast} />
     </div>
   );
 }

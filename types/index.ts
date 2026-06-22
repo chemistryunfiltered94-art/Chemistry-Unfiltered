@@ -30,7 +30,7 @@ export interface Topic {
   summary: string;
   content: {
     introduction: string;
-    theory: string;
+    theory: string[];
     examples: Example[];
     applications: string[];
     notes: string[];

@@ -5,18 +5,15 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useCollection } from "@/hooks/useFirestore";
 import {
   LayoutDashboard, Users, BookOpen, HelpCircle,
   FlaskConical, Atom, FileText, TrendingUp,
   Settings, Plus, Eye, Edit
 } from "lucide-react";
 
-const stats = [
-  { label: "মোট ব্যবহারকারী",  value: "০",    icon: Users,      color: "from-blue-500 to-indigo-600" },
-  { label: "মোট টপিক",          value: "০",    icon: BookOpen,   color: "from-green-500 to-emerald-600" },
-  { label: "মোট প্রশ্ন",        value: "০",    icon: HelpCircle, color: "from-purple-500 to-violet-600" },
-  { label: "মোট আর্টিকেল",     value: "০",    icon: FileText,   color: "from-orange-500 to-amber-600" },
-];
+const toBnNumeral = (n: number) =>
+  n.toLocaleString("bn-BD");
 
 const quickActions = [
   { href: "/admin/topics/new",    label: "নতুন টপিক যোগ",      icon: BookOpen,  color: "from-green-500 to-emerald-600" },
@@ -40,6 +37,18 @@ const menuItems = [
 export default function AdminPage() {
   const { user, isAdmin, loading } = useAuth();
   const router = useRouter();
+
+  const { data: usersData } = useCollection<{ id: string }>("users");
+  const { data: topicsData } = useCollection<{ id: string }>("topics");
+  const { data: questionsData } = useCollection<{ id: string }>("questions");
+  const { data: articlesData } = useCollection<{ id: string }>("articles");
+
+  const stats = [
+    { label: "মোট ব্যবহারকারী", value: toBnNumeral(usersData.length), icon: Users, color: "from-blue-500 to-indigo-600" },
+    { label: "মোট টপিক", value: toBnNumeral(topicsData.length), icon: BookOpen, color: "from-green-500 to-emerald-600" },
+    { label: "মোট প্রশ্ন", value: toBnNumeral(questionsData.length), icon: HelpCircle, color: "from-purple-500 to-violet-600" },
+    { label: "মোট আর্টিকেল", value: toBnNumeral(articlesData.length), icon: FileText, color: "from-orange-500 to-amber-600" },
+  ];
 
   useEffect(() => {
     if (!loading && (!user || !isAdmin)) {
