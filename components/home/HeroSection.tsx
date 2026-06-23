@@ -17,7 +17,13 @@ const floatingElements = [
   { symbol: "HCl", x: "90%", y: "45%", delay: 1.2 },
 ];
 
-export default function HeroSection() {
+interface HeroStats {
+  topics: number;
+  formulas: number;
+  reactions: number;
+}
+
+export default function HeroSection({ heroStats }: { heroStats?: HeroStats }) {
   const { user } = useAuth();
   const router = useRouter();
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -140,10 +146,10 @@ export default function HeroSection() {
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
         >
           {[
-            { value: "৫০০+", label: "টপিক" },
-            { value: "২০০+", label: "ফর্মুলা" },
-            { value: "১০০+", label: "বিক্রিয়া" },
-            { value: "৫টি", label: "ভার্চুয়াল ল্যাব" },
+            { value: heroStats ? `${heroStats.topics}+` : "৫০০+",   label: "টপিক" },
+            { value: heroStats ? `${heroStats.formulas}+` : "২০০+", label: "ফর্মুলা" },
+            { value: heroStats ? `${heroStats.reactions}+` : "১০০+",label: "বিক্রিয়া" },
+            { value: "৫টি",                                           label: "ভার্চুয়াল ল্যাব" },
           ].map((stat, i) => (
             <div
               key={i}

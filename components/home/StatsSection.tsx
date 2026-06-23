@@ -4,12 +4,16 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Users, BookOpen, FlaskConical, Award } from "lucide-react";
 
-const stats = [
-  { value: 10000, label: "সক্রিয় শিক্ষার্থী", icon: Users, suffix: "+" },
-  { value: 500, label: "শিক্ষামূলক টপিক", icon: BookOpen, suffix: "+" },
-  { value: 200, label: "রসায়ন ফর্মুলা", icon: FlaskConical, suffix: "+" },
-  { value: 5000, label: "অনুশীলন প্রশ্ন", icon: Award, suffix: "+" },
-];
+interface SiteStats {
+  users: number;
+  topics: number;
+  formulas: number;
+  questions: number;
+}
+
+interface Props {
+  stats?: SiteStats;
+}
 
 function CountUp({ target, suffix }: { target: number; suffix: string }) {
   const [count, setCount] = useState(0);
@@ -41,12 +45,18 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
   );
 }
 
-export default function StatsSection() {
+export default function StatsSection({ stats }: Props) {
+  const statItems = [
+    { value: stats?.users    ?? 10000, label: "সক্রিয় শিক্ষার্থী",  icon: Users,       suffix: "+" },
+    { value: stats?.topics   ?? 500,   label: "শিক্ষামূলক টপিক",     icon: BookOpen,    suffix: "+" },
+    { value: stats?.formulas ?? 200,   label: "রসায়ন ফর্মুলা",       icon: FlaskConical,suffix: "+" },
+    { value: stats?.questions?? 5000,  label: "অনুশীলন প্রশ্ন",      icon: Award,       suffix: "+" },
+  ];
   return (
     <section className="py-16 bg-white dark:bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {stats.map((stat, i) => {
+          {statItems.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <motion.div
