@@ -8,7 +8,7 @@ const FACEBOOK_PAGE_URL = "https://www.facebook.com/share/18qJwBFawp/";
 const FACEBOOK_GROUP_URL = "https://www.facebook.com/groups/2801992786833462/?ref=share&mibextid=NSMWBT";
 const WHATSAPP_NUMBER = "01341246069";
 const WHATSAPP_URL = `https://wa.me/880${WHATSAPP_NUMBER.slice(1)}`;
-const EMAIL = "chemistryunlfiltered94@gmail.com";
+const EMAIL = "chemistryunfiltered94@gmail.com";
 
 // lucide-react has no WhatsApp glyph — small inline brand icon instead.
 const WhatsAppIcon = ({ className }: { className?: string }) => (
