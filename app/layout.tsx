@@ -1,9 +1,10 @@
 // app/layout.tsx
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { AuthProvider } from "@/components/shared/AuthProvider";
 import LoadingScreen from "@/components/shared/LoadingScreen";
+import ServiceWorkerRegister from "@/components/shared/ServiceWorkerRegister";
 
 export const metadata: Metadata = {
   title: {
@@ -20,6 +21,18 @@ export const metadata: Metadata = {
     type: "website",
     locale: "bn_BD",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Chemistry Unfiltered",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#4f46e5",
 };
 
 export default function RootLayout({
@@ -33,6 +46,7 @@ export default function RootLayout({
         <ThemeProvider>
           <AuthProvider>
             <LoadingScreen />
+            <ServiceWorkerRegister />
             {children}
           </AuthProvider>
         </ThemeProvider>
