@@ -3,7 +3,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ─── Helper functions ───────────────────────────────────────
+    // ─── Helpers ────────────────────────────────────────────────
     function isAuthenticated() {
       return request.auth != null;
     }
@@ -12,6 +12,8 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
+    // Safe admin check — returns false (not error) when unauthenticated.
+    // This matters for Server Component reads where request.auth is null.
     function isAdmin() {
       return isAuthenticated() &&
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
@@ -26,56 +28,65 @@ service cloud.firestore {
     }
 
     // ─── Topics ─────────────────────────────────────────────────
+    // Published topics are world-readable (supports unauthenticated
+    // server-side rendering). Admins can read all (including drafts).
     match /topics/{topicId} {
-      allow read:   if resource.data.published == true || isAdmin();
-      allow write:  if isAdmin();
+      allow read:  if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
     }
 
     // ─── Articles ───────────────────────────────────────────────
     match /articles/{articleId} {
-      allow read:   if resource.data.published == true || isAdmin();
-      allow write:  if isAdmin();
+      allow read:  if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
     }
 
     // ─── Formulas ───────────────────────────────────────────────
     match /formulas/{formulaId} {
-      allow read:   if true;
-      allow write:  if isAdmin();
+      allow read:  if true;   // public, no auth required
+      allow write: if isAdmin();
     }
 
     // ─── Reactions ──────────────────────────────────────────────
     match /reactions/{reactionId} {
-      allow read:   if true;
-      allow write:  if isAdmin();
-    }
-
-    // ─── Elements (Periodic Table) ──────────────────────────────
-    match /elements/{elementId} {
-      allow read:   if true;
-      allow write:  if isAdmin();
+      allow read:  if true;
+      allow write: if isAdmin();
     }
 
     // ─── Questions ──────────────────────────────────────────────
     match /questions/{questionId} {
-      allow read:   if true;
-      allow write:  if isAdmin();
+      allow read:  if true;
+      allow write: if isAdmin();
     }
 
-    // ─── Quiz Attempts ──────────────────────────────────────────
-    match /quiz_attempts/{attemptId} {
-      allow read:   if isAuthenticated() &&
-                       resource.data.userId == request.auth.uid;
-      allow create: if isAuthenticated() &&
-                       request.resource.data.userId == request.auth.uid;
-      allow update, delete: if false;
+    // ─── Elements (Periodic Table static data) ──────────────────
+    match /elements/{elementId} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ─── Settings (site-wide config) ────────────────────────────
+    match /settings/{settingId} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ─── Virtual Labs ───────────────────────────────────────────
+    match /virtual_labs/{labId} {
+      allow read:  if true;
+      allow write: if isAdmin();
     }
 
     // ─── Progress ───────────────────────────────────────────────
     match /progress/{progressId} {
-      allow read, write: if isAuthenticated() &&
-                            (resource == null ||
-                             resource.data.userId == request.auth.uid) &&
-                            request.resource.data.userId == request.auth.uid;
+      allow read:   if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow update: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
     }
 
     // ─── Bookmarks ──────────────────────────────────────────────
@@ -100,22 +111,19 @@ service cloud.firestore {
                                resource.data.userId == request.auth.uid;
     }
 
+    // ─── Quiz Attempts ──────────────────────────────────────────
+    match /quiz_attempts/{attemptId} {
+      allow read:   if isAuthenticated() &&
+                       resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() &&
+                       request.resource.data.userId == request.auth.uid;
+      allow update, delete: if false;
+    }
+
     // ─── Notifications ──────────────────────────────────────────
     match /notifications/{notifId} {
       allow read:   if isAuthenticated() &&
                        resource.data.userId == request.auth.uid;
-      allow write:  if isAdmin();
-    }
-
-    // ─── Settings (site-wide config) ────────────────────────────
-    match /settings/{settingId} {
-      allow read:   if true;
-      allow write:  if isAdmin();
-    }
-
-    // ─── Virtual Labs ───────────────────────────────────────────
-    match /virtual_labs/{labId} {
-      allow read:   if true;
       allow write:  if isAdmin();
     }
   }
