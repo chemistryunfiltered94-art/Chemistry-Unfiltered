@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   signInWithEmailAndPassword,
-  signInWithPopup,
+  signInWithRedirect,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
 } from "firebase/auth";
@@ -85,12 +85,16 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login" }: Pro
     setLoginLoading(true); setLoginError("");
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      handleClose();
-      router.push("/dashboard");
-    } catch {
+      // signInWithPopup is unreliable on mobile browsers (gets silently
+      // blocked). signInWithRedirect works everywhere — the browser
+      // navigates to Google, then comes back and AuthProvider picks up
+      // the result via getRedirectResult().
+      await signInWithRedirect(auth, provider);
+    } catch (err) {
+      console.error("Google sign-in error:", err);
       setLoginError("Google লগইন করতে সমস্যা হয়েছে।");
-    } finally { setLoginLoading(false); }
+      setLoginLoading(false);
+    }
   };
 
   const handleLogin = async (e: React.FormEvent) => {
