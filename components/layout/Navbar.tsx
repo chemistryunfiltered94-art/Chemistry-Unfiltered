@@ -1,10 +1,11 @@
 "use client";
 
+// components/layout/Navbar.tsx
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "next-themes";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { SearchModal } from "@/components/shared/SearchModal";
 import { useSearchModal } from "@/hooks/useSearch";
@@ -12,41 +13,28 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { cn } from "@/lib/utils";
 import {
-  Menu, X, Sun, Moon, Search, FlaskConical,
+  Menu, X, Search, FlaskConical,
   HelpCircle, User, LogOut, LayoutDashboard,
   ChevronDown, Atom, FileText, Settings,
   Bookmark, ClipboardList,
 } from "lucide-react";
 
-// Links shown in the hamburger drawer (everything not pinned to the bottom nav).
 const drawerLinks = [
-  { href: "/articles", label: "আর্টিকেল", icon: FileText },
-  { href: "/notes", label: "নোটস", icon: ClipboardList },
-  { href: "/molecules", label: "আণবিক দর্শক", icon: Atom },
-  { href: "/question-bank", label: "প্রশ্নব্যাংক", icon: HelpCircle },
-  { href: "/reactions", label: "বিক্রিয়া ডেটাবেস", icon: FlaskConical },
+  { href: "/articles",      label: "আর্টিকেল",        icon: FileText },
+  { href: "/notes",         label: "নোটস",             icon: ClipboardList },
+  { href: "/molecules",     label: "আণবিক দর্শক",      icon: Atom },
+  { href: "/question-bank", label: "প্রশ্নব্যাংক",     icon: HelpCircle },
+  { href: "/reactions",     label: "বিক্রিয়া ডেটাবেস", icon: FlaskConical },
 ];
 
-function isLandingPath(pathname: string) {
-  return pathname === "/";
-}
-
 export default function Navbar() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [drawerOpen,   setDrawerOpen]   = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const { user, loading } = useAuth();
-  const pathname = usePathname();
+  const { user, loading }               = useAuth();
+  const pathname                        = usePathname();
   const { isOpen: searchOpen, open: openSearch, close: closeSearch } = useSearchModal();
 
-  const isLanding = isLandingPath(pathname);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const isLanding = pathname === "/";
 
   useEffect(() => {
     setDrawerOpen(false);
@@ -65,29 +53,17 @@ export default function Navbar() {
       </div>
       <div>
         <span className="font-bold text-lg gradient-text leading-none">Chemistry Unfiltered</span>
-        {isLanding && (
-          <p className="text-xs text-slate-500 dark:text-slate-400 -mt-0.5 hidden sm:block">
-            রসায়ন শেখার প্ল্যাটফর্ম
-          </p>
-        )}
+        <p className="text-xs text-slate-400 -mt-0.5 hidden sm:block">
+          রসায়ন শেখার প্ল্যাটফর্ম
+        </p>
       </div>
     </Link>
-  );
-
-  const ThemeToggle = (
-    <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
-      title="থিম পরিবর্তন করো"
-    >
-      {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-    </button>
   );
 
   const HamburgerButton = (
     <button
       onClick={() => setDrawerOpen(!drawerOpen)}
-      className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+      className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors flex-shrink-0"
       aria-label="মেনু"
     >
       {drawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -100,12 +76,12 @@ export default function Navbar() {
         <div className="relative flex-shrink-0">
           <button
             onClick={() => setUserMenuOpen(!userMenuOpen)}
-            className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors"
           >
             <div className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-white text-sm font-bold">
               {user.name?.charAt(0).toUpperCase() || "U"}
             </div>
-            <span className="hidden sm:block text-sm font-medium text-slate-700 dark:text-slate-300">
+            <span className="hidden sm:block text-sm font-medium text-slate-300">
               {user.name?.split(" ")[0]}
             </span>
             <ChevronDown className="hidden sm:block w-4 h-4 text-slate-400" />
@@ -117,25 +93,25 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50"
+                className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-xl border border-slate-700 overflow-hidden z-50"
               >
                 <Link href="/dashboard" onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700 transition-colors">
                   <LayoutDashboard className="w-4 h-4" /> ড্যাশবোর্ড
                 </Link>
                 <Link href="/profile" onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700 transition-colors">
                   <User className="w-4 h-4" /> প্রোফাইল
                 </Link>
                 {user.role === "admin" && (
                   <Link href="/admin" onClick={() => setUserMenuOpen(false)}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-primary-600 dark:text-primary-400 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+                    className="flex items-center gap-2 px-4 py-3 text-sm text-primary-400 hover:bg-slate-700 transition-colors">
                     <Settings className="w-4 h-4" /> অ্যাডমিন প্যানেল
                   </Link>
                 )}
-                <hr className="border-slate-200 dark:border-slate-700" />
+                <hr className="border-slate-700" />
                 <button onClick={handleSignOut}
-                  className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                  className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-400 hover:bg-red-900/20 transition-colors">
                   <LogOut className="w-4 h-4" /> লগআউট
                 </button>
               </motion.div>
@@ -144,7 +120,7 @@ export default function Navbar() {
         </div>
       ) : (
         <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
-          <Link href="/login" className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+          <Link href="/login" className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-primary-400 transition-colors">
             লগইন
           </Link>
           <Link href="/register" className="px-4 py-2 text-sm font-medium text-white gradient-bg rounded-lg hover:opacity-90 transition-opacity shadow-md">
@@ -155,60 +131,45 @@ export default function Navbar() {
     </>
   );
 
+  // ─── LANDING PAGE: logo + name only ──────────────────────────────────────
+  if (isLanding) {
+    return (
+      <>
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center h-16">
+              {Logo}
+            </div>
+          </div>
+        </nav>
+        <SearchModal isOpen={searchOpen} onClose={closeSearch} />
+      </>
+    );
+  }
+
+  // ─── INNER PAGES: full navbar ─────────────────────────────────────────────
   return (
     <>
-      <nav
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled || !isLanding
-            ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-slate-200/50 dark:border-slate-700/50"
-            : "bg-transparent"
-        )}
-      >
-        {isLanding ? (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              {Logo}
-              <div className="flex items-center gap-1 sm:gap-2">
-                <button
-                  onClick={openSearch}
-                  className="p-2 rounded-lg text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                  title="সার্চ করো (Ctrl+K)"
-                >
-                  <Search className="w-5 h-5" />
-                </button>
-                {ThemeToggle}
-                {!user && !loading && (
-                  <Link href="/login" className="hidden sm:block px-4 py-2 text-sm font-medium text-white gradient-bg rounded-lg hover:opacity-90 transition-opacity shadow-md ml-1">
-                    শুরু করো
-                  </Link>
-                )}
-                {HamburgerButton}
-              </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-slate-700/50 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-14">
+            {Logo}
+            <div className="flex items-center gap-1">
+              {UserAvatarMenu}
+              {HamburgerButton}
             </div>
           </div>
-        ) : (
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-14">
-              {Logo}
-              <div className="flex items-center gap-1">
-                {ThemeToggle}
-                {UserAvatarMenu}
-                {HamburgerButton}
-              </div>
-            </div>
-            <div className="pb-3">
-              <button
-                onClick={openSearch}
-                className="w-full flex items-center gap-2.5 px-4 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-500 dark:text-slate-400 hover:border-primary-400 dark:hover:border-primary-600 transition-colors"
-              >
-                <Search className="w-4 h-4 flex-shrink-0" />
-                <span className="flex-1 text-left">সার্চ করো... (টপিক, ফর্মুলা, প্রশ্ন)</span>
-                <kbd className="hidden sm:inline-block text-xs bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded px-1.5 py-0.5">⌘K</kbd>
-              </button>
-            </div>
+          <div className="pb-3">
+            <button
+              onClick={openSearch}
+              className="w-full flex items-center gap-2.5 px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm text-slate-400 hover:border-primary-600 transition-colors"
+            >
+              <Search className="w-4 h-4 flex-shrink-0" />
+              <span className="flex-1 text-left">সার্চ করো... (টপিক, ফর্মুলা, প্রশ্ন)</span>
+              <kbd className="hidden sm:inline-block text-xs bg-slate-700 border border-slate-600 rounded px-1.5 py-0.5">⌘K</kbd>
+            </button>
           </div>
-        )}
+        </div>
 
         <AnimatePresence>
           {drawerOpen && (
@@ -216,7 +177,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="bg-slate-900 border-t border-slate-700 max-h-[calc(100vh-4rem)] overflow-y-auto"
             >
               <div className="px-4 py-4 space-y-1">
                 {drawerLinks.map((link) => {
@@ -229,8 +190,8 @@ export default function Navbar() {
                       className={cn(
                         "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all",
                         isActive
-                          ? "bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400"
-                          : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                          ? "bg-primary-900/30 text-primary-400"
+                          : "text-slate-300 hover:bg-slate-800"
                       )}
                     >
                       <Icon className="w-5 h-5" />
@@ -241,14 +202,14 @@ export default function Navbar() {
 
                 {user?.role === "admin" && (
                   <Link href="/admin"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-primary-600 dark:text-primary-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-primary-400 hover:bg-slate-800 transition-all">
                     <Settings className="w-5 h-5" /> অ্যাডমিন প্যানেল
                   </Link>
                 )}
 
                 {user && (
                   <Link href="/dashboard/bookmarks"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800 transition-all">
                     <Bookmark className="w-5 h-5" /> সংরক্ষিত আইটেম
                   </Link>
                 )}
@@ -256,7 +217,7 @@ export default function Navbar() {
                 {!user && (
                   <div className="flex gap-2 pt-2">
                     <Link href="/login"
-                      className="flex-1 text-center px-4 py-2.5 text-sm font-medium border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                      className="flex-1 text-center px-4 py-2.5 text-sm font-medium border border-slate-600 text-slate-300 rounded-xl hover:bg-slate-800 transition-colors">
                       লগইন
                     </Link>
                     <Link href="/register"

@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { AuthProvider } from "@/components/shared/AuthProvider";
+import LoadingScreen from "@/components/shared/LoadingScreen";
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +32,7 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           <AuthProvider>
+            <LoadingScreen />
             {children}
           </AuthProvider>
         </ThemeProvider>
