@@ -4,6 +4,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/components/shared/AuthProvider";
@@ -48,8 +49,8 @@ export default function Navbar() {
 
   const Logo = (
     <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-      <div className="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-        <FlaskConical className="w-5 h-5 text-white" />
+      <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg group-hover:scale-110 transition-transform">
+        <Image src="/logo.png" alt="Chemistry Unfiltered" width={36} height={36} className="w-full h-full object-cover" priority />
       </div>
       <div>
         <span className="font-bold text-lg gradient-text leading-none">Chemistry Unfiltered</span>

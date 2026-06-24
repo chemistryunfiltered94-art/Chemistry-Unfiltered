@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
-import { FlaskConical, Mail, Lock, Eye, EyeOff, User, UserPlus } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, User, UserPlus } from "lucide-react";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -73,8 +74,8 @@ export default function RegisterPage() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                <FlaskConical className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden">
+                <Image src="/logo.png" alt="Chemistry Unfiltered" width={40} height={40} className="w-full h-full object-cover" />
               </div>
               <span className="font-bold text-xl text-white">Chemistry Unfiltered</span>
             </Link>

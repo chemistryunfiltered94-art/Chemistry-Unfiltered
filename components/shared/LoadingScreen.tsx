@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FlaskConical } from "lucide-react";
 
 export default function LoadingScreen() {
   const [visible, setVisible] = useState(true);
@@ -41,9 +41,9 @@ export default function LoadingScreen() {
             <motion.div
               animate={{ scale: [1, 1.12, 1] }}
               transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-20 h-20 rounded-2xl gradient-bg flex items-center justify-center shadow-2xl shadow-primary-500/40"
+              className="w-20 h-20 rounded-2xl overflow-hidden shadow-2xl shadow-primary-500/40"
             >
-              <FlaskConical className="w-10 h-10 text-white" />
+              <Image src="/logo.png" alt="Chemistry Unfiltered" width={80} height={80} className="w-full h-full object-cover" priority />
             </motion.div>
 
             {/* Orbiting dot */}

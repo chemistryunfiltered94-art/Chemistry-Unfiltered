@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FlaskConical, Heart, Facebook, Users, Mail } from "lucide-react";
+import Image from "next/image";
+import { Heart, Facebook, Users, Mail } from "lucide-react";
 
 const FACEBOOK_PAGE_URL = "https://www.facebook.com/share/18qJwBFawp/";
 const FACEBOOK_GROUP_URL = "https://www.facebook.com/groups/2801992786833462/?ref=share&mibextid=NSMWBT";
@@ -32,8 +33,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl gradient-bg flex items-center justify-center">
-                <FlaskConical className="w-5 h-5 text-white" />
+              <div className="w-9 h-9 rounded-xl overflow-hidden">
+                <Image src="/logo.png" alt="Chemistry Unfiltered" width={36} height={36} className="w-full h-full object-cover" />
               </div>
               <span className="font-bold text-lg text-white">Chemistry Unfiltered</span>
             </Link>

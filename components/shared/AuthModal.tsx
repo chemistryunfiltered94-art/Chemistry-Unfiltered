@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -12,7 +13,7 @@ import {
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "@/lib/firebase";
 import { Modal } from "@/components/ui/Modal";
-import { X, Mail, Lock, Eye, EyeOff, User, LogIn, FlaskConical } from "lucide-react";
+import { X, Mail, Lock, Eye, EyeOff, User, LogIn } from "lucide-react";
 
 type Tab = "login" | "register";
 
@@ -150,8 +151,8 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login" }: Pro
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-            <FlaskConical className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-lg overflow-hidden flex-shrink-0">
+            <Image src="/logo.png" alt="Chemistry Unfiltered" width={32} height={32} className="w-full h-full object-cover" />
           </div>
           <span className="font-bold text-white text-sm">Chemistry Unfiltered</span>
         </div>

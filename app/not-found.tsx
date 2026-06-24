@@ -1,12 +1,13 @@
 import Link from "next/link";
-import { FlaskConical, Home, ArrowLeft } from "lucide-react";
+import Image from "next/image";
+import { Home, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center px-4">
       <div className="text-center">
-        <div className="w-20 h-20 gradient-bg rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
-          <FlaskConical className="w-10 h-10 text-white" />
+        <div className="w-20 h-20 rounded-3xl overflow-hidden mx-auto mb-6 shadow-2xl">
+          <Image src="/logo.png" alt="Chemistry Unfiltered" width={80} height={80} className="w-full h-full object-cover" />
         </div>
 
         <div className="text-8xl font-black gradient-text mb-4">৪০৪</div>

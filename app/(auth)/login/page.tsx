@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { FlaskConical, Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -42,11 +43,14 @@ export default function LoginPage() {
     setError("");
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      router.push("/dashboard");
-    } catch {
+      // signInWithPopup is unreliable on mobile browsers (gets silently
+      // blocked). signInWithRedirect works everywhere — the browser
+      // navigates to Google, then comes back and AuthProvider picks up
+      // the result via getRedirectResult().
+      await signInWithRedirect(auth, provider);
+    } catch (err) {
+      console.error("Google sign-in error:", err);
       setError("Google লগইন করতে সমস্যা হয়েছে।");
-    } finally {
       setLoading(false);
     }
   };
@@ -66,8 +70,8 @@ export default function LoginPage() {
           {/* Logo */}
           <div className="text-center mb-8">
             <Link href="/" className="inline-flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                <FlaskConical className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 rounded-xl overflow-hidden">
+                <Image src="/logo.png" alt="Chemistry Unfiltered" width={40} height={40} className="w-full h-full object-cover" />
               </div>
               <span className="font-bold text-xl text-white">Chemistry Unfiltered</span>
             </Link>
