@@ -32,6 +32,7 @@ export default async function TopicPage({ params }: Props) {
 
   const topicData = {
     title: data.title,
+    level: data.level ?? "beginner",
     estimatedTime: data.estimatedTime,
     category: getCategoryName(data.categoryId),
     categorySlug: data.categoryId,

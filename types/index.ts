@@ -38,6 +38,7 @@ export interface Topic {
   title: string;
   slug: string;
   categoryId: ChemistryCategory;
+  level?: Level;           // ✅ difficulty level (optional for backward compatibility)
   chapterId: string;       // ✅ কোন অধ্যায়ে আছে
   estimatedTime: number;
   summary: string;
