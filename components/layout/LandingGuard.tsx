@@ -1,8 +1,8 @@
 "use client";
 
 // components/layout/LandingGuard.tsx
-// On the landing page (/): minimal nav (logo only) + no BottomNav, but Footer is shown
-// On all other public pages: full Navbar + BottomNav + Footer as before
+// On the landing page (/): minimal nav (logo only) + no BottomNav + Footer shown
+// On all other public pages: full Navbar + BottomNav, NO Footer
 
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
@@ -26,7 +26,7 @@ export default function LandingGuard({
       <main className={isLanding ? "min-h-screen" : "min-h-screen pb-20 lg:pb-0"}>
         {children}
       </main>
-      <Footer />
+      {isLanding && <Footer />}
       {!isLanding && <BottomNav />}
     </>
   );
