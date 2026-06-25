@@ -178,7 +178,7 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="bg-slate-900 border-t border-slate-700 max-h-[calc(100vh-4rem)] overflow-y-auto"
+              className="bg-slate-900 border-t border-slate-700 max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden"
             >
               <div className="px-4 py-4 space-y-1">
                 {drawerLinks.map((link) => {

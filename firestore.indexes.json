@@ -1,6 +1,39 @@
 {
   "indexes": [
     {
+      "collectionGroup": "chapters",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "categoryId", "order": "ASCENDING" },
+        { "fieldPath": "order",      "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "topics",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "published",  "order": "ASCENDING" },
+        { "fieldPath": "chapterId",  "order": "ASCENDING" },
+        { "fieldPath": "createdAt",  "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "topics",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "published",   "order": "ASCENDING" },
+        { "fieldPath": "categoryId",  "order": "ASCENDING" },
+        { "fieldPath": "createdAt",   "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "topics",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "slug", "order": "ASCENDING" }
+      ]
+    },
+    {
       "collectionGroup": "topics",
       "queryScope": "COLLECTION",
       "fields": [
@@ -15,34 +48,6 @@
         { "fieldPath": "published",  "order": "ASCENDING" },
         { "fieldPath": "featured",   "order": "ASCENDING" },
         { "fieldPath": "createdAt",  "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "topics",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "published",   "order": "ASCENDING" },
-        { "fieldPath": "categoryId",  "order": "ASCENDING" },
-        { "fieldPath": "createdAt",   "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "topics",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "published",  "order": "ASCENDING" },
-        { "fieldPath": "level",      "order": "ASCENDING" },
-        { "fieldPath": "createdAt",  "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "topics",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "published",   "order": "ASCENDING" },
-        { "fieldPath": "categoryId",  "order": "ASCENDING" },
-        { "fieldPath": "level",       "order": "ASCENDING" },
-        { "fieldPath": "createdAt",   "order": "DESCENDING" }
       ]
     },
     {

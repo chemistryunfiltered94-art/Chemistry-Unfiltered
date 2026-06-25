@@ -20,7 +20,7 @@ const categories = [
 
 export default function LearnPage() {
   return (
-    <div className="min-h-screen bg-slate-900 px-4 py-8">
+    <div className="min-h-screen bg-slate-900 px-4 py-6 overflow-x-hidden">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold text-white mb-6">বিষয়সমূহ</h1>
         <div className="grid grid-cols-2 gap-3">

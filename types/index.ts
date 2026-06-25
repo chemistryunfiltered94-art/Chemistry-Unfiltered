@@ -1,3 +1,5 @@
+// types/index.ts — Chapter interface যোগ করা হয়েছে
+
 export type UserRole = "student" | "admin";
 
 export interface User {
@@ -20,12 +22,23 @@ export type ChemistryCategory =
   | "environmental-chemistry"
   | "industrial-chemistry";
 
+// ✅ নতুন Chapter interface
+export interface Chapter {
+  id: string;
+  title: string;           // যেমন: "পরমাণুর গঠন", "রাসায়নিক বন্ধন"
+  categoryId: ChemistryCategory;
+  order: number;           // অধ্যায়ের ক্রম
+  description?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Topic {
   id: string;
   title: string;
   slug: string;
   categoryId: ChemistryCategory;
-  level: Level;
+  chapterId: string;       // ✅ কোন অধ্যায়ে আছে
   estimatedTime: number;
   summary: string;
   content: {

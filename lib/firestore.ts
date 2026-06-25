@@ -11,14 +11,13 @@ import {
   where,
   orderBy,
   limit,
-  startAfter,
   serverTimestamp,
   DocumentSnapshot,
   QueryConstraint,
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User } from "@/types";
+import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter } from "@/types";
 
 // ─── Generic Helpers ───────────────────────────────────────────────
 
@@ -93,19 +92,41 @@ export async function deleteDocument(collectionName: string, id: string): Promis
   }
 }
 
+// ─── Chapters ──────────────────────────────────────────────────────
+
+export async function getChapters(categoryId: string): Promise<Chapter[]> {
+  return getDocuments<Chapter>("chapters", [
+    where("categoryId", "==", categoryId),
+    orderBy("order", "asc"),
+  ]);
+}
+
+export async function getChapter(id: string): Promise<Chapter | null> {
+  return getDocument<Chapter>("chapters", id);
+}
+
+export async function createChapter(data: {
+  title: string;
+  categoryId: string;
+  order: number;
+  description?: string;
+}): Promise<string | null> {
+  return createDocument("chapters", data);
+}
+
 // ─── Topics ────────────────────────────────────────────────────────
 
 export async function getTopics(options?: {
   categoryId?: string;
-  level?: string;
+  chapterId?: string;
   featured?: boolean;
   limitCount?: number;
 }): Promise<Topic[]> {
   const constraints: QueryConstraint[] = [where("published", "==", true)];
   if (options?.categoryId) constraints.push(where("categoryId", "==", options.categoryId));
-  if (options?.level) constraints.push(where("level", "==", options.level));
-  if (options?.featured) constraints.push(where("featured", "==", true));
-  constraints.push(orderBy("createdAt", "desc"));
+  if (options?.chapterId)  constraints.push(where("chapterId",  "==", options.chapterId));
+  if (options?.featured)   constraints.push(where("featured",   "==", true));
+  constraints.push(orderBy("createdAt", "asc"));
   if (options?.limitCount) constraints.push(limit(options.limitCount));
   return getDocuments<Topic>("topics", constraints);
 }
@@ -184,7 +205,7 @@ export async function getQuestions(options?: {
     constraints.push(where("exam", "array-contains", options.exam));
   }
   if (options?.categoryId) constraints.push(where("categoryId", "==", options.categoryId));
-  if (options?.topicId)    constraints.push(where("topicId", "==", options.topicId));
+  if (options?.topicId)    constraints.push(where("topicId",    "==", options.topicId));
   if (options?.difficulty && options.difficulty !== "সব") {
     constraints.push(where("difficulty", "==", options.difficulty));
   }
