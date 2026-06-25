@@ -108,7 +108,7 @@ export default function AdminTopicsPage() {
                     {topic.featured && <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400 flex-shrink-0" />}
                   </div>
                   <p className="text-xs text-slate-500 mt-0.5 truncate">
-                    /{topic.slug} · {levelLabel[topic.level] || topic.level} · {topic.views || 0} views
+                    /{topic.slug} · {topic.level ? (levelLabel[topic.level] || topic.level) : ""} · {topic.views || 0} views
                   </p>
                 </div>
 
