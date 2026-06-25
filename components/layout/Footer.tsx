@@ -19,8 +19,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const contactLinks = [
-  { icon: Facebook,     label: "Facebook পেজ",            href: FACEBOOK_PAGE_URL },
-  { icon: Users,         label: "Facebook গ্রুপ",           href: FACEBOOK_GROUP_URL },
+  { icon: Facebook,     label: "Facebook Page",            href: FACEBOOK_PAGE_URL },
+  { icon: Users,         label: "Facebook Group",           href: FACEBOOK_GROUP_URL },
   { icon: WhatsAppIcon,  label: `WhatsApp: ${WHATSAPP_NUMBER}`, href: WHATSAPP_URL },
   { icon: Mail,          label: EMAIL,                      href: `mailto:${EMAIL}` },
 ];
