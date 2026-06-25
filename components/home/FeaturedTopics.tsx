@@ -87,8 +87,8 @@ export default function FeaturedTopics({ topics }: Props) {
                   </p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${levelColors[topic.level]}`}>
-                        {levelBn[topic.level] ?? topic.level}
+                      <span className={`text-xs px-2 py-1 rounded-full font-medium ${topic.level ? levelColors[topic.level] : ""}`}>
+                        {topic.level ? (levelBn[topic.level] ?? topic.level) : ""}
                       </span>
                       <span className="flex items-center gap-1 text-xs text-slate-500">
                         <Clock className="w-3 h-3" />
