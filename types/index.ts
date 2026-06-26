@@ -161,3 +161,20 @@ export interface Bookmark {
   refId: string;
   createdAt: Date;
 }
+
+// ─── Study Notes ──────────────────────────────────────────────────
+
+export type NoteType = "class" | "revision" | "practical" | "formula";
+
+export interface StudyNote {
+  id: string;
+  title: string;
+  slug: string;
+  type: NoteType;
+  category: ChemistryCategory;
+  summary?: string;
+  content: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
