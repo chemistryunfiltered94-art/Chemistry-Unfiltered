@@ -52,7 +52,7 @@ export default async function NoteDetailPage({ params }: Props) {
 
             {/* Content */}
             <div className="prose prose-slate dark:prose-invert max-w-none space-y-5">
-              {paragraphs.map((para, i) => (
+              {paragraphs.map((para: string, i) => (
                 <p key={i} className="text-slate-700 dark:text-slate-300 leading-relaxed text-base">{para}</p>
               ))}
             </div>
