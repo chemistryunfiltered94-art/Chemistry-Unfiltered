@@ -1,9 +1,9 @@
-// app/layout.tsx
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { AuthProvider } from "@/components/shared/AuthProvider";
 import LoadingScreen from "@/components/shared/LoadingScreen";
+import PageTransition from "@/components/shared/PageTransition";
 import ServiceWorkerRegister from "@/components/shared/ServiceWorkerRegister";
 
 export const metadata: Metadata = {
@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Chemistry Unfiltered Team" }],
   openGraph: {
     title: "Chemistry Unfiltered — সম্পূর্ণ Chemistry Learning Platform",
-    description: "Chemistry শেখো সহজে। Interactive Periodic Table, Formula Library, Virtual Lab এবং আরো অনেক কিছু।",
+    description:
+      "Chemistry শেখো সহজে। Interactive Periodic Table, Formula Library, Virtual Lab এবং আরো অনেক কিছু।",
     type: "website",
     locale: "bn_BD",
   },
@@ -45,7 +46,10 @@ export default function RootLayout({
       <body className="antialiased">
         <ThemeProvider>
           <AuthProvider>
+            {/* Splash screen — first visit only */}
             <LoadingScreen />
+            {/* Page-to-page transition overlay */}
+            <PageTransition />
             <ServiceWorkerRegister />
             {children}
           </AuthProvider>
