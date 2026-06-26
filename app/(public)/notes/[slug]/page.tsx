@@ -20,7 +20,7 @@ export default async function NoteDetailPage({ params }: Props) {
   const note = await getStudyNote(slug);
   if (!note) notFound();
 
-  const paragraphs = (note.content || "").split("\n").filter((p) => p.trim());
+  const paragraphs = (note.content || "").split("\n").filter((p: string) => p.trim());
 
   return (
     <div className="section-padding">
