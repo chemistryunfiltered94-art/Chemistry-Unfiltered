@@ -38,7 +38,6 @@ export interface Topic {
   title: string;
   slug: string;
   categoryId: ChemistryCategory;
-  level?: Level;           // ✅ difficulty level (optional for backward compatibility)
   chapterId: string;       // ✅ কোন অধ্যায়ে আছে
   estimatedTime: number;
   summary: string;
@@ -138,6 +137,22 @@ export interface Article {
   author: string;
   published: boolean;
   tags: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// ✅ নোটস সেকশনের জন্য (Class / Revision / Practical Notes ও ফর্মুলা শিট)
+export type NoteType = "class" | "revision" | "practical" | "formula";
+
+export interface StudyNote {
+  id: string;
+  title: string;
+  slug: string;
+  type: NoteType;
+  category: ChemistryCategory;
+  summary: string;
+  content: string;
+  published: boolean;
   createdAt: Date;
   updatedAt: Date;
 }

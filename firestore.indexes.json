@@ -59,6 +59,31 @@
       ]
     },
     {
+      "collectionGroup": "studyNotes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "published",  "order": "ASCENDING" },
+        { "fieldPath": "createdAt",  "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "studyNotes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "published",  "order": "ASCENDING" },
+        { "fieldPath": "type",       "order": "ASCENDING" },
+        { "fieldPath": "createdAt",  "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "studyNotes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "slug",       "order": "ASCENDING" },
+        { "fieldPath": "published",  "order": "ASCENDING" }
+      ]
+    },
+    {
       "collectionGroup": "formulas",
       "queryScope": "COLLECTION",
       "fields": [

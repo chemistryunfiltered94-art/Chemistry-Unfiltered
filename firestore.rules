@@ -100,7 +100,7 @@ service cloud.firestore {
       allow update: if false;
     }
 
-    // ─── Notes ──────────────────────────────────────────────────
+    // ─── Notes (private, per-user scratch notes) ─────────────────
     match /notes/{noteId} {
       allow read:   if isAdmin() ||
                        (isAuthenticated() &&
@@ -109,6 +109,14 @@ service cloud.firestore {
                        request.resource.data.userId == request.auth.uid;
       allow update, delete: if isAuthenticated() &&
                                resource.data.userId == request.auth.uid;
+    }
+
+    // ─── Study Notes (public Notes Center: Class / Revision / ────
+    // Practical notes ও ফর্মুলা শিট — admin-authored, shown on /notes).
+    // Distinct from /notes above, which is private per-user content.
+    match /studyNotes/{noteId} {
+      allow read:  if resource.data.published == true || isAdmin();
+      allow write: if isAdmin();
     }
 
     // ─── Quiz Attempts ──────────────────────────────────────────

@@ -17,7 +17,7 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter } from "@/types";
+import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType } from "@/types";
 
 // ─── Generic Helpers ───────────────────────────────────────────────
 
@@ -189,6 +189,30 @@ export async function getArticle(slug: string): Promise<Article | null> {
     limit(1),
   ]);
   return articles[0] || null;
+}
+
+// ─── Study Notes (Notes Center: Class / Revision / Practical / Formula sheet) ──
+
+export async function getStudyNotes(options?: {
+  type?: NoteType | "all";
+  limitCount?: number;
+}): Promise<StudyNote[]> {
+  const constraints: QueryConstraint[] = [where("published", "==", true)];
+  if (options?.type && options.type !== "all") {
+    constraints.push(where("type", "==", options.type));
+  }
+  constraints.push(orderBy("createdAt", "desc"));
+  if (options?.limitCount) constraints.push(limit(options.limitCount));
+  return getDocuments<StudyNote>("studyNotes", constraints);
+}
+
+export async function getStudyNote(slug: string): Promise<StudyNote | null> {
+  const notes = await getDocuments<StudyNote>("studyNotes", [
+    where("slug", "==", slug),
+    where("published", "==", true),
+    limit(1),
+  ]);
+  return notes[0] || null;
 }
 
 // ─── Questions / MCQ ───────────────────────────────────────────────

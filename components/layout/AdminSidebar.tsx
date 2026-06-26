@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import {
   LayoutDashboard, BookOpen, HelpCircle, FileText,
   Atom, FlaskConical, Users, Settings, ChevronRight,
+  StickyNote,
 } from "lucide-react";
 
 const menuGroups = [
@@ -21,6 +22,7 @@ const menuGroups = [
     items: [
       { href: "/admin/topics",    label: "টপিক",              icon: BookOpen },
       { href: "/admin/articles",  label: "আর্টিকেল",          icon: FileText },
+      { href: "/admin/notes",     label: "নোটস",              icon: StickyNote },
       { href: "/admin/formulas",  label: "ফর্মুলা",            icon: Atom },
       { href: "/admin/reactions", label: "বিক্রিয়া",           icon: FlaskConical },
       { href: "/admin/questions", label: "প্রশ্নব্যাংক",       icon: HelpCircle },
