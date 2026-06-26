@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Search, FileText, ArrowRight, X } from "lucide-react";
@@ -12,7 +12,8 @@ interface Props {
   notes: StudyNote[];
 }
 
-export default function NotesPageClient({ notes }: Props) {
+// ─── Inner component uses useSearchParams (must be inside Suspense) ───
+function NotesContent({ notes }: Props) {
   const searchParams = useSearchParams();
   const activeType = searchParams.get("type") as NoteType | null;
   const [search, setSearch] = useState("");
@@ -135,5 +136,28 @@ export default function NotesPageClient({ notes }: Props) {
         )}
       </div>
     </>
+  );
+}
+
+// ─── Loading skeleton while Suspense resolves ─────────────────────
+function NotesSkeleton() {
+  return (
+    <div className="animate-pulse">
+      <div className="h-12 bg-slate-200 dark:bg-slate-700 rounded-2xl mb-8 max-w-lg mx-auto" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-36 bg-slate-200 dark:bg-slate-700 rounded-2xl" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── Default export wraps inner component with Suspense ───────────
+export default function NotesPageClient({ notes }: Props) {
+  return (
+    <Suspense fallback={<NotesSkeleton />}>
+      <NotesContent notes={notes} />
+    </Suspense>
   );
 }

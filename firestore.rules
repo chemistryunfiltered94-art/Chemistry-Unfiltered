@@ -114,8 +114,17 @@ service cloud.firestore {
     // ─── Study Notes (public Notes Center: Class / Revision / ────
     // Practical notes ও ফর্মুলা শিট — admin-authored, shown on /notes).
     // Distinct from /notes above, which is private per-user content.
+    // IMPORTANT: list queries from Next.js Server Components (SSG/SSR)
+    // run without auth, so resource.data checks block them. All studyNotes
+    // are admin-authored public content — fully open read is correct here.
     match /studyNotes/{noteId} {
-      allow read:  if resource.data.published == true || isAdmin();
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ─── Chapters ───────────────────────────────────────────────
+    match /chapters/{chapterId} {
+      allow read:  if true;
       allow write: if isAdmin();
     }
 
