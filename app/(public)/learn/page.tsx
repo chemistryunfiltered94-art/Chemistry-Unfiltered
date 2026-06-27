@@ -1,7 +1,7 @@
 // app/(public)/learn/page.tsx
 import { Metadata } from "next";
 import Link from "next/link";
-import { Atom, Leaf, Beaker, BarChart3, Dna, Wind, Factory, ChevronRight } from "lucide-react";
+import { Atom, Leaf, Beaker, BarChart3, Dna, Wind, Factory } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "বিষয়সমূহ — Chemistry Unfiltered",
@@ -15,7 +15,7 @@ const categories = [
     desc: "গ্যাস সূত্র, তাপগতিবিদ্যা, তড়িৎ রসায়ন",
     icon: Atom,
     gradient: "from-blue-500 to-indigo-600",
-    accent: "border-blue-500/40 hover:border-blue-400",
+    border: "border-blue-500/40",
   },
   {
     id: "organic-chemistry",
@@ -23,7 +23,7 @@ const categories = [
     desc: "হাইড্রোকার্বন, কার্যকরী গ্রুপ, বিক্রিয়া",
     icon: Leaf,
     gradient: "from-green-500 to-emerald-600",
-    accent: "border-green-500/40 hover:border-green-400",
+    border: "border-green-500/40",
   },
   {
     id: "inorganic-chemistry",
@@ -31,7 +31,7 @@ const categories = [
     desc: "ধাতু, পর্যায় সারণি, রাসায়নিক বন্ধন",
     icon: Beaker,
     gradient: "from-purple-500 to-violet-600",
-    accent: "border-purple-500/40 hover:border-purple-400",
+    border: "border-purple-500/40",
   },
   {
     id: "analytical-chemistry",
@@ -39,7 +39,7 @@ const categories = [
     desc: "টাইট্রেশন, ক্রোমাটোগ্রাফি, বর্ণালী",
     icon: BarChart3,
     gradient: "from-orange-500 to-amber-600",
-    accent: "border-orange-500/40 hover:border-orange-400",
+    border: "border-orange-500/40",
   },
   {
     id: "biochemistry",
@@ -47,7 +47,7 @@ const categories = [
     desc: "প্রোটিন, DNA, কার্বোহাইড্রেট, এনজাইম",
     icon: Dna,
     gradient: "from-pink-500 to-rose-600",
-    accent: "border-pink-500/40 hover:border-pink-400",
+    border: "border-pink-500/40",
   },
   {
     id: "environmental-chemistry",
@@ -55,7 +55,7 @@ const categories = [
     desc: "বায়ু দূষণ, জল রসায়ন, পরিবেশ বিজ্ঞান",
     icon: Wind,
     gradient: "from-teal-500 to-green-600",
-    accent: "border-teal-500/40 hover:border-teal-400",
+    border: "border-teal-500/40",
   },
   {
     id: "industrial-chemistry",
@@ -63,7 +63,7 @@ const categories = [
     desc: "হেবার পদ্ধতি, সার উৎপাদন, তেল পরিশোধন",
     icon: Factory,
     gradient: "from-slate-400 to-slate-600",
-    accent: "border-slate-500/40 hover:border-slate-400",
+    border: "border-slate-500/40",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function LearnPage() {
               <Link
                 key={cat.id}
                 href={`/learn/${cat.id}`}
-                className={`flex flex-col items-center gap-3 p-5 bg-slate-800 border ${cat.accent} rounded-2xl active:scale-95 transition-all duration-200 group text-center`}
+                className={`flex flex-col items-center gap-3 p-5 bg-slate-800 border ${cat.border} rounded-2xl text-center`}
               >
                 <div
                   className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center shadow-lg`}

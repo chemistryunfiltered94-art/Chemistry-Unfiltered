@@ -1,42 +1,38 @@
 "use client";
 
-// LoadingScreen.tsx
-// Splash Screen — shown ONCE per browser session only.
-// Uses sessionStorage to skip on subsequent navigations.
+// LoadingScreen.tsx — shown ONCE per browser session.
+// Simple fade only — NO transform/translate to prevent GPU glitch on Android.
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
-const TAGLINE = "Laugh · Learn · React";
-const CHAR_DELAY = 60;    // ms per character
-const HOLD_AFTER = 600;   // ms to hold after tagline completes
-const RISE_DURATION = 500; // ms for the rise animation
-
+const TAGLINE    = "Laugh · Learn · React";
+const CHAR_DELAY = 60;
+const HOLD_AFTER = 500;
+const FADE_DURATION = 400;
 const SESSION_KEY = "cu_splash_shown";
 
 export default function LoadingScreen() {
-  const [phase, setPhase] = useState<"idle" | "typing" | "holding" | "rising" | "done">("idle");
+  const [phase, setPhase]       = useState<"idle" | "typing" | "holding" | "fading" | "done">("idle");
   const [charCount, setCharCount] = useState(0);
   const rafRef = useRef<number | null>(null);
 
-  // ── On mount: check sessionStorage ─────────────────────────────────────
+  // ── On mount: check sessionStorage ────────────────────────────────────
   useEffect(() => {
     try {
       if (sessionStorage.getItem(SESSION_KEY)) {
-        // Already shown this session — skip immediately
         setPhase("done");
         return;
       }
       sessionStorage.setItem(SESSION_KEY, "1");
     } catch {
-      // sessionStorage blocked (private mode etc.) — skip splash
       setPhase("done");
       return;
     }
     setPhase("typing");
   }, []);
 
-  // ── Phase 1: type tagline ───────────────────────────────────────────────
+  // ── Phase 1: typewriter ────────────────────────────────────────────────
   useEffect(() => {
     if (phase !== "typing") return;
     let i = charCount;
@@ -47,37 +43,32 @@ export default function LoadingScreen() {
         i += 1;
         last = now;
         setCharCount(i);
-        if (i >= TAGLINE.length) {
-          setPhase("holding");
-          return;
-        }
+        if (i >= TAGLINE.length) { setPhase("holding"); return; }
       }
       rafRef.current = requestAnimationFrame(tick);
     }
-
     rafRef.current = requestAnimationFrame(tick);
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  // ── Phase 2: hold → rise ────────────────────────────────────────────────
+  // ── Phase 2: hold → fade ───────────────────────────────────────────────
   useEffect(() => {
     if (phase !== "holding") return;
-    const t = setTimeout(() => setPhase("rising"), HOLD_AFTER);
+    const t = setTimeout(() => setPhase("fading"), HOLD_AFTER);
     return () => clearTimeout(t);
   }, [phase]);
 
-  // ── Phase 3: rise → done ────────────────────────────────────────────────
+  // ── Phase 3: fade → done ───────────────────────────────────────────────
   useEffect(() => {
-    if (phase !== "rising") return;
-    const t = setTimeout(() => setPhase("done"), RISE_DURATION + 100);
+    if (phase !== "fading") return;
+    const t = setTimeout(() => setPhase("done"), FADE_DURATION + 50);
     return () => clearTimeout(t);
   }, [phase]);
 
-  // Fully unmount when done
   if (phase === "done" || phase === "idle") return null;
 
-  const isRising = phase === "rising";
+  const isFading = phase === "fading";
 
   return (
     <div
@@ -85,54 +76,22 @@ export default function LoadingScreen() {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        backgroundColor: "#0f172a", // always solid slate-900 — never transparent
+        backgroundColor: "#0f172a",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        // Only fade inner content, not this background wrapper
+        // ONLY opacity fade — NO transform/translate/scale
+        opacity: isFading ? 0 : 1,
+        transition: isFading ? `opacity ${FADE_DURATION}ms ease` : undefined,
         pointerEvents: "none",
       }}
     >
-      {/* Subtle dot grid */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          opacity: 0.04,
-          backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-          backgroundSize: "36px 36px",
-        }}
-      />
-
-      {/* Inner content — fades out during rising */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: 0,
-          opacity: isRising ? 0 : 1,
-          transform: isRising
-            ? `translateY(-42vh) scale(0.55)`
-            : "translateY(0) scale(1)",
-          transition: isRising
-            ? `transform ${RISE_DURATION}ms cubic-bezier(0.4,0,0.2,1), opacity ${RISE_DURATION * 0.4}ms ease`
-            : undefined,
-          animation: !isRising ? "splashFadeIn 0.5s ease-out both" : undefined,
-        }}
-      >
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
         {/* Logo */}
-        <div
-          style={{
-            width: 80,
-            height: 80,
-            borderRadius: 20,
-            overflow: "hidden",
-            boxShadow: "0 0 40px rgba(99,102,241,0.35)",
-            marginBottom: 16,
-            flexShrink: 0,
-          }}
-        >
+        <div style={{
+          width: 80, height: 80, borderRadius: 20, overflow: "hidden",
+          boxShadow: "0 0 40px rgba(99,102,241,0.35)", marginBottom: 16,
+        }}>
           <Image
             src="/logo.png"
             alt="Chemistry Unfiltered"
@@ -144,31 +103,24 @@ export default function LoadingScreen() {
         </div>
 
         {/* Site name */}
-        <h1
-          style={{
-            fontSize: "1.6rem",
-            fontWeight: 700,
-            background: "linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            letterSpacing: "-0.02em",
-            marginBottom: 12,
-            whiteSpace: "nowrap",
-          }}
-        >
+        <h1 style={{
+          fontSize: "1.6rem",
+          fontWeight: 700,
+          background: "linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          letterSpacing: "-0.02em",
+          marginBottom: 12,
+          whiteSpace: "nowrap",
+        }}>
           Chemistry Unfiltered
         </h1>
 
-        {/* Tagline typewriter */}
-        <p
-          style={{
-            fontSize: "0.9rem",
-            color: "#94a3b8",
-            letterSpacing: "0.08em",
-            fontWeight: 500,
-            minHeight: "1.4em",
-          }}
-        >
+        {/* Tagline */}
+        <p style={{
+          fontSize: "0.9rem", color: "#94a3b8",
+          letterSpacing: "0.08em", fontWeight: 500, minHeight: "1.4em",
+        }}>
           {TAGLINE.slice(0, charCount)}
           {charCount < TAGLINE.length && (
             <span style={{ animation: "cursorBlink 0.7s step-end infinite" }}>|</span>
@@ -176,23 +128,7 @@ export default function LoadingScreen() {
         </p>
       </div>
 
-      {/* Background fade-out overlay — covers dot grid after content rises */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundColor: "#0f172a",
-          opacity: isRising ? 1 : 0,
-          transition: isRising ? `opacity ${RISE_DURATION}ms ease ${RISE_DURATION * 0.3}ms` : undefined,
-          pointerEvents: "none",
-        }}
-      />
-
       <style>{`
-        @keyframes splashFadeIn {
-          from { opacity: 0; transform: translateY(16px) scale(0.96); }
-          to   { opacity: 1; transform: translateY(0)    scale(1);    }
-        }
         @keyframes cursorBlink {
           0%, 100% { opacity: 1; }
           50%       { opacity: 0; }

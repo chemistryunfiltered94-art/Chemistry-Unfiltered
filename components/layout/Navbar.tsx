@@ -1,12 +1,12 @@
 "use client";
 
 // components/layout/Navbar.tsx
+// NO framer-motion — CSS-only transitions to prevent GPU composite glitch on Android
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { SearchModal } from "@/components/shared/SearchModal";
 import { useSearchModal } from "@/hooks/useSearch";
@@ -48,8 +48,8 @@ export default function Navbar() {
   };
 
   const Logo = (
-    <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-      <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg group-hover:scale-110 transition-transform">
+    <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+      <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg">
         <Image src="/logo.png" alt="Chemistry Unfiltered" width={36} height={36} className="w-full h-full object-cover" priority />
       </div>
       <div>
@@ -64,7 +64,7 @@ export default function Navbar() {
   const HamburgerButton = (
     <button
       onClick={() => setDrawerOpen(!drawerOpen)}
-      className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors flex-shrink-0"
+      className="p-2 rounded-lg text-slate-400 flex-shrink-0"
       aria-label="মেনু"
     >
       {drawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -77,7 +77,7 @@ export default function Navbar() {
         <div className="relative flex-shrink-0">
           <button
             onClick={() => setUserMenuOpen(!userMenuOpen)}
-            className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors"
+            className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg"
           >
             <div className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-white text-sm font-bold">
               {user.name?.charAt(0).toUpperCase() || "U"}
@@ -88,43 +88,36 @@ export default function Navbar() {
             <ChevronDown className="hidden sm:block w-4 h-4 text-slate-400" />
           </button>
 
-          <AnimatePresence>
-            {userMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-xl border border-slate-700 overflow-hidden z-50"
-              >
-                <Link href="/dashboard" onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700 transition-colors">
-                  <LayoutDashboard className="w-4 h-4" /> ড্যাশবোর্ড
+          {userMenuOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-xl border border-slate-700 overflow-hidden z-50">
+              <Link href="/dashboard" onClick={() => setUserMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700">
+                <LayoutDashboard className="w-4 h-4" /> ড্যাশবোর্ড
+              </Link>
+              <Link href="/profile" onClick={() => setUserMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700">
+                <User className="w-4 h-4" /> প্রোফাইল
+              </Link>
+              {user.role === "admin" && (
+                <Link href="/admin" onClick={() => setUserMenuOpen(false)}
+                  className="flex items-center gap-2 px-4 py-3 text-sm text-primary-400 hover:bg-slate-700">
+                  <Settings className="w-4 h-4" /> অ্যাডমিন প্যানেল
                 </Link>
-                <Link href="/profile" onClick={() => setUserMenuOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 text-sm text-slate-300 hover:bg-slate-700 transition-colors">
-                  <User className="w-4 h-4" /> প্রোফাইল
-                </Link>
-                {user.role === "admin" && (
-                  <Link href="/admin" onClick={() => setUserMenuOpen(false)}
-                    className="flex items-center gap-2 px-4 py-3 text-sm text-primary-400 hover:bg-slate-700 transition-colors">
-                    <Settings className="w-4 h-4" /> অ্যাডমিন প্যানেল
-                  </Link>
-                )}
-                <hr className="border-slate-700" />
-                <button onClick={handleSignOut}
-                  className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-400 hover:bg-red-900/20 transition-colors">
-                  <LogOut className="w-4 h-4" /> লগআউট
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              )}
+              <hr className="border-slate-700" />
+              <button onClick={handleSignOut}
+                className="flex items-center gap-2 w-full px-4 py-3 text-sm text-red-400 hover:bg-red-900/20">
+                <LogOut className="w-4 h-4" /> লগআউট
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
-          <Link href="/login" className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-primary-400 transition-colors">
+          <Link href="/login" className="px-4 py-2 text-sm font-medium text-slate-300">
             লগইন
           </Link>
-          <Link href="/register" className="px-4 py-2 text-sm font-medium text-white gradient-bg rounded-lg hover:opacity-90 transition-opacity shadow-md">
+          <Link href="/register" className="px-4 py-2 text-sm font-medium text-white gradient-bg rounded-lg shadow-md">
             রেজিস্ট্রেশন
           </Link>
         </div>
@@ -132,7 +125,7 @@ export default function Navbar() {
     </>
   );
 
-  // ─── LANDING PAGE: logo + name only ──────────────────────────────────────
+  // ─── LANDING PAGE ─────────────────────────────────────────────────────────
   if (isLanding) {
     return (
       <>
@@ -148,10 +141,10 @@ export default function Navbar() {
     );
   }
 
-  // ─── INNER PAGES: full navbar ─────────────────────────────────────────────
+  // ─── INNER PAGES ──────────────────────────────────────────────────────────
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900 shadow-lg border-b border-slate-700/50 transition-all duration-300">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900 border-b border-slate-700/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {Logo}
@@ -163,7 +156,7 @@ export default function Navbar() {
           <div className="pb-3">
             <button
               onClick={openSearch}
-              className="w-full flex items-center gap-2.5 px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm text-slate-400 hover:border-primary-600 transition-colors"
+              className="w-full flex items-center gap-2.5 px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm text-slate-400"
             >
               <Search className="w-4 h-4 flex-shrink-0" />
               <span className="flex-1 text-left">সার্চ করো... (টপিক, ফর্মুলা, প্রশ্ন)</span>
@@ -172,65 +165,59 @@ export default function Navbar() {
           </div>
         </div>
 
-        <AnimatePresence>
-          {drawerOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="bg-slate-900 border-t border-slate-700 max-h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden"
-            >
-              <div className="px-4 py-4 space-y-1">
-                {drawerLinks.map((link) => {
-                  const Icon = link.icon;
-                  const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
-                  return (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={cn(
-                        "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all",
-                        isActive
-                          ? "bg-primary-900/30 text-primary-400"
-                          : "text-slate-300 hover:bg-slate-800"
-                      )}
-                    >
-                      <Icon className="w-5 h-5" />
-                      {link.label}
-                    </Link>
-                  );
-                })}
-
-                {user?.role === "admin" && (
-                  <Link href="/admin"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-primary-400 hover:bg-slate-800 transition-all">
-                    <Settings className="w-5 h-5" /> অ্যাডমিন প্যানেল
+        {/* Drawer — CSS only, no framer-motion height animation */}
+        {drawerOpen && (
+          <div className="bg-slate-900 border-t border-slate-700 overflow-y-auto overflow-x-hidden max-h-[60vh]">
+            <div className="px-4 py-4 space-y-1">
+              {drawerLinks.map((link) => {
+                const Icon = link.icon;
+                const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                      "flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium",
+                      isActive
+                        ? "bg-primary-900/30 text-primary-400"
+                        : "text-slate-300"
+                    )}
+                  >
+                    <Icon className="w-5 h-5" />
+                    {link.label}
                   </Link>
-                )}
+                );
+              })}
 
-                {user && (
-                  <Link href="/dashboard/bookmarks"
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-300 hover:bg-slate-800 transition-all">
-                    <Bookmark className="w-5 h-5" /> সংরক্ষিত আইটেম
+              {user?.role === "admin" && (
+                <Link href="/admin"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-primary-400">
+                  <Settings className="w-5 h-5" /> অ্যাডমিন প্যানেল
+                </Link>
+              )}
+
+              {user && (
+                <Link href="/dashboard/bookmarks"
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-slate-300">
+                  <Bookmark className="w-5 h-5" /> সংরক্ষিত আইটেম
+                </Link>
+              )}
+
+              {!user && (
+                <div className="flex gap-2 pt-2">
+                  <Link href="/login"
+                    className="flex-1 text-center px-4 py-2.5 text-sm font-medium border border-slate-600 text-slate-300 rounded-xl">
+                    লগইন
                   </Link>
-                )}
-
-                {!user && (
-                  <div className="flex gap-2 pt-2">
-                    <Link href="/login"
-                      className="flex-1 text-center px-4 py-2.5 text-sm font-medium border border-slate-600 text-slate-300 rounded-xl hover:bg-slate-800 transition-colors">
-                      লগইন
-                    </Link>
-                    <Link href="/register"
-                      className="flex-1 text-center px-4 py-2.5 text-sm font-medium text-white gradient-bg rounded-xl hover:opacity-90 transition-opacity">
-                      রেজিস্ট্রেশন
-                    </Link>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                  <Link href="/register"
+                    className="flex-1 text-center px-4 py-2.5 text-sm font-medium text-white gradient-bg rounded-xl">
+                    রেজিস্ট্রেশন
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </nav>
 
       <SearchModal isOpen={searchOpen} onClose={closeSearch} />
