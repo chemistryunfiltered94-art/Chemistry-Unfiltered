@@ -24,7 +24,7 @@ export default function PageTransition() {
 
       // Auto-hide after content likely loaded (short minimum duration for feel)
       if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => setVisible(false), 700);
+      timerRef.current = setTimeout(() => setVisible(false), 400);
     }
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   }, [pathname]);
