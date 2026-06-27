@@ -43,10 +43,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bn" suppressHydrationWarning>
-      <body className="antialiased">
+      {/* bg-slate-900 hardcoded here as safety net — ensures no white flash
+          before Tailwind CSS or next-themes hydration completes */}
+      <body className="antialiased bg-slate-900 text-slate-50">
         <ThemeProvider>
           <AuthProvider>
-            {/* Splash screen — first visit only */}
+            {/* Splash screen — first visit per session only */}
             <LoadingScreen />
             {/* Page-to-page transition overlay */}
             <PageTransition />

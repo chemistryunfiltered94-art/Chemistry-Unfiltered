@@ -1,28 +1,44 @@
 "use client";
 
 // LoadingScreen.tsx
-// ─── Splash Screen (first visit only) ───────────────────────────────────────
-// 1. Logo + "Chemistry Unfiltered" fades in at center
-// 2. Tagline "Laugh · Learn · React" types character by character
-// 3. Logo + name slide UP into the navbar position → page reveals
+// Splash Screen — shown ONCE per browser session only.
+// Uses sessionStorage to skip on subsequent navigations.
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 const TAGLINE = "Laugh · Learn · React";
-const CHAR_DELAY = 60;   // ms per character
-const HOLD_AFTER = 600;  // ms to hold after tagline completes
-const RISE_DURATION = 600; // ms for the rise-to-navbar animation
+const CHAR_DELAY = 60;    // ms per character
+const HOLD_AFTER = 600;   // ms to hold after tagline completes
+const RISE_DURATION = 500; // ms for the rise animation
+
+const SESSION_KEY = "cu_splash_shown";
 
 export default function LoadingScreen() {
-  const [phase, setPhase] = useState<"typing" | "holding" | "rising" | "done">("typing");
+  const [phase, setPhase] = useState<"idle" | "typing" | "holding" | "rising" | "done">("idle");
   const [charCount, setCharCount] = useState(0);
   const rafRef = useRef<number | null>(null);
 
-  // ── Phase 1: type tagline ──────────────────────────────────────────────
+  // ── On mount: check sessionStorage ─────────────────────────────────────
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem(SESSION_KEY)) {
+        // Already shown this session — skip immediately
+        setPhase("done");
+        return;
+      }
+      sessionStorage.setItem(SESSION_KEY, "1");
+    } catch {
+      // sessionStorage blocked (private mode etc.) — skip splash
+      setPhase("done");
+      return;
+    }
+    setPhase("typing");
+  }, []);
+
+  // ── Phase 1: type tagline ───────────────────────────────────────────────
   useEffect(() => {
     if (phase !== "typing") return;
-
     let i = charCount;
     let last = performance.now();
 
@@ -44,57 +60,65 @@ export default function LoadingScreen() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
-  // ── Phase 2: hold → rise ──────────────────────────────────────────────
+  // ── Phase 2: hold → rise ────────────────────────────────────────────────
   useEffect(() => {
     if (phase !== "holding") return;
     const t = setTimeout(() => setPhase("rising"), HOLD_AFTER);
     return () => clearTimeout(t);
   }, [phase]);
 
-  // ── Phase 3: rise → done ─────────────────────────────────────────────
+  // ── Phase 3: rise → done ────────────────────────────────────────────────
   useEffect(() => {
     if (phase !== "rising") return;
     const t = setTimeout(() => setPhase("done"), RISE_DURATION + 100);
     return () => clearTimeout(t);
   }, [phase]);
 
-  if (phase === "done") return null;
+  // Fully unmount when done
+  if (phase === "done" || phase === "idle") return null;
 
   const isRising = phase === "rising";
 
   return (
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900"
       style={{
-        // Fade out the overlay itself slightly after logo leaves
-        transition: isRising ? `opacity ${RISE_DURATION}ms ease-in ${RISE_DURATION * 0.6}ms` : undefined,
-        opacity: isRising ? 0 : 1,
+        position: "fixed",
+        inset: 0,
+        zIndex: 9999,
+        backgroundColor: "#0f172a", // always solid slate-900 — never transparent
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        // Only fade inner content, not this background wrapper
         pointerEvents: "none",
       }}
     >
-      {/* ── Subtle dot grid bg ── */}
+      {/* Subtle dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
         style={{
+          position: "absolute",
+          inset: 0,
+          opacity: 0.04,
           backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
           backgroundSize: "36px 36px",
         }}
       />
 
-      {/* ── Logo + Name block ── */}
+      {/* Inner content — fades out during rising */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           gap: 0,
-          // Rise to top: translate to approx navbar position
-          transform: isRising ? "translateY(-42vh) scale(0.55)" : "translateY(0) scale(1)",
+          opacity: isRising ? 0 : 1,
+          transform: isRising
+            ? `translateY(-42vh) scale(0.55)`
+            : "translateY(0) scale(1)",
           transition: isRising
-            ? `transform ${RISE_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`
+            ? `transform ${RISE_DURATION}ms cubic-bezier(0.4,0,0.2,1), opacity ${RISE_DURATION * 0.4}ms ease`
             : undefined,
-          // Fade in on mount
-          animation: "splashFadeIn 0.5s ease-out both",
+          animation: !isRising ? "splashFadeIn 0.5s ease-out both" : undefined,
         }}
       >
         {/* Logo */}
@@ -143,17 +167,26 @@ export default function LoadingScreen() {
             letterSpacing: "0.08em",
             fontWeight: 500,
             minHeight: "1.4em",
-            opacity: isRising ? 0 : 1,
-            transition: isRising ? `opacity ${RISE_DURATION * 0.3}ms ease` : undefined,
           }}
         >
           {TAGLINE.slice(0, charCount)}
-          {/* blinking cursor */}
           {charCount < TAGLINE.length && (
             <span style={{ animation: "cursorBlink 0.7s step-end infinite" }}>|</span>
           )}
         </p>
       </div>
+
+      {/* Background fade-out overlay — covers dot grid after content rises */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "#0f172a",
+          opacity: isRising ? 1 : 0,
+          transition: isRising ? `opacity ${RISE_DURATION}ms ease ${RISE_DURATION * 0.3}ms` : undefined,
+          pointerEvents: "none",
+        }}
+      />
 
       <style>{`
         @keyframes splashFadeIn {
