@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Beaker, Droplets, Wind, Zap, TrendingUp, ArrowRight, FlaskConical } from "lucide-react";
+import { Beaker, Droplets, Wind, Zap, TrendingUp, ArrowRight, FlaskConical, Gem, Palette, Scale } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Virtual Lab — ভার্চুয়াল রসায়ন ল্যাব",
@@ -58,7 +58,7 @@ const labs = [
     duration: "৩০-৪০ মিনিট",
     concepts: ["Galvanic Cell", "ইলেকট্রোলাইসিস", "ফ্যারাডের সূত্র"],
     href: "/virtual-lab/electrochemistry",
-    available: false,
+    available: true,
   },
   {
     id: "reaction-rate",
@@ -71,7 +71,7 @@ const labs = [
     duration: "২০-২৫ মিনিট",
     concepts: ["Rate Law", "Activation Energy", "Catalyst Effect"],
     href: "/virtual-lab/reaction-rate",
-    available: false,
+    available: true,
   },
   {
     id: "distillation",
@@ -84,7 +84,46 @@ const labs = [
     duration: "২৫-৩০ মিনিট",
     concepts: ["স্ফুটনাঙ্ক", "বাষ্পীভবন", "ঘনীভবন"],
     href: "/virtual-lab/distillation",
-    available: false,
+    available: true,
+  },
+  {
+    id: "crystallization",
+    name: "ক্রিস্টালাইজেশন ল্যাব",
+    nameEn: "Crystallization Lab",
+    desc: "দ্রাব্যতা বনাম তাপমাত্রার সম্পর্ক ব্যবহার করে ক্রিস্টাল তৈরি করো। ঠান্ডা করার হার অনুযায়ী ক্রিস্টালের আকার দেখো।",
+    icon: Gem,
+    color: "from-violet-500 to-fuchsia-600",
+    difficulty: "মাঝারি",
+    duration: "২০-২৫ মিনিট",
+    concepts: ["দ্রাব্যতা বনাম তাপ", "সুপারস্যাচুরেশন", "ক্রিস্টাল গঠন"],
+    href: "/virtual-lab/crystallization",
+    available: true,
+  },
+  {
+    id: "chromatography",
+    name: "পেপার ক্রোমাটোগ্রাফি ল্যাব",
+    nameEn: "Paper Chromatography Lab",
+    desc: "কালি, পাতার রঞ্জক বা ফুড কালার মিশ্রণ পৃথক করো এবং প্রতিটি উপাদানের Rf মান হিসাব করো।",
+    icon: Palette,
+    color: "from-amber-400 to-rose-500",
+    difficulty: "সহজ",
+    duration: "১৫-২০ মিনিট",
+    concepts: ["Rf মান", "বিশোষণ", "মিশ্রণ পৃথকীকরণ"],
+    href: "/virtual-lab/chromatography",
+    available: true,
+  },
+  {
+    id: "density",
+    name: "ঘনত্ব নির্ণয় ল্যাব",
+    nameEn: "Density Determination Lab",
+    desc: "পানি অপসারণ পদ্ধতিতে অনিয়মিত আকৃতির বস্তুর ঘনত্ব মাপো এবং ভাসা-ডোবা পর্যবেক্ষণ করো।",
+    icon: Scale,
+    color: "from-sky-500 to-blue-700",
+    difficulty: "সহজ",
+    duration: "১০-১৫ মিনিট",
+    concepts: ["ঘনত্ব = ভর/আয়তন", "আর্কিমিডিসের সূত্র", "ভাসা-ডোবা"],
+    href: "/virtual-lab/density",
+    available: true,
   },
 ];
 
