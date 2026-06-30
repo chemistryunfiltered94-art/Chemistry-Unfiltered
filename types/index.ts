@@ -144,12 +144,28 @@ export interface Reaction {
   equation: string;
   category: string;
   type: string;
+  subType?: string;
   conditions: { temperature?: string; pressure?: string; other?: string };
   catalyst?: string;
   mechanism: string[];
+  intermediates?: string[];
   products: string[];
   applications: string[];
+  industrialUses?: string[];
+  safetyNotes?: string[];
   thermodynamics?: { deltaH: number; unit: string; type: string };
+  nuclearData?: {
+    halfLife?: string;
+    radiation?: string;
+    parentNuclide?: string;
+    daughterNuclide?: string;
+    energyMeV?: number;
+  };
+  biochemData?: {
+    atp?: string;
+    location?: string;
+    enzymes?: string[];
+  };
 }
 
 export interface Element {
