@@ -1,24 +1,38 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   ArrowLeft, Clock, CheckCircle, BookOpen, BookmarkPlus,
   BookmarkCheck, ChevronRight, Share2, AlertCircle,
-  ChevronDown, ChevronUp, ArrowRight
+  ChevronDown, ChevronUp, ArrowRight, ExternalLink, PlayCircle,
 } from "lucide-react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { useTopicProgress } from "@/hooks/useProgress";
 import { LevelBadge } from "@/components/ui/Badge";
+import MoleculeViewer from "@/components/shared/MoleculeViewer";
+import { Molecule } from "@/lib/molecules";
 
 interface TopicData {
   title: string; level: "beginner"|"intermediate"|"advanced";
   estimatedTime: number; category: string; categorySlug: string;
-  introduction: string; theory: string[];
+  introduction: string;
+  historicalBackground: string;
+  theory: string[];
   formulas: { name: string; formula: string; explanation: string }[];
+  derivation: string[];
   examples: { question: string; steps: string[]; answer: string }[];
-  applications: string[]; notes: string[];
+  diagrams: { url: string; caption: string }[];
+  structure3D: { title?: string; description?: string; modelUrl?: string; molecule: Molecule | null } | null;
+  applications: string[];
+  industrialUses: string[];
+  safety: string[];
+  labExperiment: { title: string; materials: string[]; procedure: string[]; precautions: string[]; observation?: string } | null;
+  animation: { title: string; description: string; url?: string } | null;
+  pdfNotes: { title: string; url: string }[];
+  practiceProblems: { question: string; answer: string; difficulty?: "easy"|"medium"|"hard" }[];
+  notes: string[];
   mcqs: { q: string; options: string[]; answer: number; explanation: string }[];
   relatedTopics: { slug: string; title: string; categorySlug: string }[];
 }
@@ -118,6 +132,43 @@ function MCQSection({ mcqs }: { mcqs: TopicData["mcqs"] }) {
   );
 }
 
+function PracticeProblemsSection({ problems }: { problems: TopicData["practiceProblems"] }) {
+  const [revealed, setRevealed] = useState<Record<number, boolean>>({});
+  const toggle = (i: number) => setRevealed((p) => ({ ...p, [i]: !p[i] }));
+  const diffLabel: Record<string, string> = { easy: "সহজ", medium: "মধ্যম", hard: "কঠিন" };
+  const diffColor: Record<string, string> = {
+    easy: "text-green-400 bg-green-900/30",
+    medium: "text-amber-400 bg-amber-900/30",
+    hard: "text-red-400 bg-red-900/30",
+  };
+
+  return (
+    <div className="space-y-4">
+      {problems.map((p, i) => (
+        <div key={i} className="border border-slate-700 rounded-2xl p-5">
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <p className="font-semibold text-white flex-1">{i + 1}. {p.question}</p>
+            {p.difficulty && (
+              <span className={`text-xs px-2 py-1 rounded-full flex-shrink-0 font-medium ${diffColor[p.difficulty]}`}>
+                {diffLabel[p.difficulty]}
+              </span>
+            )}
+          </div>
+          {revealed[i] ? (
+            <div className="bg-green-900/20 border border-green-700 rounded-xl px-4 py-2.5">
+              <p className="text-green-300 text-sm font-semibold">✅ উত্তর: {p.answer}</p>
+            </div>
+          ) : (
+            <button onClick={() => toggle(i)} className="text-sm text-primary-400 hover:underline font-medium">
+              উত্তর দেখো
+            </button>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function TopicClient({ data, categorySlug, topicSlug }: {
   data: TopicData; categorySlug: string; topicSlug: string;
 }) {
@@ -128,16 +179,27 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
   const [activeSection, setActiveSection]               = useState("introduction");
   const [showAllTheory, setShowAllTheory]               = useState(false);
 
+  // ✅ যেসব সেকশনে আসলে ডেটা আছে, কেবল সেগুলোই TOC ও পেজে দেখানো হয়
   const sections = [
-    { id:"introduction", label:"ভূমিকা" },
-    { id:"theory",       label:"তত্ত্ব" },
-    { id:"formulas",     label:"সূত্র" },
-    { id:"examples",     label:"উদাহরণ" },
-    { id:"applications", label:"প্রয়োগ" },
-    { id:"notes",        label:"গুরুত্বপূর্ণ নোট" },
-    { id:"quiz",         label:"অনুশীলন MCQ" },
-    { id:"related",      label:"সম্পর্কিত টপিক" },
-  ];
+    { id: "introduction", label: "ভূমিকা",              show: true },
+    { id: "history",      label: "ঐতিহাসিক পটভূমি",      show: !!data.historicalBackground },
+    { id: "theory",       label: "তত্ত্ব",               show: true },
+    { id: "formulas",     label: "সূত্র",                show: data.formulas.length > 0 },
+    { id: "derivation",   label: "ডেরিভেশন",            show: data.derivation.length > 0 },
+    { id: "examples",     label: "উদাহরণ",               show: data.examples.length > 0 },
+    { id: "diagrams",     label: "ডায়াগ্রাম",            show: data.diagrams.length > 0 },
+    { id: "structure3d",  label: "3D গঠন",               show: !!data.structure3D },
+    { id: "applications", label: "প্রয়োগ",               show: true },
+    { id: "industrial",   label: "শিল্পে ব্যবহার",        show: data.industrialUses.length > 0 },
+    { id: "safety",       label: "নিরাপত্তা",            show: data.safety.length > 0 },
+    { id: "lab",          label: "ল্যাব এক্সপেরিমেন্ট",    show: !!data.labExperiment },
+    { id: "animation",    label: "অ্যানিমেশন",          show: !!data.animation },
+    { id: "practice",     label: "অনুশীলন সমস্যা",       show: data.practiceProblems.length > 0 },
+    { id: "pdf",          label: "PDF নোট",              show: data.pdfNotes.length > 0 },
+    { id: "notes",        label: "গুরুত্বপূর্ণ নোট",      show: true },
+    { id: "quiz",         label: "অনুশীলন MCQ",          show: data.mcqs.length > 0 },
+    { id: "related",      label: "সম্পর্কিত টপিক",       show: data.relatedTopics.length > 0 },
+  ].filter((s) => s.show);
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href);
@@ -221,6 +283,16 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
               <p className="text-slate-300 leading-relaxed text-lg">{data.introduction}</p>
             </section>
 
+            {/* Historical Background */}
+            {data.historicalBackground && (
+              <section id="history" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">📜</span> ঐতিহাসিক পটভূমি
+                </h2>
+                <p className="text-slate-300 leading-relaxed">{data.historicalBackground}</p>
+              </section>
+            )}
+
             {/* Theory */}
             <section id="theory" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
@@ -266,6 +338,23 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
               </section>
             )}
 
+            {/* Derivation */}
+            {data.derivation.length > 0 && (
+              <section id="derivation" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="text-2xl">📐</span> ডেরিভেশন
+                </h2>
+                <ol className="space-y-3">
+                  {data.derivation.map((step, i) => (
+                    <li key={i} className="flex gap-3">
+                      <span className="w-7 h-7 rounded-full bg-primary-900/30 text-primary-400 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">{i+1}</span>
+                      <span className="text-slate-300 font-mono text-sm pt-1 leading-relaxed">{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+
             {/* Examples */}
             {data.examples.length > 0 && (
               <section id="examples" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
@@ -300,6 +389,56 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
               </section>
             )}
 
+            {/* Diagrams */}
+            {data.diagrams.length > 0 && (
+              <section id="diagrams" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="text-2xl">🖼️</span> ডায়াগ্রাম
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {data.diagrams.map((d, i) => (
+                    <figure key={i} className="border border-slate-700 rounded-2xl overflow-hidden bg-slate-900">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={d.url} alt={d.caption || `ডায়াগ্রাম ${i+1}`} className="w-full h-auto" />
+                      {d.caption && (
+                        <figcaption className="px-4 py-2.5 text-xs text-slate-400 text-center">{d.caption}</figcaption>
+                      )}
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* 3D Structure */}
+            {data.structure3D && (
+              <section id="structure3d" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="text-2xl">🧬</span> 3D গঠন
+                </h2>
+                {data.structure3D.molecule ? (
+                  <div>
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <p className="font-bold text-white">{data.structure3D.title || data.structure3D.molecule.nameBn}</p>
+                        <p className="text-sm text-slate-400">{data.structure3D.description || data.structure3D.molecule.desc}</p>
+                      </div>
+                      <span className="font-mono text-lg font-bold text-primary-400 flex-shrink-0">{data.structure3D.molecule.formula}</span>
+                    </div>
+                    <MoleculeViewer mol={data.structure3D.molecule} compact />
+                  </div>
+                ) : data.structure3D.modelUrl ? (
+                  <div className="p-5 border border-slate-700 rounded-2xl">
+                    {data.structure3D.title && <p className="font-bold text-white mb-1">{data.structure3D.title}</p>}
+                    {data.structure3D.description && <p className="text-sm text-slate-400 mb-4">{data.structure3D.description}</p>}
+                    <a href={data.structure3D.modelUrl} target="_blank" rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 gradient-bg text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity">
+                      <ExternalLink className="w-4 h-4" /> 3D মডেল দেখো
+                    </a>
+                  </div>
+                ) : null}
+              </section>
+            )}
+
             {/* Applications */}
             <section id="applications" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
               <h2 className="text-2xl font-bold text-white mb-5 flex items-center gap-2">
@@ -314,6 +453,143 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
                 ))}
               </ul>
             </section>
+
+            {/* Industrial Uses */}
+            {data.industrialUses.length > 0 && (
+              <section id="industrial" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-5 flex items-center gap-2">
+                  <span className="text-2xl">🏭</span> শিল্পে ব্যবহার
+                </h2>
+                <ul className="space-y-3">
+                  {data.industrialUses.map((use, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                      <span className="w-6 h-6 rounded-full bg-indigo-900/30 text-indigo-400 flex items-center justify-center flex-shrink-0 text-xs font-bold">{i+1}</span>
+                      {use}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Safety */}
+            {data.safety.length > 0 && (
+              <section id="safety" className="bg-red-900/20 border border-red-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-red-300 mb-5 flex items-center gap-2">
+                  <span className="text-2xl">⚠️</span> নিরাপত্তা সতর্কতা
+                </h2>
+                <ul className="space-y-2">
+                  {data.safety.map((s, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-red-300">
+                      <span className="text-red-500 mt-1">•</span> {s}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Lab Experiment */}
+            {data.labExperiment && (
+              <section id="lab" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+                  <span className="text-2xl">🔬</span> ল্যাব এক্সপেরিমেন্ট
+                </h2>
+                <p className="font-semibold text-primary-400 mb-5">{data.labExperiment.title}</p>
+
+                {data.labExperiment.materials.length > 0 && (
+                  <div className="mb-5">
+                    <p className="text-sm font-semibold text-slate-400 mb-2">প্রয়োজনীয় উপকরণ</p>
+                    <ul className="space-y-1.5">
+                      {data.labExperiment.materials.map((m, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                          <span className="text-slate-500 mt-1">•</span> {m}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {data.labExperiment.procedure.length > 0 && (
+                  <div className="mb-5">
+                    <p className="text-sm font-semibold text-slate-400 mb-2">পরীক্ষার পদ্ধতি</p>
+                    <ol className="space-y-2">
+                      {data.labExperiment.procedure.map((step, i) => (
+                        <li key={i} className="flex gap-3 text-sm">
+                          <span className="w-6 h-6 rounded-full gradient-bg text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">{i+1}</span>
+                          <span className="text-slate-300 pt-0.5">{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+
+                {data.labExperiment.precautions.length > 0 && (
+                  <div className="mb-5 bg-amber-900/20 border border-amber-700 rounded-2xl p-4">
+                    <p className="text-sm font-semibold text-amber-300 mb-2">সতর্কতা</p>
+                    <ul className="space-y-1.5">
+                      {data.labExperiment.precautions.map((p, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-amber-300">
+                          <span className="text-amber-500 mt-1">•</span> {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {data.labExperiment.observation && (
+                  <div>
+                    <p className="text-sm font-semibold text-slate-400 mb-2">পর্যবেক্ষণ</p>
+                    <p className="text-sm text-slate-300 leading-relaxed">{data.labExperiment.observation}</p>
+                  </div>
+                )}
+              </section>
+            )}
+
+            {/* Animation */}
+            {data.animation && (
+              <section id="animation" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                  <span className="text-2xl">🎬</span> অ্যানিমেশন / ভিডিও
+                </h2>
+                <p className="font-semibold text-white mb-1">{data.animation.title}</p>
+                <p className="text-sm text-slate-400 mb-4 leading-relaxed">{data.animation.description}</p>
+                {data.animation.url && (
+                  <a href={data.animation.url} target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 gradient-bg text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity">
+                    <PlayCircle className="w-4 h-4" /> ভিডিও দেখো
+                  </a>
+                )}
+              </section>
+            )}
+
+            {/* Practice Problems */}
+            {data.practiceProblems.length > 0 && (
+              <section id="practice" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="text-2xl">📝</span> অনুশীলন সমস্যা
+                </h2>
+                <PracticeProblemsSection problems={data.practiceProblems} />
+              </section>
+            )}
+
+            {/* PDF Notes */}
+            {data.pdfNotes.length > 0 && (
+              <section id="pdf" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-5 flex items-center gap-2">
+                  <span className="text-2xl">📄</span> PDF নোট
+                </h2>
+                <div className="space-y-2">
+                  {data.pdfNotes.map((p, i) => (
+                    <a key={i} href={p.url} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center justify-between p-4 border border-slate-700 rounded-2xl hover:border-primary-600 hover:bg-primary-900/10 transition-all group">
+                      <span className="flex items-center gap-3 text-sm font-medium text-slate-300 group-hover:text-primary-400">
+                        <span className="text-xl">📄</span> {p.title}
+                      </span>
+                      <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-primary-400" />
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Notes */}
             <section id="notes" className="bg-amber-900/20 border border-amber-700 rounded-3xl p-6 lg:p-8">
@@ -330,12 +606,14 @@ export default function TopicClient({ data, categorySlug, topicSlug }: {
             </section>
 
             {/* MCQ Quiz */}
-            <section id="quiz" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                <span className="text-2xl">❓</span> অনুশীলন MCQ
-              </h2>
-              <MCQSection mcqs={data.mcqs} />
-            </section>
+            {data.mcqs.length > 0 && (
+              <section id="quiz" className="bg-slate-800 border border-slate-700 rounded-3xl p-6 lg:p-8">
+                <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                  <span className="text-2xl">❓</span> অনুশীলন MCQ
+                </h2>
+                <MCQSection mcqs={data.mcqs} />
+              </section>
+            )}
 
             {/* Related Topics */}
             {data.relatedTopics.length > 0 && (

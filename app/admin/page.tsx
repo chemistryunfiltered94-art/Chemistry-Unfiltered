@@ -9,13 +9,14 @@ import { useCollection } from "@/hooks/useFirestore";
 import {
   LayoutDashboard, Users, BookOpen, HelpCircle,
   FlaskConical, Atom, FileText, TrendingUp,
-  Settings, Plus, Eye, Edit, StickyNote
+  Settings, Plus, Eye, Edit, StickyNote, Layers
 } from "lucide-react";
 
 const toBnNumeral = (n: number) =>
   n.toLocaleString("bn-BD");
 
 const quickActions = [
+  { href: "/admin/chapters",      label: "অধ্যায় যোগ (Subject Expansion)", icon: Layers, color: "from-indigo-500 to-blue-600" },
   { href: "/admin/topics/new",    label: "নতুন টপিক যোগ",      icon: BookOpen,  color: "from-green-500 to-emerald-600" },
   { href: "/admin/questions/new", label: "প্রশ্ন যোগ করো",     icon: HelpCircle,color: "from-purple-500 to-violet-600" },
   { href: "/admin/articles/new",  label: "আর্টিকেল লেখো",      icon: FileText,  color: "from-orange-500 to-amber-600" },
@@ -26,6 +27,7 @@ const quickActions = [
 ];
 
 const menuItems = [
+  { href: "/admin/chapters",  label: "অধ্যায় ম্যানেজ",  icon: Layers },
   { href: "/admin/topics",    label: "টপিক ম্যানেজ",    icon: BookOpen },
   { href: "/admin/questions", label: "প্রশ্ন ম্যানেজ",   icon: HelpCircle },
   { href: "/admin/articles",  label: "আর্টিকেল ম্যানেজ", icon: FileText },

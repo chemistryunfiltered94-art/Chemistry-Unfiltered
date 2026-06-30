@@ -1,6 +1,6 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, initializeFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -15,7 +15,19 @@ const firebaseConfig = {
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 
 export const auth = getAuth(app);
-export const db = getFirestore(app);
+
+// ✅ ignoreUndefinedProperties: true — optional ফিল্ড (যেমন: description: x || undefined,
+// বা নতুন Deep Topic Structure-এর ঐচ্ছিক ফিল্ডগুলো) খালি রাখলে Firestore "Unsupported
+// field value: undefined" এরর না দিয়ে সেই ফিল্ডটা চুপচাপ বাদ দিয়ে দেয়।
+let firestoreDb;
+try {
+  firestoreDb = initializeFirestore(app, { ignoreUndefinedProperties: true });
+} catch {
+  // হট-রিলোড বা একাধিকবার import হওয়ার কারণে আগেই initialize হয়ে থাকলে বিদ্যমান instance নেয়
+  firestoreDb = getFirestore(app);
+}
+export const db = firestoreDb;
+
 export const storage = getStorage(app);
 
 export default app;

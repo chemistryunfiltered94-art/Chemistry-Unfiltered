@@ -33,6 +33,54 @@ export interface Chapter {
   updatedAt: Date;
 }
 
+// ─── Deep Topic Structure — সহায়ক ইন্টারফেসসমূহ ─────────────────────
+
+export interface TopicFormula {
+  name: string;
+  formula: string;
+  explanation: string;
+}
+
+export interface PracticeProblem {
+  question: string;
+  answer: string;
+  difficulty?: "easy" | "medium" | "hard";
+}
+
+export interface LabExperiment {
+  title: string;
+  materials: string[];
+  procedure: string[];
+  precautions: string[];
+  observation?: string;
+}
+
+/** ভিডিও/অ্যানিমেশন-জাতীয় মিডিয়া রেফারেন্স (title + description + optional url) */
+export interface TopicMedia {
+  title: string;
+  description: string;
+  url?: string;
+}
+
+/** PDF নোট ইত্যাদির জন্য সাধারণ রিসোর্স লিংক */
+export interface TopicResource {
+  title: string;
+  url: string;
+}
+
+export interface Diagram {
+  url: string;
+  caption?: string;
+}
+
+/** 3D গঠন — lib/molecules.ts-এর পূর্বনির্ধারিত অণু (moleculeId দিয়ে) অথবা বাহিরের মডেল লিংক (modelUrl) */
+export interface Structure3D {
+  moleculeId?: string;
+  title?: string;
+  description?: string;
+  modelUrl?: string;
+}
+
 export interface Topic {
   id: string;
   title: string;
@@ -44,12 +92,22 @@ export interface Topic {
   summary: string;
   content: {
     introduction: string;
+    historicalBackground?: string;   // ঐতিহাসিক পটভূমি
     theory: string[];
+    formulas?: TopicFormula[];       // মূল সূত্রসমূহ
+    derivation?: string[];           // ধাপে ধাপে ডেরিভেশন
     examples: Example[];
+    practiceProblems?: PracticeProblem[]; // অনুশীলন সমস্যা (উত্তরসহ, সমাধান-ধাপ ছাড়া)
     applications: string[];
+    industrialUses?: string[];       // শিল্পে ব্যবহার
+    safety?: string[];               // নিরাপত্তা সতর্কতা
+    labExperiment?: LabExperiment;   // ল্যাব এক্সপেরিমেন্ট
+    animation?: TopicMedia;          // অ্যানিমেশন/ভিডিও
+    pdfNotes?: TopicResource[];      // PDF নোট
     notes: string[];
   };
-  diagrams: string[];
+  diagrams: Diagram[];
+  structure3D?: Structure3D;         // 3D গঠন
   mcqs: MCQ[];
   relatedTopics: string[];
   published: boolean;
@@ -79,106 +137,19 @@ export interface FormulaVariable {
   unit: string;
 }
 
-// ─── Reaction Category types ────────────────────────────────────────
-export type ReactionCategory =
-  | "organic"
-  | "inorganic"
-  | "industrial"
-  | "biochemical"
-  | "nuclear"
-  | "physical"
-  | "analytical";
-
-// Organic sub-types
-export type OrganicSubType =
-  | "substitution-sn1"
-  | "substitution-sn2"
-  | "elimination-e1"
-  | "elimination-e2"
-  | "addition-hydrogenation"
-  | "addition-halogenation"
-  | "addition-hydrohalogenation"
-  | "oxidation-kmno4"
-  | "oxidation-ozonolysis"
-  | "named-aldol"
-  | "named-cannizzaro"
-  | "named-friedel-crafts"
-  | "named-grignard"
-  | "named-wurtz"
-  | "named-sandmeyer"
-  | "named-reimer-tiemann"
-  | "named-claisen";
-
-// Inorganic sub-types
-export type InorganicSubType =
-  | "neutralization"
-  | "redox"
-  | "precipitation"
-  | "displacement"
-  | "complex-formation";
-
-// Industrial sub-types
-export type IndustrialSubType =
-  | "haber-process"
-  | "contact-process"
-  | "ostwald-process"
-  | "hall-heroult"
-  | "solvay-process";
-
-// Biochemical sub-types
-export type BiochemicalSubType =
-  | "glycolysis"
-  | "krebs-cycle"
-  | "photosynthesis"
-  | "respiration";
-
-// Nuclear sub-types
-export type NuclearSubType =
-  | "alpha-decay"
-  | "beta-decay"
-  | "gamma-decay"
-  | "fission"
-  | "fusion";
-
 export interface Reaction {
   id: string;
   name: string;
   nameBn: string;
   equation: string;
-  category: ReactionCategory | string;
-  subType?: string;                        // e.g. "substitution-sn1", "named-grignard"
-  type: string;                            // display label e.g. "SN1", "Grignard"
-  conditions: {
-    temperature?: string;
-    pressure?: string;
-    other?: string;
-  };
+  category: string;
+  type: string;
+  conditions: { temperature?: string; pressure?: string; other?: string };
   catalyst?: string;
   mechanism: string[];
-  intermediates?: string[];               // ✅ নতুন: intermediate compounds
   products: string[];
   applications: string[];
-  industrialUses?: string[];              // ✅ নতুন: শিল্প প্রয়োগ
-  safetyNotes?: string[];                 // ✅ নতুন: নিরাপত্তা তথ্য
-  thermodynamics?: {
-    deltaH: number;
-    unit: string;
-    type: "exothermic" | "endothermic";
-  };
-  // Nuclear specific
-  nuclearData?: {
-    halfLife?: string;
-    radiation?: string;
-    parentNuclide?: string;
-    daughterNuclide?: string;
-    energyMeV?: number;
-  };
-  // Biochemical specific
-  biochemData?: {
-    atp?: string;                         // ATP produced/consumed
-    location?: string;                    // cell location e.g. cytoplasm, mitochondria
-    enzymes?: string[];
-  };
+  thermodynamics?: { deltaH: number; unit: string; type: string };
 }
 
 export interface Element {

@@ -136,6 +136,12 @@ export async function getTopic(slug: string): Promise<Topic | null> {
   return topics[0] || null;
 }
 
+/** Admin-only: সব টপিক (প্রকাশিত ও অপ্রকাশিত draft সহ) — Chapter Manager-এ
+ *  প্রতি অধ্যায়ে সঠিক টপিক-সংখ্যা দেখানোর জন্য ব্যবহৃত হয়। */
+export async function getAllTopicsByCategory(categoryId: string): Promise<Topic[]> {
+  return getDocuments<Topic>("topics", [where("categoryId", "==", categoryId)]);
+}
+
 export async function incrementTopicViews(id: string): Promise<void> {
   try {
     await updateDoc(doc(db, "topics", id), { views: increment(1) });
