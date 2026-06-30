@@ -6,8 +6,12 @@ import Link from "next/link";
 import { Search, ArrowRight, Atom } from "lucide-react";
 import { Formula } from "@/types";
 
+// formulas/page.tsx থেকে sub-category key (যেমন "gas-law", "thermodynamics") পাঠানো হয়,
+// যা ChemistryCategory ইউনিয়নের সদস্য নয় — তাই এখানে category ফিল্ড string-এ override করা হলো।
+type DisplayFormula = Omit<Formula, "category"> & { category: string };
+
 interface Props {
-  formulas: Formula[];
+  formulas: DisplayFormula[];
   categories: { key: string; label: string }[];
 }
 

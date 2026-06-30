@@ -79,19 +79,106 @@ export interface FormulaVariable {
   unit: string;
 }
 
+// ─── Reaction Category types ────────────────────────────────────────
+export type ReactionCategory =
+  | "organic"
+  | "inorganic"
+  | "industrial"
+  | "biochemical"
+  | "nuclear"
+  | "physical"
+  | "analytical";
+
+// Organic sub-types
+export type OrganicSubType =
+  | "substitution-sn1"
+  | "substitution-sn2"
+  | "elimination-e1"
+  | "elimination-e2"
+  | "addition-hydrogenation"
+  | "addition-halogenation"
+  | "addition-hydrohalogenation"
+  | "oxidation-kmno4"
+  | "oxidation-ozonolysis"
+  | "named-aldol"
+  | "named-cannizzaro"
+  | "named-friedel-crafts"
+  | "named-grignard"
+  | "named-wurtz"
+  | "named-sandmeyer"
+  | "named-reimer-tiemann"
+  | "named-claisen";
+
+// Inorganic sub-types
+export type InorganicSubType =
+  | "neutralization"
+  | "redox"
+  | "precipitation"
+  | "displacement"
+  | "complex-formation";
+
+// Industrial sub-types
+export type IndustrialSubType =
+  | "haber-process"
+  | "contact-process"
+  | "ostwald-process"
+  | "hall-heroult"
+  | "solvay-process";
+
+// Biochemical sub-types
+export type BiochemicalSubType =
+  | "glycolysis"
+  | "krebs-cycle"
+  | "photosynthesis"
+  | "respiration";
+
+// Nuclear sub-types
+export type NuclearSubType =
+  | "alpha-decay"
+  | "beta-decay"
+  | "gamma-decay"
+  | "fission"
+  | "fusion";
+
 export interface Reaction {
   id: string;
   name: string;
   nameBn: string;
   equation: string;
-  category: string;
-  type: string;
-  conditions: { temperature?: string; pressure?: string; other?: string };
+  category: ReactionCategory | string;
+  subType?: string;                        // e.g. "substitution-sn1", "named-grignard"
+  type: string;                            // display label e.g. "SN1", "Grignard"
+  conditions: {
+    temperature?: string;
+    pressure?: string;
+    other?: string;
+  };
   catalyst?: string;
   mechanism: string[];
+  intermediates?: string[];               // ✅ নতুন: intermediate compounds
   products: string[];
   applications: string[];
-  thermodynamics?: { deltaH: number; unit: string; type: string };
+  industrialUses?: string[];              // ✅ নতুন: শিল্প প্রয়োগ
+  safetyNotes?: string[];                 // ✅ নতুন: নিরাপত্তা তথ্য
+  thermodynamics?: {
+    deltaH: number;
+    unit: string;
+    type: "exothermic" | "endothermic";
+  };
+  // Nuclear specific
+  nuclearData?: {
+    halfLife?: string;
+    radiation?: string;
+    parentNuclide?: string;
+    daughterNuclide?: string;
+    energyMeV?: number;
+  };
+  // Biochemical specific
+  biochemData?: {
+    atp?: string;                         // ATP produced/consumed
+    location?: string;                    // cell location e.g. cytoplasm, mitochondria
+    enzymes?: string[];
+  };
 }
 
 export interface Element {

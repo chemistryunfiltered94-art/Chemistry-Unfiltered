@@ -26,6 +26,8 @@ const staticRoutes = [
   "/virtual-lab/crystallization",
   "/virtual-lab/chromatography",
   "/virtual-lab/density",
+  "/virtual-lab/flame-test",
+  "/virtual-lab/calorimetry",
   "/question-bank",
   "/question-bank/mock-test",
   "/molecules",

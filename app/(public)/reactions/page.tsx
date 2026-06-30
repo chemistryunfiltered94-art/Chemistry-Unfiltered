@@ -4,16 +4,44 @@ import ReactionsClient from "@/components/reactions/ReactionsClient";
 
 export const metadata = {
   title: "Reaction Database — বিক্রিয়া ডেটাবেস",
-  description: "গুরুত্বপূর্ণ রসায়ন বিক্রিয়া — মেকানিজম ও প্রয়োগ সহ।",
+  description: "জৈব, অজৈব, শিল্প, জৈব রাসায়নিক ও নিউক্লিয় বিক্রিয়া — মেকানিজম ও প্রয়োগ সহ।",
 };
 
-const categories = [
-  { key: "all", label: "সব বিক্রিয়া" },
-  { key: "industrial", label: "শিল্প বিক্রিয়া" },
-  { key: "organic", label: "জৈব বিক্রিয়া" },
-  { key: "inorganic", label: "অজৈব বিক্রিয়া" },
-  { key: "physical", label: "ভৌত বিক্রিয়া" },
-  { key: "analytical", label: "বিশ্লেষণী বিক্রিয়া" },
+export const categories = [
+  { key: "all",         label: "সব বিক্রিয়া",          emoji: "⚗️" },
+  { key: "organic",     label: "জৈব (Organic)",           emoji: "🌿" },
+  { key: "inorganic",   label: "অজৈব (Inorganic)",        emoji: "🔷" },
+  { key: "industrial",  label: "শিল্প (Industrial)",      emoji: "🏭" },
+  { key: "biochemical", label: "জৈব রাসায়নিক (Biochem)", emoji: "🧬" },
+  { key: "nuclear",     label: "নিউক্লিয় (Nuclear)",     emoji: "☢️" },
+];
+
+// Organic sub-category groups for display
+export const organicGroups = [
+  {
+    label: "Substitution",
+    subTypes: ["substitution-sn1", "substitution-sn2"],
+  },
+  {
+    label: "Elimination",
+    subTypes: ["elimination-e1", "elimination-e2"],
+  },
+  {
+    label: "Addition",
+    subTypes: ["addition-hydrogenation", "addition-halogenation", "addition-hydrohalogenation"],
+  },
+  {
+    label: "Oxidation",
+    subTypes: ["oxidation-kmno4", "oxidation-ozonolysis"],
+  },
+  {
+    label: "Named Reactions",
+    subTypes: [
+      "named-aldol", "named-cannizzaro", "named-friedel-crafts",
+      "named-grignard", "named-wurtz", "named-sandmeyer",
+      "named-reimer-tiemann", "named-claisen",
+    ],
+  },
 ];
 
 export default async function ReactionsPage() {
@@ -28,10 +56,12 @@ export default async function ReactionsPage() {
             বিক্রিয়া ডেটাবেস
           </div>
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Reaction Database</h1>
-          <p className="text-slate-600 dark:text-slate-400">গুরুত্বপূর্ণ রসায়ন বিক্রিয়া — মেকানিজম ও প্রয়োগ সহ</p>
+          <p className="text-slate-600 dark:text-slate-400">
+            জৈব • অজৈব • শিল্প • জৈব রাসায়নিক • নিউক্লিয় বিক্রিয়া — মেকানিজম ও প্রয়োগ সহ
+          </p>
         </div>
 
-        <ReactionsClient reactions={reactions} categories={categories} />
+        <ReactionsClient reactions={reactions} categories={categories} organicGroups={organicGroups} />
       </div>
     </div>
   );

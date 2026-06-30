@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { Beaker, Droplets, Wind, Zap, TrendingUp, ArrowRight, FlaskConical, Gem, Palette, Scale } from "lucide-react";
+import { Beaker, Droplets, Wind, Zap, TrendingUp, ArrowRight, FlaskConical, Gem, Palette, Scale, Flame, ThermometerSun } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Virtual Lab — ভার্চুয়াল রসায়ন ল্যাব",
@@ -123,6 +123,32 @@ const labs = [
     duration: "১০-১৫ মিনিট",
     concepts: ["ঘনত্ব = ভর/আয়তন", "আর্কিমিডিসের সূত্র", "ভাসা-ডোবা"],
     href: "/virtual-lab/density",
+    available: true,
+  },
+  {
+    id: "flame-test",
+    name: "শিখা পরীক্ষা ল্যাব",
+    nameEn: "Flame Test Lab",
+    desc: "ধাতু আয়নের নির্দিষ্ট শিখার রঙ দেখো এবং কুইজ মোডে অজানা নমুনা চিহ্নিত করার অনুশীলন করো।",
+    icon: Flame,
+    color: "from-orange-500 to-red-600",
+    difficulty: "সহজ",
+    duration: "১০-১৫ মিনিট",
+    concepts: ["ইলেকট্রন উত্তেজনা", "নির্গমন স্পেকট্রাম", "গুণগত বিশ্লেষণ"],
+    href: "/virtual-lab/flame-test",
+    available: true,
+  },
+  {
+    id: "calorimetry",
+    name: "ক্যালরিমেট্রি ল্যাব",
+    nameEn: "Calorimetry Lab",
+    desc: "তাপ ভারসাম্য দিয়ে ধাতুর আপেক্ষিক তাপ ধারণক্ষমতা মাপো এবং নিরপেক্ষীকরণ বিক্রিয়ার তাপ নির্ণয় করো।",
+    icon: ThermometerSun,
+    color: "from-red-500 to-orange-600",
+    difficulty: "মাঝারি",
+    duration: "২০-২৫ মিনিট",
+    concepts: ["q = mcΔT", "তাপ ভারসাম্য", "এনথালপি"],
+    href: "/virtual-lab/calorimetry",
     available: true,
   },
 ];

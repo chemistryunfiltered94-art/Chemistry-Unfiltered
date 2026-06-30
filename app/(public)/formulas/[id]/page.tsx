@@ -2,14 +2,20 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Calculator } from "lucide-react";
-import { getFormula, getDocument } from "@/lib/firestore";
-import { Formula, Topic } from "@/types";
+import { getStaticFormula, STATIC_FORMULAS, FORMULA_CATEGORIES } from "@/lib/formulaData";
+import { FORMULA_CATEGORY_MAP } from "@/lib/formulaCategoryMap";
+import { Topic } from "@/types";
 
 interface Props { params: Promise<{ id: string }> }
 
+// সব ফর্মুলার জন্য স্ট্যাটিক পেজ আগে থেকেই বিল্ড করা (পারফরম্যান্স ও SEO)
+export async function generateStaticParams() {
+  return STATIC_FORMULAS.map((f) => ({ id: f.id }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const f = await getFormula(id);
+  const f = getStaticFormula(id);
   if (!f) return { title: "Formula Not Found" };
   return {
     title: `${f.nameBn} (${f.name}) — Formula | Chemistry Unfiltered`,
@@ -19,17 +25,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function FormulaDetailPage({ params }: Props) {
   const { id } = await params;
-  const f = await getFormula(id);
+  const f = getStaticFormula(id);
   if (!f) notFound();
 
-  // Resolve related formulas / topics (stored as ID arrays) into display objects.
-  const relatedFormulas = (
-    await Promise.all((f.relatedFormulas || []).map((rfId) => getDocument<Formula>("formulas", rfId)))
-  ).filter((x): x is Formula => Boolean(x));
+  // ক্যাটাগরির Bengali লেবেল বের করা (যেমন "thermodynamics" → "তাপগতিবিদ্যা")
+  const categoryKey = FORMULA_CATEGORY_MAP[f.id] || f.category;
+  const categoryLabel = FORMULA_CATEGORIES.find((c) => c.key === categoryKey)?.label || categoryKey;
 
-  const relatedTopics = (
-    await Promise.all((f.relatedTopics || []).map((tId) => getDocument<Topic>("topics", tId)))
-  ).filter((x): x is Topic => Boolean(x));
+  // Related formulas — স্ট্যাটিক ডেটা থেকেই resolve করা হয়, Firestore কল লাগে না
+  const relatedFormulas = (f.relatedFormulas || [])
+    .map((rfId) => getStaticFormula(rfId))
+    .filter((x): x is NonNullable<typeof x> => Boolean(x));
+
+  // Topics এখনো Firebase-ভিত্তিক হওয়ায় relatedTopics খালি রাখা হলো —
+  // ভবিষ্যতে topic আইডি যুক্ত করলে getDocument<Topic>() দিয়ে resolve করা যাবে
+  const relatedTopics: Topic[] = [];
 
   return (
     <div className="section-padding">
@@ -40,7 +50,7 @@ export default async function FormulaDetailPage({ params }: Props) {
 
         {/* Header */}
         <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 lg:p-8 mb-5">
-          <span className="text-xs font-medium text-primary-600 dark:text-primary-400 uppercase tracking-wider">{f.category}</span>
+          <span className="text-xs font-medium text-primary-600 dark:text-primary-400 uppercase tracking-wider">{categoryLabel}</span>
           <h1 className="text-3xl font-bold text-slate-900 dark:text-white mt-1 mb-1">{f.nameBn}</h1>
           <p className="text-slate-500 dark:text-slate-400 text-sm mb-6">{f.name}</p>
 

@@ -87,8 +87,20 @@ export default function AdminReactionsPage() {
                 className="flex items-center gap-4 bg-slate-800 border border-slate-700 rounded-2xl p-4"
               >
                 <div className="flex-1 min-w-0">
-                  <p className="font-medium text-white truncate">{r.nameBn || r.name}</p>
-                  <p className="text-xs text-slate-500 mt-0.5 font-mono truncate">{r.equation}</p>
+                  <div className="flex items-center gap-2 flex-wrap mb-0.5">
+                    <p className="font-medium text-white truncate">{r.nameBn || r.name}</p>
+                    {r.category && (
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-primary-900/40 text-primary-300 capitalize flex-shrink-0">
+                        {r.category}
+                      </span>
+                    )}
+                    {r.subType && (
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-slate-700 text-slate-300 flex-shrink-0">
+                        {r.subType.replace(/-/g, " ")}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-slate-500 font-mono truncate">{r.equation}</p>
                 </div>
 
                 {confirmDeleteId === r.id ? (
