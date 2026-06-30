@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
 import { onAuthStateChanged, getRedirectResult, User as FirebaseUser } from "firebase/auth";
 import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ interface AuthContextType {
   firebaseUser: FirebaseUser | null;
   loading: boolean;
   isAdmin: boolean;
+  refreshUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -19,6 +20,7 @@ const AuthContext = createContext<AuthContextType>({
   firebaseUser: null,
   loading: true,
   isAdmin: false,
+  refreshUser: async () => {},
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -26,6 +28,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+
+  const fetchUserDoc = useCallback(async (uid: string) => {
+    try {
+      const userDoc = await getDoc(doc(db, "users", uid));
+      if (userDoc.exists()) {
+        setUser({ uid, ...userDoc.data() } as User);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  }, []);
+
+  // প্রোফাইল নাম/ছবি পরিবর্তনের পর Navbar ও অন্যান্য জায়গায় তা সাথে সাথে
+  // দেখানোর জন্য — onAuthStateChanged শুধু auth অবস্থা বদলালে চলে, Firestore
+  // ডকুমেন্ট আপডেটে নয়, তাই ম্যানুয়ালি রিফ্রেশ করার উপায় দরকার।
+  const refreshUser = useCallback(async () => {
+    if (!auth.currentUser) return;
+    await fetchUserDoc(auth.currentUser.uid);
+  }, [fetchUserDoc]);
 
   useEffect(() => {
     // Picks up the result after signInWithRedirect() sends the browser to
@@ -54,14 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
       setFirebaseUser(fbUser);
       if (fbUser) {
-        try {
-          const userDoc = await getDoc(doc(db, "users", fbUser.uid));
-          if (userDoc.exists()) {
-            setUser({ uid: fbUser.uid, ...userDoc.data() } as User);
-          }
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
+        await fetchUserDoc(fbUser.uid);
       } else {
         setUser(null);
       }
@@ -69,7 +83,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, [router, fetchUserDoc]);
 
   return (
     <AuthContext.Provider
@@ -78,6 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         firebaseUser,
         loading,
         isAdmin: user?.role === "admin",
+        refreshUser,
       }}
     >
       {children}

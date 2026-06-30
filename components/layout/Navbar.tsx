@@ -79,8 +79,12 @@ export default function Navbar() {
             onClick={() => setUserMenuOpen(!userMenuOpen)}
             className="flex items-center gap-2 px-2 sm:px-3 py-2 rounded-lg"
           >
-            <div className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-white text-sm font-bold">
-              {user.name?.charAt(0).toUpperCase() || "U"}
+            <div className="w-8 h-8 rounded-full overflow-hidden gradient-bg flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+              {user.photoURL ? (
+                <img src={user.photoURL} alt={user.name} className="w-full h-full object-cover" />
+              ) : (
+                user.name?.charAt(0).toUpperCase() || "U"
+              )}
             </div>
             <span className="hidden sm:block text-sm font-medium text-slate-300">
               {user.name?.split(" ")[0]}

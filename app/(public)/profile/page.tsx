@@ -1,25 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { updateProfile, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { updateUser } from "@/lib/firestore";
+import { formatFirestoreDate, compressImageToBase64 } from "@/lib/utils";
 import {
-  User, Mail, Calendar, Shield, Edit2, Save, X,
+  User, Mail, Calendar, Shield, Edit2, Save, X, Camera,
   Lock, Eye, EyeOff, CheckCircle, AlertCircle
 } from "lucide-react";
 
 export default function ProfilePage() {
-  const { user, loading } = useAuth();
+  const { user, loading, refreshUser } = useAuth();
   const router = useRouter();
 
   const [editMode, setEditMode]   = useState(false);
   const [name, setName]           = useState("");
   const [saving, setSaving]       = useState(false);
   const [saveMsg, setSaveMsg]     = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  // প্রোফাইল ছবি আপলোড
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [photoUploading, setPhotoUploading] = useState(false);
+  const [photoMsg, setPhotoMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   // Password change
   const [showPwSection, setShowPwSection] = useState(false);
@@ -50,12 +56,43 @@ export default function ProfilePage() {
       if (auth.currentUser) {
         await updateProfile(auth.currentUser, { displayName: name.trim() });
       }
+      await refreshUser();
       setSaveMsg({ type: "success", text: "প্রোফাইল সফলভাবে আপডেট হয়েছে!" });
       setEditMode(false);
     } catch {
       setSaveMsg({ type: "error", text: "আপডেট করতে সমস্যা হয়েছে।" });
     } finally {
       setSaving(false);
+    }
+  };
+
+  const handlePhotoChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = ""; // একই ছবি আবার বাছাই করলেও যেন onChange ট্রিগার হয়
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setPhotoMsg({ type: "error", text: "শুধু ছবি ফাইল আপলোড করা যাবে।" });
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      setPhotoMsg({ type: "error", text: "ছবির সাইজ অনেক বড় (সর্বোচ্চ ২০MB)। ছোট ছবি বাছাই করো।" });
+      return;
+    }
+
+    setPhotoUploading(true);
+    setPhotoMsg(null);
+    try {
+      // Firebase Storage (Blaze প্ল্যান) ছাড়াই কাজ করার জন্য ছবি কমপ্রেস করে
+      // base64 হিসেবে সরাসরি Firestore-এর users ডকুমেন্টে রাখা হচ্ছে
+      const compressed = await compressImageToBase64(file, 256, 0.8);
+      await updateUser(user.uid, { photoURL: compressed });
+      await refreshUser();
+      setPhotoMsg({ type: "success", text: "প্রোফাইল ছবি আপডেট হয়েছে!" });
+    } catch {
+      setPhotoMsg({ type: "error", text: "ছবি আপলোড করতে সমস্যা হয়েছে। আবার চেষ্টা করো।" });
+    } finally {
+      setPhotoUploading(false);
     }
   };
 
@@ -90,9 +127,9 @@ export default function ProfilePage() {
   };
 
   const initials = user.name?.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2) || "U";
-  const joinDate = user.createdAt
-    ? new Date(user.createdAt).toLocaleDateString("bn-BD", { year: "numeric", month: "long", day: "numeric" })
-    : "অজানা";
+  // user.createdAt আসে Firestore Timestamp হিসেবে — সরাসরি new Date() দিলে
+  // "Invalid Date" দেখায়, তাই formatFirestoreDate ব্যবহার করা হচ্ছে
+  const joinDate = formatFirestoreDate(user.createdAt) || "অজানা";
 
   return (
     <div className="section-padding">
@@ -105,16 +142,47 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-8 mb-5"
         >
-          <div className="flex items-start gap-6 mb-6">
-            {/* Avatar */}
-            <div className="w-20 h-20 rounded-2xl gradient-bg flex items-center justify-center text-white text-2xl font-bold shadow-xl flex-shrink-0">
-              {initials}
+          <div className="flex items-start gap-5 sm:gap-6 mb-6">
+            {/* Avatar — ট্যাপ করলে ছবি বদলানো যায় */}
+            <div className="relative flex-shrink-0">
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={user.name}
+                  className="w-20 h-20 rounded-2xl object-cover shadow-xl"
+                />
+              ) : (
+                <div className="w-20 h-20 rounded-2xl gradient-bg flex items-center justify-center text-white text-2xl font-bold shadow-xl">
+                  {initials}
+                </div>
+              )}
+              <button
+                type="button"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={photoUploading}
+                aria-label="প্রোফাইল ছবি পরিবর্তন করো"
+                className="absolute -bottom-1.5 -right-1.5 w-7 h-7 rounded-full gradient-bg text-white flex items-center justify-center shadow-lg ring-2 ring-white dark:ring-slate-800 disabled:opacity-60"
+              >
+                {photoUploading ? (
+                  <div className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <Camera className="w-3.5 h-3.5" />
+                )}
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoChange}
+                className="hidden"
+              />
             </div>
-            <div className="flex-1">
-              <div className="flex items-start justify-between">
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white">{user.name}</h2>
-                  <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">{user.email}</p>
+
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                <div className="min-w-0">
+                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white truncate">{user.name}</h2>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mt-1 break-all">{user.email}</p>
                   <span className={`inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full text-xs font-medium ${
                     user.role === "admin"
                       ? "bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400"
@@ -127,12 +195,18 @@ export default function ProfilePage() {
                 {!editMode && (
                   <button
                     onClick={() => setEditMode(true)}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-700 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-primary-600 dark:text-primary-400 border border-primary-300 dark:border-primary-700 rounded-xl hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors flex-shrink-0"
                   >
                     <Edit2 className="w-4 h-4" /> সম্পাদনা
                   </button>
                 )}
               </div>
+
+              {photoMsg && (
+                <div className={`mt-3 text-xs font-medium ${photoMsg.type === "success" ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
+                  {photoMsg.text}
+                </div>
+              )}
             </div>
           </div>
 
