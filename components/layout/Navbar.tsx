@@ -17,13 +17,12 @@ import {
   Menu, X, Search, FlaskConical,
   HelpCircle, User, LogOut, LayoutDashboard,
   ChevronDown, Atom, FileText, Settings,
-  Bookmark, ClipboardList, Sigma,
+  Bookmark, ClipboardList,
 } from "lucide-react";
 
 const drawerLinks = [
   { href: "/articles",      label: "আর্টিকেল",        icon: FileText },
   { href: "/notes",         label: "নোটস",             icon: ClipboardList },
-  { href: "/formulas",      label: "ফর্মুলা লাইব্রেরি", icon: Sigma },
   { href: "/molecules",     label: "আণবিক দর্শক",      icon: Atom },
   { href: "/question-bank", label: "প্রশ্নব্যাংক",     icon: HelpCircle },
   { href: "/reactions",     label: "বিক্রিয়া ডেটাবেস", icon: FlaskConical },

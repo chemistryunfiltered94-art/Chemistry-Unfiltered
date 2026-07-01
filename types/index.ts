@@ -231,9 +231,75 @@ export interface Progress {
 
 export interface Bookmark {
   userId: string;
-  refType: "article" | "formula" | "reaction" | "question";
+  refType: "article" | "formula" | "reaction" | "question" | "historyEra" | "nobelLaureate" | "scientist";
   refId: string;
   createdAt: Date;
+}
+
+// ─── History Hub: Timeline / Nobel Laureates / Scientists ────────
+
+/** রসায়নের ইতিহাস টাইমলাইন — একটি যুগ/ঘটনা */
+export interface HistoryEra {
+  id: string;
+  title: string;        // e.g. "Atomic Theory"
+  titleBn: string;       // e.g. "পরমাণু তত্ত্ব"
+  period: string;        // e.g. "1803" বা "৪০০ খ্রিস্টপূর্ব" — display label
+  yearStart: number;     // sort/filter-এর জন্য numeric year (BCE হলে negative)
+  yearEnd?: number;
+  summary: string;       // card-এ ছোট বিবরণ
+  description: string;   // full body (markdown/plain)
+  keyFigures: string[];  // এই যুগের সাথে জড়িত বিজ্ঞানীদের নাম
+  image?: string;
+  tags: string[];
+  published: boolean;
+  order: number;         // টাইমলাইনে ক্রম
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/** রসায়নে নোবেল বিজয়ী */
+export interface NobelLaureate {
+  id: string;
+  name: string;
+  nameBn: string;
+  slug: string;
+  year: number;                 // নোবেল পাওয়ার সাল
+  country: string;
+  countryBn?: string;
+  photo?: string;
+  motivation: string;           // নোবেল কমিটির ভাষ্যে অবদান (সংক্ষেপ)
+  motivationBn?: string;
+  biography: string;            // full bio
+  keyContributions: string[];
+  sharedWith: string[];         // একই বছরের সহ-বিজয়ী (নাম)
+  birthYear?: number;
+  deathYear?: number;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+/** বিখ্যাত রসায়নবিদ/বিজ্ঞানী (নোবেল না পেলেও) */
+export interface Scientist {
+  id: string;
+  name: string;
+  nameBn: string;
+  slug: string;
+  photo?: string;
+  birthYear?: number;
+  deathYear?: number;
+  country: string;
+  countryBn?: string;
+  field: string;                 // e.g. "Organic Chemistry", "Periodic Table"
+  fieldBn?: string;
+  shortBio: string;              // card summary
+  biography: string;             // full body
+  keyContributions: string[];
+  famousFor: string;             // one-line hook, e.g. "পর্যায় সারণির জনক"
+  published: boolean;
+  featured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 // ─── Study Notes ──────────────────────────────────────────────────
