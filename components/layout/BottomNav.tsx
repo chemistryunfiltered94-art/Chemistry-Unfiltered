@@ -6,7 +6,7 @@ import { Home, Table2, BookOpen, Calculator, Beaker, ScrollText } from "lucide-r
 import { cn } from "@/lib/utils";
 
 const bottomLinks = [
-  { href: "/",              label: "হোম",         icon: Home,      exact: true  },
+  { href: "/dashboard",     label: "হোম",         icon: Home,      exact: true  },
   { href: "/periodic-table",label: "পর্যায় সারণি", icon: Table2,    exact: false },
   { href: "/history",       label: "ইতিহাস",       icon: ScrollText,exact: false },
   { href: "/learn",         label: "বিষয়",        icon: BookOpen,  exact: false },

@@ -49,7 +49,7 @@ export default function Navbar() {
   };
 
   const Logo = (
-    <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+    <Link href={isLanding ? "/" : "/dashboard"} className="flex items-center gap-2 flex-shrink-0">
       <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg">
         <Image src="/logo.png" alt="Chemistry Unfiltered" width={36} height={36} className="w-full h-full object-cover" priority />
       </div>
