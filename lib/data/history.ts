@@ -523,7 +523,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1901,
     country: "Netherlands",
     countryBn: "নেদারল্যান্ডস",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Jacobus%20Henricus%20van%20%27t%20Hoff.jpg",
     motivation:
       "in recognition of the extraordinary services he has rendered by the discovery of the laws of chemical dynamics and osmotic pressure in solutions",
     motivationBn:
@@ -548,7 +548,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1902,
     country: "Germany",
     countryBn: "জার্মানি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Hermann%20Emil%20Fischer%20c1895.jpg",
     motivation:
       "in recognition of the extraordinary services he has rendered by his work on sugar and purine syntheses",
     motivationBn: "শর্করা ও পিউরিন সংশ্লেষণে তাঁর অসাধারণ অবদানের স্বীকৃতিস্বরূপ",
@@ -572,7 +572,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1903,
     country: "Sweden",
     countryBn: "সুইডেন",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Svante%20Arrhenius%2001.jpg",
     motivation:
       "in recognition of the extraordinary services he has rendered to the advancement of chemistry by his electrolytic theory of dissociation",
     motivationBn:
@@ -597,7 +597,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1904,
     country: "United Kingdom",
     countryBn: "যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/William%20Ramsay.jpg",
     motivation:
       "in recognition of his services in the discovery of the inert gaseous elements in air, and his determination of their place in the periodic system",
     motivationBn:
@@ -622,7 +622,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1906,
     country: "France",
     countryBn: "ফ্রান্স",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Henri%20Moissan.jpg",
     motivation:
       "in recognition of the great services rendered by him in his investigation and isolation of the element fluorine",
     motivationBn: "ফ্লোরিন মৌল বিচ্ছিন্নকরণ ও গবেষণায় গুরুত্বপূর্ণ অবদানের স্বীকৃতিস্বরূপ",
@@ -646,7 +646,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1908,
     country: "New Zealand / United Kingdom",
     countryBn: "নিউজিল্যান্ড / যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ernest%20Rutherford%20LOC.jpg",
     motivation:
       "for his investigations into the disintegration of the elements, and the chemistry of radioactive substances",
     motivationBn: "মৌলের বিভাজন ও তেজস্ক্রিয় পদার্থের রসায়ন নিয়ে গবেষণার স্বীকৃতিস্বরূপ",
@@ -670,7 +670,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1909,
     country: "Germany",
     countryBn: "জার্মানি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Wilhelm%20Ostwald%20by%20Nicola%20Perscheid.jpg",
     motivation:
       "in recognition of his work on catalysis and for his investigations into the fundamental principles governing chemical equilibria and rates of reaction",
     motivationBn:
@@ -695,7 +695,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1911,
     country: "Poland / France",
     countryBn: "পোল্যান্ড / ফ্রান্স",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie%20Curie%20c.%201920s.jpg",
     motivation:
       "in recognition of her services to the advancement of chemistry by the discovery of the elements radium and polonium",
     motivationBn:
@@ -720,7 +720,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1912,
     country: "France",
     countryBn: "ফ্রান্স",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Victor%20Grignard.jpg",
     motivation:
       "for the discovery of the so-called Grignard reagent, which in recent years has greatly advanced the progress of organic chemistry",
     motivationBn:
@@ -745,7 +745,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1913,
     country: "Switzerland",
     countryBn: "সুইজারল্যান্ড",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Alfred%20Werner.jpg",
     motivation:
       "in recognition of his work on the linkage of atoms in molecules by which he has thrown new light on earlier investigations and opened up new fields of research especially in inorganic chemistry",
     motivationBn:
@@ -770,7 +770,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1914,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Theodore%20william%20richards.jpg",
     motivation:
       "in recognition of his accurate determinations of the atomic weight of a large number of chemical elements",
     motivationBn: "বহু সংখ্যক রাসায়নিক মৌলের নির্ভুল পারমাণবিক ভর নির্ণয়ের স্বীকৃতিস্বরূপ",
@@ -794,7 +794,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1918,
     country: "Germany",
     countryBn: "জার্মানি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Fritz%20Haber.png",
     motivation:
       "for the synthesis of ammonia from its elements",
     motivationBn: "মৌল থেকে সরাসরি অ্যামোনিয়া সংশ্লেষণের জন্য",
@@ -818,7 +818,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1920,
     country: "Germany",
     countryBn: "জার্মানি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Walther%20Nernst%20SI.jpg",
     motivation: "in recognition of his work in thermochemistry",
     motivationBn: "তাপ-রসায়নে (thermochemistry) তাঁর কাজের স্বীকৃতিস্বরূপ",
     biography:
@@ -841,7 +841,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1921,
     country: "United Kingdom",
     countryBn: "যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Frederick%20Soddy.jpg",
     motivation:
       "for his contributions to our knowledge of the chemistry of radioactive substances, and his investigations into the origin and nature of isotopes",
     motivationBn:
@@ -866,7 +866,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1935,
     country: "France",
     countryBn: "ফ্রান্স",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ir%C3%A8ne%20Joliot-Curie%20%281897-1956%29%2C%20c.%201935.jpg",
     motivation: "in recognition of their synthesis of new radioactive elements",
     motivationBn: "নতুন তেজস্ক্রিয় মৌল সংশ্লেষণের স্বীকৃতিস্বরূপ",
     biography:
@@ -889,7 +889,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1944,
     country: "Germany",
     countryBn: "জার্মানি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Otto%20Hahn.jpg",
     motivation: "for his discovery of the fission of heavy nuclei",
     motivationBn: "ভারী নিউক্লিয়াসের বিভাজন (fission) আবিষ্কারের জন্য",
     biography:
@@ -912,7 +912,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1954,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Linus%20Pauling.jpg",
     motivation:
       "for his research into the nature of the chemical bond and its application to the elucidation of the structure of complex substances",
     motivationBn:
@@ -937,7 +937,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1964,
     country: "United Kingdom",
     countryBn: "যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Professor%20Dorothy%20Hodgkin.jpg",
     motivation:
       "for her determinations by X-ray techniques of the structures of important biochemical substances",
     motivationBn:
@@ -962,7 +962,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1965,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Burns%20Woodward%20portrait.jpg",
     motivation: "for his outstanding achievements in the art of organic synthesis",
     motivationBn: "জৈব সংশ্লেষণের শিল্পে অসাধারণ কৃতিত্বের জন্য",
     biography:
@@ -985,7 +985,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1969,
     country: "United Kingdom",
     countryBn: "যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Derek-Harold-Richard-Barton.jpg",
     motivation:
       "for their contributions to the development of the concept of conformation and its application in chemistry",
     motivationBn:
@@ -1035,7 +1035,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1977,
     country: "Belgium",
     countryBn: "বেলজিয়াম",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ilya%20Prigogine%201977c.jpg",
     motivation:
       "for his contributions to non-equilibrium thermodynamics, particularly the theory of dissipative structures",
     motivationBn:

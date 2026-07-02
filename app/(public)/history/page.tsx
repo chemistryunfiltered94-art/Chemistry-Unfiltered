@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ScrollText, Award, Users2, ArrowRight } from "lucide-react";
+import { ScrollText, Award, Users2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "ইতিহাস — Chemistry Unfiltered",
@@ -57,28 +57,28 @@ export default function HistoryHubPage() {
           </div>
 
           {/* Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-3 max-w-2xl mx-auto">
             {sections.map((s) => {
               const Icon = s.icon;
               return (
                 <Link
                   key={s.href}
                   href={s.href}
-                  className={`group block p-6 bg-slate-800 border ${s.accent} rounded-3xl transition-all duration-200 active:scale-95`}
+                  className={`flex items-center gap-4 p-4 bg-slate-800 border ${s.accent} rounded-2xl transition-all active:scale-95`}
                 >
                   <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${s.gradient} flex items-center justify-center mb-5 shadow-lg`}
+                    className={`w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br ${s.gradient} flex items-center justify-center shadow-lg`}
                   >
                     <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <h2 className="font-bold text-white text-lg mb-1">{s.title}</h2>
-                  <p className="text-xs text-slate-500 font-medium mb-3">{s.titleEn}</p>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-4">
-                    {s.desc}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-400 group-hover:gap-2.5 transition-all">
-                    দেখো <ArrowRight className="w-4 h-4" />
-                  </span>
+                  <div className="min-w-0 text-left">
+                    <span className="block text-base font-semibold text-slate-100 leading-snug">
+                      {s.title}
+                    </span>
+                    <span className="block text-xs text-slate-400 mt-0.5 truncate">
+                      {s.desc}
+                    </span>
+                  </div>
                 </Link>
               );
             })}
