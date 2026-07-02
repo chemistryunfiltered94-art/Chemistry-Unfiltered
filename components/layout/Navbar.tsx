@@ -13,6 +13,7 @@ import { useSearchModal } from "@/hooks/useSearch";
 import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { cn } from "@/lib/utils";
+import OtherAppsSection from "@/components/layout/OtherAppsSection";
 import {
   Menu, X, Search, FlaskConical,
   HelpCircle, User, LogOut, LayoutDashboard,
@@ -194,6 +195,8 @@ export default function Navbar() {
                   </Link>
                 );
               })}
+
+              <OtherAppsSection />
 
               {user?.role === "admin" && (
                 <Link href="/admin"
