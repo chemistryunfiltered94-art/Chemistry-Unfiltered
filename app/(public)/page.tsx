@@ -19,7 +19,12 @@ export default async function HomePage() {
         reactions: allReactions.length,
       }} />
       <StatsSection stats={{
-        users:     siteStats.users,
+        // siteStats.users ইচ্ছাকৃতভাবে বাদ: firestore.rules-এ /users কালেকশন
+        // owner/admin-only, তাই এই পাবলিক (unauthenticated) হোম পেজের
+        // server render-এ এটা সবসময় ০ আসে। ০ পাঠালে StatsSection-এর
+        // `?? 10000` ফলব্যাক কাজ করবে না (?? শুধু null/undefined ধরে,
+        // ০ কে বৈধ মান হিসেবেই নেয়), তাই "সক্রিয় শিক্ষার্থী: ০+" দেখাত।
+        // users বাদ দিলে ফলব্যাকটা ঠিকঠাক প্রয়োগ হয়।
         topics:    siteStats.topics,
         formulas:  allFormulas.length,
         questions: siteStats.questions,

@@ -72,23 +72,28 @@ export default function LearnPage() {
     <div className="min-h-screen bg-slate-900 px-4 py-6">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-2xl font-bold text-white mb-6">বিষয়সমূহ</h1>
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-3">
           {categories.map((cat) => {
             const Icon = cat.icon;
             return (
               <Link
                 key={cat.id}
                 href={`/learn/${cat.id}`}
-                className={`flex flex-col items-center gap-3 p-5 bg-slate-800 border ${cat.border} rounded-2xl text-center`}
+                className={`flex items-center gap-4 p-4 bg-slate-800 border ${cat.border} rounded-2xl`}
               >
                 <div
-                  className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center shadow-lg`}
+                  className={`w-14 h-14 shrink-0 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center shadow-lg`}
                 >
                   <Icon className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-sm font-medium text-slate-200 leading-snug">
-                  {cat.name}
-                </span>
+                <div className="min-w-0 text-left">
+                  <span className="block text-base font-semibold text-slate-100 leading-snug">
+                    {cat.name}
+                  </span>
+                  <span className="block text-xs text-slate-400 mt-0.5 truncate">
+                    {cat.desc}
+                  </span>
+                </div>
               </Link>
             );
           })}

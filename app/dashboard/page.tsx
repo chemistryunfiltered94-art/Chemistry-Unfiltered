@@ -14,6 +14,7 @@ import {
   getArticles,
   getUserProgress,
   getUserBookmarks,
+  getSiteStats,
 } from "@/lib/firestore";
 import {
   BookOpen, FlaskConical, HelpCircle, Bookmark,
@@ -48,16 +49,27 @@ const quickLinks = [
 ];
 
 export default function DashboardPage() {
-  const { user, loading } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
   const router = useRouter();
   const { completedCount, progress } = useProgress();
   const { count: bookmarkCount, bookmarks } = useBookmarks();
 
   // Platform stats
-  const { data: allUsers }     = useCollection<{ id: string }>("users");
-  const { data: allTopics }    = useCollection<{ id: string }>("topics");
+  // "users" ও "topics" কালেকশনে firestore.rules per-document read গার্ড
+  // করে (owner/admin, বা published==true), তাই সাধারণ ইউজারের জন্য raw
+  // useCollection("users")/("topics") permission-denied দিয়ে ফেইল করে
+  // এবং চুপচাপ ০ রিটার্ন করে। "formulas" ও "questions" পাবলিকলি রিডেবল
+  // বলে raw listing-এ সমস্যা নেই। users/topics-এর সঠিক কাউন্টের জন্য
+  // getSiteStats() ব্যবহার করা হচ্ছে, যেটা getTopics()-এর মতোই
+  // published==true ফিল্টার করে এবং rules মেনে কাজ করে।
   const { data: allFormulas }  = useCollection<{ id: string }>("formulas");
   const { data: allQuestions } = useCollection<{ id: string }>("questions");
+  const [platformStats, setPlatformStats] = useState({ users: 0, topics: 0 });
+
+  useEffect(() => {
+    if (!user) return;
+    getSiteStats().then((s) => setPlatformStats({ users: s.users, topics: s.topics }));
+  }, [user]);
 
   // Recent activity data
   const [recentTopics,   setRecentTopics]   = useState<Topic[]>([]);
@@ -273,10 +285,16 @@ export default function DashboardPage() {
             <TrendingUp className="w-5 h-5 text-primary-400" />
             প্ল্যাটফর্মের তথ্য
           </h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className={isAdmin ? "grid grid-cols-2 gap-3" : "grid grid-cols-3 gap-3"}>
             {[
-              { label: "সক্রিয় শিক্ষার্থী", value: toBn(allUsers.length),     icon: Users,      color: "from-blue-500 to-indigo-600" },
-              { label: "শিক্ষামূলক টপিক",   value: toBn(allTopics.length),    icon: BookOpen,   color: "from-green-500 to-emerald-600" },
+              // firestore.rules-এ /users/{id} শুধু owner/admin read করতে পারে,
+              // তাই এই কার্ডে সঠিক সংখ্যা কেবল অ্যাডমিনের জন্যই আসে। non-admin
+              // ইউজারকে ভুল/০ সংখ্যা দেখানোর বদলে কার্ডটাই বাদ দেওয়া হচ্ছে,
+              // আর বাদ দিলে গ্রিড ৩-কলামে বদলে যায় যাতে খালি জায়গা না থাকে।
+              ...(isAdmin
+                ? [{ label: "সক্রিয় শিক্ষার্থী", value: toBn(platformStats.users), icon: Users, color: "from-blue-500 to-indigo-600" }]
+                : []),
+              { label: "শিক্ষামূলক টপিক",   value: toBn(platformStats.topics), icon: BookOpen,   color: "from-green-500 to-emerald-600" },
               { label: "রসায়ন ফর্মুলা",     value: toBn(allFormulas.length),  icon: Atom,       color: "from-purple-500 to-violet-600" },
               { label: "অনুশীলন প্রশ্ন",     value: toBn(allQuestions.length), icon: HelpCircle, color: "from-orange-500 to-amber-600" },
             ].map((stat, i) => {

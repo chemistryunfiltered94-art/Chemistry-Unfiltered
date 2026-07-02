@@ -14,6 +14,8 @@ import {
   serverTimestamp,
   DocumentSnapshot,
   QueryConstraint,
+  Query,
+  DocumentData,
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
@@ -345,20 +347,28 @@ export async function getSiteStats(): Promise<{
   questions: number;
   articles: number;
 }> {
-  try {
-    const [users, topics, questions, articles] = await Promise.all([
-      getDocs(collection(db, "users")),
-      getDocs(query(collection(db, "topics"), where("published", "==", true))),
-      getDocs(collection(db, "questions")),
-      getDocs(query(collection(db, "articles"), where("published", "==", true))),
-    ]);
-    return {
-      users:     users.size,
-      topics:    topics.size,
-      questions: questions.size,
-      articles:  articles.size,
-    };
-  } catch {
-    return { users: 0, topics: 0, questions: 0, articles: 0 };
+  // ⚠️ firestore.rules অনুযায়ী /users/{userId} শুধু owner/admin read করতে
+  // পারে — non-admin ইউজারের জন্য getDocs(collection(db,"users")) সবসময়
+  // permission-denied দেবে। আগে এই পুরো ফাংশন Promise.all-এ ছিল, ফলে
+  // users query ফেইল করলে topics/questions/articles-এর ঠিকঠাক গণনাও
+  // catch-এ পড়ে সব ০ হয়ে যেত। এখন প্রতিটা query আলাদাভাবে try/catch
+  // করা হচ্ছে, যাতে একটার ব্যর্থতা বাকিগুলোর সঠিক সংখ্যা নষ্ট না করে।
+  // "users" এর জন্য non-admin ইউজার সবসময় ০ পাবে (rules দিয়ে ইচ্ছাকৃত) —
+  // caller (dashboard) admin না হলে এই ফিল্ডটা UI-তে না দেখানো উচিত।
+  async function safeCount(q: Query<DocumentData>) {
+    try {
+      return (await getDocs(q)).size;
+    } catch {
+      return 0;
+    }
   }
+
+  const [users, topics, questions, articles] = await Promise.all([
+    safeCount(collection(db, "users")),
+    safeCount(query(collection(db, "topics"), where("published", "==", true))),
+    safeCount(collection(db, "questions")),
+    safeCount(query(collection(db, "articles"), where("published", "==", true))),
+  ]);
+
+  return { users, topics, questions, articles };
 }

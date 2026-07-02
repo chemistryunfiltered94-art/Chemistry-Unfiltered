@@ -20,6 +20,12 @@ service cloud.firestore {
     }
 
     // ─── Users ──────────────────────────────────────────────────
+    // Deliberately locked to owner/admin only, including list/count —
+    // a public student count is not worth exposing user collection
+    // access to unauthenticated/non-admin clients. The public "সক্রিয়
+    // শিক্ষার্থী" stat must be computed server-side (Admin SDK, which
+    // bypasses these rules) and exposed via a small API route instead
+    // of a direct client-side Firestore read.
     match /users/{userId} {
       allow read:   if isOwner(userId) || isAdmin();
       allow create: if isOwner(userId);

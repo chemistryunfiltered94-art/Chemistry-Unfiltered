@@ -5,7 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { Users, BookOpen, FlaskConical, Award } from "lucide-react";
 
 interface SiteStats {
-  users: number;
+  users?: number;
   topics: number;
   formulas: number;
   questions: number;
