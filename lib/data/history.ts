@@ -1456,7 +1456,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Jabir ibn Hayyan",
     nameBn: "জাবির ইবনে হাইয়ান",
     slug: "jabir-ibn-hayyan",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Geber.jpg",
     shortBio:
       "মধ্যযুগীয় ইসলামি স্বর্ণযুগের রসায়নবিদ, যাঁকে ব্যাপকভাবে রসায়নের জনক হিসেবে গণ্য করা হয়।",
     birthYear: 721,
@@ -1481,7 +1481,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Al-Razi (Rhazes)",
     nameBn: "আল-রাজি (রেজেস)",
     slug: "al-razi",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20of%20Rhazes%20%28al-Razi%29%20%28AD%20865%20-%20925%29%20Wellcome%20L0005053%20%28cropped%29.jpg",
     shortBio:
       "ইসলামি স্বর্ণযুগের পলিম্যাথ, যিনি রাসায়নিক পদার্থের প্রথম পদ্ধতিগত শ্রেণিবিন্যাস তৈরি করেন।",
     birthYear: 854,
@@ -1506,7 +1506,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Robert Boyle",
     nameBn: "রবার্ট বয়েল",
     slug: "robert-boyle",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Boyle%20by%20Johann%20Kerseboom.jpg",
     shortBio:
       "আইরিশ বিজ্ঞানী, যিনি রসায়নকে আলকেমি থেকে পৃথক স্বাধীন পরীক্ষামূলক বিজ্ঞান হিসেবে প্রতিষ্ঠা করেন।",
     birthYear: 1627,
@@ -1531,7 +1531,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Joseph Priestley",
     nameBn: "জোসেফ প্রিস্টলি",
     slug: "joseph-priestley",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph%20Priestley.jpeg",
     shortBio:
       "ব্রিটিশ যাজক-বিজ্ঞানী, যিনি অক্সিজেন গ্যাস আবিষ্কার করেন এবং সোডা ওয়াটার উদ্ভাবন করেন।",
     birthYear: 1733,
@@ -1556,7 +1556,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Carl Wilhelm Scheele",
     nameBn: "কার্ল ভিলহেল্ম শীলে",
     slug: "carl-wilhelm-scheele",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Carl%20Wilhelm%20Scheele.jpg",
     shortBio:
       "সুইডিশ ফার্মাসিস্ট-রসায়নবিদ, যিনি স্বতন্ত্রভাবে অক্সিজেন আবিষ্কার করেন ও একাধিক জৈব অ্যাসিড শনাক্ত করেন।",
     birthYear: 1742,
@@ -1581,7 +1581,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Henry Cavendish",
     nameBn: "হেনরি ক্যাভেন্ডিশ",
     slug: "henry-cavendish",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Henry%20Cavendish%2C%20Chemist.%201731-1810.jpg",
     shortBio:
       "অসামাজিক অথচ অতিসূক্ষ্ম পরীক্ষামূলক ব্রিটিশ বিজ্ঞানী, যিনি হাইড্রোজেন আবিষ্কার করেন ও পানির যৌগিক প্রকৃতি প্রমাণ করেন।",
     birthYear: 1731,
@@ -1606,7 +1606,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Joseph Louis Proust",
     nameBn: "জোসেফ লুই প্রুস্ত",
     slug: "joseph-louis-proust",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Proust%20joseph.jpg",
     shortBio:
       "ফরাসি রসায়নবিদ, যিনি নির্দিষ্ট অনুপাত সূত্র প্রতিষ্ঠা করে ডাল্টনের পরমাণু তত্ত্বের পথ প্রশস্ত করেন।",
     birthYear: 1754,
@@ -1631,7 +1631,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Amedeo Avogadro",
     nameBn: "আমেদেও অ্যাভোগেড্রো",
     slug: "amedeo-avogadro",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Avogadro%20Amedeo.jpg",
     shortBio:
       "ইতালীয় বিজ্ঞানী, যাঁর প্রকল্প অণু ও পরমাণুর পার্থক্য স্পষ্ট করে এবং পরবর্তীতে পারমাণবিক ভর নির্ণয়ের ভিত্তি গড়ে।",
     birthYear: 1776,
@@ -1656,7 +1656,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Humphry Davy",
     nameBn: "হামফ্রি ডেভি",
     slug: "humphry-davy",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Sir%20Humphry%20Davy%2C%20Bt%20by%20Sir%20Thomas%20Lawrence.jpg",
     shortBio:
       "ব্রিটিশ রসায়নবিদ, যিনি ইলেকট্রোলাইসিসের মাধ্যমে ছয়টি নতুন মৌল আবিষ্কার করেন ও নিরাপদ খনি-বাতি উদ্ভাবন করেন।",
     birthYear: 1778,
@@ -1681,7 +1681,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Michael Faraday",
     nameBn: "মাইকেল ফ্যারাডে",
     slug: "michael-faraday",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Michael%20Faraday.jpg",
     shortBio:
       "স্ব-শিক্ষিত ব্রিটিশ বিজ্ঞানী, যিনি তড়িৎ-রসায়নের ভিত্তি স্থাপন করেন ও বৈদ্যুতিক চুম্বকীয় আবেশ আবিষ্কার করেন।",
     birthYear: 1791,
@@ -1706,7 +1706,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Friedrich Wöhler",
     nameBn: "ফ্রিডরিখ ভ্যোলার",
     slug: "friedrich-wohler",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Friedrich%20woehler.jpg",
     shortBio:
       "জার্মান রসায়নবিদ, যিনি দুর্ঘটনাক্রমে ইউরিয়া সংশ্লেষণ করে ভাইটালিজম তত্ত্ব ভেঙে দেন।",
     birthYear: 1800,
@@ -1731,7 +1731,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Justus von Liebig",
     nameBn: "ইউস্টুস ফন লিবিগ",
     slug: "justus-von-liebig",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Justus%20von%20Liebig%202.jpg",
     shortBio:
       "জার্মান রসায়নবিদ, যিনি আধুনিক কৃষি রসায়ন ও গবেষণাগার-ভিত্তিক রসায়ন শিক্ষার ভিত্তি স্থাপন করেন।",
     birthYear: 1803,
@@ -1756,7 +1756,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Stanislao Cannizzaro",
     nameBn: "স্তানিস্লাও কানিজ্জারো",
     slug: "stanislao-cannizzaro",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20of%20Stanislao%20Cannizzaro%20-%20DPLA%20-%20f2d50ee879c5d18b58c0868cc83be3e6.jpg",
     shortBio:
       "ইতালীয় রসায়নবিদ, যিনি কার্লসরুয়ে সম্মেলনে অ্যাভোগেড্রোর প্রকল্প পুনঃপ্রতিষ্ঠা করে পারমাণবিক ভরের বিভ্রান্তি দূর করেন।",
     birthYear: 1826,
@@ -1781,7 +1781,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "August Kekulé",
     nameBn: "আউগুস্ট কেকুলে",
     slug: "august-kekule",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/August%20Kekule%20ca1880.jpg",
     shortBio:
       "জার্মান রসায়নবিদ, যিনি কার্বনের চতুর্যোজীতা প্রতিষ্ঠা করেন এবং বেনজিনের বলয় গঠন আবিষ্কার করেন।",
     birthYear: 1829,
@@ -1806,7 +1806,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Alfred Nobel",
     nameBn: "আলফ্রেড নোবেল",
     slug: "alfred-nobel",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/AlfredNobel%20adjusted.jpg",
     shortBio:
       "সুইডিশ রসায়নবিদ ও শিল্পোদ্যোক্তা, ডিনামাইটের আবিষ্কারক এবং নোবেল পুরস্কারের প্রতিষ্ঠাতা।",
     birthYear: 1833,
@@ -1831,7 +1831,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "J.J. Thomson",
     nameBn: "জে. জে. থমসন",
     slug: "jj-thomson",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Sir%20J.J.%20Thomson%20%28LOC%29.jpg",
     shortBio:
       "ব্রিটিশ পদার্থবিজ্ঞানী, যিনি ইলেকট্রন আবিষ্কার করে প্রমাণ করেন পরমাণু অবিভাজ্য নয়।",
     birthYear: 1856,
@@ -1856,7 +1856,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "William Henry Perkin",
     nameBn: "উইলিয়াম হেনরি পার্কিন",
     slug: "william-henry-perkin",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/William%20Henry%20Perkin.jpg",
     shortBio:
       "ব্রিটিশ রসায়নবিদ, যিনি মাত্র ১৮ বছর বয়সে দুর্ঘটনাক্রমে প্রথম সিন্থেটিক রঞ্জক আবিষ্কার করেন।",
     birthYear: 1838,
@@ -1881,7 +1881,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Henry Moseley",
     nameBn: "হেনরি মোজলি",
     slug: "henry-moseley",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Portrait%20of%20Henry%20G.J.%20Moseley%2C%201887-1915%2C%20in%20lab%20holding%20a%20glass%20globe%2C%20from%20Nature%20magazine%20%28cropped%29.jpg",
     shortBio:
       "প্রতিভাবান তরুণ ব্রিটিশ পদার্থবিজ্ঞানী, যিনি পর্যায় সারণির প্রকৃত ভিত্তি (পারমাণবিক সংখ্যা) আবিষ্কার করেন।",
     birthYear: 1887,
@@ -1931,7 +1931,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Lise Meitner",
     nameBn: "লিজে মাইটনার",
     slug: "lise-meitner",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Lise%20Meitner%20%28cropped%29.jpg",
     shortBio:
       "অস্ট্রীয়-সুইডিশ পদার্থবিজ্ঞানী, যিনি নিউক্লিয়ার ফিশনের তাত্ত্বিক ব্যাখ্যা দেন অথচ নোবেল স্বীকৃতি থেকে বঞ্চিত হন।",
     birthYear: 1878,
@@ -1956,7 +1956,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Wallace Carothers",
     nameBn: "ওয়ালেস ক্যারোথার্স",
     slug: "wallace-carothers",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Wallace%20H.%20Carothers%20%28head%29.png",
     shortBio:
       "মার্কিন রসায়নবিদ, যিনি ডুপন্টে কাজ করে নাইলন আবিষ্কার করেন — প্রথম সফল সিন্থেটিক ফাইবার।",
     birthYear: 1896,
@@ -1981,7 +1981,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Glenn T. Seaborg",
     nameBn: "গ্লেন টি. সিবোর্গ",
     slug: "glenn-seaborg",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Glenn%20Seaborg%20-%201964.jpg",
     shortBio:
       "মার্কিন রসায়নবিদ, যিনি একাই বা দলগতভাবে দশটি নতুন ট্রান্স-ইউরেনিয়াম মৌল আবিষ্কার করেন।",
     birthYear: 1912,
@@ -2006,7 +2006,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Rosalind Franklin",
     nameBn: "রোজালিন্ড ফ্র্যাংকলিন",
     slug: "rosalind-franklin",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Rosalind%20Franklin%20%28retouched%29.jpg",
     shortBio:
       "ব্রিটিশ এক্স-রে ক্রিস্টালোগ্রাফার, যাঁর 'ফটো ৫১' ডিএনএ-র দ্বি-হেলিক্স গঠন আবিষ্কারে কেন্দ্রীয় ভূমিকা রাখে।",
     birthYear: 1920,
@@ -2031,7 +2031,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Percy Julian",
     nameBn: "পার্সি জুলিয়ান",
     slug: "percy-julian",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Percy%20Lavon%20Julian%20%281899-1975%29%20portrait.jpg",
     shortBio:
       "মার্কিন রসায়নবিদ, যিনি বর্ণবৈষম্যের মুখোমুখি হয়েও হরমোন ও কর্টিসোনের সাশ্রয়ী সংশ্লেষণ পদ্ধতি উদ্ভাবন করেন।",
     birthYear: 1899,
@@ -2056,7 +2056,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Ida Noddack",
     nameBn: "ইডা নোডাক",
     slug: "ida-noddack",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ida%20Noddack-Tacke%20%28cropped%29.png",
     shortBio:
       "জার্মান রসায়নবিদ, যিনি রেনিয়াম মৌল আবিষ্কার করেন এবং নিউক্লিয়ার ফিশনের একটি প্রাথমিক ইঙ্গিত প্রদান করেন।",
     birthYear: 1896,
@@ -2081,7 +2081,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Muhammad Qudrat-i-Khuda",
     nameBn: "মুহাম্মদ কুদরাত-ই-খুদা",
     slug: "muhammad-qudrat-i-khuda",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Qudrat%20Khuda.jpg",
     shortBio:
       "বাংলাদেশের বিজ্ঞান ইতিহাসের পথিকৃৎ রসায়নবিদ, যিনি BCSIR প্রতিষ্ঠা ও দেশীয় ফলিত রসায়ন গবেষণার ভিত্তি গড়ে তোলেন।",
     birthYear: 1900,
@@ -2106,7 +2106,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Prafulla Chandra Ray",
     nameBn: "আচার্য প্রফুল্লচন্দ্র রায়",
     slug: "prafulla-chandra-ray",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Photograph%20of%20Prafulla%20Chandra%20Ray.jpg",
     shortBio:
       "বাংলার আধুনিক রসায়ন গবেষণার প্রতিষ্ঠাতা, যিনি বেঙ্গল কেমিক্যাল প্রতিষ্ঠা করেন ও 'হিন্দু রসায়নের ইতিহাস' রচনা করেন।",
     birthYear: 1861,
@@ -2131,7 +2131,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Dmitri Mendeleev",
     nameBn: "দিমিত্রি মেন্ডেলিভ",
     slug: "dmitri-mendeleev",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Dmitri%20Mendeleev.jpg",
     shortBio:
       "রুশ রসায়নবিদ, যিনি পর্যায় সারণি তৈরি করে অনাবিষ্কৃত মৌলের সাহসী ভবিষ্যদ্বাণী দেন।",
     birthYear: 1834,
@@ -2156,7 +2156,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Antoine Lavoisier",
     nameBn: "আঁতোয়ান ল্যাভয়সিয়ে",
     slug: "antoine-lavoisier",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Antoine%20Lavoisier%20by%20Jacques-Louis%20David%20%28cropped%29.jpg",
     shortBio:
       "ফরাসি রসায়নবিদ, যাঁকে আধুনিক রসায়নের জনক বলা হয়; অক্সিজেন তত্ত্ব ও ভর সংরক্ষণ সূত্রের প্রতিষ্ঠাতা।",
     birthYear: 1743,
@@ -2181,7 +2181,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "John Dalton",
     nameBn: "জন ডাল্টন",
     slug: "john-dalton",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Dalton%20by%20Charles%20Turner%20%28cropped%29.jpg",
     shortBio:
       "ব্রিটিশ বিজ্ঞানী, যিনি আধুনিক পরমাণু তত্ত্ব প্রতিষ্ঠা করে রসায়নের ভিত্তি নির্মাণ করেন।",
     birthYear: 1766,
@@ -2206,7 +2206,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Jöns Jacob Berzelius",
     nameBn: "ইয়্যন্স জ্যাকব বার্সেলিয়াস",
     slug: "jons-jacob-berzelius",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/J%C3%B6ns%20Jacob%20Berzelius.png",
     shortBio:
       "সুইডিশ রসায়নবিদ, যিনি আধুনিক রাসায়নিক প্রতীক পদ্ধতি প্রবর্তন করেন ও চারটি নতুন মৌল আবিষ্কার করেন।",
     birthYear: 1779,

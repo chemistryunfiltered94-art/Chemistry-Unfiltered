@@ -17,7 +17,7 @@ import {
   Menu, X, Search, FlaskConical,
   HelpCircle, User, LogOut, LayoutDashboard,
   ChevronDown, Atom, FileText, Settings,
-  Bookmark, ClipboardList, Sigma,
+  Bookmark, ClipboardList, Sigma, Info, Boxes,
 } from "lucide-react";
 
 const drawerLinks = [
@@ -27,6 +27,8 @@ const drawerLinks = [
   { href: "/molecules",     label: "আণবিক দর্শক",      icon: Atom },
   { href: "/question-bank", label: "প্রশ্নব্যাংক",     icon: HelpCircle },
   { href: "/reactions",     label: "বিক্রিয়া ডেটাবেস", icon: FlaskConical },
+  { href: "/about",         label: "প্রতিষ্ঠাতা সম্পর্কে", icon: Info },
+  { href: "/other-apps",    label: "অন্যান্য অ্যাপস",   icon: Boxes },
 ];
 
 export default function Navbar() {
