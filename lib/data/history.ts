@@ -1010,7 +1010,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1974,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "/history-photos/paul-flory.jpg",
     motivation:
       "for his fundamental achievements, both theoretical and experimental, in the physical chemistry of the macromolecules",
     motivationBn:
@@ -1110,7 +1110,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1982,
     country: "United Kingdom / Lithuania",
     countryBn: "যুক্তরাজ্য / লিথুয়ানিয়া",
-    photo: "",
+    photo: "/history-photos/aaron-klug.jpg",
     motivation:
       "for his development of crystallographic electron microscopy and his structural elucidation of biologically important nucleic acid-protein complexes",
     motivationBn:
@@ -1298,7 +1298,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2010,
     country: "Japan",
     countryBn: "জাপান",
-    photo: "",
+    photo: "/history-photos/akira-suzuki.jpg",
     motivation:
       "for palladium-catalyzed cross couplings in organic synthesis",
     motivationBn: "জৈব সংশ্লেষণে প্যালাডিয়াম-উৎপ্রেরিত ক্রস-কাপলিং বিক্রিয়ার জন্য",
@@ -1409,7 +1409,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2022,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "/history-photos/k-barry-sharpless.jpg",
     motivation: "for the development of click chemistry and bioorthogonal chemistry",
     motivationBn: "ক্লিক কেমিস্ট্রি ও বায়োঅর্থোগোনাল কেমিস্ট্রি উন্নয়নের জন্য",
     biography:
@@ -1431,7 +1431,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2023,
     country: "United States / France / Tunisia",
     countryBn: "যুক্তরাষ্ট্র / ফ্রান্স / তিউনিসিয়া",
-    photo: "",
+    photo: "/history-photos/moungi-bawendi.jpg",
     motivation: "for the discovery and synthesis of quantum dots",
     motivationBn: "কোয়ান্টাম ডট আবিষ্কার ও সংশ্লেষণের জন্য",
     biography:
@@ -1906,7 +1906,7 @@ export const scientists: Omit<Scientist, "createdAt" | "updatedAt">[] = [
     name: "Gilbert N. Lewis",
     nameBn: "গিলবার্ট এন. লুইস",
     slug: "gilbert-lewis",
-    photo: "",
+    photo: "/history-photos/gilbert-n-lewis.jpg",
     shortBio:
       "মার্কিন রসায়নবিদ, যিনি সহযোজী বন্ধন তত্ত্ব ও লুইস ডট স্ট্রাকচার প্রবর্তন করেন।",
     birthYear: 1875,
