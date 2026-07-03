@@ -3,12 +3,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { Users, BookOpen, FlaskConical, Award } from "lucide-react";
+import { STATIC_FORMULAS } from "@/lib/formulaData";
 
 interface SiteStats {
   users?: number;
-  topics: number;
-  formulas: number;
-  questions: number;
 }
 
 interface Props {
@@ -47,10 +45,10 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 
 export default function StatsSection({ stats }: Props) {
   const statItems = [
-    { value: stats?.users    ?? 10000, label: "সক্রিয় শিক্ষার্থী",  icon: Users,       suffix: "+" },
-    { value: stats?.topics   ?? 500,   label: "শিক্ষামূলক টপিক",     icon: BookOpen,    suffix: "+" },
-    { value: stats?.formulas ?? 200,   label: "রসায়ন ফর্মুলা",       icon: FlaskConical,suffix: "+" },
-    { value: stats?.questions?? 5000,  label: "অনুশীলন প্রশ্ন",      icon: Award,       suffix: "+" },
+    { value: stats?.users ?? 10000,   label: "সক্রিয় শিক্ষার্থী",  icon: Users,       suffix: "+" },
+    { value: 0,                       label: "শিক্ষামূলক টপিক",     icon: BookOpen,    suffix: "+" },
+    { value: STATIC_FORMULAS.length,  label: "রসায়ন ফর্মুলা",       icon: FlaskConical,suffix: "+" },
+    { value: 0,                       label: "অনুশীলন প্রশ্ন",      icon: Award,       suffix: "+" },
   ];
   return (
     <section className="py-16 bg-white dark:bg-slate-900">

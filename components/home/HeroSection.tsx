@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, FlaskConical, Zap, BookOpen } from "lucide-react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import AuthModal from "@/components/shared/AuthModal";
+import { STATIC_FORMULAS } from "@/lib/formulaData";
+import { reactions } from "@/components/reactions/reactionData";
 
 const floatingElements = [
   { symbol: "H₂O",  x: "10%", y: "20%", delay: 0   },
@@ -18,13 +20,7 @@ const floatingElements = [
   { symbol: "HCl",  x: "90%", y: "45%", delay: 1.2 },
 ];
 
-interface HeroStats {
-  topics: number;
-  formulas: number;
-  reactions: number;
-}
-
-export default function HeroSection({ heroStats }: { heroStats?: HeroStats }) {
+export default function HeroSection() {
   const { user }  = useAuth();
   const router    = useRouter();
   const [authModalOpen, setAuthModalOpen] = useState(false);
@@ -127,10 +123,10 @@ export default function HeroSection({ heroStats }: { heroStats?: HeroStats }) {
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
         >
           {[
-            { value: heroStats ? `${heroStats.topics}+`    : "৫০০+",  label: "টপিক"        },
-            { value: heroStats ? `${heroStats.formulas}+`  : "২০০+",  label: "ফর্মুলা"     },
-            { value: heroStats ? `${heroStats.reactions}+` : "১০০+",  label: "বিক্রিয়া"   },
-            { value: "৫টি",                                             label: "ভার্চুয়াল ল্যাব" },
+            { value: "০+",                              label: "টপিক"        },
+            { value: `${STATIC_FORMULAS.length.toLocaleString("bn-BD")}+`, label: "ফর্মুলা"     },
+            { value: `${reactions.length.toLocaleString("bn-BD")}+`,       label: "বিক্রিয়া"   },
+            { value: "১১টি",                             label: "ভার্চুয়াল ল্যাব" },
           ].map((stat, i) => (
             <div key={i} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3">
               <div className="text-2xl font-bold text-white">{stat.value}</div>
