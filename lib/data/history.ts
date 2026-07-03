@@ -1060,7 +1060,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1979,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Brown%2C%20Herbert%20C.%20%281912-2004%29.png",
     motivation:
       "for their development of the use of boron- and phosphorus-containing compounds, respectively, into important reagents in organic synthesis",
     motivationBn:
@@ -1085,7 +1085,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1981,
     country: "United States / Poland",
     countryBn: "যুক্তরাষ্ট্র / পোল্যান্ড",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Roald%20Hoffmann.jpg",
     motivation:
       "for their theories, developed independently, concerning the course of chemical reactions",
     motivationBn:
@@ -1135,7 +1135,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1996,
     country: "United Kingdom",
     countryBn: "যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Nobel%20Laurate%20Sir%20Prof%20Harry%20Kroto.png",
     motivation: "for their discovery of fullerenes",
     motivationBn: "ফুলারিন আবিষ্কারের জন্য",
     biography:
@@ -1158,7 +1158,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 1999,
     country: "Egypt / United States",
     countryBn: "মিশর / যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ahmed%20Zewail.jpg",
     motivation:
       "for his studies of the transition states of chemical reactions using femtosecond spectroscopy",
     motivationBn:
@@ -1183,7 +1183,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2000,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Heeger%2C%20Alan%20J.%20%281936%29.jpg",
     motivation: "for the discovery and development of conductive polymers",
     motivationBn: "পরিবাহী পলিমার আবিষ্কার ও উন্নয়নের জন্য",
     biography:
@@ -1206,7 +1206,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2003,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Peter%20Agre%20%28cropped%29.jpg",
     motivation:
       "for discoveries concerning channels in cell membranes: for the discovery of water channels",
     motivationBn: "কোষ পর্দার চ্যানেল সংক্রান্ত আবিষ্কার: পানি-চ্যানেল আবিষ্কারের জন্য",
@@ -1229,7 +1229,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2004,
     country: "Israel / Hungary",
     countryBn: "ইসরায়েল / হাঙ্গেরি",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Avram%20Hershko.jpg",
     motivation:
       "for the discovery of ubiquitin-mediated protein degradation",
     motivationBn: "ইউবিকুইটিন-নিয়ন্ত্রিত প্রোটিন অবক্ষয় আবিষ্কারের জন্য",
@@ -1252,7 +1252,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2005,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20H.%20Grubbs%20HD2010%20AIC%20Gold%20Medal%202%20%28headshot%29.JPG",
     motivation:
       "for the development of the metathesis method in organic synthesis",
     motivationBn: "জৈব সংশ্লেষণে মেটাথেসিস পদ্ধতি উন্নয়নের জন্য",
@@ -1276,7 +1276,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2009,
     country: "Israel",
     countryBn: "ইসরায়েল",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Ada%20E.%20Yonath.jpg",
     motivation: "for studies of the structure and function of the ribosome",
     motivationBn: "রাইবোজোমের গঠন ও কার্যপ্রণালী গবেষণার জন্য",
     biography:
@@ -1321,7 +1321,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2011,
     country: "Israel",
     countryBn: "ইসরায়েল",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Dan%20Shechtman%20in%201985.jpg",
     motivation: "for the discovery of quasicrystals",
     motivationBn: "কোয়াসিক্রিস্টাল আবিষ্কারের জন্য",
     biography:
@@ -1343,7 +1343,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2018,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/46th%20Annual%20David%20M.%20Mason%20Lectures%20in%20Chemical%20Engineering%20at%20Stanford%20University%20-%20Dr.%20Frances%20Arnold%20-%201.jpg",
     motivation: "for the directed evolution of enzymes",
     motivationBn: "এনজাইমের নির্দেশিত বিবর্তন (directed evolution) পদ্ধতির জন্য",
     biography:
@@ -1365,7 +1365,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2020,
     country: "United States",
     countryBn: "যুক্তরাষ্ট্র",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/Jennifer%20Doudna.jpg",
     motivation: "for the development of a method for genome editing",
     motivationBn: "জিনোম সম্পাদনার (genome editing) একটি পদ্ধতি উন্নয়নের জন্য",
     biography:
@@ -1387,7 +1387,7 @@ export const nobelLaureates: Omit<NobelLaureate, "createdAt" | "updatedAt">[] = 
     year: 2021,
     country: "United States / United Kingdom",
     countryBn: "যুক্তরাষ্ট্র / যুক্তরাজ্য",
-    photo: "",
+    photo: "https://commons.wikimedia.org/wiki/Special:FilePath/David%20MacMillan.jpg",
     motivation: "for the development of asymmetric organocatalysis",
     motivationBn: "অসমমিতিক অর্গানোক্যাটালাইসিস (organocatalysis) উন্নয়নের জন্য",
     biography:
