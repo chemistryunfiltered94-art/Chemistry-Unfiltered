@@ -9,8 +9,8 @@ function toBn(n: number) {
 }
 
 /**
- * লেভেল-প্রগ্রেস বার এখানে টাইট্রেশন ফ্লাস্কের ফিল-লাইনের আদলে —
- * ল্যাব-লগবুক থিমের সাথে সংগতি রেখে, জেনেরিক rounded progress bar না।
+ * MathX রেফারেন্স ডিজাইন: বাম পাশে বড় "Lv N" + টাইটেল + প্রগ্রেস বার,
+ * ডান পাশে আলাদা ফ্লেম/স্ট্রিক কার্ড। দুটো একসাথে একটা flex row-এ বসানো হয়েছে।
  */
 export default function LevelProgressCard({
   levelInfo,
@@ -23,51 +23,50 @@ export default function LevelProgressCard({
   const percent = Math.round(levelInfo.progress * 100);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="bg-slate-800 border border-slate-700 rounded-xl p-5"
-    >
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div>
-          <p className="text-xs text-slate-500 font-mono tracking-wide mb-1">// পরীক্ষণ পর্যায়</p>
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-2xl font-bold text-white">Lv {toBn(levelInfo.level)}</span>
-            <span className="text-primary-300 text-sm font-medium">{title}</span>
+    <div className="flex flex-col sm:flex-row gap-3">
+      {/* স্ট্রিক কার্ড — রেফারেন্সে হিরোর ডানপাশে বসে, মোবাইলে উপরে আনা হলো */}
+      {streak > 0 && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="order-1 sm:order-2 sm:w-36 flex-shrink-0 flex flex-col items-center justify-center gap-1 bg-gradient-to-b from-rose-500/10 to-transparent border border-rose-500/20 rounded-2xl py-5"
+        >
+          <Flame className="w-7 h-7 text-rose-400" />
+          <span className="text-3xl font-extrabold text-rose-400 leading-none">{toBn(streak)}</span>
+          <span className="text-xs text-slate-500">দিন ধারা</span>
+        </motion.div>
+      )}
+
+      {/* লেভেল কার্ড */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="order-2 sm:order-1 flex-1 bg-[#12121a] border border-white/5 rounded-2xl p-5"
+      >
+        <div className="flex items-baseline justify-between flex-wrap gap-2 mb-4">
+          <div className="flex items-baseline gap-2">
+            <span className="text-3xl font-extrabold text-white">Lv {toBn(levelInfo.level)}</span>
+            <span className="text-violet-300 text-base font-medium">{title}</span>
           </div>
+          <span className="text-sm text-slate-500">
+            পরের লেভেলে {toBn(levelInfo.xpToNext)} XP বাকি
+          </span>
         </div>
 
-        {streak > 0 && (
-          <div className="flex flex-col items-center bg-orange-500/10 border border-orange-500/30 rounded-lg px-3 py-2 flex-shrink-0">
-            <Flame className="w-4 h-4 text-orange-400 mb-0.5" />
-            <span className="text-orange-300 font-bold text-sm leading-none">{toBn(streak)}</span>
-            <span className="text-orange-400/70 text-[10px] mt-0.5">দিন ধারা</span>
-          </div>
-        )}
-      </div>
-
-      {/* টাইট্রেশন-বার: ফ্লাস্কের ফিল-লেভেল হিসেবে প্রগ্রেস */}
-      <div className="relative h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-700">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${percent}%` }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="h-full bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"
-        />
-        {/* মিলিলিটার-মার্কের আভাস — প্রতি ২৫% এ একটা টিক */}
-        {[25, 50, 75].map((tick) => (
-          <span
-            key={tick}
-            className="absolute top-0 bottom-0 w-px bg-slate-950/40"
-            style={{ left: `${tick}%` }}
+        <div className="relative h-3 bg-black/40 rounded-full overflow-hidden border border-white/5">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${percent}%` }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="h-full bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-full"
           />
-        ))}
-      </div>
+        </div>
 
-      <div className="flex justify-between mt-2">
-        <span className="text-xs text-slate-500">{toBn(levelInfo.xpInLevel)} XP</span>
-        <span className="text-xs text-slate-500">পরের লেভেলে {toBn(levelInfo.xpToNext)} XP বাকি</span>
-      </div>
-    </motion.div>
+        <div className="flex justify-between mt-2">
+          <span className="text-xs text-slate-500">{toBn(levelInfo.xpInLevel)} XP</span>
+          <span className="text-xs text-slate-500">{toBn(percent)}%</span>
+        </div>
+      </motion.div>
+    </div>
   );
 }

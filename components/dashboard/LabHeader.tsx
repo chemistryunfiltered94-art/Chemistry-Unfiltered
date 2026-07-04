@@ -1,52 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Bookmark, FlaskConical } from "lucide-react";
+import { FlaskConical, Menu } from "lucide-react";
+import Link from "next/link";
 
 function toBn(n: number) {
   return n.toLocaleString("bn-BD");
 }
 
-/** পর্যায় সারণির একটা এলিমেন্ট-বক্সের আদলে ছোট্ট ব্যাজ — সিগনেচার মোটিফ */
-function ElementBadge({
-  symbol,
-  number,
-  label,
-  value,
-  icon: Icon,
-  delay,
-}: {
-  symbol: string;
-  number: string;
-  label: string;
-  value: string;
-  icon: typeof CheckCircle2;
-  delay: number;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay }}
-      className="relative flex items-center gap-3 bg-white/[0.07] backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3 pt-5 min-w-[9.5rem]"
-    >
-      {/* এলিমেন্ট নাম্বার — পর্যায় সারণির বক্সের মতো উপরের-বাম কোণে */}
-      <span className="absolute top-1.5 left-2 text-[10px] font-mono text-primary-200/70 tracking-wide">
-        {number}
-      </span>
-      {/* এলিমেন্ট সিম্বল — উপরের-ডান কোণে, একদম হালকা */}
-      <span className="absolute top-1.5 right-2.5 text-[10px] font-bold text-white/30 font-mono">
-        {symbol}
-      </span>
-      <Icon className="w-4 h-4 text-primary-200 flex-shrink-0" />
-      <div>
-        <div className="text-white font-bold text-lg leading-none">{value}</div>
-        <div className="text-primary-200 text-xs mt-1">{label}</div>
-      </div>
-    </motion.div>
-  );
-}
-
+/**
+ * নতুন UI — MathX রেফারেন্স ডিজাইন অনুসরণ করে:
+ * সলিড ব্র্যান্ড হেডার + নিচে বড় নাম্বার-স্ট্যাট (স্ট্রিক) সহ হিরো।
+ * পুরনো "ল্যাব লগবুক" ভাষাই রাখা হয়েছে, কিন্তু ভিজ্যুয়াল লেআউট বদলানো হয়েছে।
+ */
 export default function LabHeader({
   firstName,
   completedCount,
@@ -57,56 +23,53 @@ export default function LabHeader({
   bookmarkCount: number;
 }) {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-700 to-secondary-600 px-4 py-10">
-      {/* ব্যাকগ্রাউন্ড আলোকচ্ছটা — সরল, নিয়ন্ত্রিত */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+    <div>
+      {/* টপ ন্যাভ */}
+      <header className="bg-black border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center">
+              <FlaskConical className="w-4.5 h-4.5 text-white" />
+            </span>
+            <span className="text-lg font-extrabold tracking-tight text-white">
+              Chemistry<span className="text-violet-400">Unfiltered</span>
+            </span>
+          </Link>
 
-      {/* খুব হালকা ডট-গ্রিড টেক্সচার — গ্রাফ পেপার/ল্যাব নোটবুকের আভাস */}
-      <div
-        className="absolute inset-0 opacity-[0.07] pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, white 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      />
+          <div className="flex items-center gap-3">
+            <Link
+              href="/ai-tutor"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors"
+            >
+              AI টিউটর
+            </Link>
+            <button
+              aria-label="মেনু"
+              className="w-9 h-9 flex items-center justify-center text-slate-300 hover:text-white"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </header>
 
-      <div className="max-w-7xl mx-auto relative">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
-          <p className="text-primary-200 text-xs font-semibold tracking-[0.2em] uppercase mb-2 flex items-center gap-1.5">
-            <FlaskConical className="w-3.5 h-3.5" />
-            ল্যাব লগবুক
-          </p>
-          <h1 className="text-3xl font-bold text-white mb-1">
-            স্বাগতম, {firstName}!
-          </h1>
-          <p className="text-primary-200 text-sm">আজকের পরীক্ষা কী হবে?</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex gap-3 mt-6 flex-wrap"
-        >
-          <ElementBadge
-            symbol="Cp"
-            number="01"
-            label="সম্পন্ন টপিক"
-            value={toBn(completedCount)}
-            icon={CheckCircle2}
-            delay={0.15}
-          />
-          <ElementBadge
-            symbol="Bk"
-            number="02"
-            label="সংরক্ষিত"
-            value={toBn(bookmarkCount)}
-            icon={Bookmark}
-            delay={0.2}
-          />
-        </motion.div>
+      {/* হিরো / প্রগ্রেস স্ট্রিপ */}
+      <div className="bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6">
+          <div className="flex items-start justify-between gap-4">
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+              <p className="text-xs font-mono tracking-widest text-violet-400 mb-2">
+                // পার্সোনাল ড্যাশবোর্ড
+              </p>
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
+                স্বাগতম, {firstName}!
+              </h1>
+              <p className="text-slate-400 mt-2 text-sm">
+                {toBn(completedCount)} টি টপিক সম্পন্ন · {toBn(bookmarkCount)} টি সংরক্ষিত
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

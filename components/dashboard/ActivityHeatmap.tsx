@@ -4,12 +4,12 @@ import { useMemo } from "react";
 
 /** activityLog-এর সর্বোচ্চ count অনুযায়ী ৫টা ধাপে ভাগ করে রঙ ঠিক করে */
 function intensityClass(count: number, max: number): string {
-  if (count === 0) return "bg-slate-800";
+  if (count === 0) return "bg-white/5";
   const ratio = max > 0 ? count / max : 0;
-  if (ratio > 0.75) return "bg-primary-400";
-  if (ratio > 0.5)  return "bg-primary-500";
-  if (ratio > 0.25) return "bg-primary-600/80";
-  return "bg-primary-700/60";
+  if (ratio > 0.75) return "bg-violet-400";
+  if (ratio > 0.5)  return "bg-violet-500";
+  if (ratio > 0.25) return "bg-violet-600/80";
+  return "bg-violet-700/60";
 }
 
 const WEEKDAY_LABELS = ["রবি", "সোম", "মঙ্গল", "বুধ", "বৃহঃ", "শুক্র", "শনি"];
@@ -128,11 +128,11 @@ export default function ActivityHeatmap({
 
       <div className="flex items-center gap-1.5 mt-3 justify-end text-[10px] text-slate-500">
         <span>কম</span>
-        <span className="w-3 h-3 rounded-sm bg-slate-800" />
-        <span className="w-3 h-3 rounded-sm bg-primary-700/60" />
-        <span className="w-3 h-3 rounded-sm bg-primary-600/80" />
-        <span className="w-3 h-3 rounded-sm bg-primary-500" />
-        <span className="w-3 h-3 rounded-sm bg-primary-400" />
+        <span className="w-3 h-3 rounded-sm bg-white/5" />
+        <span className="w-3 h-3 rounded-sm bg-violet-700/60" />
+        <span className="w-3 h-3 rounded-sm bg-violet-600/80" />
+        <span className="w-3 h-3 rounded-sm bg-violet-500" />
+        <span className="w-3 h-3 rounded-sm bg-violet-400" />
         <span>বেশি</span>
       </div>
     </div>

@@ -25,13 +25,13 @@ function Badge({ achievement, unlocked, delay }: { achievement: Achievement; unl
       transition={{ delay }}
       className={`relative flex flex-col items-center text-center gap-2 p-3 rounded-xl border ${
         unlocked
-          ? "bg-gradient-to-b from-primary-500/10 to-transparent border-primary-500/30"
-          : "bg-slate-800/50 border-slate-700 border-dashed"
+          ? "bg-gradient-to-b from-violet-500/10 to-transparent border-violet-500/30"
+          : "bg-[#12121a] border-white/5 border-dashed"
       }`}
     >
       <div
         className={`w-11 h-11 rounded-full flex items-center justify-center ${
-          unlocked ? "bg-gradient-to-br from-primary-500 to-secondary-500" : "bg-slate-700"
+          unlocked ? "bg-gradient-to-br from-violet-500 to-fuchsia-500" : "bg-white/5"
         }`}
       >
         {unlocked ? (
@@ -44,7 +44,7 @@ function Badge({ achievement, unlocked, delay }: { achievement: Achievement; unl
         <p className={`text-xs font-semibold leading-tight ${unlocked ? "text-white" : "text-slate-500"}`}>
           {achievement.titleBn}
         </p>
-        <p className={`text-[10px] mt-0.5 ${unlocked ? "text-primary-300" : "text-slate-600"}`}>
+        <p className={`text-[10px] mt-0.5 ${unlocked ? "text-violet-300" : "text-slate-600"}`}>
           +{toBn(achievement.xpReward)} XP
         </p>
       </div>

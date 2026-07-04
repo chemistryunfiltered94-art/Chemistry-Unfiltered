@@ -3,56 +3,50 @@
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
-const fillMap = {
-  blue:   "bg-blue-500",
-  green:  "bg-green-500",
-  purple: "bg-purple-500",
-  orange: "bg-orange-500",
-} as const;
+type Color = "purple" | "orange" | "red" | "blue" | "green" | "yellow";
 
-const textMap = {
-  blue:   "text-blue-400",
-  green:  "text-green-400",
-  purple: "text-purple-400",
-  orange: "text-orange-400",
-} as const;
+const COLOR_MAP: Record<Color, { bg: string; icon: string; text: string }> = {
+  purple: { bg: "from-violet-500/10 to-violet-500/0",  icon: "text-violet-400",  text: "text-white" },
+  orange: { bg: "from-amber-500/10 to-amber-500/0",    icon: "text-amber-400",   text: "text-amber-400" },
+  red:    { bg: "from-rose-500/10 to-rose-500/0",      icon: "text-rose-400",    text: "text-rose-400" },
+  blue:   { bg: "from-cyan-500/10 to-cyan-500/0",       icon: "text-cyan-400",    text: "text-cyan-400" },
+  green:  { bg: "from-emerald-500/10 to-emerald-500/0", icon: "text-emerald-400", text: "text-emerald-400" },
+  yellow: { bg: "from-amber-500/10 to-amber-500/0",     icon: "text-amber-400",   text: "text-amber-400" },
+};
 
 /**
- * ছোট্ট ভার্টিকাল 'ভায়াল' — উচ্চতা দিয়ে আপেক্ষিক পরিমাণ বোঝায় না (স্ট্যাটগুলো
- * ভিন্ন স্কেলের), বরং কার্ডের নিজস্ব ভিজ্যুয়াল সিগনেচার হিসেবে কাজ করে: প্রতিটা
- * সংখ্যাকে যেন একটা 'নমুনা' মনে হয়, জেনেরিক gradient-square icon-এর বদলে।
+ * MathX রেফারেন্সের কালারড টাইল: হালকা গ্র্যাডিয়েন্ট ব্যাকগ্রাউন্ড,
+ * উপরে আইকন, মাঝে বড় বোল্ড নাম্বার, নিচে ধূসর লেবেল।
  */
 export default function StatVial({
   label,
   value,
   icon: Icon,
-  color,
+  color = "purple",
   delay = 0,
+  unit,
 }: {
   label: string;
   value: string;
   icon: LucideIcon;
-  color: keyof typeof fillMap;
+  color?: Color;
   delay?: number;
+  unit?: string;
 }) {
+  const c = COLOR_MAP[color];
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay }}
-      className="bg-slate-800 border border-slate-700 rounded-xl p-3 flex items-center gap-3 min-w-0"
+      className={`bg-gradient-to-b ${c.bg} border border-white/5 rounded-2xl p-4`}
     >
-      {/* ভায়াল */}
-      <div className="relative w-3 h-9 rounded-full bg-slate-900 border border-slate-700 overflow-hidden flex-shrink-0">
-        <div className={`absolute bottom-0 left-0 right-0 h-2/3 ${fillMap[color]} opacity-70`} />
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-1.5">
-          <Icon className={`w-3.5 h-3.5 ${textMap[color]} flex-shrink-0`} />
-          <div className="text-xl font-bold text-white leading-none">{value}</div>
-        </div>
-        <div className="text-[11px] text-slate-400 mt-1.5 leading-tight break-words">{label}</div>
-      </div>
+      <Icon className={`w-5 h-5 ${c.icon} mb-3`} />
+      <p className={`text-2xl font-extrabold ${c.text} leading-none`}>
+        {value}
+        {unit && <span className="text-sm font-semibold ml-1">{unit}</span>}
+      </p>
+      <p className="text-xs text-slate-500 mt-1.5">{label}</p>
     </motion.div>
   );
 }

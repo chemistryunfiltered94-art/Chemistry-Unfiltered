@@ -1,36 +1,34 @@
 "use client";
 
+import { LucideIcon, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, LucideIcon } from "lucide-react";
+
+type Tone = "violet" | "yellow";
+
+const TONE_MAP: Record<Tone, string> = {
+  violet: "text-violet-400 hover:text-violet-300",
+  yellow: "text-amber-400 hover:text-amber-300",
+};
 
 export default function EmptyState({
   icon: Icon,
   text,
   ctaLabel,
   ctaHref,
-  tone = "primary",
+  tone = "violet",
 }: {
   icon: LucideIcon;
   text: string;
   ctaLabel: string;
   ctaHref: string;
-  tone?: "primary" | "yellow";
+  tone?: Tone;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center py-9 bg-slate-800/50 border border-dashed border-slate-700 rounded-xl text-center">
-      <div className="w-11 h-11 rounded-full border border-slate-700 flex items-center justify-center mb-3">
-        <Icon className="w-5 h-5 text-slate-600" />
-      </div>
-      <p className="text-slate-400 text-sm mb-4 max-w-[16rem]">{text}</p>
-      <Link
-        href={ctaHref}
-        className={
-          tone === "yellow"
-            ? "flex items-center gap-2 px-5 py-2 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded-lg text-sm font-semibold hover:bg-yellow-500/20 transition-colors"
-            : "flex items-center gap-2 px-5 py-2 gradient-bg text-white rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
-        }
-      >
-        {ctaLabel} <ArrowRight className="w-4 h-4" />
+    <div className="bg-[#12121a] border border-white/5 rounded-2xl py-10 px-6 flex flex-col items-center text-center gap-3">
+      <Icon className="w-8 h-8 text-slate-600" />
+      <p className="text-sm text-slate-400 max-w-xs">{text}</p>
+      <Link href={ctaHref} className={`text-sm font-semibold flex items-center gap-1 ${TONE_MAP[tone]}`}>
+        {ctaLabel} <ArrowRight className="w-3.5 h-3.5" />
       </Link>
     </div>
   );
