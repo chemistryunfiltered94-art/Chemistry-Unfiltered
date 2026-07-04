@@ -95,18 +95,6 @@ service cloud.firestore {
                        resource.data.userId == request.auth.uid;
     }
 
-    // ─── User Activity (গ্যামিফিকেশন — ৫২-সপ্তাহ heatmap-এর ডেটা) ──
-    match /userActivity/{activityId} {
-      allow read:   if isAuthenticated() &&
-                       resource.data.userId == request.auth.uid;
-      allow create: if isAuthenticated() &&
-                       request.resource.data.userId == request.auth.uid;
-      allow update: if isAuthenticated() &&
-                       resource.data.userId == request.auth.uid;
-      allow delete: if isAuthenticated() &&
-                       resource.data.userId == request.auth.uid;
-    }
-
     // ─── Bookmarks ──────────────────────────────────────────────
     match /bookmarks/{bookmarkId} {
       allow read:   if isAuthenticated() &&
@@ -143,6 +131,13 @@ service cloud.firestore {
     // ─── Chapters ───────────────────────────────────────────────
     match /chapters/{chapterId} {
       allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // ─── Revision Questions (উচ্চ মাধ্যমিক/অনার্স — Subject → Year → Q&A) ──
+    // Published প্রশ্ন সবার জন্য readable (SSR support-এর জন্য), draft শুধু admin দেখতে পারবে।
+    match /revisionQuestions/{questionId} {
+      allow read:  if resource.data.published == true || isAdmin();
       allow write: if isAdmin();
     }
 

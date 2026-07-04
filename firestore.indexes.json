@@ -161,11 +161,30 @@
       ]
     },
     {
-      "collectionGroup": "userActivity",
+      "collectionGroup": "revisionQuestions",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "userId",  "order": "ASCENDING" },
-        { "fieldPath": "date",    "order": "ASCENDING" }
+        { "fieldPath": "level",     "order": "ASCENDING" },
+        { "fieldPath": "published", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "revisionQuestions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "level",     "order": "ASCENDING" },
+        { "fieldPath": "subject",   "order": "ASCENDING" },
+        { "fieldPath": "published", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "revisionQuestions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "level",     "order": "ASCENDING" },
+        { "fieldPath": "subject",   "order": "ASCENDING" },
+        { "fieldPath": "year",      "order": "ASCENDING" },
+        { "fieldPath": "published", "order": "ASCENDING" }
       ]
     }
   ],

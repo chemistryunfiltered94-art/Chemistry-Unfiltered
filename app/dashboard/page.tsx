@@ -115,8 +115,8 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="w-10 h-10 border-4 border-violet-500/30 border-t-violet-500 rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-slate-900">
+        <div className="w-10 h-10 border-4 border-primary-500/30 border-t-primary-500 rounded-full animate-spin" />
       </div>
     );
   }
@@ -138,7 +138,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-slate-900">
 
       <LabHeader
         firstName={firstName}
@@ -146,24 +146,21 @@ export default function DashboardPage() {
         bookmarkCount={bookmarkCount}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
 
         {/* ── 0. পরীক্ষণ অগ্রগতি (গ্যামিফিকেশন) ── */}
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
           <LevelProgressCard levelInfo={levelInfo} streak={streak} />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
-            <StatVial label="লেভেল"         value={toBn(levelInfo.level)} icon={Zap}          color="purple" delay={0.1} />
-            <StatVial label="মোট XP"        value={toBn(xp)}              icon={AwardIcon}    color="orange" delay={0.15} unit="xp" />
-            <StatVial label="দিন ধারা"      value={toBn(streak)}          icon={CheckCircle2} color="red"    delay={0.18} unit="দিন" />
-            <StatVial label="সম্পন্ন টপিক"  value={toBn(completedCount)}  icon={CheckCircle2} color="blue"   delay={0.2} />
-            <StatVial label="সংরক্ষিত"      value={toBn(bookmarkCount)}   icon={CheckCircle2} color="green"  delay={0.22} />
-            <StatVial label="ল্যাব ব্যাজ"   value={toBn(unlockedAchievements.length)} icon={AwardIcon} color="yellow" delay={0.24} />
+          <div className="grid grid-cols-3 gap-3 mt-3">
+            <StatVial label="লেভেল"        value={toBn(levelInfo.level)} icon={Zap}          color="purple" delay={0.1} />
+            <StatVial label="মোট XP"       value={toBn(xp)}              icon={AwardIcon}    color="orange" delay={0.15} />
+            <StatVial label="সম্পন্ন টপিক" value={toBn(completedCount)}  icon={CheckCircle2} color="green"  delay={0.2} />
           </div>
 
-          <div className="bg-[#12121a] border border-white/5 rounded-2xl p-4 mt-3">
+          <div className="bg-slate-800 border border-slate-700 rounded-xl p-4 mt-3">
             <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-1.5">
-              <CalendarDays className="w-4 h-4 text-violet-400" />
+              <CalendarDays className="w-4 h-4 text-primary-400" />
               অ্যাক্টিভিটি — গত ৫২ সপ্তাহ
             </h3>
             <ActivityHeatmap activityLog={activityLog} />
@@ -181,10 +178,10 @@ export default function DashboardPage() {
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              <CheckCircle2 className="w-5 h-5 text-green-400" />
               সম্পন্ন টপিক
             </h2>
-            <Link href="/learn" className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1">
+            <Link href="/learn" className="text-xs text-primary-400 hover:text-primary-300 flex items-center gap-1">
               সব দেখো <ChevronRight className="w-3 h-3" />
             </Link>
           </div>
@@ -192,7 +189,7 @@ export default function DashboardPage() {
           {activityLoading ? (
             <div className="grid grid-cols-1 gap-3">
               {[1,2,3].map(i => (
-                <div key={i} className="h-14 bg-[#12121a] rounded-xl animate-pulse" />
+                <div key={i} className="h-14 bg-slate-800 rounded-xl animate-pulse" />
               ))}
             </div>
           ) : completedTopics.length > 0 ? (
@@ -223,10 +220,10 @@ export default function DashboardPage() {
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              <Bookmark className="w-5 h-5 text-amber-400" />
+              <Bookmark className="w-5 h-5 text-yellow-400" />
               সংরক্ষিত
             </h2>
-            <Link href="/dashboard/bookmarks" className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1">
+            <Link href="/dashboard/bookmarks" className="text-xs text-primary-400 hover:text-primary-300 flex items-center gap-1">
               সব দেখো <ChevronRight className="w-3 h-3" />
             </Link>
           </div>
@@ -234,7 +231,7 @@ export default function DashboardPage() {
           {activityLoading ? (
             <div className="grid grid-cols-2 gap-3">
               {[1,2,3,4].map(i => (
-                <div key={i} className="h-16 bg-[#12121a] rounded-xl animate-pulse" />
+                <div key={i} className="h-16 bg-slate-800 rounded-xl animate-pulse" />
               ))}
             </div>
           ) : savedItems.length > 0 ? (
@@ -245,10 +242,10 @@ export default function DashboardPage() {
                   initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.06 }}
                 >
                   <Link href={typeHref[item.refType] || "/"}
-                    className="relative flex items-center gap-3 pl-4 pr-3 py-3 bg-[#12121a] border border-white/5 rounded-lg overflow-hidden hover:border-amber-500/40 transition-all group"
+                    className="relative flex items-center gap-3 pl-4 pr-3 py-3 bg-slate-800/80 border border-slate-700 rounded-lg overflow-hidden hover:border-yellow-500/40 transition-all group"
                   >
-                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-amber-500" />
-                    <Star className="w-4 h-4 text-amber-400 flex-shrink-0" />
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500" />
+                    <Star className="w-4 h-4 text-yellow-400 flex-shrink-0" />
                     <div className="min-w-0">
                       <p className="text-xs font-medium text-white truncate">{item.refId}</p>
                       <p className="text-xs text-slate-400">{typeLabel[item.refType]}</p>
@@ -271,7 +268,7 @@ export default function DashboardPage() {
         {/* ── 3. প্ল্যাটফর্মের তথ্য ── */}
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
           <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-            <TrendingUp className="w-5 h-5 text-violet-400" />
+            <TrendingUp className="w-5 h-5 text-primary-400" />
             প্ল্যাটফর্মের তথ্য
           </h2>
           <div className={isAdmin ? "grid grid-cols-2 gap-3" : "grid grid-cols-3 gap-3"}>
@@ -315,7 +312,7 @@ export default function DashboardPage() {
         {/* ── 4. সর্বশেষ অ্যাক্টিভিটি ── */}
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
           <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-violet-400" />
+            <Clock className="w-5 h-5 text-primary-400" />
             সর্বশেষ অ্যাক্টিভিটি
           </h2>
 
@@ -325,15 +322,15 @@ export default function DashboardPage() {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <p className="text-sm font-semibold text-slate-300 flex items-center gap-1.5">
-                  <Layers className="w-4 h-4 text-cyan-400" /> সর্বশেষ টপিক
+                  <Layers className="w-4 h-4 text-blue-400" /> সর্বশেষ টপিক
                 </p>
-                <Link href="/learn" className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1">
+                <Link href="/learn" className="text-xs text-primary-400 hover:text-primary-300 flex items-center gap-1">
                   সব <ChevronRight className="w-3 h-3" />
                 </Link>
               </div>
               {activityLoading ? (
                 <div className="space-y-2">
-                  {[1,2,3].map(i => <div key={i} className="h-14 bg-[#12121a] rounded-xl animate-pulse" />)}
+                  {[1,2,3].map(i => <div key={i} className="h-14 bg-slate-800 rounded-xl animate-pulse" />)}
                 </div>
               ) : (
                 <div className="space-y-2">
@@ -356,15 +353,15 @@ export default function DashboardPage() {
             <div>
               <div className="flex items-center justify-between mb-2">
                 <p className="text-sm font-semibold text-slate-300 flex items-center gap-1.5">
-                  <FileText className="w-4 h-4 text-violet-400" /> সর্বশেষ আর্টিকেল
+                  <FileText className="w-4 h-4 text-purple-400" /> সর্বশেষ আর্টিকেল
                 </p>
-                <Link href="/articles" className="text-xs text-violet-400 hover:text-violet-300 flex items-center gap-1">
+                <Link href="/articles" className="text-xs text-primary-400 hover:text-primary-300 flex items-center gap-1">
                   সব <ChevronRight className="w-3 h-3" />
                 </Link>
               </div>
               {activityLoading ? (
                 <div className="space-y-2">
-                  {[1,2].map(i => <div key={i} className="h-14 bg-[#12121a] rounded-xl animate-pulse" />)}
+                  {[1,2].map(i => <div key={i} className="h-14 bg-slate-800 rounded-xl animate-pulse" />)}
                 </div>
               ) : (
                 <div className="space-y-2">
@@ -389,10 +386,10 @@ export default function DashboardPage() {
         {/* ── 5. দ্রুত অ্যাক্সেস ── */}
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
           <h2 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-            <ChevronRight className="w-5 h-5 text-violet-400" />
+            <ChevronRight className="w-5 h-5 text-primary-400" />
             দ্রুত অ্যাক্সেস
           </h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-3 gap-3">
             {quickLinks.map((link, i) => (
               <ElementLinkCard
                 key={link.href}
