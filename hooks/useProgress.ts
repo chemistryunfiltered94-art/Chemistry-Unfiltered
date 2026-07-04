@@ -9,7 +9,7 @@ import {
   removeBookmark,
   isBookmarked,
 } from "@/lib/firestore";
-import { Progress, Bookmark } from "@/types";
+import { Progress, Bookmark, Achievement } from "@/types";
 
 // ── useProgress — track topic completion ──────────────────────────
 export function useProgress() {
@@ -17,6 +17,7 @@ export function useProgress() {
   const [progress,       setProgress]       = useState<Progress[]>([]);
   const [loading,        setLoading]        = useState(false);
   const [completedCount, setCompletedCount] = useState(0);
+  const [newAchievements, setNewAchievements] = useState<Achievement[]>([]);
 
   useEffect(() => {
     if (!user) { setProgress([]); return; }
@@ -37,16 +38,19 @@ export function useProgress() {
   const markComplete = useCallback(
     async (topicId: string) => {
       if (!user) return false;
-      const ok = await markTopicComplete(user.uid, topicId);
-      if (ok) {
+      const result = await markTopicComplete(user.uid, topicId);
+      if (result.success) {
         setProgress((prev) => {
           const exists = prev.find((p) => p.topicId === topicId);
           if (exists) return prev.map((p) => p.topicId === topicId ? { ...p, completed: true } : p);
           return [...prev, { userId: user.uid, topicId, completed: true, lastVisited: new Date() }];
         });
         setCompletedCount((c) => c + 1);
+        if (result.newAchievements.length > 0) {
+          setNewAchievements(result.newAchievements);
+        }
       }
-      return ok;
+      return result.success;
     },
     [user]
   );
@@ -75,6 +79,8 @@ export function useProgress() {
     markComplete,
     trackVisit,
     getProgressPercentage,
+    newAchievements,       // সর্বশেষ markComplete-এ unlock হওয়া achievement (থাকলে) — UI চাইলে দেখাতে পারে
+    clearNewAchievements: () => setNewAchievements([]),
   };
 }
 

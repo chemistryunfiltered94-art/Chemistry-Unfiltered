@@ -44,6 +44,9 @@ export default function RegisterPage() {
         email: email,
         role: "student",
         createdAt: serverTimestamp(),
+        xp: 0,
+        streak: 0,
+        unlockedAchievements: [],
       });
 
       router.push("/dashboard");

@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useProgress, useBookmarks } from "@/hooks/useProgress";
 import { useCollection } from "@/hooks/useFirestore";
+import { useGamification } from "@/hooks/useGamification";
 import {
   getTopics,
   getArticles,
@@ -21,6 +22,7 @@ import {
   TrendingUp, Clock, Users,
   Atom, Beaker, Calculator, CheckCircle2,
   FileText, Layers, ChevronRight, Star, Microscope,
+  Zap, Award as AwardIcon, CalendarDays,
 } from "lucide-react";
 import { Topic, Article, Progress, Bookmark as BookmarkType } from "@/types";
 
@@ -29,6 +31,9 @@ import RecordRow from "@/components/dashboard/RecordRow";
 import EmptyState from "@/components/dashboard/EmptyState";
 import StatVial from "@/components/dashboard/StatVial";
 import ElementLinkCard from "@/components/dashboard/ElementLinkCard";
+import LevelProgressCard from "@/components/dashboard/LevelProgressCard";
+import ActivityHeatmap from "@/components/dashboard/ActivityHeatmap";
+import GamificationAchievements from "@/components/dashboard/GamificationAchievements";
 
 function toBn(n: number) {
   return n.toLocaleString("bn-BD");
@@ -48,6 +53,7 @@ export default function DashboardPage() {
   const router = useRouter();
   const { completedCount, progress } = useProgress();
   const { count: bookmarkCount, bookmarks } = useBookmarks();
+  const { xp, streak, levelInfo, unlockedAchievements, lockedAchievements, activityLog } = useGamification();
 
   // Platform stats
   // "users" ও "topics" কালেকশনে firestore.rules per-document read গার্ড
@@ -141,6 +147,32 @@ export default function DashboardPage() {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        {/* ── 0. পরীক্ষণ অগ্রগতি (গ্যামিফিকেশন) ── */}
+        <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}>
+          <LevelProgressCard levelInfo={levelInfo} streak={streak} />
+
+          <div className="grid grid-cols-3 gap-3 mt-3">
+            <StatVial label="লেভেল"        value={toBn(levelInfo.level)} icon={Zap}          color="purple" delay={0.1} />
+            <StatVial label="মোট XP"       value={toBn(xp)}              icon={AwardIcon}    color="orange" delay={0.15} />
+            <StatVial label="সম্পন্ন টপিক" value={toBn(completedCount)}  icon={CheckCircle2} color="green"  delay={0.2} />
+          </div>
+
+          <div className="bg-slate-800 border border-slate-700 rounded-xl p-4 mt-3">
+            <h3 className="text-sm font-semibold text-slate-300 mb-3 flex items-center gap-1.5">
+              <CalendarDays className="w-4 h-4 text-primary-400" />
+              অ্যাক্টিভিটি — গত ৫২ সপ্তাহ
+            </h3>
+            <ActivityHeatmap activityLog={activityLog} />
+          </div>
+
+          {(unlockedAchievements.length > 0 || lockedAchievements.length > 0) && (
+            <div className="mt-3">
+              <h3 className="text-sm font-semibold text-slate-300 mb-3">ল্যাব ব্যাজ</h3>
+              <GamificationAchievements unlocked={unlockedAchievements} locked={lockedAchievements} />
+            </div>
+          )}
+        </motion.section>
 
         {/* ── 1. সম্পন্ন টপিক ── */}
         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>

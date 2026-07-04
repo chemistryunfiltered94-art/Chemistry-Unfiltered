@@ -9,6 +9,13 @@ export interface User {
   role: UserRole;
   photoURL?: string;
   createdAt: Date;
+
+  // ── Gamification (সব optional — পুরনো user ডকুমেন্টে নাও থাকতে পারে,
+  //    না থাকলে ০/খালি হিসেবে ধরে নেওয়া হয়) ──
+  xp?: number;                      // মোট সঞ্চিত XP
+  streak?: number;                  // চলতি consecutive-day streak
+  lastActivityDate?: string;        // "YYYY-MM-DD" (user-লোকাল), streak গণনার জন্য
+  unlockedAchievements?: string[];  // Achievement.id[] — lib/gamification.ts দ্রষ্টব্য
 }
 
 export type Level = "beginner" | "intermediate" | "advanced";
@@ -317,4 +324,35 @@ export interface StudyNote {
   published: boolean;
   createdAt: Date;
   updatedAt: Date;
+}
+
+// ─── Gamification ───────────────────────────────────────────────────
+
+/**
+ * userActivity/{uid}_{date} — এক ইউজারের এক দিনের অ্যাক্টিভিটি এন্ট্রি।
+ * ডক আইডি "uid_YYYY-MM-DD" ফরম্যাটে (deterministic, তাই একই দিনে বারবার
+ * ভিজিটে duplicate ডক না হয়ে increment হয়)। ৫২-সপ্তাহ heatmap এখান
+ * থেকেই বানানো হয়।
+ */
+export interface UserActivity {
+  userId: string;
+  date: string;       // "YYYY-MM-DD"
+  count: number;       // ওই দিনে সম্পন্ন-অ্যাকশনের সংখ্যা (heatmap-এর তীব্রতা)
+}
+
+export type AchievementId =
+  | "first-topic"
+  | "five-topics"
+  | "streak-3"
+  | "xp-100"
+  | "streak-14";
+
+export interface Achievement {
+  id: AchievementId;
+  title: string;
+  titleBn: string;
+  description: string;
+  descriptionBn: string;
+  xpReward: number;
+  icon: string; // lucide-react আইকনের নাম (components/dashboard এ ম্যাপ করা হয়)
 }

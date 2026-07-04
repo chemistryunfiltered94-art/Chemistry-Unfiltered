@@ -129,6 +129,9 @@ export default function AuthModal({ isOpen, onClose, defaultTab = "login" }: Pro
         email: regEmail,
         role: "student",
         createdAt: serverTimestamp(),
+        xp: 0,
+        streak: 0,
+        unlockedAchievements: [],
       });
       handleClose();
       router.push("/dashboard");
