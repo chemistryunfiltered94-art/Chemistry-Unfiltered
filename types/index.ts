@@ -9,6 +9,12 @@ export interface User {
   role: UserRole;
   photoURL?: string;
   createdAt: Date;
+  // ── গ্যামিফিকেশন ফিল্ড — নতুন ইউজার তৈরির সময় 0/[]  দিয়ে সেট হয়
+  // (AuthModal.tsx, register/page.tsx); পুরনো একাউন্টে না থাকতে পারে
+  // বলে useGamification.ts-এ সবসময় `user?.xp || 0` প্যাটার্নে পড়া হয় ──
+  xp?: number;
+  streak?: number;
+  unlockedAchievements?: AchievementId[];
 }
 
 export type Level = "beginner" | "intermediate" | "advanced";
@@ -227,6 +233,27 @@ export interface Progress {
   topicId: string;
   completed: boolean;
   lastVisited: Date;
+}
+
+// ─── Gamification: Achievements ────────────────────────────────────
+
+/** lib/gamification.ts-এর ACHIEVEMENTS লিস্টে ব্যবহৃত সবগুলো achievement id */
+export type AchievementId =
+  | "first-topic"
+  | "five-topics"
+  | "streak-3"
+  | "xp-100"
+  | "streak-14";
+
+export interface Achievement {
+  id: AchievementId;
+  title: string;
+  titleBn: string;
+  description: string;
+  descriptionBn: string;
+  xpReward: number;
+  /** lucide-react আইকনের নাম (components/dashboard/GamificationAchievements.tsx-এর ICON_MAP-এর key) */
+  icon: string;
 }
 
 export interface Bookmark {

@@ -19,7 +19,8 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType, RevisionQuestion, RevisionLevel } from "@/types";
+import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType, RevisionQuestion, RevisionLevel, Achievement } from "@/types";
+import { checkNewAchievements, XP_REWARDS } from "./gamification";
 
 // ─── Generic Helpers ───────────────────────────────────────────────
 
@@ -296,7 +297,18 @@ export async function getUserProgress(userId: string): Promise<Progress[]> {
   return getDocuments<Progress>("progress", [where("userId", "==", userId)]);
 }
 
-export async function markTopicComplete(userId: string, topicId: string): Promise<boolean> {
+/**
+ * টপিক সম্পন্ন হিসেবে মার্ক করে, তারপর নতুন কোনো achievement unlock হলো কিনা
+ * চেক করে (lib/gamification.ts-এর checkNewAchievements দিয়ে) এবং হলে
+ * user ডকুমেন্টে xp/unlockedAchievements আপডেট করে। streak এখানে বদলানো
+ * হয় না — সেটা আলাদা "daily visit" লজিকের অংশ (updateLastVisited-এর
+ * caller-এর দায়িত্ব), শুধু completed-topic-count-ভিত্তিক achievement-ই
+ * এখানে ধরা হয়েছে।
+ */
+export async function markTopicComplete(
+  userId: string,
+  topicId: string
+): Promise<{ success: boolean; newAchievements: Achievement[] }> {
   const id = `${userId}_${topicId}`;
   try {
     await setDoc(
@@ -304,10 +316,37 @@ export async function markTopicComplete(userId: string, topicId: string): Promis
       { userId, topicId, completed: true, lastVisited: serverTimestamp() },
       { merge: true }
     );
-    return true;
+
+    const [user, allProgress] = await Promise.all([
+      getUser(userId),
+      getUserProgress(userId),
+    ]);
+
+    if (!user) return { success: true, newAchievements: [] };
+
+    const completedTopicsCount = allProgress.filter((p) => p.completed).length;
+    const alreadyUnlocked = user.unlockedAchievements || [];
+
+    const newAchievements = checkNewAchievements({
+      totalXp: user.xp || 0,
+      streak: user.streak || 0,
+      completedTopicsCount,
+      alreadyUnlocked,
+    });
+
+    const earnedXp = XP_REWARDS.TOPIC_COMPLETE + newAchievements.reduce((sum, a) => sum + a.xpReward, 0);
+
+    if (earnedXp > 0 || newAchievements.length > 0) {
+      await updateUser(userId, {
+        xp: (user.xp || 0) + earnedXp,
+        unlockedAchievements: [...alreadyUnlocked, ...newAchievements.map((a) => a.id)],
+      });
+    }
+
+    return { success: true, newAchievements };
   } catch (error) {
     console.error("Error marking topic complete:", error);
-    return false;
+    return { success: false, newAchievements: [] };
   }
 }
 
@@ -321,6 +360,54 @@ export async function updateLastVisited(userId: string, topicId: string): Promis
     );
   } catch {
     // silent fail
+  }
+}
+
+/**
+ * ব্যবহারকারীর গত `weeks` সপ্তাহের activity heatmap বানায় — user-এর "progress"
+ * ডকুমেন্টগুলো থেকে lastVisited তারিখ অনুযায়ী গণনা করে "YYYY-MM-DD" → count
+ * ম্যাপ রিটার্ন করে (dashboard-এর গ্যামিফিকেশন heatmap-এর জন্য ব্যবহৃত)।
+ *
+ * lastVisited Firestore-এ Timestamp হিসেবে থাকে, plain Date না — তাই
+ * lib/utils.ts-এর formatFirestoreDate-এর মতোই duck-typing দিয়ে `.toDate()`
+ * চেক করা হয়েছে।
+ */
+export async function getUserActivityLog(
+  userId: string,
+  weeks: number = 52
+): Promise<Record<string, number>> {
+  const log: Record<string, number> = {};
+  try {
+    const since = new Date();
+    since.setDate(since.getDate() - weeks * 7);
+
+    const progress = await getDocuments<Progress & { lastVisited: unknown }>("progress", [
+      where("userId", "==", userId),
+    ]);
+
+    for (const entry of progress) {
+      const raw = entry.lastVisited;
+      let date: Date | null = null;
+
+      if (raw && typeof raw === "object" && "toDate" in raw) {
+        date = (raw as { toDate: () => Date }).toDate();
+      } else if (raw instanceof Date) {
+        date = raw;
+      } else if (typeof raw === "string" || typeof raw === "number") {
+        const d = new Date(raw);
+        if (!isNaN(d.getTime())) date = d;
+      }
+
+      if (!date || date < since) continue;
+
+      const key = date.toISOString().slice(0, 10); // "YYYY-MM-DD"
+      log[key] = (log[key] || 0) + 1;
+    }
+
+    return log;
+  } catch (error) {
+    console.error("Error getting user activity log:", error);
+    return log;
   }
 }
 
