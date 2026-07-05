@@ -8,30 +8,34 @@ import { motion } from "framer-motion";
 import { useCollection } from "@/hooks/useFirestore";
 import {
   LayoutDashboard, Users, BookOpen, HelpCircle,
-  Atom, FileText, TrendingUp,
-  Settings, Plus, Eye, Edit, StickyNote, RotateCcw
+  FlaskConical, Atom, FileText, TrendingUp,
+  Settings, Plus, Eye, Edit, StickyNote, Layers, DatabaseZap
 } from "lucide-react";
 
 const toBnNumeral = (n: number) =>
   n.toLocaleString("bn-BD");
 
 const quickActions = [
+  { href: "/admin/seed-content",  label: "কনটেন্ট ইমপোর্ট (Bulk)",    icon: DatabaseZap, color: "from-violet-500 to-purple-600" },
+  { href: "/admin/chapters",      label: "অধ্যায় যোগ (Subject Expansion)", icon: Layers, color: "from-indigo-500 to-blue-600" },
   { href: "/admin/topics/new",    label: "নতুন টপিক যোগ",      icon: BookOpen,  color: "from-green-500 to-emerald-600" },
   { href: "/admin/questions/new", label: "প্রশ্ন যোগ করো",     icon: HelpCircle,color: "from-purple-500 to-violet-600" },
-  { href: "/admin/revision/new",  label: "রিভিশন প্রশ্ন যোগ",  icon: RotateCcw, color: "from-rose-500 to-red-600" },
   { href: "/admin/articles/new",  label: "আর্টিকেল লেখো",      icon: FileText,  color: "from-orange-500 to-amber-600" },
   { href: "/admin/notes/new",     label: "নোট যোগ করো",        icon: StickyNote,color: "from-pink-500 to-fuchsia-600" },
   { href: "/admin/formulas/new",  label: "ফর্মুলা যোগ",        icon: Atom,      color: "from-cyan-500 to-teal-600" },
+  { href: "/admin/reactions/new", label: "বিক্রিয়া যোগ",      icon: FlaskConical,color:"from-rose-500 to-pink-600" },
   { href: "/admin/users",         label: "ব্যবহারকারী দেখো",   icon: Users,     color: "from-blue-500 to-indigo-600" },
 ];
 
 const menuItems = [
-  { href: "/admin/topics",    label: "টপিক ম্যানেজ",    icon: BookOpen },
+  { href: "/admin/seed-content", label: "কনটেন্ট ইমপোর্ট",  icon: DatabaseZap },
+  { href: "/admin/chapters",     label: "অধ্যায় ম্যানেজ",  icon: Layers },
+  { href: "/admin/topics",       label: "টপিক ম্যানেজ",    icon: BookOpen },
   { href: "/admin/questions", label: "প্রশ্ন ম্যানেজ",   icon: HelpCircle },
-  { href: "/admin/revision",  label: "রিভিশন ম্যানেজ",   icon: RotateCcw },
   { href: "/admin/articles",  label: "আর্টিকেল ম্যানেজ", icon: FileText },
   { href: "/admin/notes",     label: "নোট ম্যানেজ",      icon: StickyNote },
   { href: "/admin/formulas",  label: "ফর্মুলা ম্যানেজ",  icon: Atom },
+  { href: "/admin/reactions", label: "বিক্রিয়া ম্যানেজ",icon: FlaskConical },
   { href: "/admin/users",     label: "ব্যবহারকারী",      icon: Users },
   { href: "/admin/settings",  label: "সেটিংস",           icon: Settings },
 ];
@@ -45,13 +49,11 @@ export default function AdminPage() {
   const { data: questionsData } = useCollection<{ id: string }>("questions");
   const { data: articlesData } = useCollection<{ id: string }>("articles");
   const { data: notesData } = useCollection<{ id: string }>("studyNotes");
-  const { data: revisionData } = useCollection<{ id: string }>("revisionQuestions");
 
   const stats = [
     { label: "মোট ব্যবহারকারী", value: toBnNumeral(usersData.length), icon: Users, color: "from-blue-500 to-indigo-600" },
     { label: "মোট টপিক", value: toBnNumeral(topicsData.length), icon: BookOpen, color: "from-green-500 to-emerald-600" },
     { label: "মোট প্রশ্ন", value: toBnNumeral(questionsData.length), icon: HelpCircle, color: "from-purple-500 to-violet-600" },
-    { label: "মোট রিভিশন প্রশ্ন", value: toBnNumeral(revisionData.length), icon: RotateCcw, color: "from-rose-500 to-red-600" },
     { label: "মোট আর্টিকেল", value: toBnNumeral(articlesData.length), icon: FileText, color: "from-orange-500 to-amber-600" },
     { label: "মোট নোট", value: toBnNumeral(notesData.length), icon: StickyNote, color: "from-pink-500 to-fuchsia-600" },
   ];

@@ -10,6 +10,7 @@ export const CATEGORY_NAMES: Record<ChemistryCategory, string> = {
   biochemistry: "জীব রসায়ন",
   "environmental-chemistry": "পরিবেশ রসায়ন",
   "industrial-chemistry": "শিল্প রসায়ন",
+  "advanced-chemistry": "উচ্চতর রসায়ন",
 };
 
 export const CATEGORY_LIST: { id: ChemistryCategory; name: string }[] = (

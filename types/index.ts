@@ -9,12 +9,6 @@ export interface User {
   role: UserRole;
   photoURL?: string;
   createdAt: Date;
-  // ── গ্যামিফিকেশন ফিল্ড — নতুন ইউজার তৈরির সময় 0/[]  দিয়ে সেট হয়
-  // (AuthModal.tsx, register/page.tsx); পুরনো একাউন্টে না থাকতে পারে
-  // বলে useGamification.ts-এ সবসময় `user?.xp || 0` প্যাটার্নে পড়া হয় ──
-  xp?: number;
-  streak?: number;
-  unlockedAchievements?: AchievementId[];
 }
 
 export type Level = "beginner" | "intermediate" | "advanced";
@@ -26,7 +20,8 @@ export type ChemistryCategory =
   | "analytical-chemistry"
   | "biochemistry"
   | "environmental-chemistry"
-  | "industrial-chemistry";
+  | "industrial-chemistry"
+  | "advanced-chemistry";
 
 // ✅ নতুন Chapter interface
 export interface Chapter {
@@ -150,28 +145,12 @@ export interface Reaction {
   equation: string;
   category: string;
   type: string;
-  subType?: string;
   conditions: { temperature?: string; pressure?: string; other?: string };
   catalyst?: string;
   mechanism: string[];
-  intermediates?: string[];
   products: string[];
   applications: string[];
-  industrialUses?: string[];
-  safetyNotes?: string[];
   thermodynamics?: { deltaH: number; unit: string; type: string };
-  nuclearData?: {
-    halfLife?: string;
-    radiation?: string;
-    parentNuclide?: string;
-    daughterNuclide?: string;
-    energyMeV?: number;
-  };
-  biochemData?: {
-    atp?: string;
-    location?: string;
-    enzymes?: string[];
-  };
 }
 
 export interface Element {
@@ -235,120 +214,11 @@ export interface Progress {
   lastVisited: Date;
 }
 
-// ─── Gamification: Achievements ────────────────────────────────────
-
-/** lib/gamification.ts-এর ACHIEVEMENTS লিস্টে ব্যবহৃত সবগুলো achievement id */
-export type AchievementId =
-  | "first-topic"
-  | "five-topics"
-  | "streak-3"
-  | "xp-100"
-  | "streak-14";
-
-export interface Achievement {
-  id: AchievementId;
-  title: string;
-  titleBn: string;
-  description: string;
-  descriptionBn: string;
-  xpReward: number;
-  /** lucide-react আইকনের নাম (components/dashboard/GamificationAchievements.tsx-এর ICON_MAP-এর key) */
-  icon: string;
-}
-
 export interface Bookmark {
   userId: string;
-  refType: "article" | "formula" | "reaction" | "question" | "historyEra" | "nobelLaureate" | "scientist";
+  refType: "article" | "formula" | "reaction" | "question";
   refId: string;
   createdAt: Date;
-}
-
-// ─── History Hub: Timeline / Nobel Laureates / Scientists ────────
-
-/** রসায়নের ইতিহাস টাইমলাইন — একটি যুগ/ঘটনা */
-export interface HistoryEra {
-  id: string;
-  title: string;        // e.g. "Atomic Theory"
-  titleBn: string;       // e.g. "পরমাণু তত্ত্ব"
-  period: string;        // e.g. "1803" বা "৪০০ খ্রিস্টপূর্ব" — display label
-  yearStart: number;     // sort/filter-এর জন্য numeric year (BCE হলে negative)
-  yearEnd?: number;
-  summary: string;       // card-এ ছোট বিবরণ
-  description: string;   // full body (markdown/plain)
-  keyFigures: string[];  // এই যুগের সাথে জড়িত বিজ্ঞানীদের নাম
-  image?: string;
-  tags: string[];
-  published: boolean;
-  order: number;         // টাইমলাইনে ক্রম
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-/** রসায়নে নোবেল বিজয়ী */
-export interface NobelLaureate {
-  id: string;
-  name: string;
-  nameBn: string;
-  slug: string;
-  year: number;                 // নোবেল পাওয়ার সাল
-  country: string;
-  countryBn?: string;
-  photo?: string;
-  motivation: string;           // নোবেল কমিটির ভাষ্যে অবদান (সংক্ষেপ)
-  motivationBn?: string;
-  biography: string;            // full bio
-  keyContributions: string[];
-  sharedWith: string[];         // একই বছরের সহ-বিজয়ী (নাম)
-  birthYear?: number;
-  deathYear?: number;
-  published: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-/** বিখ্যাত রসায়নবিদ/বিজ্ঞানী (নোবেল না পেলেও) */
-export interface Scientist {
-  id: string;
-  name: string;
-  nameBn: string;
-  slug: string;
-  photo?: string;
-  birthYear?: number;
-  deathYear?: number;
-  country: string;
-  countryBn?: string;
-  field: string;                 // e.g. "Organic Chemistry", "Periodic Table"
-  fieldBn?: string;
-  shortBio: string;              // card summary
-  biography: string;             // full body
-  keyContributions: string[];
-  famousFor: string;             // one-line hook, e.g. "পর্যায় সারণির জনক"
-  published: boolean;
-  featured: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// ─── Revision (উচ্চ মাধ্যমিক / অনার্স — Subject → Year → Q&A) ──────
-
-export type RevisionLevel = "hsc" | "honours";
-
-export const REVISION_LEVEL_LABELS: Record<RevisionLevel, string> = {
-  hsc: "উচ্চ মাধ্যমিক",
-  honours: "অনার্স",
-};
-
-export interface RevisionQuestion {
-  id: string;
-  level: RevisionLevel;
-  subject: string;      // যেমন: "জৈব রসায়ন", "পদার্থবিজ্ঞান ১ম পত্র"
-  year: string;         // যেমন: "2023", "2024" — free text (string) রাখা হয়েছে যাতে "2023 (ঢাকা বোর্ড)"-এর মতো লেখা যায়
-  question: string;
-  answer: string;
-  order?: number;
-  published: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 // ─── Study Notes ──────────────────────────────────────────────────

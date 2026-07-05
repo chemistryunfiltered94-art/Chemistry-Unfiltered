@@ -14,13 +14,10 @@ import {
   serverTimestamp,
   DocumentSnapshot,
   QueryConstraint,
-  Query,
-  DocumentData,
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType, RevisionQuestion, RevisionLevel, Achievement } from "@/types";
-import { checkNewAchievements, XP_REWARDS } from "./gamification";
+import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType } from "@/types";
 
 // ─── Generic Helpers ───────────────────────────────────────────────
 
@@ -224,51 +221,6 @@ export async function getStudyNote(slug: string): Promise<StudyNote | null> {
   return notes[0] || null;
 }
 
-// ─── Revision (উচ্চ মাধ্যমিক / অনার্স — Subject → Year → Q&A) ──────
-
-/** নির্দিষ্ট level-এর সব বিষয়ের নাম (ডুপ্লিকেট বাদে), Firestore-এ যা আছে তা থেকেই বের করা হয় —
- *  আলাদা করে "subjects" কালেকশন রাখার দরকার নেই। */
-export async function getRevisionSubjects(level: RevisionLevel): Promise<string[]> {
-  const all = await getDocuments<RevisionQuestion>("revisionQuestions", [
-    where("level", "==", level),
-    where("published", "==", true),
-  ]);
-  return Array.from(new Set(all.map((q) => q.subject))).sort();
-}
-
-/** নির্দিষ্ট level + subject-এর সব সাল (ডুপ্লিকেট বাদে)। */
-export async function getRevisionYears(level: RevisionLevel, subject: string): Promise<string[]> {
-  const all = await getDocuments<RevisionQuestion>("revisionQuestions", [
-    where("level", "==", level),
-    where("subject", "==", subject),
-    where("published", "==", true),
-  ]);
-  return Array.from(new Set(all.map((q) => q.year))).sort().reverse();
-}
-
-/** নির্দিষ্ট level + subject + year-এর সব প্রশ্ন। */
-export async function getRevisionQuestions(
-  level: RevisionLevel,
-  subject: string,
-  year: string
-): Promise<RevisionQuestion[]> {
-  return getDocuments<RevisionQuestion>("revisionQuestions", [
-    where("level", "==", level),
-    where("subject", "==", subject),
-    where("year", "==", year),
-    where("published", "==", true),
-  ]);
-}
-
-export async function getRevisionQuestion(id: string): Promise<RevisionQuestion | null> {
-  return getDocument<RevisionQuestion>("revisionQuestions", id);
-}
-
-/** Admin-only: সব revision প্রশ্ন (draft সহ) — admin listing/manage পেজের জন্য। */
-export async function getAllRevisionQuestions(): Promise<RevisionQuestion[]> {
-  return getDocuments<RevisionQuestion>("revisionQuestions", []);
-}
-
 // ─── Questions / MCQ ───────────────────────────────────────────────
 
 export async function getQuestions(options?: {
@@ -297,18 +249,7 @@ export async function getUserProgress(userId: string): Promise<Progress[]> {
   return getDocuments<Progress>("progress", [where("userId", "==", userId)]);
 }
 
-/**
- * টপিক সম্পন্ন হিসেবে মার্ক করে, তারপর নতুন কোনো achievement unlock হলো কিনা
- * চেক করে (lib/gamification.ts-এর checkNewAchievements দিয়ে) এবং হলে
- * user ডকুমেন্টে xp/unlockedAchievements আপডেট করে। streak এখানে বদলানো
- * হয় না — সেটা আলাদা "daily visit" লজিকের অংশ (updateLastVisited-এর
- * caller-এর দায়িত্ব), শুধু completed-topic-count-ভিত্তিক achievement-ই
- * এখানে ধরা হয়েছে।
- */
-export async function markTopicComplete(
-  userId: string,
-  topicId: string
-): Promise<{ success: boolean; newAchievements: Achievement[] }> {
+export async function markTopicComplete(userId: string, topicId: string): Promise<boolean> {
   const id = `${userId}_${topicId}`;
   try {
     await setDoc(
@@ -316,37 +257,10 @@ export async function markTopicComplete(
       { userId, topicId, completed: true, lastVisited: serverTimestamp() },
       { merge: true }
     );
-
-    const [user, allProgress] = await Promise.all([
-      getUser(userId),
-      getUserProgress(userId),
-    ]);
-
-    if (!user) return { success: true, newAchievements: [] };
-
-    const completedTopicsCount = allProgress.filter((p) => p.completed).length;
-    const alreadyUnlocked = user.unlockedAchievements || [];
-
-    const newAchievements = checkNewAchievements({
-      totalXp: user.xp || 0,
-      streak: user.streak || 0,
-      completedTopicsCount,
-      alreadyUnlocked,
-    });
-
-    const earnedXp = XP_REWARDS.TOPIC_COMPLETE + newAchievements.reduce((sum, a) => sum + a.xpReward, 0);
-
-    if (earnedXp > 0 || newAchievements.length > 0) {
-      await updateUser(userId, {
-        xp: (user.xp || 0) + earnedXp,
-        unlockedAchievements: [...alreadyUnlocked, ...newAchievements.map((a) => a.id)],
-      });
-    }
-
-    return { success: true, newAchievements };
+    return true;
   } catch (error) {
     console.error("Error marking topic complete:", error);
-    return { success: false, newAchievements: [] };
+    return false;
   }
 }
 
@@ -360,54 +274,6 @@ export async function updateLastVisited(userId: string, topicId: string): Promis
     );
   } catch {
     // silent fail
-  }
-}
-
-/**
- * ব্যবহারকারীর গত `weeks` সপ্তাহের activity heatmap বানায় — user-এর "progress"
- * ডকুমেন্টগুলো থেকে lastVisited তারিখ অনুযায়ী গণনা করে "YYYY-MM-DD" → count
- * ম্যাপ রিটার্ন করে (dashboard-এর গ্যামিফিকেশন heatmap-এর জন্য ব্যবহৃত)।
- *
- * lastVisited Firestore-এ Timestamp হিসেবে থাকে, plain Date না — তাই
- * lib/utils.ts-এর formatFirestoreDate-এর মতোই duck-typing দিয়ে `.toDate()`
- * চেক করা হয়েছে।
- */
-export async function getUserActivityLog(
-  userId: string,
-  weeks: number = 52
-): Promise<Record<string, number>> {
-  const log: Record<string, number> = {};
-  try {
-    const since = new Date();
-    since.setDate(since.getDate() - weeks * 7);
-
-    const progress = await getDocuments<Progress & { lastVisited: unknown }>("progress", [
-      where("userId", "==", userId),
-    ]);
-
-    for (const entry of progress) {
-      const raw = entry.lastVisited;
-      let date: Date | null = null;
-
-      if (raw && typeof raw === "object" && "toDate" in raw) {
-        date = (raw as { toDate: () => Date }).toDate();
-      } else if (raw instanceof Date) {
-        date = raw;
-      } else if (typeof raw === "string" || typeof raw === "number") {
-        const d = new Date(raw);
-        if (!isNaN(d.getTime())) date = d;
-      }
-
-      if (!date || date < since) continue;
-
-      const key = date.toISOString().slice(0, 10); // "YYYY-MM-DD"
-      log[key] = (log[key] || 0) + 1;
-    }
-
-    return log;
-  } catch (error) {
-    console.error("Error getting user activity log:", error);
-    return log;
   }
 }
 
@@ -479,28 +345,20 @@ export async function getSiteStats(): Promise<{
   questions: number;
   articles: number;
 }> {
-  // ⚠️ firestore.rules অনুযায়ী /users/{userId} শুধু owner/admin read করতে
-  // পারে — non-admin ইউজারের জন্য getDocs(collection(db,"users")) সবসময়
-  // permission-denied দেবে। আগে এই পুরো ফাংশন Promise.all-এ ছিল, ফলে
-  // users query ফেইল করলে topics/questions/articles-এর ঠিকঠাক গণনাও
-  // catch-এ পড়ে সব ০ হয়ে যেত। এখন প্রতিটা query আলাদাভাবে try/catch
-  // করা হচ্ছে, যাতে একটার ব্যর্থতা বাকিগুলোর সঠিক সংখ্যা নষ্ট না করে।
-  // "users" এর জন্য non-admin ইউজার সবসময় ০ পাবে (rules দিয়ে ইচ্ছাকৃত) —
-  // caller (dashboard) admin না হলে এই ফিল্ডটা UI-তে না দেখানো উচিত।
-  async function safeCount(q: Query<DocumentData>) {
-    try {
-      return (await getDocs(q)).size;
-    } catch {
-      return 0;
-    }
+  try {
+    const [users, topics, questions, articles] = await Promise.all([
+      getDocs(collection(db, "users")),
+      getDocs(query(collection(db, "topics"), where("published", "==", true))),
+      getDocs(collection(db, "questions")),
+      getDocs(query(collection(db, "articles"), where("published", "==", true))),
+    ]);
+    return {
+      users:     users.size,
+      topics:    topics.size,
+      questions: questions.size,
+      articles:  articles.size,
+    };
+  } catch {
+    return { users: 0, topics: 0, questions: 0, articles: 0 };
   }
-
-  const [users, topics, questions, articles] = await Promise.all([
-    safeCount(collection(db, "users")),
-    safeCount(query(collection(db, "topics"), where("published", "==", true))),
-    safeCount(collection(db, "questions")),
-    safeCount(query(collection(db, "articles"), where("published", "==", true))),
-  ]);
-
-  return { users, topics, questions, articles };
 }
