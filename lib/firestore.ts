@@ -42,7 +42,17 @@ export async function getDocuments<T>(
     const snap = await getDocs(q);
     return snap.docs.map((d) => ({ id: d.id, ...d.data() } as T));
   } catch (error) {
-    console.error(`Error getting ${collectionName}:`, error);
+    // সতর্কতা: এই ফাংশন এরর গিলে [] রিটার্ন করে, যাতে UI ভেঙে না পড়ে।
+    // কিন্তু এর মানে হলো — security-rules PERMISSION_DENIED বা মিসিং
+    // composite-index এরর কোনো throw/crash ছাড়াই চুপচাপ খালি রেজাল্ট
+    // হয়ে যায়, আর caller (যেমন getTopic) সেটাকে "ডকুমেন্ট নেই" ভেবে
+    // notFound()-এ পাঠিয়ে দেয় — false 404। তাই এখানে error code/message
+    // পুরোটা লগ করা হচ্ছে, যাতে Vercel logs-এ PERMISSION_DENIED বা
+    // failed-precondition (missing index) স্পষ্ট দেখা যায়।
+    console.error(
+      `[getDocuments] Error querying "${collectionName}" — this may silently produce a false 404 for callers like getTopic():`,
+      error
+    );
     return [];
   }
 }
@@ -133,7 +143,18 @@ export async function getTopics(options?: {
 }
 
 export async function getTopic(slug: string): Promise<Topic | null> {
-  const topics = await getDocuments<Topic>("topics", [where("slug", "==", slug), limit(1)]);
+  // এখানে published==true ফিল্টার আবশ্যক — Firestore security rules
+  // (allow read: if resource.data.published == true || isAdmin()) একটা
+  // list/query-তে resource.data চেক করতে পারে না যদি না কোয়েরিতেই সেই
+  // constraint স্পষ্টভাবে থাকে। ফিল্টার ছাড়া পুরো কোয়েরিটা
+  // unauthenticated ভিজিটরদের জন্য PERMISSION_DENIED দিয়ে reject হয়ে
+  // যায় (getDocuments সেটা silently গিলে [] রিটার্ন করে), ফলে published
+  // টপিকও notFound()-এ গিয়ে 404 দেখায়।
+  const topics = await getDocuments<Topic>("topics", [
+    where("slug", "==", slug),
+    where("published", "==", true),
+    limit(1),
+  ]);
   return topics[0] || null;
 }
 
