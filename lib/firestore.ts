@@ -17,7 +17,8 @@ import {
   increment,
 } from "firebase/firestore";
 import { db } from "./firebase";
-import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType } from "@/types";
+import { Topic, Formula, Reaction, Article, MCQ, Progress, Bookmark, User, Chapter, StudyNote, NoteType, RevisionLevel, RevisionQuestion, Achievement } from "@/types";
+import { updateStreak, checkNewAchievements, todayLocalDate, XP_REWARDS } from "./gamification";
 
 // ─── Generic Helpers ───────────────────────────────────────────────
 
@@ -249,18 +250,104 @@ export async function getUserProgress(userId: string): Promise<Progress[]> {
   return getDocuments<Progress>("progress", [where("userId", "==", userId)]);
 }
 
-export async function markTopicComplete(userId: string, topicId: string): Promise<boolean> {
-  const id = `${userId}_${topicId}`;
+/** ইউজারের progress ডকুমেন্টগুলোর lastVisited থেকে "YYYY-MM-DD" → সেদিন কতগুলো
+ *  টপিক ভিজিট/সম্পন্ন হয়েছে তার count বানায় — dashboard-এর activity heatmap-এর জন্য।
+ *  আলাদা কোনো activityLog কালেকশন নেই, তাই progress-ই একমাত্র সত্যিকারের সোর্স। */
+export async function getUserActivityLog(
+  userId: string,
+  weeks: number = 52
+): Promise<Record<string, number>> {
   try {
+    const progress = await getDocuments<Progress>("progress", [where("userId", "==", userId)]);
+    const cutoff = new Date();
+    cutoff.setHours(0, 0, 0, 0);
+    cutoff.setDate(cutoff.getDate() - weeks * 7);
+
+    const log: Record<string, number> = {};
+    for (const p of progress) {
+      if (!p.lastVisited) continue;
+      // Firestore Timestamp হলে .toDate() লাগবে, ইতিমধ্যে Date/string হলে সরাসরি ব্যবহার করা যাবে।
+      const raw = p.lastVisited as unknown;
+      const date =
+        raw && typeof raw === "object" && "toDate" in (raw as { toDate?: () => Date })
+          ? (raw as { toDate: () => Date }).toDate()
+          : new Date(raw as string | number | Date);
+      if (isNaN(date.getTime()) || date < cutoff) continue;
+      const key = date.toISOString().slice(0, 10);
+      log[key] = (log[key] || 0) + 1;
+    }
+    return log;
+  } catch (error) {
+    console.error("Error getting user activity log:", error);
+    return {};
+  }
+}
+
+/** টপিক সম্পন্ন করা: progress ডকুমেন্ট merge করে, তারপর ইতিমধ্যে completed
+ *  না থাকলে (প্রথমবার সম্পন্ন হলে) XP/streak/achievement হালনাগাদ করে।
+ *  আগে থেকে completed থাকা টপিক আবার মার্ক করলে ডুপ্লিকেট XP পাওয়া উচিত না,
+ *  তাই সেই কেসে গ্যামিফিকেশন অংশ স্কিপ করা হয়। */
+export async function markTopicComplete(
+  userId: string,
+  topicId: string
+): Promise<{ success: boolean; newAchievements: Achievement[] }> {
+  const progressId = `${userId}_${topicId}`;
+  try {
+    const existingSnap = await getDoc(doc(db, "progress", progressId));
+    const alreadyCompleted = existingSnap.exists() && existingSnap.data()?.completed === true;
+
     await setDoc(
-      doc(db, "progress", id),
+      doc(db, "progress", progressId),
       { userId, topicId, completed: true, lastVisited: serverTimestamp() },
       { merge: true }
     );
-    return true;
+
+    if (alreadyCompleted) {
+      return { success: true, newAchievements: [] };
+    }
+
+    // ── গ্যামিফিকেশন: XP + streak + achievement (শুধু নতুন completion-এ) ──
+    const userSnap = await getDoc(doc(db, "users", userId));
+    const userData = (userSnap.exists() ? userSnap.data() : {}) as Partial<User>;
+
+    const { streak, isNewDay } = updateStreak(userData.streak, userData.lastActivityDate);
+    const xpGain = XP_REWARDS.TOPIC_COMPLETE + (isNewDay ? XP_REWARDS.DAILY_FIRST_VISIT : 0);
+    const newXp = (userData.xp || 0) + xpGain;
+
+    const allProgress = await getUserProgress(userId);
+    // এইমাত্র merge করা ডকুমেন্টটা getUserProgress-এর snapshot-এ নাও থাকতে পারে
+    // (read-after-write consistency এর কারণে), তাই এই টপিকটাও গণনায় ধরে নিশ্চিত করি।
+    const completedTopicIds = new Set(
+      allProgress.filter((p) => p.completed).map((p) => p.topicId)
+    );
+    completedTopicIds.add(topicId);
+
+    const alreadyUnlocked = userData.unlockedAchievements || [];
+    const newAchievements = checkNewAchievements({
+      totalXp: newXp,
+      streak,
+      completedTopicsCount: completedTopicIds.size,
+      alreadyUnlocked,
+    });
+
+    await setDoc(
+      doc(db, "users", userId),
+      {
+        xp: newXp,
+        streak,
+        lastActivityDate: todayLocalDate(),
+        unlockedAchievements: [
+          ...alreadyUnlocked,
+          ...newAchievements.map((a) => a.id),
+        ],
+      },
+      { merge: true }
+    );
+
+    return { success: true, newAchievements };
   } catch (error) {
     console.error("Error marking topic complete:", error);
-    return false;
+    return { success: false, newAchievements: [] };
   }
 }
 
@@ -321,6 +408,47 @@ export async function isBookmarked(
   const id = `${userId}_${refType}_${refId}`;
   const snap = await getDoc(doc(db, "bookmarks", id));
   return snap.exists();
+}
+
+// ─── Revision (Board Question Bank) ────────────────────────────────
+
+/** এই level-এ প্রকাশিত প্রশ্ন থেকে ডুপ্লিকেট-মুক্ত বিষয়ের তালিকা, বর্ণমালা অনুযায়ী সাজানো। */
+export async function getRevisionSubjects(level: RevisionLevel): Promise<string[]> {
+  const questions = await getDocuments<RevisionQuestion>("revisionQuestions", [
+    where("level", "==", level),
+    where("published", "==", true),
+  ]);
+  return Array.from(new Set(questions.map((q) => q.subject))).sort();
+}
+
+/** এই level + subject-এ প্রকাশিত প্রশ্ন থেকে ডুপ্লিকেট-মুক্ত সালের তালিকা, নতুন থেকে পুরনো। */
+export async function getRevisionYears(level: RevisionLevel, subject: string): Promise<string[]> {
+  const questions = await getDocuments<RevisionQuestion>("revisionQuestions", [
+    where("level", "==", level),
+    where("subject", "==", subject),
+    where("published", "==", true),
+  ]);
+  return Array.from(new Set(questions.map((q) => q.year))).sort().reverse();
+}
+
+/** এই level + subject + year-এর সব প্রকাশিত প্রশ্ন। */
+export async function getRevisionQuestions(
+  level: RevisionLevel,
+  subject: string,
+  year: string
+): Promise<RevisionQuestion[]> {
+  return getDocuments<RevisionQuestion>("revisionQuestions", [
+    where("level", "==", level),
+    where("subject", "==", subject),
+    where("year", "==", year),
+    where("published", "==", true),
+  ]);
+}
+
+/** একটা নির্দিষ্ট রিভিশন প্রশ্ন id দিয়ে — published/draft নির্বিশেষে (caller published চেক করে,
+ *  যেমন admin preview-তে draft দেখানোর দরকার হতে পারে)। */
+export async function getRevisionQuestion(id: string): Promise<RevisionQuestion | null> {
+  return getDocument<RevisionQuestion>("revisionQuestions", id);
 }
 
 // ─── Users ─────────────────────────────────────────────────────────

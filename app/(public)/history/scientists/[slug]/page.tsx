@@ -118,7 +118,7 @@ export default async function ScientistDetailPage({ params }: Props) {
                 মূল অবদান
               </h2>
               <ul className="space-y-2.5">
-                {scientist.keyContributions.map((c, i) => (
+                {scientist.keyContributions.map((c: string, i: number) => (
                   <li key={i} className="flex gap-3 text-sm text-slate-300">
                     <span className="flex-shrink-0 w-5 h-5 rounded-full bg-purple-900/40 text-purple-400 text-xs font-bold flex items-center justify-center mt-0.5">
                       {i + 1}

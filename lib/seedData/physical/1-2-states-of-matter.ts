@@ -423,8 +423,8 @@ const chapter12: SeedChapter = {
         notes: [
           "কৈশিকতায় পানি (hydrophilic) নলের ভেতর উঁচুতে উঠে (concave meniscus) এবং পারদ (hydrophobic) নিচে নামে (convex meniscus)।",
         ],
-        moleculeId: "water",
       },
+      moleculeId: "water",
       mcqs: [
         { question: "পৃষ্ঠটানের কারণ কী?", options: ["পৃষ্ঠের অণুগুলোর অসম আকর্ষণ", "তাপমাত্রার বৃদ্ধি", "চাপের পরিবর্তন", "আয়নিক বন্ধন"], correctAnswer: 0, explanation: "পৃষ্ঠের অণু শুধু নিচে ও পাশ থেকে আকর্ষণ পায়, উপর থেকে নয় — এই অসম আকর্ষণই পৃষ্ঠটানের কারণ।", difficulty: "easy" },
         { question: "তাপমাত্রা বাড়লে পৃষ্ঠটানের কী পরিবর্তন হয়?", options: ["বাড়ে", "কমে", "একই থাকে", "শূন্য হয়"], correctAnswer: 1, explanation: "তাপমাত্রা বাড়লে আন্তঃআণবিক আকর্ষণ কমে, তাই পৃষ্ঠটান কমে।", difficulty: "easy" },

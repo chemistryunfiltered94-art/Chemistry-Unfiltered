@@ -9,6 +9,12 @@ export interface User {
   role: UserRole;
   photoURL?: string;
   createdAt: Date;
+  // ── Gamification (নতুন/পুরনো একাউন্টে না থাকতে পারে, তাই সব ঐচ্ছিক —
+  //    useGamification.ts এই ফিল্ডগুলো না থাকলে ০/খালি ধরে নেয়) ──
+  xp?: number;
+  streak?: number;
+  lastActivityDate?: string;         // "YYYY-MM-DD", todayLocalDate() ফরম্যাট
+  unlockedAchievements?: AchievementId[];
 }
 
 export type Level = "beginner" | "intermediate" | "advanced";
@@ -144,13 +150,31 @@ export interface Reaction {
   nameBn: string;
   equation: string;
   category: string;
+  subType?: string;
   type: string;
   conditions: { temperature?: string; pressure?: string; other?: string };
   catalyst?: string;
   mechanism: string[];
+  intermediates?: string[];
   products: string[];
   applications: string[];
+  industrialUses?: string[];
+  safetyNotes?: string[];
   thermodynamics?: { deltaH: number; unit: string; type: string };
+  // শুধু category === "nuclear" বিক্রিয়ায় থাকে
+  nuclearData?: {
+    halfLife: string;
+    radiation: string;
+    parentNuclide: string;
+    daughterNuclide: string;
+    energyMeV: number;
+  };
+  // শুধু category === "biochemical" বিক্রিয়ায় থাকে
+  biochemData?: {
+    atp: string;
+    location: string;
+    enzymes: string[];
+  };
 }
 
 export interface Element {
@@ -201,10 +225,86 @@ export interface Article {
   updatedAt: Date;
 }
 
+// ─── History (ইতিহাস section: static timeline / Nobel laureates / scientists) ──
+
+export interface HistoryEra {
+  id: string;
+  title: string;
+  titleBn: string;
+  period: string;
+  yearStart: number;
+  yearEnd?: number;
+  summary: string;
+  description: string;
+  keyFigures: string[];
+  tags: string[];
+  published: boolean;
+  order: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface NobelLaureate {
+  id: string;
+  slug: string;
+  name: string;
+  nameBn: string;
+  year: number;
+  birthYear?: number;
+  deathYear?: number;
+  country: string;
+  countryBn: string;
+  photo?: string;
+  motivation: string;
+  motivationBn: string;
+  biography: string;
+  keyContributions: string[];
+  sharedWith?: string[];
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface Scientist {
+  id: string;
+  slug: string;
+  name: string;
+  nameBn: string;
+  birthYear?: number;
+  deathYear?: number;
+  country: string;
+  countryBn: string;
+  photo?: string;
+  field: string;
+  fieldBn?: string;
+  famousFor: string;
+  shortBio: string;
+  biography: string;
+  keyContributions: string[];
+  featured: boolean;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface Example {
   question: string;
   solution: string;
   steps: string[];
+}
+
+// ─── Gamification ──────────────────────────────────────────────────
+
+export type AchievementId = "first-topic" | "five-topics" | "streak-3" | "xp-100" | "streak-14";
+
+export interface Achievement {
+  id: AchievementId;
+  title: string;
+  titleBn: string;
+  description: string;
+  descriptionBn: string;
+  xpReward: number;
+  icon: string; // lucide-react আইকনের নাম, GamificationAchievements.tsx-এর ICON_MAP-এ resolve হয়
 }
 
 export interface Progress {
@@ -219,6 +319,27 @@ export interface Bookmark {
   refType: "article" | "formula" | "reaction" | "question";
   refId: string;
   createdAt: Date;
+}
+
+// ─── Revision (Board Question Bank) ───────────────────────────────
+
+export type RevisionLevel = "hsc" | "honours";
+
+export const REVISION_LEVEL_LABELS: Record<RevisionLevel, string> = {
+  hsc: "HSC",
+  honours: "অনার্স",
+};
+
+export interface RevisionQuestion {
+  id: string;
+  level: RevisionLevel;
+  subject: string;
+  year: string;
+  question: string;
+  answer: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 // ─── Study Notes ──────────────────────────────────────────────────

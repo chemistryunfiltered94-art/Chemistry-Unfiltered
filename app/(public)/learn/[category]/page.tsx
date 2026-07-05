@@ -16,6 +16,7 @@ const categoryMeta: Record<ChemistryCategory, { name: string; desc: string; colo
   biochemistry:             { name: "জীব রসায়ন",       desc: "প্রোটিন, কার্বোহাইড্রেট, লিপিড, নিউক্লিক অ্যাসিড এবং বিপাক ক্রিয়ার রসায়ন।",                    color: "from-pink-500 to-rose-600",     emoji: "🧬" },
   "environmental-chemistry":{ name: "পরিবেশ রসায়ন",    desc: "বায়ু দূষণ, জল রসায়ন, গ্রিন হাউস গ্যাস এবং পরিবেশ বিজ্ঞান।",                                     color: "from-teal-500 to-green-600",    emoji: "🌍" },
   "industrial-chemistry":   { name: "শিল্প রসায়ন",     desc: "হেবার পদ্ধতি, সংস্পর্শ পদ্ধতি, সার উৎপাদন, তেল পরিশোধন এবং শিল্প প্রক্রিয়া।",                   color: "from-slate-400 to-slate-600",   emoji: "🏭" },
+  "advanced-chemistry":     { name: "উচ্চতর রসায়ন",    desc: "ন্যানোকেমিস্ট্রি, মেডিসিনাল ও ম্যাটেরিয়ালস কেমিস্ট্রি, কম্পিউটেশনাল ও অ্যাস্ট্রোকেমিস্ট্রি এবং ফরেনসিক কেমিস্ট্রি।", color: "from-cyan-500 to-sky-600",      emoji: "🧪" },
 };
 
 interface Props { params: Promise<{ category: string }> }

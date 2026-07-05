@@ -96,7 +96,7 @@ export default async function NobelLaureateDetailPage({ params }: Props) {
                 </p>
               </div>
 
-              {laureate.sharedWith?.length > 0 && (
+              {laureate.sharedWith && laureate.sharedWith.length > 0 && (
                 <p className="text-xs text-slate-500 mt-3">
                   <span className="text-slate-400 font-medium">সহ-বিজয়ী: </span>
                   {laureate.sharedWith.join(", ")}
@@ -122,7 +122,7 @@ export default async function NobelLaureateDetailPage({ params }: Props) {
                 মূল অবদান
               </h2>
               <ul className="space-y-2.5">
-                {laureate.keyContributions.map((c, i) => (
+                {laureate.keyContributions.map((c: string, i: number) => (
                   <li key={i} className="flex gap-3 text-sm text-slate-300">
                     <span className="flex-shrink-0 w-5 h-5 rounded-full bg-yellow-900/40 text-yellow-400 text-xs font-bold flex items-center justify-center mt-0.5">
                       {i + 1}
