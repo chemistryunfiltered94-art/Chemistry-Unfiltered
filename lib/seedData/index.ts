@@ -18,10 +18,21 @@ import chapter17  from "./physical/1-7-chemical-kinetics";
 import chapter18  from "./physical/1-8-surface-chemistry";
 import chapter19  from "./physical/1-9-quantum-chemistry";
 import chapter110 from "./physical/1-10-nuclear-chemistry";
+import chapter21  from "./organic/2-1-basic-organic-chemistry";
+import chapter22  from "./organic/2-2-hydrocarbons";
+import chapter23  from "./organic/2-3-halo-compounds";
+import chapter24  from "./organic/2-4-alcohols-phenols-ethers";
+import chapter25  from "./organic/2-5-aldehydes-ketones";
+import chapter26  from "./organic/2-6-carboxylic-acids";
+import chapter27  from "./organic/2-7-amines";
+import chapter28  from "./organic/2-8-biomolecules";
+import chapter29  from "./organic/2-9-polymers";
+import chapter210 from "./organic/2-10-reaction-mechanisms";
+import chapter211 from "./organic/2-11-named-reactions";
 
 // ═══════════════════════════════════════════════════════════════
 // Phase 1 সম্পন্ন — ভৌত রসায়ন (১.১ – ১.১০)  ✅
-// Phase 2 পরবর্তী — জৈব রসায়ন (২.১ – ২.১১)
+// Phase 2 সম্পন্ন — জৈব রসায়ন (২.১ – ২.১১)  ✅
 // ═══════════════════════════════════════════════════════════════
 
 export const SEED_PACKAGES: SeedChapter[] = [
@@ -35,4 +46,15 @@ export const SEED_PACKAGES: SeedChapter[] = [
   chapter18,   // ১.৮  পৃষ্ঠ রসায়ন
   chapter19,   // ১.৯  কোয়ান্টাম রসায়ন
   chapter110,  // ১.১০ নিউক্লিয় রসায়ন
+  chapter21,   // ২.১  জৈব রসায়নের মৌলিক ধারণা
+  chapter22,   // ২.২  হাইড্রোকার্বন
+  chapter23,   // ২.৩  হ্যালো যৌগ
+  chapter24,   // ২.৪  অ্যালকোহল, ফেনল ও ইথার
+  chapter25,   // ২.৫  অ্যালডিহাইড ও কিটোন
+  chapter26,   // ২.৬  কার্বক্সিলিক অ্যাসিড
+  chapter27,   // ২.৭  অ্যামিন
+  chapter28,   // ২.৮  জীবঅণু
+  chapter29,   // ২.৯  পলিমার
+  chapter210,  // ২.১০ জৈব বিক্রিয়া প্রক্রিয়া
+  chapter211,  // ২.১১ নামাঙ্কিত বিক্রিয়াসমূহ
 ];
