@@ -18,7 +18,6 @@ import chapter17  from "./physical/1-7-chemical-kinetics";
 import chapter18  from "./physical/1-8-surface-chemistry";
 import chapter19  from "./physical/1-9-quantum-chemistry";
 import chapter110 from "./physical/1-10-nuclear-chemistry";
-import chapter21  from "./organic/2-1-basic-organic-chemistry";
 import chapter22  from "./organic/2-2-hydrocarbons";
 import chapter23  from "./organic/2-3-halo-compounds";
 import chapter24  from "./organic/2-4-alcohols-phenols-ethers";
