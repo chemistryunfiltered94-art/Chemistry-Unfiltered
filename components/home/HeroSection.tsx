@@ -2,12 +2,10 @@
 
 // components/home/HeroSection.tsx
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { ArrowRight, FlaskConical, Zap, BookOpen } from "lucide-react";
 import { useAuth } from "@/components/shared/AuthProvider";
-import AuthModal from "@/components/shared/AuthModal";
 import { STATIC_FORMULAS } from "@/lib/formulaData";
 import { reactions } from "@/components/reactions/reactionData";
 
@@ -23,13 +21,12 @@ const floatingElements = [
 export default function HeroSection() {
   const { user }  = useAuth();
   const router    = useRouter();
-  const [authModalOpen, setAuthModalOpen] = useState(false);
 
   const handleStartLearning = () => {
     if (user) {
       router.push("/dashboard");
     } else {
-      setAuthModalOpen(true);
+      router.push("/login");
     }
   };
 
@@ -147,12 +144,6 @@ export default function HeroSection() {
           <div className="w-1.5 h-3 bg-white/50 rounded-full" />
         </div>
       </motion.div>
-
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-        defaultTab="login"
-      />
     </section>
   );
 }
