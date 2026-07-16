@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, BookOpen, ChevronRight, FolderOpen } from "lucide-react";
-import { getChapters, getTopics } from "@/lib/firestore";
+import { getContentChapters } from "@/lib/seedContent";
 import { ChemistryCategory } from "@/types";
 
 const categoryMeta: Record<ChemistryCategory, { name: string; desc: string; color: string; emoji: string }> = {
@@ -33,17 +33,9 @@ export default async function CategoryPage({ params }: Props) {
   const meta = categoryMeta[category as ChemistryCategory];
   if (!meta) notFound();
 
-  // অধ্যায় ও টপিক একসাথে load
-  const [chapters, allTopics] = await Promise.all([
-    getChapters(category),
-    getTopics({ categoryId: category }),
-  ]);
-
-  // প্রতিটি অধ্যায়ে কতটি টপিক আছে
-  const topicCountByChapter: Record<string, number> = {};
-  for (const t of allTopics) {
-    topicCountByChapter[t.chapterId] = (topicCountByChapter[t.chapterId] || 0) + 1;
-  }
+  // অধ্যায় ও প্রতিটি অধ্যায়ের টপিক-সংখ্যা — সরাসরি seed content থেকে (Firestore নয়)
+  const chapters = getContentChapters(category as ChemistryCategory);
+  const totalTopics = chapters.reduce((sum, c) => sum + c.topicCount, 0);
 
   return (
     <div className="min-h-screen bg-slate-900 px-4 py-6">
@@ -64,7 +56,7 @@ export default async function CategoryPage({ params }: Props) {
           <p className="text-white/75 text-sm leading-relaxed">{meta.desc}</p>
           <div className="mt-3 flex items-center gap-1.5 text-xs text-white/60">
             <BookOpen className="w-3.5 h-3.5" />
-            {chapters.length}টি অধ্যায় • {allTopics.length}টি টপিক
+            {chapters.length}টি অধ্যায় • {totalTopics}টি টপিক
           </div>
         </div>
 
@@ -80,7 +72,7 @@ export default async function CategoryPage({ params }: Props) {
         ) : (
           <div className="space-y-3">
             {chapters.map((chapter, i) => {
-              const count = topicCountByChapter[chapter.id] || 0;
+              const count = chapter.topicCount;
               return (
                 <Link
                   key={chapter.id}

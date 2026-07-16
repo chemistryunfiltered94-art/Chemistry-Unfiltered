@@ -5,8 +5,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, ArrowRight, BookOpen } from "lucide-react";
-import { getChapter, getTopics } from "@/lib/firestore";
-import { ChemistryCategory } from "@/types";
+import { getContentChapter, getChapterTopics } from "@/lib/seedContent";
 
 const categoryMeta: Record<string, { name: string; color: string }> = {
   "physical-chemistry":     { name: "ভৌত রসায়ন",       color: "from-blue-500 to-indigo-600"   },
@@ -22,7 +21,7 @@ interface Props { params: Promise<{ category: string; chapterId: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { chapterId } = await params;
-  const chapter = await getChapter(chapterId);
+  const chapter = getContentChapter(chapterId);
   if (!chapter) return { title: "Not Found" };
   return { title: `${chapter.title} — টপিকসমূহ` };
 }
@@ -33,10 +32,10 @@ export default async function ChapterTopicsPage({ params }: Props) {
   const catMeta = categoryMeta[category];
   if (!catMeta) notFound();
 
-  const chapter = await getChapter(chapterId);
+  const chapter = getContentChapter(chapterId);
   if (!chapter || chapter.categoryId !== category) notFound();
 
-  const topics = await getTopics({ chapterId });
+  const topics = getChapterTopics(chapterId);
 
   return (
     <div className="min-h-screen bg-slate-900 px-4 py-6">
@@ -70,7 +69,7 @@ export default async function ChapterTopicsPage({ params }: Props) {
           <div className="space-y-3">
             {topics.map((topic, i) => (
               <Link
-                key={topic.id}
+                key={topic.slug}
                 href={`/learn/${category}/topic/${topic.slug}`}
                 className="flex items-center gap-4 p-4 bg-slate-800 border border-slate-700 rounded-2xl hover:border-slate-500 hover:-translate-y-0.5 transition-all group"
               >
