@@ -4,7 +4,7 @@
 
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { ArrowRight, FlaskConical, Zap, BookOpen } from "lucide-react";
+import { ArrowRight, FlaskConical, BookOpen } from "lucide-react";
 import { useAuth } from "@/components/shared/AuthProvider";
 import { STATIC_FORMULAS } from "@/lib/formulaData";
 import { reactions } from "@/components/reactions/reactionData";
@@ -62,16 +62,6 @@ export default function HeroSection() {
       ))}
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 bg-primary-500/20 border border-primary-500/30 text-primary-400 rounded-full px-4 py-2 text-sm font-medium mb-8"
-        >
-          <Zap className="w-4 h-4" />
-          বাংলাদেশের #১ Chemistry Learning Platform
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -85,17 +75,6 @@ export default function HeroSection() {
             এবং মজার সাথে
           </span>
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-lg sm:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed"
-        >
-          Interactive Periodic Table, Formula Library, Virtual Lab, Calculator, Question Bank —
-          SSC, HSC, Admission থেকে BCS পর্যন্ত সব প্রস্তুতি{" "}
-          <span className="text-white font-medium">এক জায়গায়</span>
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

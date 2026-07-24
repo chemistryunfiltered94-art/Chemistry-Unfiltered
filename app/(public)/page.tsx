@@ -1,5 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import StatsSection from "@/components/home/StatsSection";
+import SiteSummarySection from "@/components/home/SiteSummarySection";
+import FinalCTASection from "@/components/home/FinalCTASection";
 import AuthRedirect from "@/components/home/AuthRedirect";
 import { getSiteStats } from "@/lib/firestore";
 
@@ -18,6 +20,8 @@ export default async function HomePage() {
       <div className="overflow-hidden">
         <HeroSection />
         <StatsSection stats={{ users: siteStats.users || undefined }} />
+        <SiteSummarySection />
+        <FinalCTASection />
       </div>
     </AuthRedirect>
   );
