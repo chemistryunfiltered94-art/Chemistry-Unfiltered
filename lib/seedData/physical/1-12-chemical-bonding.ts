@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-7-chemical-kinetics.ts
+// lib/seedData/physical/1-12-chemical-bonding.ts
 //
-// অধ্যায় 1.7 — রাসায়নিক গতিবিদ্যা (Physical Chemistry)
+// অধ্যায় 1.12 — রাসায়নিক বন্ধন (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter17: SeedChapter = {
-  code: "1.7",
+const chapter112: SeedChapter = {
+  code: "1.12",
   category: "physical-chemistry",
-  chapterTitle: "রাসায়নিক গতিবিদ্যা",
-  chapterOrder: 70,
+  chapterTitle: "রাসায়নিক বন্ধন",
+  chapterOrder: 106,
   topics: [
     {
-      title: "বিক্রিয়ার গতি",
-      slug: "bikriyar-gti",
+      title: "রাসায়নিক বন্ধনের ধারণা",
+      slug: "rasaynik-bndhner-dharna",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate of Reaction",
-      slug: "rate-of-reaction",
+      title: "অক্টেট সূত্র",
+      slug: "aktet-suutr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Law",
-      slug: "rate-law",
+      title: "আয়নিক বন্ধন",
+      slug: "aaynik-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Constant",
-      slug: "rate-constant",
+      title: "সমযোজী বন্ধন",
+      slug: "smyojii-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Order of Reaction",
-      slug: "order-of-reaction",
+      title: "সমন্বয় সমযোজী বন্ধন",
+      slug: "smnby-smyojii-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Molecularity",
-      slug: "molecularity",
+      title: "ধাতব বন্ধন",
+      slug: "dhatb-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Zero Order Reaction",
-      slug: "zero-order-reaction",
+      title: "হাইড্রোজেন বন্ধন",
+      slug: "haidrojen-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "First Order Reaction",
-      slug: "first-order-reaction",
+      title: "ভ্যান ডার ওয়ালস বল",
+      slug: "bhyan-dar-oyals-bl",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Second Order Reaction",
-      slug: "second-order-reaction",
+      title: "লুইস গঠন",
+      slug: "luis-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Third Order Reaction",
-      slug: "third-order-reaction",
+      title: "VSEPR Theory",
+      slug: "vsepr-theory",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Half-Life",
-      slug: "half-life",
+      title: "Valence Bond Theory",
+      slug: "valence-bond-theory",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Integrated Rate Equation",
-      slug: "integrated-rate-equation",
+      title: "Hybridization",
+      slug: "hybridization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Differential Rate Equation",
-      slug: "differential-rate-equation",
+      title: "Molecular Orbital Theory",
+      slug: "molecular-orbital-theory",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Collision Theory",
-      slug: "collision-theory",
+      title: "Sigma Bond",
+      slug: "sigma-bond",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Transition State Theory",
-      slug: "transition-state-theory",
+      title: "Pi Bond",
+      slug: "pi-bond",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Activation Energy",
-      slug: "activation-energy",
+      title: "Bond Order",
+      slug: "bond-order",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Equation",
-      slug: "arrhenius-equation",
+      title: "Bond Length",
+      slug: "bond-length",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Catalysis",
-      slug: "catalysis",
+      title: "Bond Energy",
+      slug: "bond-energy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Homogeneous Catalysis",
-      slug: "homogeneous-catalysis",
+      title: "Bond Angle",
+      slug: "bond-angle",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Heterogeneous Catalysis",
-      slug: "heterogeneous-catalysis",
+      title: "Dipole Moment",
+      slug: "dipole-moment",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,50 +293,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Enzyme Catalysis",
-      slug: "enzyme-catalysis",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Photochemical Reaction",
-      slug: "photochemical-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Chain Reaction",
-      slug: "chain-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Factors Affecting Reaction Rate",
-      slug: "factors-affecting-reaction-rate",
+      title: "Molecular Polarity",
+      slug: "molecular-polarity",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -350,4 +308,4 @@ const chapter17: SeedChapter = {
   ],
 };
 
-export default chapter17;
+export default chapter112;

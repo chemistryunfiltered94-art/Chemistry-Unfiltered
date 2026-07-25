@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-37-modern-research-techniques.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.37 — আধুনিক গবেষণা পদ্ধতি (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter137: SeedChapter = {
+  code: "1.37",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "আধুনিক গবেষণা পদ্ধতি",
+  chapterOrder: 131,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "Computational Simulation",
+      slug: "computational-simulation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "Molecular Docking",
+      slug: "molecular-docking",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "Molecular Dynamics",
+      slug: "molecular-dynamics-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "Machine Learning in Chemistry",
+      slug: "machine-learning-in-chemistry",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "Artificial Intelligence in Chemistry",
+      slug: "artificial-intelligence-in-chemistry",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "High Performance Computing",
+      slug: "high-performance-computing",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Data Analysis",
+      slug: "data-analysis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "Scientific Visualization",
+      slug: "scientific-visualization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "Research Methodology",
+      slug: "research-methodology",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Scientific Writing",
+      slug: "scientific-writing",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,36 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Experimental Design",
+      slug: "experimental-design",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Error Analysis",
+      slug: "error-analysis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Statistical Analysis",
+      slug: "statistical-analysis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +196,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter137;

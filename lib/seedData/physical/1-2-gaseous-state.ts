@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-7-chemical-kinetics.ts
+// lib/seedData/physical/1-2-gaseous-state.ts
 //
-// অধ্যায় 1.7 — রাসায়নিক গতিবিদ্যা (Physical Chemistry)
+// অধ্যায় 1.2 — গ্যাসের ধর্ম (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter17: SeedChapter = {
-  code: "1.7",
+const chapter12: SeedChapter = {
+  code: "1.2",
   category: "physical-chemistry",
-  chapterTitle: "রাসায়নিক গতিবিদ্যা",
-  chapterOrder: 70,
+  chapterTitle: "গ্যাসের ধর্ম",
+  chapterOrder: 20,
   topics: [
     {
-      title: "বিক্রিয়ার গতি",
-      slug: "bikriyar-gti",
+      title: "গ্যাসের বৈশিষ্ট্য",
+      slug: "gyaser-boishishty",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate of Reaction",
-      slug: "rate-of-reaction",
+      title: "গ্যাসের চাপ",
+      slug: "gyaser-chap",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Law",
-      slug: "rate-law",
+      title: "গ্যাসের আয়তন",
+      slug: "gyaser-aaytn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Constant",
-      slug: "rate-constant",
+      title: "গ্যাসের তাপমাত্রা",
+      slug: "gyaser-tapmatra",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Order of Reaction",
-      slug: "order-of-reaction",
+      title: "Boyle's Law",
+      slug: "boyles-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Molecularity",
-      slug: "molecularity",
+      title: "Charles' Law",
+      slug: "charles-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Zero Order Reaction",
-      slug: "zero-order-reaction",
+      title: "Gay-Lussac's Law",
+      slug: "gay-lussacs-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "First Order Reaction",
-      slug: "first-order-reaction",
+      title: "Avogadro's Law",
+      slug: "avogadros-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Second Order Reaction",
-      slug: "second-order-reaction",
+      title: "Combined Gas Law",
+      slug: "combined-gas-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Third Order Reaction",
-      slug: "third-order-reaction",
+      title: "Ideal Gas Equation",
+      slug: "ideal-gas-equation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Half-Life",
-      slug: "half-life",
+      title: "Gas Constant",
+      slug: "gas-constant",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Integrated Rate Equation",
-      slug: "integrated-rate-equation",
+      title: "Dalton's Law",
+      slug: "daltons-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Differential Rate Equation",
-      slug: "differential-rate-equation",
+      title: "Graham's Law",
+      slug: "grahams-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Collision Theory",
-      slug: "collision-theory",
+      title: "Kinetic Theory of Gases",
+      slug: "kinetic-theory-of-gases",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Transition State Theory",
-      slug: "transition-state-theory",
+      title: "Mean Free Path",
+      slug: "mean-free-path",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Activation Energy",
-      slug: "activation-energy",
+      title: "Root Mean Square Speed",
+      slug: "root-mean-square-speed",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Equation",
-      slug: "arrhenius-equation",
+      title: "Maxwell Distribution",
+      slug: "maxwell-distribution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Catalysis",
-      slug: "catalysis",
+      title: "Real Gas",
+      slug: "real-gas",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Homogeneous Catalysis",
-      slug: "homogeneous-catalysis",
+      title: "Van der Waals Equation",
+      slug: "van-der-waals-equation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,64 +279,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Heterogeneous Catalysis",
-      slug: "heterogeneous-catalysis",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Enzyme Catalysis",
-      slug: "enzyme-catalysis",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Photochemical Reaction",
-      slug: "photochemical-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Chain Reaction",
-      slug: "chain-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Factors Affecting Reaction Rate",
-      slug: "factors-affecting-reaction-rate",
+      title: "Compressibility Factor",
+      slug: "compressibility-factor",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -350,4 +294,4 @@ const chapter17: SeedChapter = {
   ],
 };
 
-export default chapter17;
+export default chapter12;

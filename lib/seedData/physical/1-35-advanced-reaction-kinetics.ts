@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-35-advanced-reaction-kinetics.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.35 — উন্নত বিক্রিয়া গতিবিদ্যা (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter135: SeedChapter = {
+  code: "1.35",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "উন্নত বিক্রিয়া গতিবিদ্যা",
+  chapterOrder: 129,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "Fast Reaction",
+      slug: "fast-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "Slow Reaction",
+      slug: "slow-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "Chain Reaction",
+      slug: "chain-reaction-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "Oscillating Reaction",
+      slug: "oscillating-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "Autocatalytic Reaction",
+      slug: "autocatalytic-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "Diffusion Controlled Reaction",
+      slug: "diffusion-controlled-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Enzyme Kinetics",
+      slug: "enzyme-kinetics",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "Michaelis-Menten Theory",
+      slug: "michaelis-menten-theory",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "Transition State Analysis",
+      slug: "transition-state-analysis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Relaxation Method",
+      slug: "relaxation-method",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Flash Photolysis",
+      slug: "flash-photolysis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +168,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter135;

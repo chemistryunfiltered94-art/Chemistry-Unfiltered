@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-36-advanced-spectroscopy.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.36 — উন্নত বর্ণালীবিদ্যা (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter136: SeedChapter = {
+  code: "1.36",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "উন্নত বর্ণালীবিদ্যা",
+  chapterOrder: 130,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "Fourier Transform Infrared (FTIR)",
+      slug: "fourier-transform-infrared-ftir",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "FT-NMR",
+      slug: "ft-nmr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "Two-dimensional NMR",
+      slug: "two-dimensional-nmr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "Electron Spin Resonance (ESR)",
+      slug: "electron-spin-resonance-esr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "X-ray Diffraction (XRD)",
+      slug: "x-ray-diffraction-xrd",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "X-ray Photoelectron Spectroscopy (XPS)",
+      slug: "x-ray-photoelectron-spectroscopy-xps",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Atomic Absorption Spectroscopy (AAS)",
+      slug: "atomic-absorption-spectroscopy-aas",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "ICP-OES",
+      slug: "icp-oes",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "ICP-MS",
+      slug: "icp-ms",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Raman Imaging",
+      slug: "raman-imaging",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Surface Enhanced Raman Spectroscopy (SERS)",
+      slug: "surface-enhanced-raman-spectroscopy-sers",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +168,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter136;

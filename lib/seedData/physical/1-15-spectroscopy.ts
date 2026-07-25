@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-7-chemical-kinetics.ts
+// lib/seedData/physical/1-15-spectroscopy.ts
 //
-// অধ্যায় 1.7 — রাসায়নিক গতিবিদ্যা (Physical Chemistry)
+// অধ্যায় 1.15 — বর্ণালীবিদ্যা (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter17: SeedChapter = {
-  code: "1.7",
+const chapter115: SeedChapter = {
+  code: "1.15",
   category: "physical-chemistry",
-  chapterTitle: "রাসায়নিক গতিবিদ্যা",
-  chapterOrder: 70,
+  chapterTitle: "বর্ণালীবিদ্যা",
+  chapterOrder: 109,
   topics: [
     {
-      title: "বিক্রিয়ার গতি",
-      slug: "bikriyar-gti",
+      title: "বর্ণালীবিদ্যার পরিচিতি",
+      slug: "brnaliibidyar-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate of Reaction",
-      slug: "rate-of-reaction",
+      title: "তড়িৎচুম্বকীয় বর্ণালী",
+      slug: "tditchumbkiiy-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Law",
-      slug: "rate-law",
+      title: "বিকিরণের প্রকৃতি",
+      slug: "bikirner-prkriti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Constant",
-      slug: "rate-constant",
+      title: "তরঙ্গদৈর্ঘ্য",
+      slug: "trnggdoirghy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Order of Reaction",
-      slug: "order-of-reaction",
+      title: "কম্পাঙ্ক",
+      slug: "kmpangk",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Molecularity",
-      slug: "molecularity",
+      title: "তরঙ্গসংখ্যা",
+      slug: "trnggsngkhya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Zero Order Reaction",
-      slug: "zero-order-reaction",
+      title: "শক্তি",
+      slug: "shkti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "First Order Reaction",
-      slug: "first-order-reaction",
+      title: "শোষণ বর্ণালী",
+      slug: "shoshn-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Second Order Reaction",
-      slug: "second-order-reaction",
+      title: "নির্গমন বর্ণালী",
+      slug: "nirgmn-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Third Order Reaction",
-      slug: "third-order-reaction",
+      title: "অবিচ্ছিন্ন বর্ণালী",
+      slug: "abichchhinn-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Half-Life",
-      slug: "half-life",
+      title: "রেখা বর্ণালী",
+      slug: "rekha-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Integrated Rate Equation",
-      slug: "integrated-rate-equation",
+      title: "ব্যান্ড বর্ণালী",
+      slug: "byand-brnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Differential Rate Equation",
-      slug: "differential-rate-equation",
+      title: "UV Spectroscopy",
+      slug: "uv-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Collision Theory",
-      slug: "collision-theory",
+      title: "Visible Spectroscopy",
+      slug: "visible-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Transition State Theory",
-      slug: "transition-state-theory",
+      title: "Infrared (IR) Spectroscopy",
+      slug: "infrared-ir-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Activation Energy",
-      slug: "activation-energy",
+      title: "Raman Spectroscopy",
+      slug: "raman-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Equation",
-      slug: "arrhenius-equation",
+      title: "Microwave Spectroscopy",
+      slug: "microwave-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Catalysis",
-      slug: "catalysis",
+      title: "NMR Spectroscopy",
+      slug: "nmr-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Homogeneous Catalysis",
-      slug: "homogeneous-catalysis",
+      title: "ESR Spectroscopy",
+      slug: "esr-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Heterogeneous Catalysis",
-      slug: "heterogeneous-catalysis",
+      title: "Mass Spectrometry",
+      slug: "mass-spectrometry",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Enzyme Catalysis",
-      slug: "enzyme-catalysis",
+      title: "X-ray Spectroscopy",
+      slug: "x-ray-spectroscopy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,8 +307,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Photochemical Reaction",
-      slug: "photochemical-reaction",
+      title: "Fluorescence",
+      slug: "fluorescence",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -321,22 +321,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Chain Reaction",
-      slug: "chain-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Factors Affecting Reaction Rate",
-      slug: "factors-affecting-reaction-rate",
+      title: "Phosphorescence",
+      slug: "phosphorescence",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -350,4 +336,4 @@ const chapter17: SeedChapter = {
   ],
 };
 
-export default chapter17;
+export default chapter115;

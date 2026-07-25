@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-7-chemical-kinetics.ts
+// lib/seedData/physical/1-14-solutions-colligative-properties.ts
 //
-// অধ্যায় 1.7 — রাসায়নিক গতিবিদ্যা (Physical Chemistry)
+// অধ্যায় 1.14 — দ্রবণ ও কোলিগেটিভ ধর্ম (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter17: SeedChapter = {
-  code: "1.7",
+const chapter114: SeedChapter = {
+  code: "1.14",
   category: "physical-chemistry",
-  chapterTitle: "রাসায়নিক গতিবিদ্যা",
-  chapterOrder: 70,
+  chapterTitle: "দ্রবণ ও কোলিগেটিভ ধর্ম",
+  chapterOrder: 108,
   topics: [
     {
-      title: "বিক্রিয়ার গতি",
-      slug: "bikriyar-gti",
+      title: "দ্রবণের ধারণা",
+      slug: "drbner-dharna",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate of Reaction",
-      slug: "rate-of-reaction",
+      title: "দ্রবণের প্রকারভেদ",
+      slug: "drbner-prkarbhed",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Law",
-      slug: "rate-law",
+      title: "Solute",
+      slug: "solute",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Constant",
-      slug: "rate-constant",
+      title: "Solvent",
+      slug: "solvent",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Order of Reaction",
-      slug: "order-of-reaction",
+      title: "Saturated Solution",
+      slug: "saturated-solution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Molecularity",
-      slug: "molecularity",
+      title: "Unsaturated Solution",
+      slug: "unsaturated-solution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Zero Order Reaction",
-      slug: "zero-order-reaction",
+      title: "Supersaturated Solution",
+      slug: "supersaturated-solution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "First Order Reaction",
-      slug: "first-order-reaction",
+      title: "Solubility",
+      slug: "solubility-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Second Order Reaction",
-      slug: "second-order-reaction",
+      title: "Factors Affecting Solubility",
+      slug: "factors-affecting-solubility",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Third Order Reaction",
-      slug: "third-order-reaction",
+      title: "Concentration",
+      slug: "concentration",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Half-Life",
-      slug: "half-life",
+      title: "Molarity",
+      slug: "molarity",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Integrated Rate Equation",
-      slug: "integrated-rate-equation",
+      title: "Molality",
+      slug: "molality",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Differential Rate Equation",
-      slug: "differential-rate-equation",
+      title: "Normality",
+      slug: "normality",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Collision Theory",
-      slug: "collision-theory",
+      title: "Formality",
+      slug: "formality",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Transition State Theory",
-      slug: "transition-state-theory",
+      title: "Mole Fraction",
+      slug: "mole-fraction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Activation Energy",
-      slug: "activation-energy",
+      title: "Percentage Concentration",
+      slug: "percentage-concentration",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Equation",
-      slug: "arrhenius-equation",
+      title: "ppm",
+      slug: "ppm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Catalysis",
-      slug: "catalysis",
+      title: "Dilution",
+      slug: "dilution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Homogeneous Catalysis",
-      slug: "homogeneous-catalysis",
+      title: "Ideal Solution",
+      slug: "ideal-solution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Heterogeneous Catalysis",
-      slug: "heterogeneous-catalysis",
+      title: "Non-Ideal Solution",
+      slug: "non-ideal-solution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Enzyme Catalysis",
-      slug: "enzyme-catalysis",
+      title: "Raoult's Law",
+      slug: "raoults-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,8 +307,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Photochemical Reaction",
-      slug: "photochemical-reaction",
+      title: "Henry's Law",
+      slug: "henrys-law",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -321,8 +321,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Chain Reaction",
-      slug: "chain-reaction",
+      title: "Vapour Pressure Lowering",
+      slug: "vapour-pressure-lowering",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -335,8 +335,92 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Factors Affecting Reaction Rate",
-      slug: "factors-affecting-reaction-rate",
+      title: "Boiling Point Elevation",
+      slug: "boiling-point-elevation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Freezing Point Depression",
+      slug: "freezing-point-depression",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Osmosis",
+      slug: "osmosis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Osmotic Pressure",
+      slug: "osmotic-pressure",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Reverse Osmosis",
+      slug: "reverse-osmosis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Van't Hoff Factor",
+      slug: "vant-hoff-factor",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Abnormal Molecular Mass",
+      slug: "abnormal-molecular-mass",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -350,4 +434,4 @@ const chapter17: SeedChapter = {
   ],
 };
 
-export default chapter17;
+export default chapter114;

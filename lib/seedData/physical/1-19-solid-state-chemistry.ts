@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-7-chemical-kinetics.ts
+// lib/seedData/physical/1-19-solid-state-chemistry.ts
 //
-// অধ্যায় 1.7 — রাসায়নিক গতিবিদ্যা (Physical Chemistry)
+// অধ্যায় 1.19 — কঠিন অবস্থার রসায়ন (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter17: SeedChapter = {
-  code: "1.7",
+const chapter119: SeedChapter = {
+  code: "1.19",
   category: "physical-chemistry",
-  chapterTitle: "রাসায়নিক গতিবিদ্যা",
-  chapterOrder: 70,
+  chapterTitle: "কঠিন অবস্থার রসায়ন",
+  chapterOrder: 113,
   topics: [
     {
-      title: "বিক্রিয়ার গতি",
-      slug: "bikriyar-gti",
+      title: "কঠিন অবস্থার পরিচিতি",
+      slug: "kthin-absthar-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate of Reaction",
-      slug: "rate-of-reaction",
+      title: "স্ফটিক (Crystal)",
+      slug: "sphtik-crystal",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Law",
-      slug: "rate-law",
+      title: "অস্ফটিক (Amorphous)",
+      slug: "asphtik-amorphous",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Rate Constant",
-      slug: "rate-constant",
+      title: "ইউনিট সেল",
+      slug: "iunit-sel",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Order of Reaction",
-      slug: "order-of-reaction",
+      title: "ল্যাটিস",
+      slug: "lyatis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Molecularity",
-      slug: "molecularity",
+      title: "ব্রাভাইস ল্যাটিস",
+      slug: "brabhais-lyatis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Zero Order Reaction",
-      slug: "zero-order-reaction",
+      title: "ক্রিস্টাল সিস্টেম",
+      slug: "kristal-sistem",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "First Order Reaction",
-      slug: "first-order-reaction",
+      title: "প্যাকিং দক্ষতা",
+      slug: "pyaking-dkshta",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Second Order Reaction",
-      slug: "second-order-reaction",
+      title: "সমন্বয় সংখ্যা",
+      slug: "smnby-sngkhya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Third Order Reaction",
-      slug: "third-order-reaction",
+      title: "ক্রিস্টাল ত্রুটি",
+      slug: "kristal-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Half-Life",
-      slug: "half-life",
+      title: "পয়েন্ট ত্রুটি",
+      slug: "pyent-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Integrated Rate Equation",
-      slug: "integrated-rate-equation",
+      title: "স্কটকি ত্রুটি",
+      slug: "sktki-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Differential Rate Equation",
-      slug: "differential-rate-equation",
+      title: "ফ্রেঙ্কেল ত্রুটি",
+      slug: "phrengkel-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Collision Theory",
-      slug: "collision-theory",
+      title: "লাইন ত্রুটি",
+      slug: "lain-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Transition State Theory",
-      slug: "transition-state-theory",
+      title: "পৃষ্ঠ ত্রুটি",
+      slug: "prishth-truti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Activation Energy",
-      slug: "activation-energy",
+      title: "এক্স-রে বিচ্ছুরণ",
+      slug: "eks-re-bichchhurn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Equation",
-      slug: "arrhenius-equation",
+      title: "ব্যান্ড তত্ত্ব",
+      slug: "byand-tttb",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Catalysis",
-      slug: "catalysis",
+      title: "পরিবাহী",
+      slug: "pribahii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Homogeneous Catalysis",
-      slug: "homogeneous-catalysis",
+      title: "অর্ধপরিবাহী",
+      slug: "ardhpribahii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Heterogeneous Catalysis",
-      slug: "heterogeneous-catalysis",
+      title: "অপরিবাহী",
+      slug: "apribahii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Enzyme Catalysis",
-      slug: "enzyme-catalysis",
+      title: "সুপারকন্ডাক্টর",
+      slug: "suparkndaktr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,36 +307,8 @@ const chapter17: SeedChapter = {
     },
 
     {
-      title: "Photochemical Reaction",
-      slug: "photochemical-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Chain Reaction",
-      slug: "chain-reaction",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "Factors Affecting Reaction Rate",
-      slug: "factors-affecting-reaction-rate",
+      title: "চৌম্বকীয় ধর্ম",
+      slug: "choumbkiiy-dhrm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -350,4 +322,4 @@ const chapter17: SeedChapter = {
   ],
 };
 
-export default chapter17;
+export default chapter119;

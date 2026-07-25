@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-29-plasma-chemistry.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.29 — প্লাজমা রসায়ন (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter129: SeedChapter = {
+  code: "1.29",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "প্লাজমা রসায়ন",
+  chapterOrder: 123,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "প্লাজমার পরিচিতি",
+      slug: "plajmar-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "প্লাজমার ধর্ম",
+      slug: "plajmar-dhrm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "আয়নীকরণ",
+      slug: "aayniikrn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "পুনর্মিলন",
+      slug: "punrmiln",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "ঠান্ডা প্লাজমা",
+      slug: "thanda-plajma",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "গরম প্লাজমা",
+      slug: "grm-plajma",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Plasma Discharge",
+      slug: "plasma-discharge",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "Plasma Polymerization",
+      slug: "plasma-polymerization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "Plasma Surface Treatment",
+      slug: "plasma-surface-treatment",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Plasma Etching",
+      slug: "plasma-etching",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,22 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Plasma Coating",
+      slug: "plasma-coating",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "শিল্পক্ষেত্রে প্লাজমার ব্যবহার",
+      slug: "shilpkshetre-plajmar-bybhar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +182,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter129;

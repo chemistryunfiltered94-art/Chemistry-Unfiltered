@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-25-biophysical-chemistry.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.25 — জৈব-ভৌত রসায়ন (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter125: SeedChapter = {
+  code: "1.25",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "জৈব-ভৌত রসায়ন",
+  chapterOrder: 119,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "জৈব-ভৌত রসায়নের পরিচিতি",
+      slug: "joib-bhout-rsayner-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "বায়োমলিকিউল",
+      slug: "bayomlikiul",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "প্রোটিনের গঠন",
+      slug: "protiner-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "DNA ও RNA",
+      slug: "dna-o-rna",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "এনজাইমের গতিবিদ্যা",
+      slug: "enjaimer-gtibidya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "Membrane Transport",
+      slug: "membrane-transport",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Osmosis",
+      slug: "osmosis-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "Diffusion",
+      slug: "diffusion",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "Protein Folding",
+      slug: "protein-folding",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Molecular Interaction",
+      slug: "molecular-interaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,22 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Biomolecular Spectroscopy",
+      slug: "biomolecular-spectroscopy",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Thermodynamics of Biological Systems",
+      slug: "thermodynamics-of-biological-systems",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +182,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter125;

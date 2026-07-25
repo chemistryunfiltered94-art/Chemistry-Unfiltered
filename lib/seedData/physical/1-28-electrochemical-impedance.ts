@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-28-electrochemical-impedance.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.28 — ইলেক্ট্রোকেমিক্যাল ইম্পিডেন্স (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter128: SeedChapter = {
+  code: "1.28",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "ইলেক্ট্রোকেমিক্যাল ইম্পিডেন্স",
+  chapterOrder: 122,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "ইম্পিডেন্সের ধারণা",
+      slug: "impidenser-dharna",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "AC Current",
+      slug: "ac-current",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "Complex Impedance",
+      slug: "complex-impedance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "Nyquist Plot",
+      slug: "nyquist-plot",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "Bode Plot",
+      slug: "bode-plot",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "Equivalent Circuit",
+      slug: "equivalent-circuit",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Charge Transfer Resistance",
+      slug: "charge-transfer-resistance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "Double Layer Capacitance",
+      slug: "double-layer-capacitance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "Diffusion Impedance",
+      slug: "diffusion-impedance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Warburg Impedance",
+      slug: "warburg-impedance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,22 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "Battery Analysis",
+      slug: "battery-analysis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Fuel Cell Analysis",
+      slug: "fuel-cell-analysis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +182,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter128;

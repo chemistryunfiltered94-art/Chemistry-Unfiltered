@@ -1,20 +1,20 @@
-// lib/seedData/physical/1-5-acid-base-chemistry.ts
+// lib/seedData/physical/1-16-statistical-thermodynamics.ts
 //
-// অধ্যায় 1.5 — অম্ল-ক্ষার রসায়ন (Physical Chemistry)
+// অধ্যায় 1.16 — পরিসংখ্যানিক তাপগতিবিদ্যা (Physical Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter15: SeedChapter = {
-  code: "1.5",
+const chapter116: SeedChapter = {
+  code: "1.16",
   category: "physical-chemistry",
-  chapterTitle: "অম্ল-ক্ষার রসায়ন",
-  chapterOrder: 50,
+  chapterTitle: "পরিসংখ্যানিক তাপগতিবিদ্যা",
+  chapterOrder: 110,
   topics: [
     {
-      title: "Buffer Solution",
-      slug: "buffer-solution",
+      title: "পরিসংখ্যানিক তাপগতিবিদ্যার পরিচিতি",
+      slug: "prisngkhyanik-tapgtibidyar-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Buffer Capacity",
-      slug: "buffer-capacity",
+      title: "মাইক্রোস্টেট",
+      slug: "maikrostet",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Henderson–Hasselbalch Equation",
-      slug: "hendersonhasselbalch-equation",
+      title: "ম্যাক্রোস্টেট",
+      slug: "myakrostet",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pH",
-      slug: "ph",
+      title: "সম্ভাব্যতা",
+      slug: "smbhabyta",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pOH",
-      slug: "poh",
+      title: "Boltzmann Distribution",
+      slug: "boltzmann-distribution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKa",
-      slug: "pka",
+      title: "Maxwell-Boltzmann Distribution",
+      slug: "maxwell-boltzmann-distribution",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "pKb",
-      slug: "pkb",
+      title: "Partition Function",
+      slug: "partition-function",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Acid–Base Theory",
-      slug: "acidbase-theory",
+      title: "শক্তির বণ্টন",
+      slug: "shktir-bntn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Lewis Acid–Base",
-      slug: "lewis-acidbase",
+      title: "গ্যাস অণুর বণ্টন",
+      slug: "gyas-anur-bntn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Bronsted–Lowry Theory",
-      slug: "bronstedlowry-theory",
+      title: "Entropy-এর পরিসংখ্যানিক ব্যাখ্যা",
+      slug: "entropy-er-prisngkhyanik-byakhya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,22 @@ const chapter15: SeedChapter = {
     },
 
     {
-      title: "Arrhenius Theory",
-      slug: "arrhenius-theory",
+      title: "তাপমাত্রার পরিসংখ্যানিক ধারণা",
+      slug: "tapmatrar-prisngkhyanik-dharna",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "তাপগতীয় সাম্যাবস্থা",
+      slug: "tapgtiiy-samyabstha",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -168,4 +182,4 @@ const chapter15: SeedChapter = {
   ],
 };
 
-export default chapter15;
+export default chapter116;
