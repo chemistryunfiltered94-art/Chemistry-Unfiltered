@@ -8,7 +8,7 @@ import {
 import { getExtendedData } from "./elementDataExtended";
 import {
   X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen,
-  Atom, History, Radiation, Ruler,
+  Atom, History, Radiation, Ruler, Scale,
 } from "lucide-react";
 
 // ─── Colour maps ────────────────────────────────────────────────────────────
@@ -185,13 +185,14 @@ function ElectronShellDiagram({ config, symbol, color }: { config: string; symbo
 
 // ─── Element Cell ─────────────────────────────────────────────────────────
 function ElementCell({
-  el, dimmed, highlighted, onClick, onHover,
+  el, dimmed, highlighted, onClick, onHover, compareSelected,
 }: {
   el: ElementData;
   dimmed: boolean;
   highlighted: boolean;
   onClick: () => void;
   onHover: (c: string | null) => void;
+  compareSelected?: boolean;
 }) {
   const hex   = categoryHex[el.category] ?? "#94a3b8";
   const bgCls = categoryColors[el.category] ?? categoryColors["unknown"];
@@ -203,9 +204,10 @@ function ElementCell({
       onMouseLeave={() => onHover(null)}
       animate={{
         opacity: dimmed ? 0.12 : 1,
-        scale:   highlighted ? 1.07 : 1,
+        scale:   highlighted ? 1.07 : compareSelected ? 1.1 : 1,
         filter:  highlighted
           ? `drop-shadow(0 0 7px ${hex}cc)`
+          : compareSelected ? `drop-shadow(0 0 8px #ffffffcc)`
           : dimmed ? "brightness(0.35)" : "brightness(1)",
       }}
       whileHover={!dimmed ? { scale: 1.18, zIndex: 30 } : {}}
@@ -214,11 +216,16 @@ function ElementCell({
       className={`
         relative ${bgCls} rounded-md text-white cursor-pointer
         flex flex-col items-center justify-center w-full aspect-square
-        ring-2 ${stateRing[el.state] ?? "ring-transparent"}
+        ring-2 ${compareSelected ? "ring-white" : stateRing[el.state] ?? "ring-transparent"}
         shadow-md select-none
       `}
       title={`${el.nameBn} — ${el.name}`}
     >
+      {compareSelected && (
+        <span className="absolute -top-1 -left-1 w-3.5 h-3.5 rounded-full bg-white text-slate-900 text-[8px] font-bold flex items-center justify-center shadow z-10">
+          ✓
+        </span>
+      )}
       <span className="text-[8px] opacity-60 self-start pl-0.5 leading-none">{el.atomicNumber}</span>
       <span className="text-[15px] font-bold leading-tight">{el.symbol}</span>
       <span className="text-[7px] opacity-85 leading-none truncate w-full text-center px-0.5">{el.name}</span>
@@ -578,6 +585,142 @@ function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void })
   );
 }
 
+// ─── Compare Drawer ─────────────────────────────────────────────────────
+const compareRows: {
+  label: string;
+  get: (el: ElementData, ext: ReturnType<typeof getExtendedData>) => string;
+}[] = [
+  { label: "প্রতীক", get: (el) => el.symbol },
+  { label: "পারমাণবিক ভর", get: (el) => `${el.atomicMass} u` },
+  { label: "পর্যায় / গ্রুপ", get: (el) => `${el.period} / ${el.group ?? "—"}` },
+  { label: "তড়িৎ ঋণাত্মকতা", get: (el) => String(el.electronegativity ?? "—") },
+  { label: "গলনাঙ্ক", get: (el) => (el.meltingPoint !== null ? `${el.meltingPoint} °C` : "—") },
+  { label: "স্ফুটনাঙ্ক", get: (el) => (el.boilingPoint !== null ? `${el.boilingPoint} °C` : "—") },
+  { label: "ঘনত্ব", get: (el) => (el.density !== null ? `${el.density} g/cm³` : "—") },
+  { label: "পারমাণবিক ব্যাসার্ধ", get: (_el, ext) => (ext?.radii.atomic !== null && ext?.radii.atomic !== undefined ? `${ext.radii.atomic} pm` : "—") },
+  { label: "১ম আয়নীকরণ শক্তি", get: (_el, ext) => (ext?.ionizationEnergies.first !== null && ext?.ionizationEnergies.first !== undefined ? `${ext.ionizationEnergies.first} kJ/mol` : "—") },
+  { label: "জারণ অবস্থা", get: (el) => el.oxidationStates },
+];
+
+// Numeric extractor used only for the mini bar-chart highlight (not displayed as text)
+function numericValue(el: ElementData, ext: ReturnType<typeof getExtendedData>, label: string): number | null {
+  switch (label) {
+    case "পারমাণবিক ভর": return el.atomicMass;
+    case "তড়িৎ ঋণাত্মকতা": return el.electronegativity;
+    case "গলনাঙ্ক": return el.meltingPoint;
+    case "স্ফুটনাঙ্ক": return el.boilingPoint;
+    case "ঘনত্ব": return el.density;
+    case "পারমাণবিক ব্যাসার্ধ": return ext?.radii.atomic ?? null;
+    case "১ম আয়নীকরণ শক্তি": return ext?.ionizationEnergies.first ?? null;
+    default: return null;
+  }
+}
+
+function CompareDrawer({ elements: compared, onClose, onRemove }: {
+  elements: ElementData[];
+  onClose: () => void;
+  onRemove: (atomicNumber: number) => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0, y: 30 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 30 }}
+        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl"
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between p-4 border-b border-slate-700">
+          <div className="flex items-center gap-2">
+            <Scale className="w-4 h-4 text-slate-300" />
+            <span className="text-white font-semibold text-sm">মৌল তুলনা</span>
+            <span className="text-slate-500 text-xs">({compared.length}/৪)</span>
+          </div>
+          <button onClick={onClose} className="text-white/60 hover:text-white p-1">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="overflow-x-auto overflow-y-auto" style={{ maxHeight: "70vh" }}>
+          <div style={{ minWidth: compared.length > 1 ? `${140 + compared.length * 110}px` : "100%" }}>
+            {/* Element header row */}
+            <div
+              className="grid sticky top-0 bg-slate-900 z-10 border-b border-slate-700"
+              style={{ gridTemplateColumns: `140px repeat(${compared.length}, 1fr)` }}
+            >
+              <div />
+              {compared.map((el) => {
+                const bgCls = categoryColors[el.category] ?? "bg-slate-600";
+                return (
+                  <div key={el.atomicNumber} className={`${bgCls} p-2.5 relative`}>
+                    <button
+                      onClick={() => onRemove(el.atomicNumber)}
+                      className="absolute top-1 right-1 text-white/60 hover:text-white bg-black/20 rounded-full p-0.5"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                    <div className="text-center">
+                      <div className="text-lg font-black text-white">{el.symbol}</div>
+                      <div className="text-[9px] text-white/80 truncate">{el.nameBn}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Data rows */}
+            {compareRows.map((row) => {
+              const values = compared.map((el) => ({
+                el,
+                text: row.get(el, getExtendedData(el.atomicNumber)),
+                num: numericValue(el, getExtendedData(el.atomicNumber), row.label),
+              }));
+              const maxNum = Math.max(...values.map(v => v.num ?? -Infinity));
+              const hasNums = values.some(v => v.num !== null) && compared.length > 1;
+
+              return (
+                <div
+                  key={row.label}
+                  className="grid border-b border-slate-800"
+                  style={{ gridTemplateColumns: `140px repeat(${compared.length}, 1fr)` }}
+                >
+                  <div className="p-2.5 text-[10px] text-slate-400 font-medium flex items-center">{row.label}</div>
+                  {values.map(({ el, text, num }) => {
+                    const isMax = hasNums && num !== null && num === maxNum;
+                    return (
+                      <div
+                        key={el.atomicNumber}
+                        className={`p-2.5 text-xs text-center flex items-center justify-center ${
+                          isMax ? "text-white font-bold" : "text-slate-300"
+                        }`}
+                      >
+                        {isMax && <span className="mr-1 text-amber-400">▲</span>}
+                        {text}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="p-3 text-center text-[10px] text-slate-500 border-t border-slate-800">
+          ▲ = সর্বোচ্চ মান (২+ মৌল নির্বাচন করলে দেখা যাবে)
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 // ─── Main ─────────────────────────────────────────────────────────────────
 const periodList = [1,2,3,4,5,6,7];
 
@@ -586,6 +729,36 @@ export default function PeriodicTableClient() {
   const [filterMode,       setFilterMode]       = useState<FilterMode>("category");
   const [activeFilter,     setActiveFilter]     = useState("all");
   const [hoveredCategory,  setHoveredCategory]  = useState<string | null>(null);
+  const [compareMode,      setCompareMode]      = useState(false);
+  const [compareIds,       setCompareIds]       = useState<number[]>([]);
+  const [showCompare,      setShowCompare]      = useState(false);
+
+  const MAX_COMPARE = 4;
+
+  function handleCellClick(el: ElementData) {
+    if (!compareMode) {
+      setSelected(el);
+      return;
+    }
+    setCompareIds((prev) => {
+      if (prev.includes(el.atomicNumber)) {
+        return prev.filter((id) => id !== el.atomicNumber);
+      }
+      if (prev.length >= MAX_COMPARE) return prev;
+      return [...prev, el.atomicNumber];
+    });
+  }
+
+  function toggleCompareMode() {
+    setCompareMode((prev) => {
+      if (prev) setCompareIds([]); // exiting compare mode clears selection
+      return !prev;
+    });
+  }
+
+  const comparedElements = compareIds
+    .map((id) => elements.find((e) => e.atomicNumber === id))
+    .filter((e): e is ElementData => e != null);
 
   function matches(el: ElementData) {
     if (activeFilter === "all") return true;
@@ -608,6 +781,21 @@ export default function PeriodicTableClient() {
 
   return (
     <div>
+      {/* ── Compare mode toggle ── */}
+      <div className="flex justify-center mb-3">
+        <button
+          onClick={toggleCompareMode}
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+            compareMode
+              ? "bg-white text-slate-900 shadow-lg"
+              : "bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700"
+          }`}
+        >
+          <Scale className="w-3.5 h-3.5" />
+          {compareMode ? "তুলনা মোড চালু (মৌল সিলেক্ট করুন)" : "মৌল তুলনা করুন"}
+        </button>
+      </div>
+
       {/* ── Filter mode tabs ── */}
       <div className="flex justify-center gap-1.5 mb-4 flex-wrap">
         {([
@@ -623,8 +811,7 @@ export default function PeriodicTableClient() {
                 ? "gradient-bg text-white shadow-lg"
                 : "bg-slate-800 text-slate-400 hover:bg-slate-700"
             }`}
-          >
-            <Icon className="w-3.5 h-3.5" />{label}
+          >            <Icon className="w-3.5 h-3.5" />{label}
           </button>
         ))}
       </div>
@@ -737,8 +924,9 @@ export default function PeriodicTableClient() {
                     el={el}
                     dimmed={isDimmed(el)}
                     highlighted={isHighlighted(el)}
-                    onClick={() => setSelected(el)}
+                    onClick={() => handleCellClick(el)}
                     onHover={setHoveredCategory}
+                    compareSelected={compareIds.includes(el.atomicNumber)}
                   />
                 ) : (
                   <div key={ci} />
@@ -769,8 +957,9 @@ export default function PeriodicTableClient() {
                   el={el}
                   dimmed={isDimmed(el)}
                   highlighted={isHighlighted(el)}
-                  onClick={() => setSelected(el)}
+                  onClick={() => handleCellClick(el)}
                   onHover={setHoveredCategory}
+                  compareSelected={compareIds.includes(el.atomicNumber)}
                 />
               ) : (
                 <div key={ci} />
@@ -788,8 +977,9 @@ export default function PeriodicTableClient() {
                   el={el}
                   dimmed={isDimmed(el)}
                   highlighted={isHighlighted(el)}
-                  onClick={() => setSelected(el)}
+                  onClick={() => handleCellClick(el)}
                   onHover={setHoveredCategory}
+                  compareSelected={compareIds.includes(el.atomicNumber)}
                 />
               ) : (
                 <div key={ci} />
@@ -810,6 +1000,53 @@ export default function PeriodicTableClient() {
       {/* Modal */}
       <AnimatePresence>
         {selected && <ElementModal el={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
+
+      {/* Floating compare selection bar */}
+      <AnimatePresence>
+        {compareMode && compareIds.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 bg-slate-900 border border-slate-700 rounded-full shadow-2xl px-4 py-2.5 flex items-center gap-3"
+          >
+            <div className="flex -space-x-2">
+              {comparedElements.map((el) => (
+                <div
+                  key={el.atomicNumber}
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-slate-900 ${categoryColors[el.category] ?? "bg-slate-600"}`}
+                  title={el.nameBn}
+                >
+                  {el.symbol}
+                </div>
+              ))}
+            </div>
+            <span className="text-xs text-slate-400">{compareIds.length}/{MAX_COMPARE} নির্বাচিত</span>
+            <button
+              onClick={() => setShowCompare(true)}
+              disabled={compareIds.length < 2}
+              className={`px-3 py-1 rounded-full text-xs font-semibold transition-all ${
+                compareIds.length >= 2
+                  ? "bg-white text-slate-900 hover:bg-slate-100"
+                  : "bg-slate-800 text-slate-600 cursor-not-allowed"
+              }`}
+            >
+              তুলনা দেখুন
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Compare Drawer */}
+      <AnimatePresence>
+        {showCompare && comparedElements.length >= 2 && (
+          <CompareDrawer
+            elements={comparedElements}
+            onClose={() => setShowCompare(false)}
+            onRemove={(id) => setCompareIds((prev) => prev.filter((x) => x !== id))}
+          />
+        )}
       </AnimatePresence>
     </div>
   );
