@@ -5,7 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   elements, categoryColors, categoryNames, ElementData,
 } from "./elementData";
-import { X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen } from "lucide-react";
+import { getExtendedData } from "./elementDataExtended";
+import {
+  X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen,
+  Atom, History, Radiation, Ruler,
+} from "lucide-react";
 
 // ─── Colour maps ────────────────────────────────────────────────────────────
 const categoryHex: Record<string, string> = {
@@ -229,9 +233,10 @@ function ElementCell({
 
 // ─── Element Detail Modal ─────────────────────────────────────────────────
 function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void }) {
-  const [tab, setTab] = useState<"info" | "shell" | "uses">("info");
+  const [tab, setTab] = useState<"info" | "shell" | "chemical" | "uses" | "discovery">("info");
   const hex    = categoryHex[el.category] ?? "#94a3b8";
   const bgCls  = categoryColors[el.category] ?? "bg-slate-600";
+  const ext    = getExtendedData(el.atomicNumber);
 
   return (
     <motion.div
@@ -276,14 +281,16 @@ function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void })
         </div>
 
         {/* ── Tabs ── */}
-        <div className="flex border-b border-slate-700">
+        <div className="flex border-b border-slate-700 overflow-x-auto">
           {([
-            { id: "info",  label: "তথ্য",         icon: Info },
-            { id: "shell", label: "ইলেকট্রন শেল", icon: Activity },
-            { id: "uses",  label: "ব্যবহার",       icon: BookOpen },
+            { id: "info",      label: "তথ্য",      icon: Info },
+            { id: "shell",     label: "শেল",        icon: Activity },
+            { id: "chemical",  label: "ধর্ম",        icon: Atom },
+            { id: "uses",      label: "ব্যবহার",     icon: BookOpen },
+            { id: "discovery", label: "ইতিহাস",     icon: History },
           ] as const).map(({ id, label, icon: Icon }) => (
             <button key={id} onClick={() => setTab(id)}
-              className={`flex-1 flex items-center justify-center gap-1 py-2.5 text-[11px] font-semibold border-b-2 transition-colors ${
+              className={`flex-1 min-w-[64px] flex items-center justify-center gap-1 py-2.5 text-[10.5px] font-semibold border-b-2 transition-colors whitespace-nowrap ${
                 tab === id
                   ? "border-current text-white"
                   : "border-transparent text-slate-500 hover:text-slate-300"
@@ -367,6 +374,113 @@ function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void })
               </motion.div>
             )}
 
+            {tab === "chemical" && (
+              <motion.div key="chemical"
+                initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 12 }}
+                className="p-4 space-y-3"
+              >
+                {ext ? (
+                  <>
+                    {/* Radii */}
+                    <div className="bg-slate-800 rounded-xl p-3">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <Ruler className="w-3.5 h-3.5" style={{ color: hex }} />
+                        <span className="text-[9px] text-slate-400 font-medium">পারমাণবিক ব্যাসার্ধ (pm)</span>
+                      </div>
+                      <div className="grid grid-cols-4 gap-1.5 text-center">
+                        {[
+                          ["Atomic", ext.radii.atomic],
+                          ["Covalent", ext.radii.covalent],
+                          ["Ionic", ext.radii.ionic],
+                          ["VdW", ext.radii.vanDerWaals],
+                        ].map(([label, val]) => (
+                          <div key={label as string} className="bg-slate-900/50 rounded-lg py-1.5">
+                            <div className="text-[8px] text-slate-500">{label}</div>
+                            <div className="text-xs font-semibold text-white">{val ?? "—"}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Ionization energies */}
+                    <div className="bg-slate-800 rounded-xl p-3">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <Zap className="w-3.5 h-3.5 text-yellow-400" />
+                        <span className="text-[9px] text-slate-400 font-medium">আয়নীকরণ শক্তি (kJ/mol)</span>
+                      </div>
+                      <div className="space-y-1.5">
+                        {[
+                          ["১ম", ext.ionizationEnergies.first],
+                          ["২য়", ext.ionizationEnergies.second],
+                          ["৩য়", ext.ionizationEnergies.third],
+                        ].map(([label, val]) => {
+                          const numVal = typeof val === "number" ? val : null;
+                          const maxVal = ext.ionizationEnergies.third ?? ext.ionizationEnergies.second ?? ext.ionizationEnergies.first ?? 1;
+                          const pct = numVal ? Math.max(6, Math.min(100, (numVal / maxVal) * 100)) : 0;
+                          return (
+                            <div key={label as string} className="flex items-center gap-2">
+                              <span className="text-[9px] text-slate-500 w-6">{label}</span>
+                              <div className="flex-1 h-3 bg-slate-900/60 rounded-full overflow-hidden">
+                                {numVal !== null && (
+                                  <div
+                                    className="h-full rounded-full"
+                                    style={{ width: `${pct}%`, backgroundColor: hex }}
+                                  />
+                                )}
+                              </div>
+                              <span className="text-[9px] text-white w-14 text-right font-mono">
+                                {numVal !== null ? numVal.toLocaleString() : "—"}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+
+                    {/* Electron affinity + hardness + crystal structure */}
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="bg-slate-800 rounded-xl p-2.5">
+                        <div className="text-[9px] text-slate-400">ইলেকট্রন অ্যাফিনিটি</div>
+                        <div className="text-white text-xs font-medium mt-0.5">
+                          {ext.electronAffinity !== null ? `${ext.electronAffinity} kJ/mol` : "—"}
+                        </div>
+                      </div>
+                      <div className="bg-slate-800 rounded-xl p-2.5">
+                        <div className="text-[9px] text-slate-400">কাঠিন্য (Mohs)</div>
+                        <div className="text-white text-xs font-medium mt-0.5">
+                          {ext.hardnessMohs !== null ? ext.hardnessMohs : "—"}
+                        </div>
+                      </div>
+                      <div className="bg-slate-800 rounded-xl p-2.5 col-span-2">
+                        <div className="text-[9px] text-slate-400">স্ফটিক গঠন</div>
+                        <div className="text-white text-xs font-medium mt-0.5 leading-snug">{ext.crystalStructure}</div>
+                      </div>
+                      <div className="bg-slate-800 rounded-xl p-2.5">
+                        <div className="text-[9px] text-slate-400">গলনতাপ</div>
+                        <div className="text-white text-xs font-medium mt-0.5">
+                          {ext.heatOfFusion !== null ? `${ext.heatOfFusion} kJ/mol` : "—"}
+                        </div>
+                      </div>
+                      <div className="bg-slate-800 rounded-xl p-2.5">
+                        <div className="text-[9px] text-slate-400">বাষ্পীভবন তাপ</div>
+                        <div className="text-white text-xs font-medium mt-0.5">
+                          {ext.heatOfVaporization !== null ? `${ext.heatOfVaporization} kJ/mol` : "—"}
+                        </div>
+                      </div>
+                      <div className="bg-slate-800 rounded-xl p-2.5 col-span-2">
+                        <div className="text-[9px] text-slate-400">মোলার আয়তন</div>
+                        <div className="text-white text-xs font-medium mt-0.5">
+                          {ext.molarVolume !== null ? `${ext.molarVolume} cm³/mol` : "—"}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-slate-500 text-xs text-center py-6">এই মৌলের বিস্তারিত রাসায়নিক ডেটা এখনো যোগ করা হয়নি।</p>
+                )}
+              </motion.div>
+            )}
+
             {tab === "uses" && (
               <motion.div key="uses"
                 initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 12 }}
@@ -396,6 +510,65 @@ function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void })
                     <div className="text-[8px] text-slate-500">g/cm³</div>
                   </div>
                 </div>
+              </motion.div>
+            )}
+            {tab === "discovery" && (
+              <motion.div key="discovery"
+                initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 12 }}
+                className="p-4 space-y-3"
+              >
+                <div className="bg-slate-800 rounded-xl p-3">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <History className="w-3.5 h-3.5" style={{ color: hex }} />
+                    <span className="text-xs text-slate-300 font-medium">আবিষ্কারের ইতিহাস</span>
+                  </div>
+                  <div className="space-y-2">
+                    <div>
+                      <div className="text-[9px] text-slate-400">আবিষ্কারক</div>
+                      <div className="text-white text-sm font-medium">{el.discoveredBy}</div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div>
+                        <div className="text-[9px] text-slate-400">সাল</div>
+                        <div className="text-white text-sm font-medium">{el.discoveryYear}</div>
+                      </div>
+                      <div>
+                        <div className="text-[9px] text-slate-400">স্থান</div>
+                        <div className="text-white text-sm font-medium">{ext?.discovery.place ?? "—"}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {ext && (
+                  <div className="bg-slate-800 rounded-xl p-3">
+                    <div className="text-[9px] text-slate-400 mb-1">নামের উৎস</div>
+                    <p className="text-white text-xs leading-relaxed">{ext.discovery.nameOrigin}</p>
+                  </div>
+                )}
+
+                {ext && ext.notableIsotopes.length > 0 && (
+                  <div className="bg-slate-800 rounded-xl p-3">
+                    <div className="flex items-center gap-1.5 mb-2">
+                      <Radiation className="w-3.5 h-3.5 text-orange-400" />
+                      <span className="text-[9px] text-slate-400 font-medium">উল্লেখযোগ্য আইসোটোপ</span>
+                    </div>
+                    <div className="space-y-1.5">
+                      {ext.notableIsotopes.map((iso) => (
+                        <div key={iso.symbol} className="flex items-center justify-between bg-slate-900/50 rounded-lg px-2.5 py-1.5">
+                          <span className="text-xs font-mono text-white">{iso.symbol}</span>
+                          <span className={`text-[9px] px-1.5 py-0.5 rounded-full ${
+                            iso.type === "stable"
+                              ? "bg-emerald-500/20 text-emerald-300"
+                              : "bg-orange-500/20 text-orange-300"
+                          }`}>
+                            {iso.type === "stable" ? (iso.abundance ?? "স্থিতিশীল") : (iso.halfLife ?? "তেজস্ক্রিয়")}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
           </AnimatePresence>
