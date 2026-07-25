@@ -96,10 +96,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
+          className="grid grid-cols-3 gap-4 max-w-2xl mx-auto"
         >
           {[
-            { value: "০+",                              label: "টপিক"        },
             { value: `${STATIC_FORMULAS.length.toLocaleString("bn-BD")}+`, label: "ফর্মুলা"     },
             { value: `${reactions.length.toLocaleString("bn-BD")}+`,       label: "বিক্রিয়া"   },
             { value: "১১টি",                             label: "ভার্চুয়াল ল্যাব" },
