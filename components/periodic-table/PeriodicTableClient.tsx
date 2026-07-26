@@ -8,7 +8,7 @@ import {
 import { getExtendedData } from "./elementDataExtended";
 import {
   X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen,
-  Atom, History, Radiation, Ruler, Scale,
+  Atom, History, Radiation, Ruler, Scale, Palette,
 } from "lucide-react";
 
 // ─── Colour maps ────────────────────────────────────────────────────────────
@@ -47,6 +47,78 @@ const blockOf: Record<string, string> = {
   "post-transition":"p",metalloid:"p",nonmetal:"p",halogen:"p",
   "noble-gas":"p",lanthanide:"f",actinide:"f",unknown:"?",
 };
+
+// ─── Trend Explorer property definitions ───────────────────────────────────
+type TrendKey =
+  | "electronegativity" | "atomicRadius" | "ionizationEnergy"
+  | "density" | "meltingPoint" | "boilingPoint";
+
+interface TrendDef {
+  label: string;
+  unit: string;
+  get: (el: ElementData) => number | null;
+}
+
+const trendDefs: Record<TrendKey, TrendDef> = {
+  electronegativity: {
+    label: "তড়িৎ ঋণাত্মকতা",
+    unit: "",
+    get: (el) => el.electronegativity,
+  },
+  atomicRadius: {
+    label: "পারমাণবিক ব্যাসার্ধ",
+    unit: "pm",
+    get: (el) => getExtendedData(el.atomicNumber)?.radii.atomic ?? null,
+  },
+  ionizationEnergy: {
+    label: "১ম আয়নীকরণ শক্তি",
+    unit: "kJ/mol",
+    get: (el) => getExtendedData(el.atomicNumber)?.ionizationEnergies.first ?? null,
+  },
+  density: {
+    label: "ঘনত্ব",
+    unit: "g/cm³",
+    get: (el) => el.density,
+  },
+  meltingPoint: {
+    label: "গলনাঙ্ক",
+    unit: "°C",
+    get: (el) => el.meltingPoint,
+  },
+  boilingPoint: {
+    label: "স্ফুটনাঙ্ক",
+    unit: "°C",
+    get: (el) => el.boilingPoint,
+  },
+};
+
+// Blue (low) → Yellow (mid) → Red (high) heatmap scale
+function heatColor(t: number): string {
+  // t is 0..1
+  const stops: [number, string][] = [
+    [0,    "#1e3a8a"], // deep blue
+    [0.25, "#2563eb"], // blue
+    [0.5,  "#eab308"], // yellow
+    [0.75, "#f97316"], // orange
+    [1,    "#dc2626"], // red
+  ];
+  for (let i = 0; i < stops.length - 1; i++) {
+    const [t0, c0] = stops[i];
+    const [t1, c1] = stops[i + 1];
+    if (t >= t0 && t <= t1) {
+      const localT = (t - t0) / (t1 - t0 || 1);
+      return lerpColor(c0, c1, localT);
+    }
+  }
+  return stops[stops.length - 1][1];
+}
+
+function lerpColor(a: string, b: string, t: number): string {
+  const pa = [parseInt(a.slice(1,3),16), parseInt(a.slice(3,5),16), parseInt(a.slice(5,7),16)];
+  const pb = [parseInt(b.slice(1,3),16), parseInt(b.slice(3,5),16), parseInt(b.slice(5,7),16)];
+  const rgb = pa.map((v, i) => Math.round(v + (pb[i] - v) * t));
+  return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+}
 
 // ─── Build row→col lookup ────────────────────────────────────────────────────
 // rows 1-9 map to display rows; lanthanides go on row 9, actinides row 10.
@@ -185,7 +257,7 @@ function ElectronShellDiagram({ config, symbol, color }: { config: string; symbo
 
 // ─── Element Cell ─────────────────────────────────────────────────────────
 function ElementCell({
-  el, dimmed, highlighted, onClick, onHover, compareSelected,
+  el, dimmed, highlighted, onClick, onHover, compareSelected, heatColorValue, heatValueLabel,
 }: {
   el: ElementData;
   dimmed: boolean;
@@ -193,9 +265,12 @@ function ElementCell({
   onClick: () => void;
   onHover: (c: string | null) => void;
   compareSelected?: boolean;
+  heatColorValue?: string | null; // when set, overrides category background with this color
+  heatValueLabel?: string | null; // shown in title tooltip when in heatmap mode
 }) {
   const hex   = categoryHex[el.category] ?? "#94a3b8";
   const bgCls = categoryColors[el.category] ?? categoryColors["unknown"];
+  const inHeatMode = heatColorValue !== undefined;
 
   return (
     <motion.button
@@ -203,7 +278,7 @@ function ElementCell({
       onMouseEnter={() => onHover(el.category)}
       onMouseLeave={() => onHover(null)}
       animate={{
-        opacity: dimmed ? 0.12 : 1,
+        opacity: dimmed ? 0.12 : (inHeatMode && heatColorValue === null ? 0.15 : 1),
         scale:   highlighted ? 1.07 : compareSelected ? 1.1 : 1,
         filter:  highlighted
           ? `drop-shadow(0 0 7px ${hex}cc)`
@@ -213,13 +288,14 @@ function ElementCell({
       whileHover={!dimmed ? { scale: 1.18, zIndex: 30 } : {}}
       whileTap={{ scale: 0.9 }}
       transition={{ type: "spring", stiffness: 320, damping: 22 }}
+      style={inHeatMode && heatColorValue ? { backgroundColor: heatColorValue } : undefined}
       className={`
-        relative ${bgCls} rounded-md text-white cursor-pointer
+        relative ${inHeatMode ? "bg-slate-800" : bgCls} rounded-md text-white cursor-pointer
         flex flex-col items-center justify-center w-full aspect-square
         ring-2 ${compareSelected ? "ring-white" : stateRing[el.state] ?? "ring-transparent"}
         shadow-md select-none
       `}
-      title={`${el.nameBn} — ${el.name}`}
+      title={inHeatMode ? `${el.nameBn}: ${heatValueLabel ?? "ডেটা নেই"}` : `${el.nameBn} — ${el.name}`}
     >
       {compareSelected && (
         <span className="absolute -top-1 -left-1 w-3.5 h-3.5 rounded-full bg-white text-slate-900 text-[8px] font-bold flex items-center justify-center shadow z-10">
@@ -732,10 +808,15 @@ export default function PeriodicTableClient() {
   const [compareMode,      setCompareMode]      = useState(false);
   const [compareIds,       setCompareIds]       = useState<number[]>([]);
   const [showCompare,      setShowCompare]      = useState(false);
+  const [trendKey,         setTrendKey]         = useState<TrendKey | null>(null);
 
   const MAX_COMPARE = 4;
 
   function handleCellClick(el: ElementData) {
+    if (trendKey) {
+      setSelected(el); // in trend mode, clicking still opens detail modal
+      return;
+    }
     if (!compareMode) {
       setSelected(el);
       return;
@@ -750,10 +831,45 @@ export default function PeriodicTableClient() {
   }
 
   function toggleCompareMode() {
+    setTrendKey(null); // compare and trend modes are mutually exclusive
     setCompareMode((prev) => {
       if (prev) setCompareIds([]); // exiting compare mode clears selection
       return !prev;
     });
+  }
+
+  function selectTrend(key: TrendKey) {
+    setCompareMode(false);
+    setCompareIds([]);
+    setTrendKey((prev) => (prev === key ? null : key));
+  }
+
+  // Compute min/max for the active trend property, for normalizing the heatmap
+  const trendRange = (() => {
+    if (!trendKey) return null;
+    const def = trendDefs[trendKey];
+    const values = elements
+      .map((el) => def.get(el))
+      .filter((v): v is number => v !== null);
+    if (values.length === 0) return null;
+    return { min: Math.min(...values), max: Math.max(...values) };
+  })();
+
+  function getHeatColorFor(el: ElementData): string | null {
+    if (!trendKey || !trendRange) return null;
+    const val = trendDefs[trendKey].get(el);
+    if (val === null) return null;
+    const { min, max } = trendRange;
+    const t = max === min ? 0.5 : (val - min) / (max - min);
+    return heatColor(t);
+  }
+
+  function getHeatLabelFor(el: ElementData): string | null {
+    if (!trendKey) return null;
+    const def = trendDefs[trendKey];
+    const val = def.get(el);
+    if (val === null) return null;
+    return `${val}${def.unit ? " " + def.unit : ""}`;
   }
 
   const comparedElements = compareIds
@@ -794,6 +910,49 @@ export default function PeriodicTableClient() {
           <Scale className="w-3.5 h-3.5" />
           {compareMode ? "তুলনা মোড চালু (মৌল সিলেক্ট করুন)" : "মৌল তুলনা করুন"}
         </button>
+      </div>
+
+      {/* ── Trend Explorer ── */}
+      <div className="flex flex-col items-center gap-2 mb-4">
+        <div className="flex items-center gap-1.5 flex-wrap justify-center">
+          <span className="flex items-center gap-1 text-[11px] text-slate-500 mr-1">
+            <Palette className="w-3.5 h-3.5" />ট্রেন্ড:
+          </span>
+          {(Object.entries(trendDefs) as [TrendKey, TrendDef][]).map(([key, def]) => (
+            <button
+              key={key}
+              onClick={() => selectTrend(key)}
+              className={`px-2.5 py-1 rounded-full text-[11px] font-medium transition-all ${
+                trendKey === key
+                  ? "bg-white text-slate-900 shadow"
+                  : "bg-slate-800 text-slate-400 hover:bg-slate-700 border border-slate-700"
+              }`}
+            >
+              {def.label}
+            </button>
+          ))}
+          {trendKey && (
+            <button
+              onClick={() => setTrendKey(null)}
+              className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-red-500/20 text-red-300 hover:bg-red-500/30"
+            >
+              বন্ধ করুন ✕
+            </button>
+          )}
+        </div>
+
+        {/* Heatmap legend */}
+        {trendKey && trendRange && (
+          <div className="flex items-center gap-2 text-[10px] text-slate-400">
+            <span>{trendRange.min}{trendDefs[trendKey].unit ? ` ${trendDefs[trendKey].unit}` : ""}</span>
+            <div
+              className="w-32 h-2.5 rounded-full"
+              style={{ background: "linear-gradient(to right, #1e3a8a, #2563eb, #eab308, #f97316, #dc2626)" }}
+            />
+            <span>{trendRange.max}{trendDefs[trendKey].unit ? ` ${trendDefs[trendKey].unit}` : ""}</span>
+            <span className="ml-1 opacity-60">(ধূসর = ডেটা নেই)</span>
+          </div>
+        )}
       </div>
 
       {/* ── Filter mode tabs ── */}
@@ -927,6 +1086,8 @@ export default function PeriodicTableClient() {
                     onClick={() => handleCellClick(el)}
                     onHover={setHoveredCategory}
                     compareSelected={compareIds.includes(el.atomicNumber)}
+                    heatColorValue={trendKey ? getHeatColorFor(el) : undefined}
+                    heatValueLabel={trendKey ? getHeatLabelFor(el) : undefined}
                   />
                 ) : (
                   <div key={ci} />
@@ -960,6 +1121,8 @@ export default function PeriodicTableClient() {
                   onClick={() => handleCellClick(el)}
                   onHover={setHoveredCategory}
                   compareSelected={compareIds.includes(el.atomicNumber)}
+                  heatColorValue={trendKey ? getHeatColorFor(el) : undefined}
+                  heatValueLabel={trendKey ? getHeatLabelFor(el) : undefined}
                 />
               ) : (
                 <div key={ci} />
@@ -980,6 +1143,8 @@ export default function PeriodicTableClient() {
                   onClick={() => handleCellClick(el)}
                   onHover={setHoveredCategory}
                   compareSelected={compareIds.includes(el.atomicNumber)}
+                  heatColorValue={trendKey ? getHeatColorFor(el) : undefined}
+                  heatValueLabel={trendKey ? getHeatLabelFor(el) : undefined}
                 />
               ) : (
                 <div key={ci} />
