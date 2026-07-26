@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   elements, categoryColors, categoryNames, ElementData,
@@ -8,7 +9,7 @@ import {
 import { getExtendedData } from "./elementDataExtended";
 import {
   X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen,
-  Atom, History, Radiation, Ruler, Scale, Palette,
+  Atom, History, Radiation, Ruler, Scale, Palette, Search, Check,
 } from "lucide-react";
 
 // ─── Colour maps ────────────────────────────────────────────────────────────
@@ -802,15 +803,44 @@ const periodList = [1,2,3,4,5,6,7];
 
 export default function PeriodicTableClient() {
   const [selected,         setSelected]         = useState<ElementData | null>(null);
-  const [filterMode,       setFilterMode]       = useState<FilterMode>("category");
-  const [activeFilter,     setActiveFilter]     = useState("all");
   const [hoveredCategory,  setHoveredCategory]  = useState<string | null>(null);
   const [compareMode,      setCompareMode]      = useState(false);
   const [compareIds,       setCompareIds]       = useState<number[]>([]);
   const [showCompare,      setShowCompare]      = useState(false);
   const [trendKey,         setTrendKey]         = useState<TrendKey | null>(null);
 
+  // ── Multi-filter state (Phase 5): each dimension holds its own multi-select set ──
+  const [activeCategories, setActiveCategories] = useState<Set<string>>(new Set());
+  const [activeStates,     setActiveStates]     = useState<Set<string>>(new Set());
+  const [activeBlocks,     setActiveBlocks]     = useState<Set<string>>(new Set());
+  const [activePeriods,    setActivePeriods]    = useState<Set<number>>(new Set());
+  const [filterPanelTab,   setFilterPanelTab]   = useState<FilterMode>("category");
+
+  // ── Smart search state ──
+  const [searchQuery,      setSearchQuery]      = useState("");
+  const [searchFocused,    setSearchFocused]    = useState(false);
+  const [jumpedId,         setJumpedId]         = useState<number | null>(null);
+
   const MAX_COMPARE = 4;
+
+  function toggleInSet<T>(setFn: React.Dispatch<React.SetStateAction<Set<T>>>, value: T) {
+    setFn((prev) => {
+      const next = new Set(prev);
+      if (next.has(value)) next.delete(value);
+      else next.add(value);
+      return next;
+    });
+  }
+
+  function clearAllFilters() {
+    setActiveCategories(new Set());
+    setActiveStates(new Set());
+    setActiveBlocks(new Set());
+    setActivePeriods(new Set());
+  }
+
+  const totalActiveFilters =
+    activeCategories.size + activeStates.size + activeBlocks.size + activePeriods.size;
 
   function handleCellClick(el: ElementData) {
     if (trendKey) {
@@ -876,24 +906,48 @@ export default function PeriodicTableClient() {
     .map((id) => elements.find((e) => e.atomicNumber === id))
     .filter((e): e is ElementData => e != null);
 
+  // ── Combined multi-filter match (AND across dimensions, OR within each dimension) ──
   function matches(el: ElementData) {
-    if (activeFilter === "all") return true;
-    if (filterMode === "category") return el.category  === activeFilter;
-    if (filterMode === "state")    return el.state      === activeFilter;
-    if (filterMode === "block")    return blockOf[el.category] === activeFilter;
-    if (filterMode === "period")   return String(el.period) === activeFilter;
+    if (activeCategories.size > 0 && !activeCategories.has(el.category)) return false;
+    if (activeStates.size > 0 && !activeStates.has(el.state)) return false;
+    if (activeBlocks.size > 0 && !activeBlocks.has(blockOf[el.category])) return false;
+    if (activePeriods.size > 0 && !activePeriods.has(el.period)) return false;
     return true;
   }
 
+  const isFilterActive = totalActiveFilters > 0;
+
   const isDimmed      = (el: ElementData) =>
     (hoveredCategory != null && el.category !== hoveredCategory) ||
-    (activeFilter !== "all" && !matches(el));
+    (isFilterActive && !matches(el));
 
   const isHighlighted = (el: ElementData) =>
     (hoveredCategory != null && el.category === hoveredCategory) ||
-    (activeFilter !== "all" && matches(el));
+    (isFilterActive && matches(el)) ||
+    (jumpedId === el.atomicNumber);
 
-  const toggle = (key: string) => setActiveFilter(p => p === key ? "all" : key);
+  // ── Smart search: find matching elements by name (bn/en), symbol, or atomic number ──
+  const searchResults = (() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return [];
+    return elements
+      .filter((el) =>
+        el.name.toLowerCase().includes(q) ||
+        el.nameBn.includes(searchQuery.trim()) ||
+        el.symbol.toLowerCase() === q ||
+        String(el.atomicNumber) === q
+      )
+      .slice(0, 8);
+  })();
+
+  function jumpToElement(el: ElementData) {
+    setSearchQuery("");
+    setSearchFocused(false);
+    setJumpedId(el.atomicNumber);
+    setSelected(el);
+    // clear the temporary highlight after a moment
+    setTimeout(() => setJumpedId((prev) => (prev === el.atomicNumber ? null : prev)), 2000);
+  }
 
   return (
     <div>
@@ -955,90 +1009,162 @@ export default function PeriodicTableClient() {
         )}
       </div>
 
-      {/* ── Filter mode tabs ── */}
+      {/* ── Smart Search ── */}
+      <div className="flex justify-center mb-4 px-2">
+        <div className="relative w-full max-w-xs">
+          <div className="flex items-center gap-2 bg-slate-800 border border-slate-700 rounded-full px-3.5 py-2">
+            <Search className="w-3.5 h-3.5 text-slate-500 shrink-0" />
+            <input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setTimeout(() => setSearchFocused(false), 150)}
+              placeholder="নাম, প্রতীক বা পারমাণবিক সংখ্যা লিখুন…"
+              className="bg-transparent outline-none text-xs text-white placeholder:text-slate-500 w-full"
+            />
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")} className="text-slate-500 hover:text-white shrink-0">
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Suggestions dropdown */}
+          {searchFocused && searchQuery.trim() && (
+            <div className="absolute top-full mt-1.5 w-full bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden z-40 max-h-64 overflow-y-auto">
+              {searchResults.length > 0 ? (
+                searchResults.map((el) => {
+                  const bgCls = categoryColors[el.category] ?? "bg-slate-600";
+                  return (
+                    <button
+                      key={el.atomicNumber}
+                      onClick={() => jumpToElement(el)}
+                      className="w-full flex items-center gap-2.5 px-3 py-2 hover:bg-slate-700 text-left transition-colors"
+                    >
+                      <span className={`${bgCls} w-7 h-7 rounded-md flex items-center justify-center text-[11px] font-bold text-white shrink-0`}>
+                        {el.symbol}
+                      </span>
+                      <span className="text-xs text-white">{el.nameBn}</span>
+                      <span className="text-[10px] text-slate-500">{el.name}</span>
+                      <span className="ml-auto text-[10px] text-slate-500 font-mono">#{el.atomicNumber}</span>
+                    </button>
+                  );
+                })
+              ) : (
+                <div className="px-3 py-3 text-[11px] text-slate-500 text-center">কোনো মৌল পাওয়া যায়নি</div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ── Filter panel tabs ── */}
       <div className="flex justify-center gap-1.5 mb-4 flex-wrap">
         {([
-          { id:"category", label:"ক্যাটাগরি",   icon:Layers },
-          { id:"state",    label:"অবস্থা",        icon:Droplets },
-          { id:"block",    label:"s/p/d/f ব্লক", icon:Activity },
-          { id:"period",   label:"পর্যায়",        icon:Zap },
-        ] as const).map(({ id, label, icon:Icon }) => (
+          { id:"category", label:"ক্যাটাগরি",   icon:Layers,   count: activeCategories.size },
+          { id:"state",    label:"অবস্থা",        icon:Droplets, count: activeStates.size },
+          { id:"block",    label:"s/p/d/f ব্লক", icon:Activity, count: activeBlocks.size },
+          { id:"period",   label:"পর্যায়",        icon:Zap,      count: activePeriods.size },
+        ] as const).map(({ id, label, icon:Icon, count }) => (
           <button key={id}
-            onClick={() => { setFilterMode(id); setActiveFilter("all"); }}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-              filterMode === id
+            onClick={() => setFilterPanelTab(id)}
+            className={`relative flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              filterPanelTab === id
                 ? "gradient-bg text-white shadow-lg"
                 : "bg-slate-800 text-slate-400 hover:bg-slate-700"
             }`}
           >            <Icon className="w-3.5 h-3.5" />{label}
+            {count > 0 && (
+              <span className="ml-0.5 bg-white/90 text-slate-900 text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                {count}
+              </span>
+            )}
           </button>
         ))}
       </div>
 
-      {/* ── Filter chips ── */}
-      <div className="flex flex-wrap justify-center gap-1.5 mb-4 px-2">
-        <button onClick={() => setActiveFilter("all")}
-          className={`px-3 py-1 rounded-full text-[11px] font-medium transition-all ${
-            activeFilter === "all"
-              ? "bg-white text-slate-900 shadow"
-              : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-          }`}
-        >
-          সব
-        </button>
+      {/* ── Multi-select filter chips (AND across dimensions, OR within one) ── */}
+      <div className="flex flex-wrap justify-center gap-1.5 mb-2 px-2">
+        {filterPanelTab === "category" && Object.entries(categoryNames).map(([key, name]) => {
+          const active = activeCategories.has(key);
+          return (
+            <button key={key}
+              onClick={() => toggleInSet(setActiveCategories, key)}
+              onMouseEnter={() => setHoveredCategory(key)}
+              onMouseLeave={() => setHoveredCategory(null)}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium transition-all border-2 ${
+                categoryColors[key]
+              } text-white ${
+                active ? "border-white/80 scale-105" : "border-transparent opacity-70 hover:opacity-100"
+              }`}
+              style={active ? { boxShadow: `0 0 10px ${categoryHex[key]}88` } : {}}
+            >
+              {active && <Check className="w-3 h-3" />}
+              {name} ({elements.filter(e => e.category === key).length})
+            </button>
+          );
+        })}
 
-        {filterMode === "category" && Object.entries(categoryNames).map(([key, name]) => (
-          <button key={key}
-            onClick={() => toggle(key)}
-            onMouseEnter={() => setHoveredCategory(key)}
-            onMouseLeave={() => setHoveredCategory(null)}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium transition-all border-2 ${
-              categoryColors[key]
-            } text-white ${
-              activeFilter === key ? "border-white/80 scale-105" : "border-transparent opacity-70 hover:opacity-100"
-            }`}
-            style={activeFilter === key ? { boxShadow: `0 0 10px ${categoryHex[key]}88` } : {}}
-          >
-            {name} ({elements.filter(e => e.category === key).length})
-          </button>
-        ))}
+        {filterPanelTab === "state" && (["solid","liquid","gas","unknown"] as const).map(s => {
+          const active = activeStates.has(s);
+          return (
+            <button key={s} onClick={() => toggleInSet(setActiveStates, s)}
+              className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-medium transition-all ${
+                active
+                  ? "bg-white text-slate-900"
+                  : `${stateColor[s]} opacity-80 hover:opacity-100`
+              }`}
+            >
+              {active && <Check className="w-3 h-3" />}
+              {stateLabel[s]} ({elements.filter(e => e.state === s).length})
+            </button>
+          );
+        })}
 
-        {filterMode === "state" && (["solid","liquid","gas","unknown"] as const).map(s => (
-          <button key={s} onClick={() => toggle(s)}
-            className={`px-3 py-1 rounded-full text-[11px] font-medium transition-all ${
-              activeFilter === s
-                ? "bg-white text-slate-900"
-                : `${stateColor[s]} opacity-80 hover:opacity-100`
-            }`}
-          >
-            {stateLabel[s]} ({elements.filter(e => e.state === s).length})
-          </button>
-        ))}
+        {filterPanelTab === "block" && ["s","p","d","f"].map(b => {
+          const active = activeBlocks.has(b);
+          return (
+            <button key={b} onClick={() => toggleInSet(setActiveBlocks, b)}
+              className={`flex items-center gap-1 px-4 py-1 rounded-full text-[11px] font-bold transition-all ${
+                active
+                  ? "gradient-bg text-white shadow-lg"
+                  : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+              }`}
+            >
+              {active && <Check className="w-3 h-3" />}
+              {b}-block ({elements.filter(e => blockOf[e.category] === b).length})
+            </button>
+          );
+        })}
 
-        {filterMode === "block" && ["s","p","d","f"].map(b => (
-          <button key={b} onClick={() => toggle(b)}
-            className={`px-4 py-1 rounded-full text-[11px] font-bold transition-all ${
-              activeFilter === b
-                ? "gradient-bg text-white shadow-lg"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-            }`}
-          >
-            {b}-block ({elements.filter(e => blockOf[e.category] === b).length})
-          </button>
-        ))}
-
-        {filterMode === "period" && periodList.map(p => (
-          <button key={p} onClick={() => toggle(String(p))}
-            className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${
-              activeFilter === String(p)
-                ? "gradient-bg text-white shadow-lg"
-                : "bg-slate-700 text-slate-300 hover:bg-slate-600"
-            }`}
-          >
-            {p}
-          </button>
-        ))}
+        {filterPanelTab === "period" && periodList.map(p => {
+          const active = activePeriods.has(p);
+          return (
+            <button key={p} onClick={() => toggleInSet(setActivePeriods, p)}
+              className={`flex items-center justify-center gap-0.5 w-8 h-8 rounded-full text-xs font-bold transition-all ${
+                active
+                  ? "gradient-bg text-white shadow-lg"
+                  : "bg-slate-700 text-slate-300 hover:bg-slate-600"
+              }`}
+            >
+              {p}
+            </button>
+          );
+        })}
       </div>
+
+      {/* ── Active filter summary (shows AND logic across dimensions) ── */}
+      {isFilterActive && (
+        <div className="flex items-center justify-center gap-2 mb-4 text-[11px] text-slate-400">
+          <span>সক্রিয় ফিল্টার: {totalActiveFilters}টি (AND লজিক)</span>
+          <button
+            onClick={clearAllFilters}
+            className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-500/20 text-red-300 hover:bg-red-500/30 font-medium"
+          >
+            <X className="w-3 h-3" />সব ফিল্টার মুছুন
+          </button>
+        </div>
+      )}
 
       {/* ── State ring legend ── */}
       <div className="flex flex-wrap justify-center items-center gap-4 mb-4 text-[10px] text-slate-500">
@@ -1157,7 +1283,7 @@ export default function PeriodicTableClient() {
       {/* Count */}
       <p className="text-center text-slate-500 text-[11px] mt-3">
         <span className="text-white font-semibold">{elements.filter(matches).length}</span> / ১১৮টি মৌল
-        {activeFilter === "all" && (
+        {!isFilterActive && (
           <span className="ml-2 opacity-50">· category hover করলে সেই group glow হবে</span>
         )}
       </p>
