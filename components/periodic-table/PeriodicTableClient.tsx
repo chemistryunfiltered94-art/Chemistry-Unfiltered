@@ -7,6 +7,7 @@ import {
   elements, categoryColors, categoryNames, ElementData,
 } from "./elementData";
 import { getExtendedData } from "./elementDataExtended";
+import { getAbundance } from "./abundanceData";
 import {
   X, Zap, FlaskConical, Info, Layers, Wind, Droplets, Activity, BookOpen,
   Atom, History, Radiation, Ruler, Scale, Palette, Search, Check,
@@ -631,6 +632,58 @@ function ElementModal({ el, onClose }: { el: ElementData; onClose: () => void })
                   </div>
                 )}
 
+                {(() => {
+                  const ab = getAbundance(el.atomicNumber);
+                  if (!ab || (ab.crustPpm === null && ab.universePpm === null)) return null;
+                  // Log-scale bars: use log10(ppm+epsilon) mapped against a fixed practical range
+                  const logScale = (v: number | null, maxLog: number) => {
+                    if (v === null || v <= 0) return 0;
+                    const logV = Math.log10(v);
+                    const minLog = -12; // covers down to ~1e-12 ppm (rarest natural elements)
+                    const pct = ((logV - minLog) / (maxLog - minLog)) * 100;
+                    return Math.max(2, Math.min(100, pct));
+                  };
+                  const crustPct = logScale(ab.crustPpm, 6);      // O is ~461,000 ppm ≈ 5.66 →6
+                  const universePct = logScale(ab.universePpm, 7); // H is 10,000,000 ppm = 7
+
+                  return (
+                    <div className="bg-slate-800 rounded-xl p-3">
+                      <div className="flex items-center gap-1.5 mb-2.5">
+                        <Layers className="w-3.5 h-3.5 text-teal-400" />
+                        <span className="text-[9px] text-slate-400 font-medium">আপেক্ষিক প্রাচুর্য (লগ-স্কেল)</span>
+                      </div>
+                      <div className="space-y-2">
+                        <div>
+                          <div className="flex justify-between text-[9px] text-slate-500 mb-0.5">
+                            <span>পৃথিবীর ভূত্বকে</span>
+                            <span className="font-mono text-slate-300">
+                              {ab.crustPpm !== null ? `${ab.crustPpm} ppm` : "প্রাকৃতিক নয়"}
+                            </span>
+                          </div>
+                          <div className="h-2.5 bg-slate-900/60 rounded-full overflow-hidden">
+                            {ab.crustPpm !== null && (
+                              <div className="h-full rounded-full bg-gradient-to-r from-teal-600 to-teal-400" style={{ width: `${crustPct}%` }} />
+                            )}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex justify-between text-[9px] text-slate-500 mb-0.5">
+                            <span>মহাবিশ্বে</span>
+                            <span className="font-mono text-slate-300">
+                              {ab.universePpm !== null ? `${ab.universePpm} ppm` : "প্রাকৃতিক নয়"}
+                            </span>
+                          </div>
+                          <div className="h-2.5 bg-slate-900/60 rounded-full overflow-hidden">
+                            {ab.universePpm !== null && (
+                              <div className="h-full rounded-full bg-gradient-to-r from-indigo-600 to-indigo-400" style={{ width: `${universePct}%` }} />
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
                 {ext && ext.notableIsotopes.length > 0 && (
                   <div className="bg-slate-800 rounded-xl p-3">
                     <div className="flex items-center gap-1.5 mb-2">
@@ -795,6 +848,54 @@ function CompareDrawer({ elements: compared, onClose, onRemove }: {
         </div>
       </motion.div>
     </motion.div>
+  );
+}
+
+// ─── Discovery Timeline ─────────────────────────────────────────────────────
+// আবিষ্কারের সাল অনুযায়ী একটা স্ক্রলযোগ্য অনুভূমিক টাইমলাইন।
+// "প্রাচীন" (ancient) মৌলগুলোকে একটা নির্দিষ্ট early slot এ রাখা হয়েছে, বাকিরা প্রকৃত সাল অনুযায়ী সাজানো।
+function parseDiscoveryYear(yearStr: string): number {
+  if (yearStr.includes("প্রাচীন")) return -3000; // ancient elements placed before recorded discovery years
+  const n = parseInt(yearStr.replace(/[^\d]/g, ""), 10);
+  return Number.isNaN(n) ? 0 : n;
+}
+
+function DiscoveryTimeline({ onSelect }: { onSelect: (el: ElementData) => void }) {
+  const sorted = [...elements].sort(
+    (a, b) => parseDiscoveryYear(a.discoveryYear) - parseDiscoveryYear(b.discoveryYear)
+  );
+
+  return (
+    <div className="mt-8 bg-slate-900/60 border border-slate-800 rounded-2xl p-4">
+      <div className="flex items-center gap-1.5 mb-3">
+        <History className="w-4 h-4 text-slate-300" />
+        <span className="text-white font-semibold text-sm">আবিষ্কারের সময়রেখা</span>
+        <span className="text-slate-500 text-[10px]">({sorted.length}টি মৌল, সাল অনুযায়ী)</span>
+      </div>
+      <div className="overflow-x-auto pb-2">
+        <div className="flex items-end gap-1.5" style={{ minWidth: `${sorted.length * 34}px` }}>
+          {sorted.map((el) => {
+            const bgCls = categoryColors[el.category] ?? "bg-slate-600";
+            const isAncient = el.discoveryYear.includes("প্রাচীন");
+            return (
+              <button
+                key={el.atomicNumber}
+                onClick={() => onSelect(el)}
+                className="flex flex-col items-center gap-1 group shrink-0"
+                title={`${el.nameBn} — ${el.discoveryYear}`}
+              >
+                <span className={`${bgCls} w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-bold text-white shadow group-hover:scale-125 transition-transform`}>
+                  {el.symbol}
+                </span>
+                <span className="text-[8px] text-slate-500 font-mono whitespace-nowrap">
+                  {isAncient ? "প্রাচীন" : el.discoveryYear}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -1287,6 +1388,9 @@ export default function PeriodicTableClient() {
           <span className="ml-2 opacity-50">· category hover করলে সেই group glow হবে</span>
         )}
       </p>
+
+      {/* Discovery Timeline */}
+      <DiscoveryTimeline onSelect={(el) => setSelected(el)} />
 
       {/* Modal */}
       <AnimatePresence>
