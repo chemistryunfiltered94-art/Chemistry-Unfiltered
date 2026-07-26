@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-11-named-reactions.ts
+// lib/seedData/organic/2-31-carbohydrates.ts
 //
-// অধ্যায় 2.11 — নামযুক্ত জৈব বিক্রিয়া (Organic Chemistry)
+// অধ্যায় 2.31 — কার্বোহাইড্রেট (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter211: SeedChapter = {
-  code: "2.11",
+const chapter231: SeedChapter = {
+  code: "2.31",
   category: "organic-chemistry",
-  chapterTitle: "নামযুক্ত জৈব বিক্রিয়া",
-  chapterOrder: 110,
+  chapterTitle: "কার্বোহাইড্রেট",
+  chapterOrder: 134,
   topics: [
     {
-      title: "নামযুক্ত বিক্রিয়ার ধারণা",
-      slug: "namyukt-bikriyar-dharna",
+      title: "কার্বোহাইড্রেটের সংজ্ঞা",
+      slug: "karbohaidreter-sngjnya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বিক্রিয়ার শ্রেণিবিভাগ",
-      slug: "bikriyar-shrenibibhag",
+      title: "ইতিহাস",
+      slug: "itihas",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "শিল্প ও গবেষণায় গুরুত্ব",
-      slug: "shilp-o-gbeshnay-gurutb",
+      title: "সাধারণ সংকেত",
+      slug: "sadharn-sngket-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যালকাইলেশন",
-      slug: "phridelkraphts-ayalkaileshn",
+      title: "শ্রেণিবিভাগ",
+      slug: "shrenibibhag-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যাসাইলেশন",
-      slug: "phridelkraphts-ayasaileshn",
+      title: "জৈবিক গুরুত্ব",
+      slug: "joibik-gurutb",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "স্যান্ডমেয়ার বিক্রিয়া",
-      slug: "syandmeyar-bikriya-2",
+      title: "খাদ্যে কার্বোহাইড্রেটের ভূমিকা",
+      slug: "khadye-karbohaidreter-bhuumika",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান বিক্রিয়া",
-      slug: "gyatarmyan-bikriya-2",
+      title: "মনোস্যাকারাইড",
+      slug: "mnosyakaraid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান–কখ বিক্রিয়া",
-      slug: "gyatarmyankkh-bikriya",
+      title: "ডাইস্যাকারাইড",
+      slug: "daisyakaraid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বাল্‌জ–শিয়েম্যান বিক্রিয়া",
-      slug: "baljshiyemyan-bikriya",
+      title: "অলিগোস্যাকারাইড",
+      slug: "aligosyakaraid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "অ্যালডল ঘনীভবন",
-      slug: "ayaldl-ghniibhbn-2",
+      title: "পলিস্যাকারাইড",
+      slug: "plisyakaraid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেইজেন ঘনীভবন",
-      slug: "kleijen-ghniibhbn",
+      title: "রিডিউসিং সুগার",
+      slug: "ridiusing-sugar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লাইসেন–শ্মিট বিক্রিয়া",
-      slug: "klaisenshmit-bikriya",
+      title: "নন-রিডিউসিং সুগার",
+      slug: "nn-ridiusing-sugar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পারকিন বিক্রিয়া",
-      slug: "parkin-bikriya",
+      title: "গ্লুকোজ",
+      slug: "glukoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "মাইকেল সংযোজন",
-      slug: "maikel-sngyojn",
+      title: "ফ্রুক্টোজ",
+      slug: "phruktoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উইটিগ বিক্রিয়া",
-      slug: "uitig-bikriya",
+      title: "গ্যালাক্টোজ",
+      slug: "gyalaktoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্রিগনার্ড বিক্রিয়া",
-      slug: "grignard-bikriya",
+      title: "রাইবোজ",
+      slug: "raiboj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ডাইলস–অ্যালডার বিক্রিয়া",
-      slug: "dailsayaldar-bikriya",
+      title: "ডিঅক্সিরাইবোজ",
+      slug: "diaksiraiboj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "রবিনসন অ্যানুলেশন",
-      slug: "rbinsn-ayanuleshn",
+      title: "অ্যালডোজ",
+      slug: "ayaldoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেমেনসেন বিজারণ",
-      slug: "klemensen-bijarn",
+      title: "কিটোজ",
+      slug: "kitoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উলফ–কিশনার বিজারণ",
-      slug: "ulphkishnar-bijarn",
+      title: "ওপেন চেইন গঠন",
+      slug: "open-chein-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "জোন্স জারণ",
-      slug: "jons-jarn",
+      title: "সাইক্লিক গঠন",
+      slug: "saiklik-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,8 +307,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওপেনাওয়ার জারণ",
-      slug: "openaoyar-jarn",
+      title: "হেমি-অ্যাসিটাল গঠন",
+      slug: "hemi-ayasital-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -321,8 +321,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেয়ার–ভিলিগার জারণ",
-      slug: "beyarbhiligar-jarn",
+      title: "হাওয়ার্থ প্রজেকশন",
+      slug: "haoyarth-prjekshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -335,8 +335,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওজোনোলাইসিস",
-      slug: "ojonolaisis-2",
+      title: "ফিশার প্রজেকশন",
+      slug: "phishar-prjekshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -349,8 +349,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পিনাকল–পিনাকোলোন পুনর্বিন্যাস",
-      slug: "pinaklpinakolon-punrbinyas",
+      title: "অ্যানোমার",
+      slug: "ayanomar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -363,8 +363,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেকম্যান পুনর্বিন্যাস",
-      slug: "bekmyan-punrbinyas",
+      title: "মিউটারোটেশন",
+      slug: "miutaroteshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -377,8 +377,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "হফম্যান পুনর্বিন্যাস",
-      slug: "hphmyan-punrbinyas",
+      title: "জারণ",
+      slug: "jarn-3",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -391,8 +391,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কার্টিয়াস পুনর্বিন্যাস",
-      slug: "kartiyas-punrbinyas",
+      title: "বিজারণ",
+      slug: "bijarn-4",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -405,8 +405,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "লসেন পুনর্বিন্যাস",
-      slug: "lsen-punrbinyas",
+      title: "গ্লাইকোসাইড গঠন",
+      slug: "glaikosaid-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -419,8 +419,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কোপ পুনর্বিন্যাস",
-      slug: "kop-punrbinyas",
+      title: "এস্টার গঠন",
+      slug: "estar-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -433,8 +433,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেইজেন পুনর্বিন্যাস",
-      slug: "kleijen-punrbinyas",
+      title: "ইথার গঠন",
+      slug: "ithar-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -447,8 +447,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রাইস পুনর্বিন্যাস",
-      slug: "phrais-punrbinyas",
+      title: "অসাজোন গঠন",
+      slug: "asajon-gthn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -461,8 +461,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্যানিজারো বিক্রিয়া",
-      slug: "kyanijaro-bikriya-2",
+      title: "সুক্রোজ",
+      slug: "sukroj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -475,8 +475,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "রেইমার–টিম্যান বিক্রিয়া",
-      slug: "reimartimyan-bikriya",
+      title: "মাল্টোজ",
+      slug: "maltoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -489,8 +489,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কোলবে–শ্মিট বিক্রিয়া",
-      slug: "kolbeshmit-bikriya",
+      title: "ল্যাক্টোজ",
+      slug: "lyaktoj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -503,8 +503,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "হেল–ভলহার্ড–জেলিনস্কি (HVZ) বিক্রিয়া",
-      slug: "helbhlhardjelinski-hvz-bikriya",
+      title: "স্টার্চ",
+      slug: "starch",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -517,8 +517,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাব্রিয়েল ফথালিমাইড সংশ্লেষণ",
-      slug: "gyabriyel-phthalimaid-sngshleshn",
+      title: "সেলুলোজ",
+      slug: "seluloj",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -531,8 +531,92 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উইলিয়ামসন ইথার সংশ্লেষণ",
-      slug: "uiliyamsn-ithar-sngshleshn",
+      title: "গ্লাইকোজেন",
+      slug: "glaikojen",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "মলিশ পরীক্ষা",
+      slug: "mlish-priiksha",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "বেনেডিক্ট পরীক্ষা",
+      slug: "benedikt-priiksha",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "ফেহলিং পরীক্ষা",
+      slug: "phehling-priiksha-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "টোলেন্স পরীক্ষা",
+      slug: "tolens-priiksha-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "সেলিওয়ানফ পরীক্ষা",
+      slug: "selioyanph-priiksha",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "বারফোয়েড পরীক্ষা",
+      slug: "barphoyed-priiksha",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -546,4 +630,4 @@ const chapter211: SeedChapter = {
   ],
 };
 
-export default chapter211;
+export default chapter231;

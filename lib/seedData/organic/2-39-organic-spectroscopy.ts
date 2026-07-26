@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-11-named-reactions.ts
+// lib/seedData/organic/2-39-organic-spectroscopy.ts
 //
-// অধ্যায় 2.11 — নামযুক্ত জৈব বিক্রিয়া (Organic Chemistry)
+// অধ্যায় 2.39 — জৈব স্পেকট্রোস্কপি (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter211: SeedChapter = {
-  code: "2.11",
+const chapter239: SeedChapter = {
+  code: "2.39",
   category: "organic-chemistry",
-  chapterTitle: "নামযুক্ত জৈব বিক্রিয়া",
-  chapterOrder: 110,
+  chapterTitle: "জৈব স্পেকট্রোস্কপি",
+  chapterOrder: 142,
   topics: [
     {
-      title: "নামযুক্ত বিক্রিয়ার ধারণা",
-      slug: "namyukt-bikriyar-dharna",
+      title: "স্পেকট্রোস্কপির সংজ্ঞা",
+      slug: "spektroskpir-sngjnya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বিক্রিয়ার শ্রেণিবিভাগ",
-      slug: "bikriyar-shrenibibhag",
+      title: "স্পেকট্রোস্কপির গুরুত্ব",
+      slug: "spektroskpir-gurutb",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "শিল্প ও গবেষণায় গুরুত্ব",
-      slug: "shilp-o-gbeshnay-gurutb",
+      title: "তড়িৎচৌম্বকীয় বর্ণালী (Electromagnetic Spectrum)",
+      slug: "tditchoumbkiiy-brnalii-electromagnetic-spectrum",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যালকাইলেশন",
-      slug: "phridelkraphts-ayalkaileshn",
+      title: "শক্তি ও তরঙ্গদৈর্ঘ্যের সম্পর্ক",
+      slug: "shkti-o-trnggdoirghyer-smprk",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যাসাইলেশন",
-      slug: "phridelkraphts-ayasaileshn",
+      title: "মৌলিক নীতি (UV-Vis)",
+      slug: "moulik-niiti-uv-vis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "স্যান্ডমেয়ার বিক্রিয়া",
-      slug: "syandmeyar-bikriya-2",
+      title: "ইলেকট্রনিক ট্রানজিশন",
+      slug: "ilektrnik-tranjishn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান বিক্রিয়া",
-      slug: "gyatarmyan-bikriya-2",
+      title: "ক্রোমোফোর",
+      slug: "kromophor",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান–কখ বিক্রিয়া",
-      slug: "gyatarmyankkh-bikriya",
+      title: "অক্সোক্রোম",
+      slug: "aksokrom",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বাল্‌জ–শিয়েম্যান বিক্রিয়া",
-      slug: "baljshiyemyan-bikriya",
+      title: "λmax",
+      slug: "max",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "অ্যালডল ঘনীভবন",
-      slug: "ayaldl-ghniibhbn-2",
+      title: "Beer-Lambert সূত্র",
+      slug: "beer-lambert-suutr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেইজেন ঘনীভবন",
-      slug: "kleijen-ghniibhbn",
+      title: "মৌলিক নীতি (IR)",
+      slug: "moulik-niiti-ir",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লাইসেন–শ্মিট বিক্রিয়া",
-      slug: "klaisenshmit-bikriya",
+      title: "কম্পনের ধরন",
+      slug: "kmpner-dhrn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পারকিন বিক্রিয়া",
-      slug: "parkin-bikriya",
+      title: "Stretching Vibration",
+      slug: "stretching-vibration",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "মাইকেল সংযোজন",
-      slug: "maikel-sngyojn",
+      title: "Bending Vibration",
+      slug: "bending-vibration",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উইটিগ বিক্রিয়া",
-      slug: "uitig-bikriya",
+      title: "Functional Group শনাক্তকরণ",
+      slug: "functional-group-shnaktkrn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্রিগনার্ড বিক্রিয়া",
-      slug: "grignard-bikriya",
+      title: "IR Spectrum বিশ্লেষণ",
+      slug: "ir-spectrum-bishleshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ডাইলস–অ্যালডার বিক্রিয়া",
-      slug: "dailsayaldar-bikriya",
+      title: "Fingerprint Region",
+      slug: "fingerprint-region",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "রবিনসন অ্যানুলেশন",
-      slug: "rbinsn-ayanuleshn",
+      title: "মৌলিক নীতি (NMR)",
+      slug: "moulik-niiti-nmr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেমেনসেন বিজারণ",
-      slug: "klemensen-bijarn",
+      title: "Nuclear Spin",
+      slug: "nuclear-spin",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উলফ–কিশনার বিজারণ",
-      slug: "ulphkishnar-bijarn",
+      title: "Chemical Shift",
+      slug: "chemical-shift",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "জোন্স জারণ",
-      slug: "jons-jarn",
+      title: "Shielding",
+      slug: "shielding",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,8 +307,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওপেনাওয়ার জারণ",
-      slug: "openaoyar-jarn",
+      title: "Deshielding",
+      slug: "deshielding",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -321,8 +321,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেয়ার–ভিলিগার জারণ",
-      slug: "beyarbhiligar-jarn",
+      title: "TMS Standard",
+      slug: "tms-standard",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -335,8 +335,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওজোনোলাইসিস",
-      slug: "ojonolaisis-2",
+      title: "Spin-Spin Splitting",
+      slug: "spin-spin-splitting",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -349,8 +349,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পিনাকল–পিনাকোলোন পুনর্বিন্যাস",
-      slug: "pinaklpinakolon-punrbinyas",
+      title: "Coupling Constant",
+      slug: "coupling-constant",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -363,8 +363,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেকম্যান পুনর্বিন্যাস",
-      slug: "bekmyan-punrbinyas",
+      title: "Integration",
+      slug: "integration",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -377,8 +377,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "হফম্যান পুনর্বিন্যাস",
-      slug: "hphmyan-punrbinyas",
+      title: "¹H NMR",
+      slug: "h-nmr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -391,8 +391,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কার্টিয়াস পুনর্বিন্যাস",
-      slug: "kartiyas-punrbinyas",
+      title: "¹³C NMR",
+      slug: "c-nmr",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -405,8 +405,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "লসেন পুনর্বিন্যাস",
-      slug: "lsen-punrbinyas",
+      title: "Spectrum Interpretation",
+      slug: "spectrum-interpretation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -419,8 +419,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কোপ পুনর্বিন্যাস",
-      slug: "kop-punrbinyas",
+      title: "মৌলিক নীতি (Mass Spec)",
+      slug: "moulik-niiti-mass-spec",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -433,8 +433,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেইজেন পুনর্বিন্যাস",
-      slug: "kleijen-punrbinyas",
+      title: "Molecular Ion Peak",
+      slug: "molecular-ion-peak",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -447,8 +447,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রাইস পুনর্বিন্যাস",
-      slug: "phrais-punrbinyas",
+      title: "Base Peak",
+      slug: "base-peak",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -461,8 +461,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্যানিজারো বিক্রিয়া",
-      slug: "kyanijaro-bikriya-2",
+      title: "Fragmentation",
+      slug: "fragmentation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -475,8 +475,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "রেইমার–টিম্যান বিক্রিয়া",
-      slug: "reimartimyan-bikriya",
+      title: "Isotope Peak",
+      slug: "isotope-peak",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -489,8 +489,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কোলবে–শ্মিট বিক্রিয়া",
-      slug: "kolbeshmit-bikriya",
+      title: "Molecular Mass নির্ণয়",
+      slug: "molecular-mass-nirny",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -503,8 +503,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "হেল–ভলহার্ড–জেলিনস্কি (HVZ) বিক্রিয়া",
-      slug: "helbhlhardjelinski-hvz-bikriya",
+      title: "IR + NMR + MS সমন্বয়",
+      slug: "ir-nmr-ms-smnby",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -517,22 +517,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাব্রিয়েল ফথালিমাইড সংশ্লেষণ",
-      slug: "gyabriyel-phthalimaid-sngshleshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "উইলিয়ামসন ইথার সংশ্লেষণ",
-      slug: "uiliyamsn-ithar-sngshleshn",
+      title: "অজানা যৌগ শনাক্তকরণ",
+      slug: "ajana-youg-shnaktkrn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -546,4 +532,4 @@ const chapter211: SeedChapter = {
   ],
 };
 
-export default chapter211;
+export default chapter239;

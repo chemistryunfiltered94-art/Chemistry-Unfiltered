@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-6-carboxylic-acids.ts
+// lib/seedData/organic/2-22-haloarenes.ts
 //
-// অধ্যায় 2.6 — কার্বক্সিলিক অ্যাসিড (Organic Chemistry)
+// অধ্যায় 2.22 — হ্যালোঅ্যারিন (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter26: SeedChapter = {
-  code: "2.6",
+const chapter222: SeedChapter = {
+  code: "2.22",
   category: "organic-chemistry",
-  chapterTitle: "কার্বক্সিলিক অ্যাসিড",
-  chapterOrder: 60,
+  chapterTitle: "হ্যালোঅ্যারিন",
+  chapterOrder: 125,
   topics: [
     {
-      title: "কার্বক্সিলিক অ্যাসিডের পরিচিতি",
-      slug: "karbksilik-ayasider-prichiti",
+      title: "Haloarene পরিচিতি",
+      slug: "haloarene-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "কার্যকরী মূলক (–COOH)",
-      slug: "karykrii-muulk-cooh",
+      title: "Preparation",
+      slug: "preparation-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-3",
+      title: "Chlorobenzene",
+      slug: "chlorobenzene",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-5",
+      title: "Bromobenzene",
+      slug: "bromobenzene",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যালকোহল ও অ্যালডিহাইডের জারণ",
-      slug: "ayalkohl-o-ayaldihaider-jarn",
+      title: "Physical Properties",
+      slug: "physical-properties-4",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "নাইট্রাইলের হাইড্রোলাইসিস",
-      slug: "naitrailer-haidrolaisis",
+      title: "Chemical Properties",
+      slug: "chemical-properties-4",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-3",
+      title: "Electrophilic Substitution",
+      slug: "electrophilic-substitution-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-5",
+      title: "Nucleophilic Substitution",
+      slug: "nucleophilic-substitution-3",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অম্লীয় ধর্ম",
-      slug: "amliiy-dhrm",
+      title: "Dow Process",
+      slug: "dow-process",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "লবণ গঠন",
-      slug: "lbn-gthn",
+      title: "Sandmeyer Reaction",
+      slug: "sandmeyer-reaction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,64 +153,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "এস্টারীকরণ",
-      slug: "estariikrn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "অ্যামাইড গঠন",
-      slug: "ayamaid-gthn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "অ্যাসিড ক্লোরাইড গঠন",
-      slug: "ayasid-kloraid-gthn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ডিকার্বক্সিলেশন",
-      slug: "dikarbksileshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ব্যবহার",
-      slug: "bybhar-3",
+      title: "Uses of Haloarenes",
+      slug: "uses-of-haloarenes",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -224,4 +168,4 @@ const chapter26: SeedChapter = {
   ],
 };
 
-export default chapter26;
+export default chapter222;

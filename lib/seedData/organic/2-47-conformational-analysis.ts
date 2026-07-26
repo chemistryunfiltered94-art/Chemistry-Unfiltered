@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-6-carboxylic-acids.ts
+// lib/seedData/organic/2-47-conformational-analysis.ts
 //
-// অধ্যায় 2.6 — কার্বক্সিলিক অ্যাসিড (Organic Chemistry)
+// অধ্যায় 2.47 — কনফরমেশনাল বিশ্লেষণ (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter26: SeedChapter = {
-  code: "2.6",
+const chapter247: SeedChapter = {
+  code: "2.47",
   category: "organic-chemistry",
-  chapterTitle: "কার্বক্সিলিক অ্যাসিড",
-  chapterOrder: 60,
+  chapterTitle: "কনফরমেশনাল বিশ্লেষণ",
+  chapterOrder: 150,
   topics: [
     {
-      title: "কার্বক্সিলিক অ্যাসিডের পরিচিতি",
-      slug: "karbksilik-ayasider-prichiti",
+      title: "পরিচিতি",
+      slug: "prichiti-10",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "কার্যকরী মূলক (–COOH)",
-      slug: "karykrii-muulk-cooh",
+      title: "Staggered Conformation",
+      slug: "staggered-conformation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-3",
+      title: "Eclipsed Conformation",
+      slug: "eclipsed-conformation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-5",
+      title: "Torsional Strain",
+      slug: "torsional-strain",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যালকোহল ও অ্যালডিহাইডের জারণ",
-      slug: "ayalkohl-o-ayaldihaider-jarn",
+      title: "Anti Conformation",
+      slug: "anti-conformation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "নাইট্রাইলের হাইড্রোলাইসিস",
-      slug: "naitrailer-haidrolaisis",
+      title: "Gauche Conformation",
+      slug: "gauche-conformation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-3",
+      title: "Steric Hindrance",
+      slug: "steric-hindrance",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-5",
+      title: "Chair Form",
+      slug: "chair-form",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অম্লীয় ধর্ম",
-      slug: "amliiy-dhrm",
+      title: "Boat Form",
+      slug: "boat-form",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "লবণ গঠন",
-      slug: "lbn-gthn",
+      title: "Twist Boat",
+      slug: "twist-boat",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "এস্টারীকরণ",
-      slug: "estariikrn",
+      title: "Half Chair",
+      slug: "half-chair",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যামাইড গঠন",
-      slug: "ayamaid-gthn",
+      title: "Axial Bond",
+      slug: "axial-bond",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যাসিড ক্লোরাইড গঠন",
-      slug: "ayasid-kloraid-gthn",
+      title: "Equatorial Bond",
+      slug: "equatorial-bond",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ডিকার্বক্সিলেশন",
-      slug: "dikarbksileshn",
+      title: "Ring Flip",
+      slug: "ring-flip",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ব্যবহার",
-      slug: "bybhar-3",
+      title: "শক্তি বিশ্লেষণ",
+      slug: "shkti-bishleshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -224,4 +224,4 @@ const chapter26: SeedChapter = {
   ],
 };
 
-export default chapter26;
+export default chapter247;

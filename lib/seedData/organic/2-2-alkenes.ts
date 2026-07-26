@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-7-amines.ts
+// lib/seedData/organic/2-2-alkenes.ts
 //
-// অধ্যায় 2.7 — অ্যামিন (Organic Chemistry)
+// অধ্যায় 2.2 — আলকিন (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter27: SeedChapter = {
-  code: "2.7",
+const chapter22: SeedChapter = {
+  code: "2.2",
   category: "organic-chemistry",
-  chapterTitle: "অ্যামিন",
-  chapterOrder: 70,
+  chapterTitle: "আলকিন",
+  chapterOrder: 20,
   topics: [
     {
-      title: "অ্যামিনের পরিচিতি",
-      slug: "ayaminer-prichiti",
+      title: "আলকিনের পরিচিতি",
+      slug: "aalkiner-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "শ্রেণিবিভাগ",
-      slug: "shrenibibhag",
+      title: "সাধারণ সংকেত (General Formula)",
+      slug: "sadharn-sngket-general-formula",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "প্রাইমারি অ্যামিন",
-      slug: "praimari-ayamin",
+      title: "গঠন ও হাইব্রিডাইজেশন (sp²)",
+      slug: "gthn-o-haibridaijeshn-sp",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "সেকেন্ডারি অ্যামিন",
-      slug: "sekendari-ayamin",
+      title: "ডাবল বন্ডের প্রকৃতি",
+      slug: "dabl-bnder-prkriti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,134 +69,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "টারশিয়ারি অ্যামিন",
-      slug: "tarshiyari-ayamin",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "অ্যালিফ্যাটিক অ্যামিন",
-      slug: "ayaliphyatik-ayamin",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "অ্যারোমেটিক অ্যামিন",
-      slug: "ayarometik-ayamin",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-4",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-7",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "নাইট্রো যৌগের বিজারণ",
-      slug: "naitro-youger-bijarn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "অ্যামাইডের বিজারণ",
-      slug: "ayamaider-bijarn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "গ্যাব্রিয়েল সংশ্লেষণ",
-      slug: "gyabriyel-sngshleshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "হফম্যান ব্রোমামাইড বিক্রিয়া",
-      slug: "hphmyan-bromamaid-bikriya",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-5",
+      title: "শারীরিক ধর্ম",
+      slug: "shariirik-dhrm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -210,7 +84,7 @@ const chapter27: SeedChapter = {
 
     {
       title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-7",
+      slug: "rasaynik-dhrm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +97,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "ক্ষারীয় ধর্ম",
-      slug: "kshariiy-dhrm",
+      title: "প্রস্তুত প্রণালী",
+      slug: "prstut-prnalii",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +111,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যালকাইলেশন",
-      slug: "ayalkaileshn",
+      title: "Dehydration of Alcohol",
+      slug: "dehydration-of-alcohol",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +125,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যাসাইলেশন",
-      slug: "ayasaileshn",
+      title: "Dehydrohalogenation",
+      slug: "dehydrohalogenation",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +139,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "কার্বাইলামিন পরীক্ষা",
-      slug: "karbailamin-priiksha",
+      title: "Cracking",
+      slug: "cracking-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +153,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "হিন্সবার্গ পরীক্ষা",
-      slug: "hinsbarg-priiksha",
+      title: "Hydrogenation",
+      slug: "hydrogenation-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +167,162 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "ব্যবহার",
-      slug: "bybhar-5",
+      title: "Halogenation",
+      slug: "halogenation-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Hydrohalogenation",
+      slug: "hydrohalogenation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Markovnikov Rule",
+      slug: "markovnikov-rule",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Anti-Markovnikov Rule (Peroxide Effect)",
+      slug: "anti-markovnikov-rule-peroxide-effect",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Hydration",
+      slug: "hydration",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Hydroboration–Oxidation",
+      slug: "hydroborationoxidation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Ozonolysis",
+      slug: "ozonolysis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Baeyer's Test",
+      slug: "baeyers-test",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Bromine Water Test",
+      slug: "bromine-water-test",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Oxidation by KMnO₄",
+      slug: "oxidation-by-kmno",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Polymerization",
+      slug: "polymerization",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Uses of Alkenes",
+      slug: "uses-of-alkenes",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -308,4 +336,4 @@ const chapter27: SeedChapter = {
   ],
 };
 
-export default chapter27;
+export default chapter22;

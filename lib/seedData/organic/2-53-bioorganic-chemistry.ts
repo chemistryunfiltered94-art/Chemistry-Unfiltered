@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-6-carboxylic-acids.ts
+// lib/seedData/organic/2-53-bioorganic-chemistry.ts
 //
-// অধ্যায় 2.6 — কার্বক্সিলিক অ্যাসিড (Organic Chemistry)
+// অধ্যায় 2.53 — জৈব-জীবরসায়ন (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter26: SeedChapter = {
-  code: "2.6",
+const chapter253: SeedChapter = {
+  code: "2.53",
   category: "organic-chemistry",
-  chapterTitle: "কার্বক্সিলিক অ্যাসিড",
-  chapterOrder: 60,
+  chapterTitle: "জৈব-জীবরসায়ন",
+  chapterOrder: 156,
   topics: [
     {
-      title: "কার্বক্সিলিক অ্যাসিডের পরিচিতি",
-      slug: "karbksilik-ayasider-prichiti",
+      title: "জৈব-জীবরসায়নের সংজ্ঞা",
+      slug: "joib-jiibrsayner-sngjnya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "কার্যকরী মূলক (–COOH)",
-      slug: "karykrii-muulk-cooh",
+      title: "ইতিহাস",
+      slug: "itihas-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-3",
+      title: "গুরুত্ব",
+      slug: "gurutb-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-5",
+      title: "কার্বোহাইড্রেট (বায়োমলিকিউল)",
+      slug: "karbohaidret-bayomlikiul",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যালকোহল ও অ্যালডিহাইডের জারণ",
-      slug: "ayalkohl-o-ayaldihaider-jarn",
+      title: "প্রোটিন (বায়োমলিকিউল)",
+      slug: "protin-bayomlikiul",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "নাইট্রাইলের হাইড্রোলাইসিস",
-      slug: "naitrailer-haidrolaisis",
+      title: "লিপিড (বায়োমলিকিউল)",
+      slug: "lipid-bayomlikiul",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-3",
+      title: "নিউক্লিক অ্যাসিড (বায়োমলিকিউল)",
+      slug: "niuklik-ayasid-bayomlikiul",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-5",
+      title: "Enzyme Catalysis",
+      slug: "enzyme-catalysis-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অম্লীয় ধর্ম",
-      slug: "amliiy-dhrm",
+      title: "Active Site (এনজাইম-নিয়ন্ত্রিত)",
+      slug: "active-site-enjaim-niyntrit",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "লবণ গঠন",
-      slug: "lbn-gthn",
+      title: "Transition State (এনজাইম)",
+      slug: "transition-state-enjaim",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "এস্টারীকরণ",
-      slug: "estariikrn",
+      title: "Enzyme Inhibition",
+      slug: "enzyme-inhibition",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যামাইড গঠন",
-      slug: "ayamaid-gthn",
+      title: "Metabolism",
+      slug: "metabolism-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যাসিড ক্লোরাইড গঠন",
-      slug: "ayasid-kloraid-gthn",
+      title: "Biosynthesis",
+      slug: "biosynthesis",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ডিকার্বক্সিলেশন",
-      slug: "dikarbksileshn",
+      title: "Signal Transduction",
+      slug: "signal-transduction",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,36 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ব্যবহার",
-      slug: "bybhar-3",
+      title: "ওষুধ উন্নয়ন",
+      slug: "oshudh-unnyn",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "বায়োটেকনোলজি",
+      slug: "bayoteknolji",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "চিকিৎসাবিজ্ঞান",
+      slug: "chikitsabijnyan",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -224,4 +252,4 @@ const chapter26: SeedChapter = {
   ],
 };
 
-export default chapter26;
+export default chapter253;

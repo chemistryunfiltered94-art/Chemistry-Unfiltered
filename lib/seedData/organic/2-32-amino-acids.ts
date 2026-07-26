@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-7-amines.ts
+// lib/seedData/organic/2-32-amino-acids.ts
 //
-// অধ্যায় 2.7 — অ্যামিন (Organic Chemistry)
+// অধ্যায় 2.32 — অ্যামিনো অ্যাসিড (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter27: SeedChapter = {
-  code: "2.7",
+const chapter232: SeedChapter = {
+  code: "2.32",
   category: "organic-chemistry",
-  chapterTitle: "অ্যামিন",
-  chapterOrder: 70,
+  chapterTitle: "অ্যামিনো অ্যাসিড",
+  chapterOrder: 135,
   topics: [
     {
-      title: "অ্যামিনের পরিচিতি",
-      slug: "ayaminer-prichiti",
+      title: "সংজ্ঞা",
+      slug: "sngjnya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "শ্রেণিবিভাগ",
-      slug: "shrenibibhag",
+      title: "গঠন",
+      slug: "gthn-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "প্রাইমারি অ্যামিন",
-      slug: "praimari-ayamin",
+      title: "α, β, γ অ্যামিনো অ্যাসিড",
+      slug: "ayamino-ayasid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "সেকেন্ডারি অ্যামিন",
-      slug: "sekendari-ayamin",
+      title: "জুইটার আয়ন",
+      slug: "juitar-aayn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "টারশিয়ারি অ্যামিন",
-      slug: "tarshiyari-ayamin",
+      title: "আইসোইলেকট্রিক পয়েন্ট",
+      slug: "aaisoilektrik-pyent",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যালিফ্যাটিক অ্যামিন",
-      slug: "ayaliphyatik-ayamin",
+      title: "অপরিহার্য অ্যামিনো অ্যাসিড",
+      slug: "aprihary-ayamino-ayasid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যারোমেটিক অ্যামিন",
-      slug: "ayarometik-ayamin",
+      title: "অনাবশ্যক অ্যামিনো অ্যাসিড",
+      slug: "anabshyk-ayamino-ayasid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-4",
+      title: "অম্লীয়",
+      slug: "amliiy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-7",
+      title: "ক্ষারীয়",
+      slug: "kshariiy",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "নাইট্রো যৌগের বিজারণ",
-      slug: "naitro-youger-bijarn",
+      title: "নিরপেক্ষ",
+      slug: "nirpeksh",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যামাইডের বিজারণ",
-      slug: "ayamaider-bijarn",
+      title: "পোলার",
+      slug: "polar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "গ্যাব্রিয়েল সংশ্লেষণ",
-      slug: "gyabriyel-sngshleshn",
+      title: "নন-পোলার",
+      slug: "nn-polar",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "হফম্যান ব্রোমামাইড বিক্রিয়া",
-      slug: "hphmyan-bromamaid-bikriya",
+      title: "দ্রাব্যতা",
+      slug: "drabyta",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-5",
+      title: "গলনাঙ্ক",
+      slug: "glnangk",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-7",
+      title: "অপটিক্যাল সক্রিয়তা",
+      slug: "aptikyal-skriyta",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "ক্ষারীয় ধর্ম",
-      slug: "kshariiy-dhrm",
+      title: "অ্যাম্ফোটেরিক ধর্ম",
+      slug: "ayamphoterik-dhrm",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যালকাইলেশন",
-      slug: "ayalkaileshn",
+      title: "লবণ গঠন",
+      slug: "lbn-gthn-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "অ্যাসাইলেশন",
-      slug: "ayasaileshn",
+      title: "পেপটাইড বন্ধন",
+      slug: "peptaid-bndhn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "কার্বাইলামিন পরীক্ষা",
-      slug: "karbailamin-priiksha",
+      title: "ডিকার্বক্সিলেশন",
+      slug: "dikarbksileshn-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "হিন্সবার্গ পরীক্ষা",
-      slug: "hinsbarg-priiksha",
+      title: "ডিএমিনেশন",
+      slug: "diemineshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,22 @@ const chapter27: SeedChapter = {
     },
 
     {
-      title: "ব্যবহার",
-      slug: "bybhar-5",
+      title: "নিনহাইড্রিন পরীক্ষা",
+      slug: "ninhaidrin-priiksha",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "জ্যান্থোপ্রোটিক পরীক্ষা",
+      slug: "jyanthoprotik-priiksha",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -308,4 +322,4 @@ const chapter27: SeedChapter = {
   ],
 };
 
-export default chapter27;
+export default chapter232;

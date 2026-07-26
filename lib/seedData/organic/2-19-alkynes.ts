@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-6-carboxylic-acids.ts
+// lib/seedData/organic/2-19-alkynes.ts
 //
-// অধ্যায় 2.6 — কার্বক্সিলিক অ্যাসিড (Organic Chemistry)
+// অধ্যায় 2.19 — আলকাইন (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter26: SeedChapter = {
-  code: "2.6",
+const chapter219: SeedChapter = {
+  code: "2.19",
   category: "organic-chemistry",
-  chapterTitle: "কার্বক্সিলিক অ্যাসিড",
-  chapterOrder: 60,
+  chapterTitle: "আলকাইন",
+  chapterOrder: 122,
   topics: [
     {
-      title: "কার্বক্সিলিক অ্যাসিডের পরিচিতি",
-      slug: "karbksilik-ayasider-prichiti",
+      title: "আলকাইনের পরিচিতি",
+      slug: "aalkainer-prichiti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "কার্যকরী মূলক (–COOH)",
-      slug: "karykrii-muulk-cooh",
+      title: "সাধারণ সংকেত",
+      slug: "sadharn-sngket",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-3",
+      title: "sp Hybridization",
+      slug: "sp-hybridization-4",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-5",
+      title: "Triple Bond Structure",
+      slug: "triple-bond-structure",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,36 +69,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যালকোহল ও অ্যালডিহাইডের জারণ",
-      slug: "ayalkohl-o-ayaldihaider-jarn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "নাইট্রাইলের হাইড্রোলাইসিস",
-      slug: "naitrailer-haidrolaisis",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-3",
+      title: "শারীরিক ধর্ম",
+      slug: "shariirik-dhrm-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -112,7 +84,7 @@ const chapter26: SeedChapter = {
 
     {
       title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-5",
+      slug: "rasaynik-dhrm-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +97,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অম্লীয় ধর্ম",
-      slug: "amliiy-dhrm",
+      title: "প্রস্তুত প্রণালী",
+      slug: "prstut-prnalii-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +111,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "লবণ গঠন",
-      slug: "lbn-gthn",
+      title: "Dehydrohalogenation",
+      slug: "dehydrohalogenation-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +125,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "এস্টারীকরণ",
-      slug: "estariikrn",
+      title: "Calcium Carbide Method",
+      slug: "calcium-carbide-method",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +139,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যামাইড গঠন",
-      slug: "ayamaid-gthn",
+      title: "Hydrogenation",
+      slug: "hydrogenation-3",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +153,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যাসিড ক্লোরাইড গঠন",
-      slug: "ayasid-kloraid-gthn",
+      title: "Halogenation",
+      slug: "halogenation-3",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +167,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ডিকার্বক্সিলেশন",
-      slug: "dikarbksileshn",
+      title: "Hydrohalogenation",
+      slug: "hydrohalogenation-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +181,92 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "ব্যবহার",
-      slug: "bybhar-3",
+      title: "Hydration",
+      slug: "hydration-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Oxidation",
+      slug: "oxidation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Ozonolysis",
+      slug: "ozonolysis-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Terminal Alkyne",
+      slug: "terminal-alkyne",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Acidic Nature of Alkyne",
+      slug: "acidic-nature-of-alkyne",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Metal Acetylide Formation",
+      slug: "metal-acetylide-formation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
+      },
+    },
+
+    {
+      title: "Uses of Alkynes",
+      slug: "uses-of-alkynes",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -224,4 +280,4 @@ const chapter26: SeedChapter = {
   ],
 };
 
-export default chapter26;
+export default chapter219;

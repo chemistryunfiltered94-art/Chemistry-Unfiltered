@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-6-carboxylic-acids.ts
+// lib/seedData/organic/2-28-diazonium-salts.ts
 //
-// অধ্যায় 2.6 — কার্বক্সিলিক অ্যাসিড (Organic Chemistry)
+// অধ্যায় 2.28 — ডায়াজোনিয়াম লবণ (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter26: SeedChapter = {
-  code: "2.6",
+const chapter228: SeedChapter = {
+  code: "2.28",
   category: "organic-chemistry",
-  chapterTitle: "কার্বক্সিলিক অ্যাসিড",
-  chapterOrder: 60,
+  chapterTitle: "ডায়াজোনিয়াম লবণ",
+  chapterOrder: 131,
   topics: [
     {
-      title: "কার্বক্সিলিক অ্যাসিডের পরিচিতি",
-      slug: "karbksilik-ayasider-prichiti",
+      title: "পরিচিতি",
+      slug: "prichiti-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,22 +27,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "কার্যকরী মূলক (–COOH)",
-      slug: "karykrii-muulk-cooh",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "IUPAC নামকরণ",
-      slug: "iupac-namkrn-3",
+      title: "ডায়াজোটাইজেশন",
+      slug: "dayajotaijeshn",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -56,7 +42,7 @@ const chapter26: SeedChapter = {
 
     {
       title: "প্রস্তুত প্রণালী",
-      slug: "prstut-prnalii-5",
+      slug: "prstut-prnalii-8",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,22 +55,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যালকোহল ও অ্যালডিহাইডের জারণ",
-      slug: "ayalkohl-o-ayaldihaider-jarn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "নাইট্রাইলের হাইড্রোলাইসিস",
-      slug: "naitrailer-haidrolaisis",
+      title: "বেনজিন ডায়াজোনিয়াম ক্লোরাইড",
+      slug: "benjin-dayajoniyam-kloraid",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -98,7 +70,7 @@ const chapter26: SeedChapter = {
 
     {
       title: "ভৌত ধর্ম",
-      slug: "bhout-dhrm-3",
+      slug: "bhout-dhrm-6",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -112,7 +84,7 @@ const chapter26: SeedChapter = {
 
     {
       title: "রাসায়নিক ধর্ম",
-      slug: "rasaynik-dhrm-5",
+      slug: "rasaynik-dhrm-8",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +97,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অম্লীয় ধর্ম",
-      slug: "amliiy-dhrm",
+      title: "স্যান্ডমেয়ার বিক্রিয়া",
+      slug: "syandmeyar-bikriya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +111,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "লবণ গঠন",
-      slug: "lbn-gthn",
+      title: "গ্যাটারম্যান বিক্রিয়া",
+      slug: "gyatarmyan-bikriya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +125,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "এস্টারীকরণ",
-      slug: "estariikrn",
+      title: "শিয়েম্যান বিক্রিয়া",
+      slug: "shiyemyan-bikriya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +139,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যামাইড গঠন",
-      slug: "ayamaid-gthn",
+      title: "আজো কাপলিং বিক্রিয়া",
+      slug: "aajo-kapling-bikriya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,22 +153,8 @@ const chapter26: SeedChapter = {
     },
 
     {
-      title: "অ্যাসিড ক্লোরাইড গঠন",
-      slug: "ayasid-kloraid-gthn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ডিকার্বক্সিলেশন",
-      slug: "dikarbksileshn",
+      title: "রঞ্জক (Azo Dye) প্রস্তুতি",
+      slug: "rnyjk-azo-dye-prstuti",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -210,7 +168,7 @@ const chapter26: SeedChapter = {
 
     {
       title: "ব্যবহার",
-      slug: "bybhar-3",
+      slug: "bybhar-6",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -224,4 +182,4 @@ const chapter26: SeedChapter = {
   ],
 };
 
-export default chapter26;
+export default chapter228;

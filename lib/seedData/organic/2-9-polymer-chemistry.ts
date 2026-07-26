@@ -1,20 +1,20 @@
-// lib/seedData/organic/2-11-named-reactions.ts
+// lib/seedData/organic/2-9-polymer-chemistry.ts
 //
-// অধ্যায় 2.11 — নামযুক্ত জৈব বিক্রিয়া (Organic Chemistry)
+// অধ্যায় 2.9 — পলিমার রসায়ন (Organic Chemistry)
 // নোট: এই ফাইলের টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
 // content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
 
 import { SeedChapter } from "../types";
 
-const chapter211: SeedChapter = {
-  code: "2.11",
+const chapter29: SeedChapter = {
+  code: "2.9",
   category: "organic-chemistry",
-  chapterTitle: "নামযুক্ত জৈব বিক্রিয়া",
-  chapterOrder: 110,
+  chapterTitle: "পলিমার রসায়ন",
+  chapterOrder: 90,
   topics: [
     {
-      title: "নামযুক্ত বিক্রিয়ার ধারণা",
-      slug: "namyukt-bikriyar-dharna",
+      title: "পলিমারের সংজ্ঞা",
+      slug: "plimarer-sngjnya",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -27,8 +27,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বিক্রিয়ার শ্রেণিবিভাগ",
-      slug: "bikriyar-shrenibibhag",
+      title: "মনোমার",
+      slug: "mnomar-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -41,8 +41,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "শিল্প ও গবেষণায় গুরুত্ব",
-      slug: "shilp-o-gbeshnay-gurutb",
+      title: "Repeat Unit",
+      slug: "repeat-unit",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -55,8 +55,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যালকাইলেশন",
-      slug: "phridelkraphts-ayalkaileshn",
+      title: "Degree of Polymerization",
+      slug: "degree-of-polymerization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -69,8 +69,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ফ্রিডেল–ক্রাফ্টস অ্যাসাইলেশন",
-      slug: "phridelkraphts-ayasaileshn",
+      title: "Natural Polymer",
+      slug: "natural-polymer",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -83,8 +83,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "স্যান্ডমেয়ার বিক্রিয়া",
-      slug: "syandmeyar-bikriya-2",
+      title: "Synthetic Polymer",
+      slug: "synthetic-polymer",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -97,8 +97,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান বিক্রিয়া",
-      slug: "gyatarmyan-bikriya-2",
+      title: "Semi-synthetic Polymer",
+      slug: "semi-synthetic-polymer",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -111,8 +111,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্যাটারম্যান–কখ বিক্রিয়া",
-      slug: "gyatarmyankkh-bikriya",
+      title: "Thermoplastic",
+      slug: "thermoplastic",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -125,8 +125,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বাল্‌জ–শিয়েম্যান বিক্রিয়া",
-      slug: "baljshiyemyan-bikriya",
+      title: "Thermosetting Polymer",
+      slug: "thermosetting-polymer",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -139,8 +139,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "অ্যালডল ঘনীভবন",
-      slug: "ayaldl-ghniibhbn-2",
+      title: "Elastomer",
+      slug: "elastomer",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -153,8 +153,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেইজেন ঘনীভবন",
-      slug: "kleijen-ghniibhbn",
+      title: "Fibre",
+      slug: "fibre",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -167,8 +167,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লাইসেন–শ্মিট বিক্রিয়া",
-      slug: "klaisenshmit-bikriya",
+      title: "Addition Polymerization",
+      slug: "addition-polymerization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -181,8 +181,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পারকিন বিক্রিয়া",
-      slug: "parkin-bikriya",
+      title: "Condensation Polymerization",
+      slug: "condensation-polymerization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -195,8 +195,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "মাইকেল সংযোজন",
-      slug: "maikel-sngyojn",
+      title: "Chain Growth",
+      slug: "chain-growth",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -209,8 +209,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উইটিগ বিক্রিয়া",
-      slug: "uitig-bikriya",
+      title: "Step Growth",
+      slug: "step-growth",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -223,8 +223,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "গ্রিগনার্ড বিক্রিয়া",
-      slug: "grignard-bikriya",
+      title: "Copolymerization",
+      slug: "copolymerization",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -237,8 +237,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ডাইলস–অ্যালডার বিক্রিয়া",
-      slug: "dailsayaldar-bikriya",
+      title: "Polyethylene (PE)",
+      slug: "polyethylene-pe",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -251,8 +251,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "রবিনসন অ্যানুলেশন",
-      slug: "rbinsn-ayanuleshn",
+      title: "Polypropylene (PP)",
+      slug: "polypropylene-pp",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -265,8 +265,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ক্লেমেনসেন বিজারণ",
-      slug: "klemensen-bijarn",
+      title: "PVC",
+      slug: "pvc",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -279,8 +279,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "উলফ–কিশনার বিজারণ",
-      slug: "ulphkishnar-bijarn",
+      title: "Polystyrene",
+      slug: "polystyrene",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -293,8 +293,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "জোন্স জারণ",
-      slug: "jons-jarn",
+      title: "Teflon",
+      slug: "teflon",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -307,8 +307,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওপেনাওয়ার জারণ",
-      slug: "openaoyar-jarn",
+      title: "Nylon",
+      slug: "nylon",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -321,8 +321,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেয়ার–ভিলিগার জারণ",
-      slug: "beyarbhiligar-jarn",
+      title: "Bakelite",
+      slug: "bakelite",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -335,8 +335,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "ওজোনোলাইসিস",
-      slug: "ojonolaisis-2",
+      title: "Polyester",
+      slug: "polyester",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -349,8 +349,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "পিনাকল–পিনাকোলোন পুনর্বিন্যাস",
-      slug: "pinaklpinakolon-punrbinyas",
+      title: "PET",
+      slug: "pet",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -363,8 +363,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "বেকম্যান পুনর্বিন্যাস",
-      slug: "bekmyan-punrbinyas",
+      title: "Polycarbonate",
+      slug: "polycarbonate",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -377,8 +377,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "হফম্যান পুনর্বিন্যাস",
-      slug: "hphmyan-punrbinyas",
+      title: "Molecular Weight",
+      slug: "molecular-weight-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -391,8 +391,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কার্টিয়াস পুনর্বিন্যাস",
-      slug: "kartiyas-punrbinyas",
+      title: "Crystallinity",
+      slug: "crystallinity-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -405,8 +405,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "লসেন পুনর্বিন্যাস",
-      slug: "lsen-punrbinyas",
+      title: "Glass Transition Temperature",
+      slug: "glass-transition-temperature-2",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -419,120 +419,8 @@ const chapter211: SeedChapter = {
     },
 
     {
-      title: "কোপ পুনর্বিন্যাস",
-      slug: "kop-punrbinyas",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ক্লেইজেন পুনর্বিন্যাস",
-      slug: "kleijen-punrbinyas",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ফ্রাইস পুনর্বিন্যাস",
-      slug: "phrais-punrbinyas",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "ক্যানিজারো বিক্রিয়া",
-      slug: "kyanijaro-bikriya-2",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "রেইমার–টিম্যান বিক্রিয়া",
-      slug: "reimartimyan-bikriya",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "কোলবে–শ্মিট বিক্রিয়া",
-      slug: "kolbeshmit-bikriya",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "হেল–ভলহার্ড–জেলিনস্কি (HVZ) বিক্রিয়া",
-      slug: "helbhlhardjelinski-hvz-bikriya",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "গ্যাব্রিয়েল ফথালিমাইড সংশ্লেষণ",
-      slug: "gyabriyel-phthalimaid-sngshleshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
-      },
-    },
-
-    {
-      title: "উইলিয়ামসন ইথার সংশ্লেষণ",
-      slug: "uiliyamsn-ithar-sngshleshn",
+      title: "Melting Point",
+      slug: "melting-point",
       estimatedTime: 15,
       level: "intermediate",
       summary: "",
@@ -546,4 +434,4 @@ const chapter211: SeedChapter = {
   ],
 };
 
-export default chapter211;
+export default chapter29;
