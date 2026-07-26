@@ -13,101 +13,108 @@ const chapter258: SeedChapter = {
   chapterOrder: 161,
   topics: [
     {
-      title: "স্মার্ট পলিমার",
-      slug: "smart-plimar",
-      estimatedTime: 15,
-      level: "intermediate",
+      title: "উন্নত পলিমার ও স্মার্ট উপাদান",
+      slug: "advanced-polymers-smart-materials-overview",
       summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      subtopics: [
+      {
+        title: "স্মার্ট পলিমার",
+        slug: "smart-plimar",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Shape Memory Polymer",
-      slug: "shape-memory-polymer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Shape Memory Polymer",
+        slug: "shape-memory-polymer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Self-Healing Polymer",
-      slug: "self-healing-polymer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Self-Healing Polymer",
+        slug: "self-healing-polymer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Conductive Polymer",
-      slug: "conductive-polymer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Conductive Polymer",
+        slug: "conductive-polymer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Biodegradable Polymer",
-      slug: "biodegradable-polymer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Biodegradable Polymer",
+        slug: "biodegradable-polymer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Hydrogel",
-      slug: "hydrogel",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Hydrogel",
+        slug: "hydrogel",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Biomedical Polymer",
-      slug: "biomedical-polymer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Biomedical Polymer",
+        slug: "biomedical-polymer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
+      ],
     },
   ],
 };

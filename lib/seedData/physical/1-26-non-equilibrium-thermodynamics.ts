@@ -13,157 +13,164 @@ const chapter126: SeedChapter = {
   chapterOrder: 120,
   topics: [
     {
-      title: "অ-সাম্য অবস্থার ধারণা",
-      slug: "a-samy-absthar-dharna",
-      estimatedTime: 15,
-      level: "intermediate",
+      title: "অ-সাম্য তাপগতিবিদ্যা",
+      slug: "non-equilibrium-thermodynamics-overview",
       summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      subtopics: [
+      {
+        title: "অ-সাম্য অবস্থার ধারণা",
+        slug: "a-samy-absthar-dharna",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "স্থিতিশীল ও অস্থিতিশীল অবস্থা",
-      slug: "sthitishiil-o-asthitishiil-abstha",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "স্থিতিশীল ও অস্থিতিশীল অবস্থা",
+        slug: "sthitishiil-o-asthitishiil-abstha",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "তাপ প্রবাহ",
-      slug: "tap-prbah",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "তাপ প্রবাহ",
+        slug: "tap-prbah",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ভর প্রবাহ",
-      slug: "bhr-prbah",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ভর প্রবাহ",
+        slug: "bhr-prbah",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "শক্তি প্রবাহ",
-      slug: "shkti-prbah",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "শক্তি প্রবাহ",
+        slug: "shkti-prbah",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Entropy Production",
-      slug: "entropy-production",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Entropy Production",
+        slug: "entropy-production",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Irreversible Process",
-      slug: "irreversible-process-2",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Irreversible Process",
+        slug: "irreversible-process-2",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Onsager Reciprocal Relations",
-      slug: "onsager-reciprocal-relations",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Onsager Reciprocal Relations",
+        slug: "onsager-reciprocal-relations",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Diffusion Process",
-      slug: "diffusion-process",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Diffusion Process",
+        slug: "diffusion-process",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Heat Transfer",
-      slug: "heat-transfer",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Heat Transfer",
+        slug: "heat-transfer",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Coupled Transport Process",
-      slug: "coupled-transport-process",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Coupled Transport Process",
+        slug: "coupled-transport-process",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
+      ],
     },
   ],
 };

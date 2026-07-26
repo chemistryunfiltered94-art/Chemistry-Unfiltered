@@ -13,115 +13,122 @@ const chapter265: SeedChapter = {
   chapterOrder: 168,
   topics: [
     {
-      title: "পরিচিতি",
-      slug: "prichiti-23",
-      estimatedTime: 15,
-      level: "intermediate",
+      title: "কোভ্যালেন্ট জৈব কাঠামো (COFs)",
+      slug: "covalent-organic-frameworks-overview",
       summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      subtopics: [
+      {
+        title: "পরিচিতি",
+        slug: "prichiti-23",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "দ্বি-মাত্রিক COF",
-      slug: "dbi-matrik-cof",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "দ্বি-মাত্রিক COF",
+        slug: "dbi-matrik-cof",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ত্রি-মাত্রিক COF",
-      slug: "tri-matrik-cof",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ত্রি-মাত্রিক COF",
+        slug: "tri-matrik-cof",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "সংশ্লেষণ",
-      slug: "sngshleshn-2",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "সংশ্লেষণ",
+        slug: "sngshleshn-2",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "বৈশিষ্ট্য",
-      slug: "boishishty-4",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "বৈশিষ্ট্য",
+        slug: "boishishty-4",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "শক্তি সংরক্ষণ",
-      slug: "shkti-sngrkshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "শক্তি সংরক্ষণ",
+        slug: "shkti-sngrkshn",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "সেন্সর",
-      slug: "sensr",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "সেন্সর",
+        slug: "sensr",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "পরিবেশগত ব্যবহার",
-      slug: "pribeshgt-bybhar",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "পরিবেশগত ব্যবহার",
+        slug: "pribeshgt-bybhar",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
+      ],
     },
   ],
 };

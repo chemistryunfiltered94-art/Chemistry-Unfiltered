@@ -1209,7 +1209,7 @@ export default function PeriodicTableClient() {
         {filterPanelTab === "state" && (["solid","liquid","gas","unknown"] as const).map(s => {
           const active = activeStates.has(s);
           return (
-            <button key={s} onClick={() => toggleInSet(setActiveStates, s)}
+            <button key={s} onClick={() => toggleInSet<string>(setActiveStates, s)}
               className={`flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-medium transition-all ${
                 active
                   ? "bg-white text-slate-900"

@@ -13,115 +13,122 @@ const chapter264: SeedChapter = {
   chapterOrder: 167,
   topics: [
     {
-      title: "পরিচিতি",
-      slug: "prichiti-22",
-      estimatedTime: 15,
-      level: "intermediate",
+      title: "ধাতু–জৈব কাঠামো (MOFs)",
+      slug: "metal-organic-frameworks-overview",
       summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      subtopics: [
+      {
+        title: "পরিচিতি",
+        slug: "prichiti-22",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "গঠন",
-      slug: "gthn-4",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "গঠন",
+        slug: "gthn-4",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "সংশ্লেষণ",
-      slug: "sngshleshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "সংশ্লেষণ",
+        slug: "sngshleshn",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ছিদ্রযুক্ত (Porous) কাঠামো",
-      slug: "chhidryukt-porous-kathamo",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ছিদ্রযুক্ত (Porous) কাঠামো",
+        slug: "chhidryukt-porous-kathamo",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "গ্যাস সংরক্ষণ",
-      slug: "gyas-sngrkshn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "গ্যাস সংরক্ষণ",
+        slug: "gyas-sngrkshn",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "গ্যাস পৃথকীকরণ",
-      slug: "gyas-prithkiikrn",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "গ্যাস পৃথকীকরণ",
+        slug: "gyas-prithkiikrn",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "অনুঘটক হিসেবে ব্যবহার",
-      slug: "anughtk-hisebe-bybhar",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "অনুঘটক হিসেবে ব্যবহার",
+        slug: "anughtk-hisebe-bybhar",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ঔষধ পরিবহন (Drug Delivery)",
-      slug: "oushdh-pribhn-drug-delivery",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ঔষধ পরিবহন (Drug Delivery)",
+        slug: "oushdh-pribhn-drug-delivery",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
+      ],
     },
   ],
 };

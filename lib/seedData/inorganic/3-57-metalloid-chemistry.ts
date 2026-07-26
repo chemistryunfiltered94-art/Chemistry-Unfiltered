@@ -1,0 +1,374 @@
+// lib/seedData/inorganic/3-57-metalloid-chemistry.ts
+//
+// অধ্যায় 3.57 — Metalloid Chemistry (Inorganic Chemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter357: SeedChapter = {
+  code: "3.57",
+  category: "inorganic-chemistry",
+  chapterTitle: "Metalloid Chemistry",
+  chapterOrder: 570,
+  topics: [
+    {
+      title: "Metalloids এর ধারণা",
+      slug: "metalloids-er-dharna",
+      summary: "",
+      subtopics: [
+        {
+          title: "Boron (Metalloid)",
+          slug: "boron-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Silicon (Metalloid)",
+          slug: "silicon-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Germanium",
+          slug: "germanium",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Arsenic (Metalloid)",
+          slug: "arsenic-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Antimony",
+          slug: "antimony",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Tellurium (Metalloid)",
+          slug: "tellurium-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "ধাতু ও অধাতুর মধ্যবর্তী ধর্ম",
+          slug: "dhatu-o-adhatur-mdhybrtii-dhrm",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Semiconductor Behavior (Metalloid)",
+          slug: "semiconductor-behavior-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Electrical Conductivity (Metalloid)",
+          slug: "electrical-conductivity-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Thermal Property (Metalloid)",
+          slug: "thermal-property-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Boron ও Silicon Chemistry (Metalloid)",
+      slug: "boron-o-silicon-chemistry-metalloid",
+      summary: "",
+      subtopics: [
+        {
+          title: "Borides",
+          slug: "borides",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Boron Nitride (Metalloid)",
+          slug: "boron-nitride-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Boron Carbide (Metalloid)",
+          slug: "boron-carbide-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Silicates (Metalloid)",
+          slug: "silicates-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Silicones (Metalloid)",
+          slug: "silicones-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Silicon Semiconductor",
+          slug: "silicon-semiconductor",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Germanium, Arsenic ও Antimony Chemistry",
+      slug: "germanium-arsenic-o-antimony-chemistry",
+      summary: "",
+      subtopics: [
+        {
+          title: "Semiconductor Application (Germanium)",
+          slug: "semiconductor-application-germanium",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Germanium Oxide",
+          slug: "germanium-oxide",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Hydrides (Arsenic/Antimony)",
+          slug: "hydrides-arsenic-antimony",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oxides (Arsenic/Antimony)",
+          slug: "oxides-arsenic-antimony",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Sulfides (Arsenic/Antimony)",
+          slug: "sulfides-arsenic-antimony",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "ব্যবহার (Metalloid)",
+      slug: "bybhar-metalloid",
+      summary: "",
+      subtopics: [
+        {
+          title: "Electronics (Metalloid)",
+          slug: "electronics-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Solar Cell (Metalloid)",
+          slug: "solar-cell-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Semiconductor Industry (Metalloid)",
+          slug: "semiconductor-industry-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Advanced Materials (Metalloid)",
+          slug: "advanced-materials-metalloid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter357;

@@ -110,10 +110,74 @@ import chapter266 from "./organic/2-66-chemical-biology";
 import chapter267 from "./organic/2-67-green-organic-synthesis";
 import chapter268 from "./organic/2-68-ai-in-organic-chemistry";
 import chapter269 from "./organic/2-69-future-of-organic-chemistry";
+import chapter31  from "./inorganic/3-1-atomic-structure";
+import chapter32  from "./inorganic/3-2-periodic-table";
+import chapter33  from "./inorganic/3-3-chemical-bonding";
+import chapter34  from "./inorganic/3-4-hydrogen";
+import chapter35  from "./inorganic/3-5-s-block-elements";
+import chapter36  from "./inorganic/3-6-p-block-elements";
+import chapter37  from "./inorganic/3-7-d-block-elements";
+import chapter38  from "./inorganic/3-8-f-block-elements";
+import chapter39  from "./inorganic/3-9-coordination-chemistry";
+import chapter310 from "./inorganic/3-10-metallurgy";
+import chapter311 from "./inorganic/3-11-redox-reactions";
+import chapter312 from "./inorganic/3-12-acid-base-salt";
+import chapter313 from "./inorganic/3-13-noble-gases";
+import chapter314 from "./inorganic/3-14-nuclear-chemistry";
+import chapter315 from "./inorganic/3-15-industrial-inorganic-chemistry";
+import chapter316 from "./inorganic/3-16-environmental-chemistry";
+import chapter317 from "./inorganic/3-17-bio-inorganic-relationship";
+import chapter318 from "./inorganic/3-18-solid-state-chemistry";
+import chapter319 from "./inorganic/3-19-qualitative-analysis";
+import chapter320 from "./inorganic/3-20-inorganic-reaction-mechanism";
+import chapter321 from "./inorganic/3-21-organometallic-chemistry";
+import chapter322 from "./inorganic/3-22-inorganic-polymers";
+import chapter323 from "./inorganic/3-23-advanced-inorganic-materials";
+import chapter324 from "./inorganic/3-24-quantum-chemistry-application";
+import chapter325 from "./inorganic/3-25-inorganic-spectroscopy";
+import chapter326 from "./inorganic/3-26-magnetic-chemistry";
+import chapter327 from "./inorganic/3-27-inorganic-photochemistry";
+import chapter328 from "./inorganic/3-28-advanced-solid-state-theory";
+import chapter329 from "./inorganic/3-29-industrial-research-inorganic";
+import chapter330 from "./inorganic/3-30-advanced-coordination-chemistry";
+import chapter331 from "./inorganic/3-31-inorganic-research-methods";
+import chapter332 from "./inorganic/3-32-group-theory-molecular-symmetry";
+import chapter333 from "./inorganic/3-33-ligand-field-theory";
+import chapter334 from "./inorganic/3-34-crystal-field-theory-advanced";
+import chapter335 from "./inorganic/3-35-molecular-orbital-theory-inorganic";
+import chapter336 from "./inorganic/3-36-transition-metal-reaction-mechanism";
+import chapter337 from "./inorganic/3-37-metal-cluster-nanochemistry";
+import chapter338 from "./inorganic/3-38-advanced-bio-inorganic-chemistry";
+import chapter339 from "./inorganic/3-39-modern-inorganic-research";
+import chapter340 from "./inorganic/3-40-descriptive-chemistry";
+import chapter341 from "./inorganic/3-41-transition-metal-elementwise";
+import chapter342 from "./inorganic/3-42-lanthanide-actinide-advanced";
+import chapter343 from "./inorganic/3-43-organometallic-catalysis-advanced";
+import chapter344 from "./inorganic/3-44-inorganic-reaction-kinetics";
+import chapter345 from "./inorganic/3-45-solid-state-physics-inorganic";
+import chapter346 from "./inorganic/3-46-analytical-inorganic-advanced";
+import chapter347 from "./inorganic/3-47-computational-inorganic-chemistry";
+import chapter348 from "./inorganic/3-48-main-group-advanced";
+import chapter349 from "./inorganic/3-49-halogen-chemistry";
+import chapter350 from "./inorganic/3-50-oxygen-chalcogen-chemistry";
+import chapter351 from "./inorganic/3-51-nitrogen-phosphorus-chemistry";
+import chapter352 from "./inorganic/3-52-boron-chemistry";
+import chapter353 from "./inorganic/3-53-silicon-silicate-chemistry";
+import chapter354 from "./inorganic/3-54-sulfur-chemistry-detailed";
+import chapter355 from "./inorganic/3-55-fluorine-chemistry-advanced";
+import chapter356 from "./inorganic/3-56-carbon-chemistry-inorganic";
+import chapter357 from "./inorganic/3-57-metalloid-chemistry";
+import chapter358 from "./inorganic/3-58-intermetallic-compounds";
+import chapter359 from "./inorganic/3-59-inorganic-polymer-advanced";
+import chapter360 from "./inorganic/3-60-high-temperature-chemistry";
+import chapter361 from "./inorganic/3-61-nuclear-materials-chemistry";
+import chapter362 from "./inorganic/3-62-environmental-inorganic-advanced";
+import chapter363 from "./inorganic/3-63-future-inorganic-research";
 
 // ═══════════════════════════════════════════════════════════════
 // Phase 1 সম্পন্ন — ভৌত রসায়ন কাঠামো (১.১ – ১.৩৭, placeholder — কনটেন্ট বাকি)
 // Phase 2 সম্পন্ন — জৈব রসায়ন কাঠামো (২.১ – ২.৬৯, placeholder — কনটেন্ট বাকি)
+// Phase 3 সম্পন্ন — অজৈব রসায়ন কাঠামো (৩.১ – ৩.৬৩, Chapter→Topic→Subtopic, placeholder — কনটেন্ট বাকি)
 // ═══════════════════════════════════════════════════════════════
 
 export const SEED_PACKAGES: SeedChapter[] = [
@@ -219,4 +283,67 @@ export const SEED_PACKAGES: SeedChapter[] = [
   chapter267,  // 2.67  সবুজ জৈব সংশ্লেষণ
   chapter268,  // 2.68  কৃত্রিম বুদ্ধিমত্তা ও জৈব রসায়ন
   chapter269,  // 2.69  জৈব রসায়নের ভবিষ্যৎ
+  chapter31,   // 3.1   পরমাণুর গঠন
+  chapter32,   // 3.2   পর্যায় সারণি
+  chapter33,   // 3.3   রাসায়নিক বন্ধন
+  chapter34,   // 3.4   হাইড্রোজেন
+  chapter35,   // 3.5   s-ব্লক মৌল
+  chapter36,   // 3.6   p-ব্লক মৌল
+  chapter37,   // 3.7   d-ব্লক মৌল
+  chapter38,   // 3.8   f-ব্লক মৌল
+  chapter39,   // 3.9   সমন্বয় রসায়ন
+  chapter310,  // 3.10  ধাতুবিদ্যা
+  chapter311,  // 3.11  জারণ-বিজারণ বিক্রিয়া
+  chapter312,  // 3.12  অম্ল, ক্ষার ও লবণ
+  chapter313,  // 3.13  নিষ্ক্রিয় গ্যাস
+  chapter314,  // 3.14  নিউক্লিয়ার রসায়ন
+  chapter315,  // 3.15  শিল্প অজৈব রসায়ন
+  chapter316,  // 3.16  পরিবেশ রসায়ন
+  chapter317,  // 3.17  জৈব-অজৈব যৌগের আন্তঃসম্পর্ক
+  chapter318,  // 3.18  কঠিন অবস্থা রসায়ন
+  chapter319,  // 3.19  অজৈব যৌগের বিশ্লেষণ
+  chapter320,  // 3.20  অজৈব বিক্রিয়ার প্রক্রিয়া
+  chapter321,  // 3.21  জৈব ধাতব রসায়ন
+  chapter322,  // 3.22  অজৈব পলিমার
+  chapter323,  // 3.23  উন্নত অজৈব পদার্থ
+  chapter324,  // 3.24  কোয়ান্টাম রসায়নের অজৈব প্রয়োগ
+  chapter325,  // 3.25  অজৈব স্পেকট্রোস্কপি
+  chapter326,  // 3.26  চৌম্বক রসায়ন
+  chapter327,  // 3.27  অজৈব ফটোকেমিস্ট্রি
+  chapter328,  // 3.28  কঠিন পদার্থের উন্নত তত্ত্ব
+  chapter329,  // 3.29  শিল্প ও গবেষণাভিত্তিক অজৈব রসায়ন
+  chapter330,  // 3.30  জটিল অজৈব যৌগের রসায়ন
+  chapter331,  // 3.31  অজৈব রসায়নের গবেষণা পদ্ধতি
+  chapter332,  // 3.32  Group Theory ও Molecular Symmetry
+  chapter333,  // 3.33  Ligand Field Theory
+  chapter334,  // 3.34  Crystal Field Theory বিস্তারিত
+  chapter335,  // 3.35  Molecular Orbital Theory (অজৈব প্রয়োগ)
+  chapter336,  // 3.36  Transition Metal Reaction Mechanism
+  chapter337,  // 3.37  Metal Cluster ও Nanochemistry
+  chapter338,  // 3.38  Advanced Bio-Inorganic Chemistry
+  chapter339,  // 3.39  Inorganic Chemistry এর আধুনিক গবেষণা ক্ষেত্র
+  chapter340,  // 3.40  Descriptive Chemistry (মৌলভিত্তিক)
+  chapter341,  // 3.41  Transition Metal Element-wise Chemistry
+  chapter342,  // 3.42  Lanthanide ও Actinide Advanced Chemistry
+  chapter343,  // 3.43  Organometallic Catalysis Advanced
+  chapter344,  // 3.44  Inorganic Reaction Kinetics
+  chapter345,  // 3.45  Solid State Physics ভিত্তিক অজৈব রসায়ন
+  chapter346,  // 3.46  Analytical Inorganic Chemistry Advanced
+  chapter347,  // 3.47  Computational Inorganic Chemistry
+  chapter348,  // 3.48  Main Group Element Advanced Chemistry
+  chapter349,  // 3.49  Halogen Chemistry
+  chapter350,  // 3.50  Oxygen ও Chalcogen Chemistry
+  chapter351,  // 3.51  Nitrogen ও Phosphorus Chemistry
+  chapter352,  // 3.52  Boron Chemistry
+  chapter353,  // 3.53  Silicon ও Silicate Chemistry
+  chapter354,  // 3.54  Sulfur Chemistry বিস্তারিত
+  chapter355,  // 3.55  Fluorine Chemistry Advanced
+  chapter356,  // 3.56  Carbon Chemistry (অজৈব)
+  chapter357,  // 3.57  Metalloid Chemistry
+  chapter358,  // 3.58  Intermetallic Compounds
+  chapter359,  // 3.59  Inorganic Polymer Advanced Chemistry
+  chapter360,  // 3.60  High Temperature Chemistry
+  chapter361,  // 3.61  Nuclear Materials Chemistry
+  chapter362,  // 3.62  Environmental Inorganic Chemistry Advanced
+  chapter363,  // 3.63  Future Inorganic Chemistry Research
 ];

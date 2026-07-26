@@ -18,13 +18,19 @@ import { useToast } from "@/hooks/useToast";
 import { Toast } from "@/components/ui/Toast";
 import { getCategoryName } from "@/lib/constants";
 import { SEED_PACKAGES } from "@/lib/seedData";
-import { SeedChapter } from "@/lib/seedData/types";
+import { SeedChapter, SeedSubtopic } from "@/lib/seedData/types";
 import { MCQ } from "@/types";
 import { ArrowLeft, DatabaseZap, Check, Loader2, BookOpen } from "lucide-react";
 
 interface PkgStatus {
   existingSlugs: Set<string>;
   checked: boolean;
+}
+
+// একটি chapter package-এর সব সাব-টপিক (সব টপিক মিলিয়ে) — Firestore-এ এগুলোই
+// আলাদা "topic" ডকুমেন্ট হিসেবে সেভ হয়।
+function allSubtopics(pkg: SeedChapter): SeedSubtopic[] {
+  return pkg.topics.flatMap((t) => t.subtopics);
 }
 
 export default function SeedContentPage() {
@@ -36,9 +42,10 @@ export default function SeedContentPage() {
   const [progress, setProgress]         = useState<{ done: number; total: number } | null>(null);
 
   const checkStatus = useCallback(async (pkg: SeedChapter) => {
-    const results = await Promise.all(pkg.topics.map((t) => getTopic(t.slug)));
+    const subtopics = allSubtopics(pkg);
+    const results = await Promise.all(subtopics.map((s) => getTopic(s.slug)));
     const existingSlugs = new Set(
-      pkg.topics.filter((_, i) => results[i] !== null).map((t) => t.slug)
+      subtopics.filter((_, i) => results[i] !== null).map((s) => s.slug)
     );
     setStatuses((prev) => ({ ...prev, [pkg.code]: { existingSlugs, checked: true } }));
   }, []);
@@ -49,8 +56,9 @@ export default function SeedContentPage() {
   }, []);
 
   const importPackage = async (pkg: SeedChapter) => {
+    const subtopics = allSubtopics(pkg);
     setImportingCode(pkg.code);
-    setProgress({ done: 0, total: pkg.topics.length });
+    setProgress({ done: 0, total: subtopics.length });
 
     // ১) চ্যাপ্টার খুঁজে বের করো (থাকলে reuse করো), না থাকলে তৈরি করো
     const existingChapters = await getChapters(pkg.category);
@@ -71,13 +79,13 @@ export default function SeedContentPage() {
       return;
     }
 
-    // ২) প্রতিটি টপিক — slug অনুযায়ী না থাকলে তৈরি করো
+    // ২) প্রতিটি সাব-টপিক (আসল কনটেন্ট পেজ) — slug অনুযায়ী না থাকলে তৈরি করো
     let created = 0, skipped = 0, failed = 0;
     const currentExisting = statuses[pkg.code]?.existingSlugs || new Set<string>();
 
-    for (let i = 0; i < pkg.topics.length; i++) {
-      const t = pkg.topics[i];
-      setProgress({ done: i, total: pkg.topics.length });
+    for (let i = 0; i < subtopics.length; i++) {
+      const t = subtopics[i];
+      setProgress({ done: i, total: subtopics.length });
 
       if (currentExisting.has(t.slug)) { skipped++; continue; }
 
@@ -104,19 +112,31 @@ export default function SeedContentPage() {
         content: {
           introduction: t.content.introduction,
           historicalBackground: t.content.historicalBackground,
+          definition: t.content.definition,
           theory: t.content.theory,
+          concepts: t.content.concepts,
           formulas: t.content.formulas,
           derivation: t.content.derivation,
+          examples: t.content.examples || [],
           applications: t.content.applications,
           industrialUses: t.content.industrialUses,
+          advantages: t.content.advantages,
+          disadvantages: t.content.disadvantages,
           safety: t.content.safety,
-          practiceProblems: t.content.practiceProblems,
-          labExperiment: t.content.labExperiment,
+          importantNotes: t.content.importantNotes,
+          commonMistakes: t.content.commonMistakes,
+          summaryPoints: t.content.summaryPoints,
           notes: t.content.notes,
-          examples: [],
         },
-        diagrams: [],
+        diagrams: t.content.diagrams || [],
+        animation: t.content.animation || null,
         structure3D: t.moleculeId ? { moleculeId: t.moleculeId } : undefined,
+        practiceProblems: t.practiceProblems || [],
+        shortQuestions: t.shortQuestions || [],
+        boardQuestions: t.boardQuestions || [],
+        labExperiment: t.labExperiment || null,
+        pdfNotes: t.pdfNotes || [],
+        references: t.references || [],
         mcqs,
         relatedTopics: [],
         featured: false,
@@ -127,10 +147,10 @@ export default function SeedContentPage() {
       if (id) created++; else failed++;
     }
 
-    setProgress({ done: pkg.topics.length, total: pkg.topics.length });
+    setProgress({ done: subtopics.length, total: subtopics.length });
     showToast(
       failed === 0 ? "success" : "error",
-      `"${pkg.chapterTitle}" — ${created}টি নতুন টপিক তৈরি হয়েছে, ${skipped}টি আগে থেকেই ছিল${failed ? `, ${failed}টি ব্যর্থ হয়েছে` : "।"}`
+      `"${pkg.chapterTitle}" — ${created}টি নতুন সাব-টপিক তৈরি হয়েছে, ${skipped}টি আগে থেকেই ছিল${failed ? `, ${failed}টি ব্যর্থ হয়েছে` : "।"}`
     );
 
     await checkStatus(pkg);
@@ -163,9 +183,10 @@ export default function SeedContentPage() {
 
         <div className="space-y-3">
           {SEED_PACKAGES.map((pkg) => {
+            const subtopics = allSubtopics(pkg);
             const status = statuses[pkg.code];
             const existingCount = status?.existingSlugs.size ?? 0;
-            const total = pkg.topics.length;
+            const total = subtopics.length;
             const fullyImported = status?.checked && existingCount === total;
             const isImporting = importingCode === pkg.code;
 
@@ -175,7 +196,7 @@ export default function SeedContentPage() {
                   <div className="min-w-0">
                     <p className="text-xs font-mono text-primary-400 mb-0.5">{pkg.code}</p>
                     <p className="font-bold text-white truncate">{pkg.chapterTitle}</p>
-                    <p className="text-xs text-slate-500">{getCategoryName(pkg.category)} • {total}টি টপিক</p>
+                    <p className="text-xs text-slate-500">{getCategoryName(pkg.category)} • {pkg.topics.length}টি টপিক • {total}টি সাব-টপিক</p>
                   </div>
                   {fullyImported && (
                     <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium flex-shrink-0 mt-1">
@@ -188,19 +209,26 @@ export default function SeedContentPage() {
                   <p className="text-sm text-slate-400 mb-3 leading-relaxed">{pkg.chapterDescription}</p>
                 )}
 
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {pkg.topics.map((t) => {
-                    const done = status?.existingSlugs.has(t.slug);
-                    return (
-                      <span key={t.slug}
-                        className={`text-xs px-2.5 py-1 rounded-full flex items-center gap-1 ${
-                          done ? "bg-emerald-900/30 text-emerald-400" : "bg-slate-700 text-slate-300"
-                        }`}>
-                        {done && <Check className="w-3 h-3" />}
-                        {t.title}
-                      </span>
-                    );
-                  })}
+                <div className="space-y-2 mb-4">
+                  {pkg.topics.map((t) => (
+                    <div key={t.slug}>
+                      <p className="text-xs text-slate-500 mb-1">{t.title}</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {t.subtopics.map((s) => {
+                          const done = status?.existingSlugs.has(s.slug);
+                          return (
+                            <span key={s.slug}
+                              className={`text-xs px-2.5 py-1 rounded-full flex items-center gap-1 ${
+                                done ? "bg-emerald-900/30 text-emerald-400" : "bg-slate-700 text-slate-300"
+                              }`}>
+                              {done && <Check className="w-3 h-3" />}
+                              {s.title}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {isImporting && progress && (
@@ -208,7 +236,7 @@ export default function SeedContentPage() {
                     <div className="h-1.5 bg-slate-700 rounded-full overflow-hidden">
                       <div className="h-full gradient-bg transition-all" style={{ width: `${(progress.done / progress.total) * 100}%` }} />
                     </div>
-                    <p className="text-xs text-slate-500 mt-1.5">{progress.done}/{progress.total} টপিক প্রক্রিয়াধীন...</p>
+                    <p className="text-xs text-slate-500 mt-1.5">{progress.done}/{progress.total} সাব-টপিক প্রক্রিয়াধীন...</p>
                   </div>
                 )}
 

@@ -4,7 +4,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, ArrowRight, BookOpen } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen } from "lucide-react";
 import { getContentChapter, getChapterTopics } from "@/lib/seedContent";
 
 const categoryMeta: Record<string, { name: string; color: string }> = {
@@ -70,7 +70,7 @@ export default async function ChapterTopicsPage({ params }: Props) {
             {topics.map((topic, i) => (
               <Link
                 key={topic.slug}
-                href={`/learn/${category}/topic/${topic.slug}`}
+                href={`/learn/${category}/${chapterId}/${topic.slug}`}
                 className="flex items-center gap-4 p-4 bg-slate-800 border border-slate-700 rounded-2xl hover:border-slate-500 hover:-translate-y-0.5 transition-all group"
               >
                 {/* Number */}
@@ -87,8 +87,7 @@ export default async function ChapterTopicsPage({ params }: Props) {
                     <p className="text-xs text-slate-400 mt-0.5 truncate">{topic.summary}</p>
                   )}
                   <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-                    <Clock className="w-3 h-3" />
-                    {topic.estimatedTime} মিনিট
+                    {topic.subtopics.length}টি সাব-টপিক
                   </p>
                 </div>
 

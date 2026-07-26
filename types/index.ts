@@ -80,6 +80,23 @@ export interface Diagram {
   caption?: string;
 }
 
+export interface ShortQuestion {
+  question: string;
+  answer: string;
+}
+
+export interface BoardQuestion {
+  question: string;
+  board?: string;
+  year?: string;
+  answer?: string;
+}
+
+export interface TopicReference {
+  title: string;
+  url?: string;
+}
+
 /** 3D গঠন — lib/molecules.ts-এর পূর্বনির্ধারিত অণু (moleculeId দিয়ে) অথবা বাহিরের মডেল লিংক (modelUrl) */
 export interface Structure3D {
   moleculeId?: string;
@@ -100,21 +117,31 @@ export interface Topic {
   content: {
     introduction: string;
     historicalBackground?: string;   // ঐতিহাসিক পটভূমি
+    definition?: string;             // সংজ্ঞা
     theory: string[];
+    concepts?: string[];             // মূল ধারণা
     formulas?: TopicFormula[];       // মূল সূত্রসমূহ
     derivation?: string[];           // ধাপে ধাপে ডেরিভেশন
     examples: Example[];
-    practiceProblems?: PracticeProblem[]; // অনুশীলন সমস্যা (উত্তরসহ, সমাধান-ধাপ ছাড়া)
     applications: string[];
     industrialUses?: string[];       // শিল্পে ব্যবহার
+    advantages?: string[];           // সুবিধা
+    disadvantages?: string[];        // অসুবিধা
     safety?: string[];               // নিরাপত্তা সতর্কতা
+    importantNotes?: string[];       // গুরুত্বপূর্ণ নোট
+    commonMistakes?: string[];       // ভুল-ত্রুটি
+    summaryPoints?: string[];        // সারাংশ
     labExperiment?: LabExperiment;   // ল্যাব এক্সপেরিমেন্ট
     animation?: TopicMedia;          // অ্যানিমেশন/ভিডিও
-    pdfNotes?: TopicResource[];      // PDF নোট
     notes: string[];
   };
   diagrams: Diagram[];
   structure3D?: Structure3D;         // 3D গঠন
+  practiceProblems?: PracticeProblem[]; // অনুশীলন সমস্যা (উত্তরসহ, সমাধান-ধাপ ছাড়া)
+  shortQuestions?: ShortQuestion[];     // সংক্ষিপ্ত প্রশ্ন
+  boardQuestions?: BoardQuestion[];     // বোর্ড প্রশ্ন
+  pdfNotes?: TopicResource[];        // PDF নোট
+  references?: TopicReference[];     // তথ্যসূত্র
   mcqs: MCQ[];
   relatedTopics: string[];
   published: boolean;

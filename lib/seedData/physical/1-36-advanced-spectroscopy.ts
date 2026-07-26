@@ -13,157 +13,164 @@ const chapter136: SeedChapter = {
   chapterOrder: 130,
   topics: [
     {
-      title: "Fourier Transform Infrared (FTIR)",
-      slug: "fourier-transform-infrared-ftir",
-      estimatedTime: 15,
-      level: "intermediate",
+      title: "উন্নত বর্ণালীবিদ্যা",
+      slug: "advanced-spectroscopy-overview",
       summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      subtopics: [
+      {
+        title: "Fourier Transform Infrared (FTIR)",
+        slug: "fourier-transform-infrared-ftir",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "FT-NMR",
-      slug: "ft-nmr",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "FT-NMR",
+        slug: "ft-nmr",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Two-dimensional NMR",
-      slug: "two-dimensional-nmr",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Two-dimensional NMR",
+        slug: "two-dimensional-nmr",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Electron Spin Resonance (ESR)",
-      slug: "electron-spin-resonance-esr",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Electron Spin Resonance (ESR)",
+        slug: "electron-spin-resonance-esr",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "X-ray Diffraction (XRD)",
-      slug: "x-ray-diffraction-xrd",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "X-ray Diffraction (XRD)",
+        slug: "x-ray-diffraction-xrd",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "X-ray Photoelectron Spectroscopy (XPS)",
-      slug: "x-ray-photoelectron-spectroscopy-xps",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "X-ray Photoelectron Spectroscopy (XPS)",
+        slug: "x-ray-photoelectron-spectroscopy-xps",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Atomic Absorption Spectroscopy (AAS)",
-      slug: "atomic-absorption-spectroscopy-aas",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Atomic Absorption Spectroscopy (AAS)",
+        slug: "atomic-absorption-spectroscopy-aas",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ICP-OES",
-      slug: "icp-oes",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ICP-OES",
+        slug: "icp-oes",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "ICP-MS",
-      slug: "icp-ms",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "ICP-MS",
+        slug: "icp-ms",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Raman Imaging",
-      slug: "raman-imaging",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Raman Imaging",
+        slug: "raman-imaging",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
-    },
 
-    {
-      title: "Surface Enhanced Raman Spectroscopy (SERS)",
-      slug: "surface-enhanced-raman-spectroscopy-sers",
-      estimatedTime: 15,
-      level: "intermediate",
-      summary: "",
-      content: {
-        introduction: "",
-        theory: [],
-        applications: [],
-        notes: [],
+      {
+        title: "Surface Enhanced Raman Spectroscopy (SERS)",
+        slug: "surface-enhanced-raman-spectroscopy-sers",
+        estimatedTime: 15,
+        level: "intermediate",
+        summary: "",
+        content: {
+          introduction: "",
+          theory: [],
+          applications: [],
+          notes: [],
+        },
       },
+      ],
     },
   ],
 };

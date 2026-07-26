@@ -1,0 +1,387 @@
+// lib/seedData/inorganic/3-32-group-theory-molecular-symmetry.ts
+//
+// অধ্যায় 3.32 — Group Theory ও Molecular Symmetry (Inorganic Chemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter332: SeedChapter = {
+  code: "3.32",
+  category: "inorganic-chemistry",
+  chapterTitle: "Group Theory ও Molecular Symmetry",
+  chapterOrder: 320,
+  topics: [
+    {
+      title: "Molecular Symmetry এর মৌলিক ধারণা",
+      slug: "molecular-symmetry-er-moulik-dharna",
+      summary: "",
+      subtopics: [
+        {
+          title: "Symmetry এর সংজ্ঞা",
+          slug: "symmetry-er-sngjnya",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Symmetry Element",
+          slug: "symmetry-element-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Symmetry Operation",
+          slug: "symmetry-operation-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Point Group ধারণা",
+          slug: "point-group-dharna",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Symmetry Element ও Point Group",
+      slug: "symmetry-element-o-point-group",
+      summary: "",
+      subtopics: [
+        {
+          title: "Identity (E)",
+          slug: "identity-e",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Rotation Axis (Cn)",
+          slug: "rotation-axis-cn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Reflection Plane (σ)",
+          slug: "reflection-plane",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Inversion Center (i)",
+          slug: "inversion-center-i",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Improper Rotation Axis (Sn)",
+          slug: "improper-rotation-axis-sn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cₙ Point Group",
+          slug: "c-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cnv Point Group",
+          slug: "cnv-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cnh Point Group",
+          slug: "cnh-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Dₙ Point Group",
+          slug: "d-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Dnh Point Group",
+          slug: "dnh-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Td Point Group",
+          slug: "td-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oh Point Group",
+          slug: "oh-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Ih Point Group",
+          slug: "ih-point-group",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Group Theory এর ধারণা",
+      slug: "group-theory-er-dharna",
+      summary: "",
+      subtopics: [
+        {
+          title: "Group ও Subgroup",
+          slug: "group-o-subgroup",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Matrix Representation",
+          slug: "matrix-representation-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Character Table",
+          slug: "character-table-3",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Reducible ও Irreducible Representation",
+          slug: "reducible-o-irreducible-representation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "অজৈব রসায়নে প্রয়োগ (Group Theory)",
+      slug: "ajoib-rsayne-pryog-group-theory",
+      summary: "",
+      subtopics: [
+        {
+          title: "Molecular Orbital তৈরি",
+          slug: "molecular-orbital-toiri",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Vibrational Spectroscopy",
+          slug: "vibrational-spectroscopy",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "IR Active ও Raman Active Mode",
+          slug: "ir-active-o-raman-active-mode",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Bonding Analysis",
+          slug: "bonding-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Coordination Complex এর গঠন বিশ্লেষণ",
+          slug: "coordination-complex-er-gthn-bishleshn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter332;
