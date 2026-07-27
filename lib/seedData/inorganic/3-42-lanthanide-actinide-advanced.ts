@@ -9,6 +9,7 @@ import { SeedChapter } from "../types";
 const chapter342: SeedChapter = {
   code: "3.42",
   category: "inorganic-chemistry",
+  structure: "3-level",
   chapterTitle: "Lanthanide ও Actinide Advanced Chemistry",
   chapterOrder: 420,
   topics: [

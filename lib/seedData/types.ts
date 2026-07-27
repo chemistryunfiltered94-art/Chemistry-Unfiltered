@@ -1,13 +1,17 @@
 // lib/seedData/types.ts
 //
-// "Deep Topic Structure" বাল্ক-কনটেন্ট সিডিং-এর জন্য টাইপ। কাঠামো তিন স্তরের:
+// "Deep Topic Structure" বাল্ক-কনটেন্ট সিডিং-এর জন্য টাইপ। দুই ধরনের কাঠামো সাপোর্ট করে:
 //
-//   SeedChapter (যেমন "১.১ মৌলিক ধারণা")
-//     └── SeedTopic (যেমন "রাসায়নিক বন্ধন")           — মাঝের লেভেল, নিজে কনটেন্ট রাখে না
-//           └── SeedSubtopic (যেমন "আয়নিক বন্ধন")     — আসল কনটেন্ট পেজ, ২৫টি সেকশন সহ
+//   ২-লেভেল (ভৌত ও জৈব রসায়ন):
+//     SeedChapter2Level → SeedSubtopic[]   (সরাসরি কনটেন্ট পেজ, কোনো মাঝের লেভেল নেই)
 //
-// admin/seed-content পেজ এই অবজেক্টগুলো পড়ে Firestore-এ চ্যাপ্টার + টপিক + সাব-টপিক
-// তৈরি করে — ম্যানুয়ালি একে একে ফর্ম পূরণ করার বদলে।
+//   ৩-লেভেল (অজৈব ও বিশ্লেষণাত্মক রসায়ন):
+//     SeedChapter3Level → SeedTopic[] → SeedSubtopic[]
+//       SeedTopic শুধু গ্রুপিং করে, নিজে কনটেন্ট রাখে না।
+//       SeedSubtopic-ই সব ক্ষেত্রে আসল কনটেন্ট পেজ, ২৫টি সেকশন সহ।
+//
+// admin/seed-content পেজ chapter.structure দেখে বুঝে নেয় কীভাবে Firestore-এ
+// চ্যাপ্টার + টপিক(/সাব-টপিক) সিড করতে হবে — ম্যানুয়ালি একে একে ফর্ম পূরণ করার বদলে।
 
 import { ChemistryCategory } from "@/types";
 
@@ -118,7 +122,7 @@ export interface SeedSubtopic {
   moleculeId?: string;
 }
 
-/** একটি টপিক — chapter ও subtopic-এর মাঝের স্তর, নিজে সরাসরি কনটেন্ট রাখে না। */
+/** একটি টপিক — chapter ও subtopic-এর মাঝের স্তর (৩-লেভেল ক্যাটেগরিতে), নিজে সরাসরি কনটেন্ট রাখে না। */
 export interface SeedTopic {
   title: string;
   slug: string;            // গোটা সাইটজুড়ে unique হতে হবে
@@ -126,11 +130,31 @@ export interface SeedTopic {
   subtopics: SeedSubtopic[];
 }
 
-export interface SeedChapter {
+interface SeedChapterBase {
   code: string;             // lib/syllabus.ts-এর code-এর সাথে মেলে, যেমন "1.1"
   category: ChemistryCategory;
   chapterTitle: string;
   chapterDescription?: string;
   chapterOrder: number;
+}
+
+/**
+ * ২-লেভেল chapter (Chapter → Topic) — ভৌত রসায়ন ও জৈব রসায়নে ব্যবহৃত।
+ * এখানে "topics" সরাসরি কনটেন্ট পেজ (SeedSubtopic শেপ), মাঝে কোনো wrapper নেই।
+ */
+export interface SeedChapter2Level extends SeedChapterBase {
+  structure: "2-level";
+  topics: SeedSubtopic[];
+}
+
+/**
+ * ৩-লেভেল chapter (Chapter → Topic → Subtopic) — অজৈব রসায়ন ও
+ * বিশ্লেষণাত্মক রসায়নে ব্যবহৃত। এখানে "topics" মাঝের wrapper লেভেল,
+ * প্রতিটার ভেতরে subtopics (আসল কনটেন্ট পেজ) থাকে।
+ */
+export interface SeedChapter3Level extends SeedChapterBase {
+  structure: "3-level";
   topics: SeedTopic[];
 }
+
+export type SeedChapter = SeedChapter2Level | SeedChapter3Level;

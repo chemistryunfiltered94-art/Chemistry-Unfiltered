@@ -1,5 +1,8 @@
 // app/(public)/learn/[category]/[chapterId]/page.tsx
-// অধ্যায়ে ক্লিক করলে সেই অধ্যায়ের টপিকগুলো দেখাবে
+// অধ্যায়ে ক্লিক করলে সেই অধ্যায়ের টপিকগুলো দেখাবে।
+// ২-লেভেল ক্যাটেগরিতে (ভৌত/জৈব রসায়ন) প্রতিটা টপিক-ই সরাসরি কনটেন্ট পেজ,
+// তাই ক্লিক করলে সরাসরি /subtopic/[slug]-এ যায়। ৩-লেভেলে (অজৈব/বিশ্লেষণাত্মক)
+// টপিক একটা গ্রুপ, ক্লিক করলে সাব-টপিক লিস্টে (/[chapterId]/[topicSlug]) যায়।
 
 import { Metadata } from "next";
 import Link from "next/link";
@@ -36,6 +39,7 @@ export default async function ChapterTopicsPage({ params }: Props) {
   if (!chapter || chapter.categoryId !== category) notFound();
 
   const topics = getChapterTopics(chapterId);
+  const is2Level = chapter.structure === "2-level";
 
   return (
     <div className="min-h-screen bg-slate-900 px-4 py-6">
@@ -67,33 +71,46 @@ export default async function ChapterTopicsPage({ params }: Props) {
           </div>
         ) : (
           <div className="space-y-3">
-            {topics.map((topic, i) => (
-              <Link
-                key={topic.slug}
-                href={`/learn/${category}/${chapterId}/${topic.slug}`}
-                className="flex items-center gap-4 p-4 bg-slate-800 border border-slate-700 rounded-2xl hover:border-slate-500 hover:-translate-y-0.5 transition-all group"
-              >
-                {/* Number */}
-                <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${catMeta.color} flex items-center justify-center flex-shrink-0 text-white text-sm font-bold shadow-lg`}>
-                  {i + 1}
-                </div>
+            {topics.map((topic, i) => {
+              // ২-লেভেলে topic নিজেই কনটেন্ট পেজ (subtopic slug দিয়ে), ৩-লেভেলে
+              // topic একটা গ্রুপ — ভেতরের subtopics গোনা যায়।
+              const href = is2Level
+                ? `/learn/${category}/subtopic/${topic.slug}`
+                : `/learn/${category}/${chapterId}/${topic.slug}`;
+              const subtitle = is2Level
+                ? null
+                : `${"subtopics" in topic ? topic.subtopics.length : 0}টি সাব-টপিক`;
 
-                {/* Info */}
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-white truncate group-hover:text-blue-300 transition-colors">
-                    {topic.title}
-                  </p>
-                  {topic.summary && (
-                    <p className="text-xs text-slate-400 mt-0.5 truncate">{topic.summary}</p>
-                  )}
-                  <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
-                    {topic.subtopics.length}টি সাব-টপিক
-                  </p>
-                </div>
+              return (
+                <Link
+                  key={topic.slug}
+                  href={href}
+                  className="flex items-center gap-4 p-4 bg-slate-800 border border-slate-700 rounded-2xl hover:border-slate-500 hover:-translate-y-0.5 transition-all group"
+                >
+                  {/* Number */}
+                  <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${catMeta.color} flex items-center justify-center flex-shrink-0 text-white text-sm font-bold shadow-lg`}>
+                    {i + 1}
+                  </div>
 
-                <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0" />
-              </Link>
-            ))}
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white truncate group-hover:text-blue-300 transition-colors">
+                      {topic.title}
+                    </p>
+                    {topic.summary && (
+                      <p className="text-xs text-slate-400 mt-0.5 truncate">{topic.summary}</p>
+                    )}
+                    {subtitle && (
+                      <p className="text-xs text-slate-500 flex items-center gap-1 mt-0.5">
+                        {subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>

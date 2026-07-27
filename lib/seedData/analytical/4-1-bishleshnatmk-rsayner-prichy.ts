@@ -1,0 +1,375 @@
+// lib/seedData/analytical/4-1-bishleshnatmk-rsayner-prichy.ts
+//
+// অধ্যায় 4.1 — বিশ্লেষণাত্মক রসায়নের পরিচয় (Analytical Chemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter41: SeedChapter = {
+  code: "4.1",
+  category: "analytical-chemistry",
+  structure: "3-level",
+  chapterTitle: "বিশ্লেষণাত্মক রসায়নের পরিচয়",
+  chapterOrder: 10,
+  topics: [
+    {
+      title: "মৌলিক ধারণা (বিশ্লেষণাত্মক রসায়ন)",
+      slug: "moulik-dharna-bishleshnatmk-rsayn",
+      summary: "",
+      subtopics: [
+        {
+          title: "Analytical Chemistry কী",
+          slug: "analytical-chemistry-kii",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Analytical Chemistry এর গুরুত্ব",
+          slug: "analytical-chemistry-er-gurutb",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "রসায়নের অন্যান্য শাখার সাথে সম্পর্ক",
+          slug: "rsayner-anyany-shakhar-sathe-smprk",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Qualitative ও Quantitative Analysis",
+          slug: "qualitative-o-quantitative-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Classical ও Instrumental Analysis",
+          slug: "classical-o-instrumental-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Analytical Chemistry এর আধুনিক ব্যবহার",
+          slug: "analytical-chemistry-er-aadhunik-bybhar",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "বিশ্লেষণাত্মক প্রক্রিয়ার ধাপ",
+      slug: "bishleshnatmk-prkriyar-dhap",
+      summary: "",
+      subtopics: [
+        {
+          title: "Sampling (নমুনা সংগ্রহ)",
+          slug: "sampling-nmuna-snggrh",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Sample preparation",
+          slug: "sample-preparation-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Separation techniques (প্রক্রিয়ার ধাপ)",
+          slug: "separation-techniques-prkriyar-dhap",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Measurement",
+          slug: "measurement",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Data processing",
+          slug: "data-processing",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Result interpretation",
+          slug: "result-interpretation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "বিশ্লেষণের ধরন",
+      slug: "bishleshner-dhrn",
+      summary: "",
+      subtopics: [
+        {
+          title: "Qualitative analysis (ধরন)",
+          slug: "qualitative-analysis-dhrn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Quantitative analysis (ধরন)",
+          slug: "quantitative-analysis-dhrn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Structural analysis",
+          slug: "structural-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Trace analysis (ধরন)",
+          slug: "trace-analysis-dhrn",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Micro analysis",
+          slug: "micro-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Macro analysis",
+          slug: "macro-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Ultra-trace analysis",
+          slug: "ultra-trace-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Analytical Chemistry এর শাখা",
+      slug: "analytical-chemistry-er-shakha",
+      summary: "",
+      subtopics: [
+        {
+          title: "Wet chemical analysis",
+          slug: "wet-chemical-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Instrumental analysis (শাখা)",
+          slug: "instrumental-analysis-shakha",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Bioanalytical chemistry (শাখা)",
+          slug: "bioanalytical-chemistry-shakha",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Environmental analysis (শাখা)",
+          slug: "environmental-analysis-shakha",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Pharmaceutical analysis (শাখা)",
+          slug: "pharmaceutical-analysis-shakha",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Industrial analysis (শাখা)",
+          slug: "industrial-analysis-shakha",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter41;

@@ -9,6 +9,7 @@ import { SeedChapter } from "../types";
 const chapter350: SeedChapter = {
   code: "3.50",
   category: "inorganic-chemistry",
+  structure: "3-level",
   chapterTitle: "Oxygen ও Chalcogen Chemistry",
   chapterOrder: 500,
   topics: [

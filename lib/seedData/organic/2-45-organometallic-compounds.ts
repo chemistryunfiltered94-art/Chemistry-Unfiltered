@@ -9,140 +9,134 @@ import { SeedChapter } from "../types";
 const chapter245: SeedChapter = {
   code: "2.45",
   category: "organic-chemistry",
+  structure: "2-level",
   chapterTitle: "অর্গানোমেটালিক যৌগ",
   chapterOrder: 148,
   topics: [
     {
-      title: "অর্গানোমেটালিক যৌগ",
-      slug: "organometallic-compounds-overview",
+      title: "পরিচিতি",
+      slug: "prichiti-9",
+      estimatedTime: 15,
+      level: "intermediate",
       summary: "",
-      subtopics: [
-      {
-        title: "পরিচিতি",
-        slug: "prichiti-9",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "ধাতু–কার্বন বন্ধন",
-        slug: "dhatukarbn-bndhn",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "ধাতু–কার্বন বন্ধন",
+      slug: "dhatukarbn-bndhn",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Grignard Reagent",
-        slug: "grignard-reagent",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Grignard Reagent",
+      slug: "grignard-reagent",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Organolithium Compound",
-        slug: "organolithium-compound",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Organolithium Compound",
+      slug: "organolithium-compound",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Organozinc Compound",
-        slug: "organozinc-compound",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Organozinc Compound",
+      slug: "organozinc-compound",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Ferrocene",
-        slug: "ferrocene",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Ferrocene",
+      slug: "ferrocene",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "প্রস্তুতি",
-        slug: "prstuti-2",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "প্রস্তুতি",
+      slug: "prstuti-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "রাসায়নিক ধর্ম",
-        slug: "rasaynik-dhrm-12",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "রাসায়নিক ধর্ম",
+      slug: "rasaynik-dhrm-12",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "ব্যবহার",
-        slug: "bybhar-11",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "ব্যবহার",
+      slug: "bybhar-11",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
-      ],
     },
   ],
 };

@@ -9,154 +9,148 @@ import { SeedChapter } from "../types";
 const chapter251: SeedChapter = {
   code: "2.51",
   category: "organic-chemistry",
+  structure: "2-level",
   chapterTitle: "কম্বিনেটোরিয়াল ও ক্লিক কেমিস্ট্রি",
   chapterOrder: 154,
   topics: [
     {
-      title: "কম্বিনেটোরিয়াল ও ক্লিক কেমিস্ট্রি",
-      slug: "combinatorial-click-chemistry-overview",
+      title: "কম্বিনেটোরিয়াল রসায়ন পরিচিতি",
+      slug: "kmbinetoriyal-rsayn-prichiti",
+      estimatedTime: 15,
+      level: "intermediate",
       summary: "",
-      subtopics: [
-      {
-        title: "কম্বিনেটোরিয়াল রসায়ন পরিচিতি",
-        slug: "kmbinetoriyal-rsayn-prichiti",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Library Synthesis",
-        slug: "library-synthesis",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Library Synthesis",
+      slug: "library-synthesis",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "High Throughput Screening",
-        slug: "high-throughput-screening",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "High Throughput Screening",
+      slug: "high-throughput-screening",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Drug Discovery",
-        slug: "drug-discovery",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Drug Discovery",
+      slug: "drug-discovery",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "ক্লিক কেমিস্ট্রি পরিচিতি",
-        slug: "klik-kemistri-prichiti",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "ক্লিক কেমিস্ট্রি পরিচিতি",
+      slug: "klik-kemistri-prichiti",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "বৈশিষ্ট্য",
-        slug: "boishishty-3",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "বৈশিষ্ট্য",
+      slug: "boishishty-3",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Copper Catalyzed Azide–Alkyne Cycloaddition (CuAAC)",
-        slug: "copper-catalyzed-azidealkyne-cycloaddition-cuaac",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Copper Catalyzed Azide–Alkyne Cycloaddition (CuAAC)",
+      slug: "copper-catalyzed-azidealkyne-cycloaddition-cuaac",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Strain-Promoted Click Reaction",
-        slug: "strain-promoted-click-reaction",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Strain-Promoted Click Reaction",
+      slug: "strain-promoted-click-reaction",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Bioorthogonal Chemistry",
-        slug: "bioorthogonal-chemistry",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Bioorthogonal Chemistry",
+      slug: "bioorthogonal-chemistry",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "ব্যবহার",
-        slug: "bybhar-12",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "ব্যবহার",
+      slug: "bybhar-12",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
-      ],
     },
   ],
 };

@@ -27,9 +27,11 @@ interface PkgStatus {
   checked: boolean;
 }
 
-// একটি chapter package-এর সব সাব-টপিক (সব টপিক মিলিয়ে) — Firestore-এ এগুলোই
-// আলাদা "topic" ডকুমেন্ট হিসেবে সেভ হয়।
+// একটি chapter package-এর সব সাব-টপিক (আসল কনটেন্ট পেজ) — Firestore-এ এগুলোই
+// আলাদা "topic" ডকুমেন্ট হিসেবে সেভ হয়। ২-লেভেল chapter-এ pkg.topics নিজেই
+// এই লিস্ট, ৩-লেভেলে প্রতিটা topic-এর subtopics মিলিয়ে flatten করতে হয়।
 function allSubtopics(pkg: SeedChapter): SeedSubtopic[] {
+  if (pkg.structure === "2-level") return pkg.topics;
   return pkg.topics.flatMap((t) => t.subtopics);
 }
 
@@ -196,7 +198,12 @@ export default function SeedContentPage() {
                   <div className="min-w-0">
                     <p className="text-xs font-mono text-primary-400 mb-0.5">{pkg.code}</p>
                     <p className="font-bold text-white truncate">{pkg.chapterTitle}</p>
-                    <p className="text-xs text-slate-500">{getCategoryName(pkg.category)} • {pkg.topics.length}টি টপিক • {total}টি সাব-টপিক</p>
+                    <p className="text-xs text-slate-500">
+                      {getCategoryName(pkg.category)} •{" "}
+                      {pkg.structure === "3-level"
+                        ? `${pkg.topics.length}টি টপিক • ${total}টি সাব-টপিক`
+                        : `${total}টি টপিক`}
+                    </p>
                   </div>
                   {fullyImported && (
                     <span className="flex items-center gap-1 text-xs text-emerald-400 font-medium flex-shrink-0 mt-1">
@@ -210,25 +217,42 @@ export default function SeedContentPage() {
                 )}
 
                 <div className="space-y-2 mb-4">
-                  {pkg.topics.map((t) => (
-                    <div key={t.slug}>
-                      <p className="text-xs text-slate-500 mb-1">{t.title}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {t.subtopics.map((s) => {
-                          const done = status?.existingSlugs.has(s.slug);
-                          return (
-                            <span key={s.slug}
-                              className={`text-xs px-2.5 py-1 rounded-full flex items-center gap-1 ${
-                                done ? "bg-emerald-900/30 text-emerald-400" : "bg-slate-700 text-slate-300"
-                              }`}>
-                              {done && <Check className="w-3 h-3" />}
-                              {s.title}
-                            </span>
-                          );
-                        })}
-                      </div>
+                  {pkg.structure === "2-level" ? (
+                    <div className="flex flex-wrap gap-1.5">
+                      {pkg.topics.map((s) => {
+                        const done = status?.existingSlugs.has(s.slug);
+                        return (
+                          <span key={s.slug}
+                            className={`text-xs px-2.5 py-1 rounded-full flex items-center gap-1 ${
+                              done ? "bg-emerald-900/30 text-emerald-400" : "bg-slate-700 text-slate-300"
+                            }`}>
+                            {done && <Check className="w-3 h-3" />}
+                            {s.title}
+                          </span>
+                        );
+                      })}
                     </div>
-                  ))}
+                  ) : (
+                    pkg.topics.map((t) => (
+                      <div key={t.slug}>
+                        <p className="text-xs text-slate-500 mb-1">{t.title}</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {t.subtopics.map((s) => {
+                            const done = status?.existingSlugs.has(s.slug);
+                            return (
+                              <span key={s.slug}
+                                className={`text-xs px-2.5 py-1 rounded-full flex items-center gap-1 ${
+                                  done ? "bg-emerald-900/30 text-emerald-400" : "bg-slate-700 text-slate-300"
+                                }`}>
+                                {done && <Check className="w-3 h-3" />}
+                                {s.title}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))
+                  )}
                 </div>
 
                 {isImporting && progress && (

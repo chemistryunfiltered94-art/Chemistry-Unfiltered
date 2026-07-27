@@ -74,7 +74,11 @@ export default async function SubtopicPage({ params }: Props) {
     relatedTopics: [],
   };
 
-  const backHref = `/learn/${category}/${found.chapterCode}/${found.topicSlug}`;
+  // ২-লেভেল ক্যাটেগরিতে কোনো মাঝের টপিক-লিস্ট নেই, তাই সরাসরি chapter পেজে ফিরে যায়।
+  // ৩-লেভেলে টপিকের সাব-টপিক লিস্টে ফিরে যায়।
+  const backHref = found.structure === "2-level"
+    ? `/learn/${category}/${found.chapterCode}`
+    : `/learn/${category}/${found.chapterCode}/${found.topicSlug}`;
 
   return <TopicClient data={topicData} categorySlug={category} topicSlug={slug} backHref={backHref} />;
 }

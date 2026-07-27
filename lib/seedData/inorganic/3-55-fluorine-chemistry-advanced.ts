@@ -9,6 +9,7 @@ import { SeedChapter } from "../types";
 const chapter355: SeedChapter = {
   code: "3.55",
   category: "inorganic-chemistry",
+  structure: "3-level",
   chapterTitle: "Fluorine Chemistry Advanced",
   chapterOrder: 550,
   topics: [

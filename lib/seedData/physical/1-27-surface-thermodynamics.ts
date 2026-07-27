@@ -9,168 +9,162 @@ import { SeedChapter } from "../types";
 const chapter127: SeedChapter = {
   code: "1.27",
   category: "physical-chemistry",
+  structure: "2-level",
   chapterTitle: "পৃষ্ঠ তাপগতিবিদ্যা",
   chapterOrder: 121,
   topics: [
     {
-      title: "পৃষ্ঠ তাপগতিবিদ্যা",
-      slug: "surface-thermodynamics-overview",
+      title: "পৃষ্ঠ শক্তি",
+      slug: "prishth-shkti-2",
+      estimatedTime: 15,
+      level: "intermediate",
       summary: "",
-      subtopics: [
-      {
-        title: "পৃষ্ঠ শক্তি",
-        slug: "prishth-shkti-2",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Surface Free Energy",
-        slug: "surface-free-energy",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Surface Free Energy",
+      slug: "surface-free-energy",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Surface Tension",
-        slug: "surface-tension-2",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Surface Tension",
+      slug: "surface-tension-2",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Interfacial Tension",
-        slug: "interfacial-tension",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Interfacial Tension",
+      slug: "interfacial-tension",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Wetting",
-        slug: "wetting",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Wetting",
+      slug: "wetting",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Contact Angle",
-        slug: "contact-angle",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Contact Angle",
+      slug: "contact-angle",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Capillary Rise",
-        slug: "capillary-rise",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Capillary Rise",
+      slug: "capillary-rise",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Adsorption Thermodynamics",
-        slug: "adsorption-thermodynamics",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Adsorption Thermodynamics",
+      slug: "adsorption-thermodynamics",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Gibbs Adsorption Equation",
-        slug: "gibbs-adsorption-equation",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Gibbs Adsorption Equation",
+      slug: "gibbs-adsorption-equation",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Surface Excess",
-        slug: "surface-excess",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Surface Excess",
+      slug: "surface-excess",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
+    },
 
-      {
-        title: "Surface Phase",
-        slug: "surface-phase",
-        estimatedTime: 15,
-        level: "intermediate",
-        summary: "",
-        content: {
-          introduction: "",
-          theory: [],
-          applications: [],
-          notes: [],
-        },
+    {
+      title: "Surface Phase",
+      slug: "surface-phase",
+      estimatedTime: 15,
+      level: "intermediate",
+      summary: "",
+      content: {
+        introduction: "",
+        theory: [],
+        applications: [],
+        notes: [],
       },
-      ],
     },
   ],
 };

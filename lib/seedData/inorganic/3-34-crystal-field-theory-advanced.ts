@@ -9,6 +9,7 @@ import { SeedChapter } from "../types";
 const chapter334: SeedChapter = {
   code: "3.34",
   category: "inorganic-chemistry",
+  structure: "3-level",
   chapterTitle: "Crystal Field Theory বিস্তারিত",
   chapterOrder: 340,
   topics: [

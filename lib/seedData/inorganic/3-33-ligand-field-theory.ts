@@ -9,6 +9,7 @@ import { SeedChapter } from "../types";
 const chapter333: SeedChapter = {
   code: "3.33",
   category: "inorganic-chemistry",
+  structure: "3-level",
   chapterTitle: "Ligand Field Theory",
   chapterOrder: 330,
   topics: [

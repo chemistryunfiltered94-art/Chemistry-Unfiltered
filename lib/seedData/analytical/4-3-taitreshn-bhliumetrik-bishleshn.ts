@@ -1,0 +1,375 @@
+// lib/seedData/analytical/4-3-taitreshn-bhliumetrik-bishleshn.ts
+//
+// অধ্যায় 4.3 — টাইট্রেশন (ভলিউমেট্রিক বিশ্লেষণ) (Analytical Chemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter43: SeedChapter = {
+  code: "4.3",
+  category: "analytical-chemistry",
+  structure: "3-level",
+  chapterTitle: "টাইট্রেশন (ভলিউমেট্রিক বিশ্লেষণ)",
+  chapterOrder: 30,
+  topics: [
+    {
+      title: "Volumetric Analysis এর ভিত্তি",
+      slug: "volumetric-analysis-er-bhitti",
+      summary: "",
+      subtopics: [
+        {
+          title: "Titration এর ধারণা",
+          slug: "titration-er-dharna",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Titrant ও analyte",
+          slug: "titrant-o-analyte",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Endpoint",
+          slug: "endpoint",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Equivalence point",
+          slug: "equivalence-point",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Indicator",
+          slug: "indicator",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Acid-Base Titration",
+      slug: "acid-base-titration",
+      summary: "",
+      subtopics: [
+        {
+          title: "Strong acid বনাম strong base titration",
+          slug: "strong-acid-bnam-strong-base-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Weak acid বনাম strong base titration",
+          slug: "weak-acid-bnam-strong-base-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Strong acid বনাম weak base titration",
+          slug: "strong-acid-bnam-weak-base-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Polyprotic acid titration",
+          slug: "polyprotic-acid-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Titration curve",
+          slug: "titration-curve",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Redox Titration",
+      slug: "redox-titration",
+      summary: "",
+      subtopics: [
+        {
+          title: "Oxidation-reduction reaction (Titration)",
+          slug: "oxidation-reduction-reaction-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oxidizing agent (Titration)",
+          slug: "oxidizing-agent-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Reducing agent (Titration)",
+          slug: "reducing-agent-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Permanganate titration",
+          slug: "permanganate-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Dichromate titration",
+          slug: "dichromate-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Iodometry",
+          slug: "iodometry",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Iodimetry",
+          slug: "iodimetry",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Precipitation ও Complexometric Titration",
+      slug: "precipitation-o-complexometric-titration",
+      summary: "",
+      subtopics: [
+        {
+          title: "Solubility product (Titration)",
+          slug: "solubility-product-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Mohr method",
+          slug: "mohr-method",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Volhard method",
+          slug: "volhard-method",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Fajans method",
+          slug: "fajans-method",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Complex formation",
+          slug: "complex-formation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "EDTA titration",
+          slug: "edta-titration",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Metal ion determination",
+          slug: "metal-ion-determination",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Water hardness analysis",
+          slug: "water-hardness-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter43;
