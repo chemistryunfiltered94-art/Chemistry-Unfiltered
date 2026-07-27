@@ -4,6 +4,7 @@
 import { SeedChapter } from "../types";
 
 const chapter12: SeedChapter = {
+  structure: "3-level",
   code: "1.2",
   category: "physical-chemistry",
   chapterTitle: "পদার্থের অবস্থা",
