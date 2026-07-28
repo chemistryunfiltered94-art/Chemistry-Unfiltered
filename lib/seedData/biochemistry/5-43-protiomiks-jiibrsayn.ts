@@ -1,0 +1,388 @@
+// lib/seedData/biochemistry/5-43-protiomiks-jiibrsayn.ts
+//
+// অধ্যায় 5.43 — প্রোটিওমিক্স (জীবরসায়ন) (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter543: SeedChapter = {
+  code: "5.43",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "প্রোটিওমিক্স (জীবরসায়ন)",
+  chapterOrder: 430,
+  topics: [
+    {
+      title: "Proteomics এর পরিচিতি ও Protein Identification",
+      slug: "proteomics-er-prichiti-o-protein-identification",
+      summary: "",
+      subtopics: [
+        {
+          title: "Proteome ধারণা",
+          slug: "proteome-dharna",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Genome বনাম Proteome",
+          slug: "genome-bnam-proteome",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein expression analysis (প্রোটিওমিক্স)",
+          slug: "protein-expression-analysis-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Functional proteomics",
+          slug: "functional-proteomics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein extraction",
+          slug: "protein-extraction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein purification (প্রোটিওমিক্স)",
+          slug: "protein-purification-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein separation techniques",
+          slug: "protein-separation-techniques-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein characterization",
+          slug: "protein-characterization",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Mass Spectrometry ও Expression Analysis",
+      slug: "mass-spectrometry-o-expression-analysis",
+      summary: "",
+      subtopics: [
+        {
+          title: "Mass spectrometry principle (প্রোটিওমিক্স)",
+          slug: "mass-spectrometry-principle-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein mass determination",
+          slug: "protein-mass-determination",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Peptide mass fingerprinting",
+          slug: "peptide-mass-fingerprinting",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Tandem mass spectrometry (MS/MS, প্রোটিওমিক্স)",
+          slug: "tandem-mass-spectrometry-ms-ms-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Differential protein expression",
+          slug: "differential-protein-expression",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Quantitative proteomics",
+          slug: "quantitative-proteomics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Label-based proteomics",
+          slug: "label-based-proteomics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Label-free proteomics",
+          slug: "label-free-proteomics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Protein Interaction ও Structural Proteomics",
+      slug: "protein-interaction-o-structural-proteomics",
+      summary: "",
+      subtopics: [
+        {
+          title: "Protein-protein interaction",
+          slug: "protein-protein-interaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein-DNA interaction",
+          slug: "protein-dna-interaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein-RNA interaction",
+          slug: "protein-rna-interaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Yeast two-hybrid system",
+          slug: "yeast-two-hybrid-system",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein structure determination",
+          slug: "protein-structure-determination",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein domains (প্রোটিওমিক্স)",
+          slug: "protein-domains-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein complexes",
+          slug: "protein-complexes",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Clinical Proteomics",
+      slug: "clinical-proteomics",
+      summary: "",
+      subtopics: [
+        {
+          title: "Disease biomarkers (প্রোটিওমিক্স)",
+          slug: "disease-biomarkers-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cancer proteomics",
+          slug: "cancer-proteomics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Personalized medicine (প্রোটিওমিক্স)",
+          slug: "personalized-medicine-protiomiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter543;

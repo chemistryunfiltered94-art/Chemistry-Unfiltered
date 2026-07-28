@@ -1,0 +1,375 @@
+// lib/seedData/biochemistry/5-12-lipid-jiibrsayn.ts
+//
+// অধ্যায় 5.12 — লিপিড জীবরসায়ন (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter512: SeedChapter = {
+  code: "5.12",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "লিপিড জীবরসায়ন",
+  chapterOrder: 120,
+  topics: [
+    {
+      title: "লিপিডের পরিচিতি",
+      slug: "lipider-prichiti",
+      summary: "",
+      subtopics: [
+        {
+          title: "Definition of lipids",
+          slug: "definition-of-lipids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Properties of lipids",
+          slug: "properties-of-lipids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Classification (লিপিড)",
+          slug: "classification-lipid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Fatty Acids ও Triglycerides",
+      slug: "fatty-acids-o-triglycerides",
+      summary: "",
+      subtopics: [
+        {
+          title: "Saturated fatty acids",
+          slug: "saturated-fatty-acids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Unsaturated fatty acids",
+          slug: "unsaturated-fatty-acids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Essential fatty acids (লিপিড)",
+          slug: "essential-fatty-acids-lipid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Omega fatty acids",
+          slug: "omega-fatty-acids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Triglyceride Structure",
+          slug: "triglyceride-structure",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Triglyceride Formation",
+          slug: "triglyceride-formation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Triglyceride Hydrolysis",
+          slug: "triglyceride-hydrolysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biological function (Triglyceride)",
+          slug: "biological-function-triglyceride",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Phospholipids ও Steroids",
+      slug: "phospholipids-o-steroids",
+      summary: "",
+      subtopics: [
+        {
+          title: "Phospholipid Structure",
+          slug: "phospholipid-structure",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Phospholipid Types",
+          slug: "phospholipid-types",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biological membrane formation",
+          slug: "biological-membrane-formation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cholesterol",
+          slug: "cholesterol-2",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Steroid hormones",
+          slug: "steroid-hormones",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Bile acids",
+          slug: "bile-acids",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Vitamin D (লিপিড)",
+          slug: "vitamin-d-lipid",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Lipoproteins ও Lipid Metabolism এর ভিত্তি",
+      slug: "lipoproteins-o-lipid-metabolism-er-bhitti",
+      summary: "",
+      subtopics: [
+        {
+          title: "HDL",
+          slug: "hdl",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "LDL",
+          slug: "ldl",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "VLDL",
+          slug: "vldl",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Chylomicrons",
+          slug: "chylomicrons",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Fat storage",
+          slug: "fat-storage",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Fat mobilization",
+          slug: "fat-mobilization",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Fat oxidation",
+          slug: "fat-oxidation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter512;

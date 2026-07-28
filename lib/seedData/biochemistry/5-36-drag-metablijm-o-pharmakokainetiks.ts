@@ -1,0 +1,375 @@
+// lib/seedData/biochemistry/5-36-drag-metablijm-o-pharmakokainetiks.ts
+//
+// অধ্যায় 5.36 — ড্রাগ মেটাবলিজম ও ফার্মাকোকাইনেটিক্স (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter536: SeedChapter = {
+  code: "5.36",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "ড্রাগ মেটাবলিজম ও ফার্মাকোকাইনেটিক্স",
+  chapterOrder: 360,
+  topics: [
+    {
+      title: "Pharmacokinetics Basics ও Absorption",
+      slug: "pharmacokinetics-basics-o-absorption",
+      summary: "",
+      subtopics: [
+        {
+          title: "Absorption (ফার্মাকোকাইনেটিক্স)",
+          slug: "absorption-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Distribution (ফার্মাকোকাইনেটিক্স)",
+          slug: "distribution-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Metabolism (ফার্মাকোকাইনেটিক্স)",
+          slug: "metabolism-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Excretion (ADME)",
+          slug: "excretion-adme",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Bioavailability",
+          slug: "bioavailability",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Membrane transport (ফার্মাকোকাইনেটিক্স)",
+          slug: "membrane-transport-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Drug solubility",
+          slug: "drug-solubility",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Drug Distribution ও Metabolism",
+      slug: "drug-distribution-o-metabolism",
+      summary: "",
+      subtopics: [
+        {
+          title: "Plasma protein binding",
+          slug: "plasma-protein-binding",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Tissue distribution",
+          slug: "tissue-distribution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Volume of distribution",
+          slug: "volume-of-distribution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Phase I metabolism",
+          slug: "phase-i-metabolism",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oxidation (ফার্মাকোকাইনেটিক্স)",
+          slug: "oxidation-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Reduction (ফার্মাকোকাইনেটিক্স)",
+          slug: "reduction-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Hydrolysis (ফার্মাকোকাইনেটিক্স)",
+          slug: "hydrolysis-pharmakokainetiks",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Phase II Metabolism ও Cytochrome P450",
+      slug: "phase-ii-metabolism-o-cytochrome-p450",
+      summary: "",
+      subtopics: [
+        {
+          title: "Glucuronidation",
+          slug: "glucuronidation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Sulfation",
+          slug: "sulfation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Acetylation",
+          slug: "acetylation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Methylation",
+          slug: "methylation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "CYP enzymes",
+          slug: "cyp-enzymes",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Drug-drug interaction",
+          slug: "drug-drug-interaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Enzyme induction",
+          slug: "enzyme-induction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Enzyme inhibition (P450)",
+          slug: "enzyme-inhibition-p450",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Drug Excretion",
+      slug: "drug-excretion",
+      summary: "",
+      subtopics: [
+        {
+          title: "Renal excretion",
+          slug: "renal-excretion",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biliary excretion",
+          slug: "biliary-excretion",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Clearance",
+          slug: "clearance",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter536;

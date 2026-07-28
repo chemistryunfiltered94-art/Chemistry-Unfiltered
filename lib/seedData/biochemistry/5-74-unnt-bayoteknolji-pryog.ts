@@ -1,0 +1,341 @@
+// lib/seedData/biochemistry/5-74-unnt-bayoteknolji-pryog.ts
+//
+// অধ্যায় 5.74 — উন্নত বায়োটেকনোলজি প্রয়োগ (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter574: SeedChapter = {
+  code: "5.74",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "উন্নত বায়োটেকনোলজি প্রয়োগ",
+  chapterOrder: 740,
+  topics: [
+    {
+      title: "Medical ও Pharmaceutical Biotechnology",
+      slug: "medical-o-pharmaceutical-biotechnology",
+      summary: "",
+      subtopics: [
+        {
+          title: "Recombinant medicines",
+          slug: "recombinant-medicines",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Therapeutic proteins (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "therapeutic-proteins-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Gene-based therapy",
+          slug: "gene-based-therapy",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cell-based therapy",
+          slug: "cell-based-therapy",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biopharmaceutical production",
+          slug: "biopharmaceutical-production",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Monoclonal antibody production (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "monoclonal-antibody-production-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Vaccine manufacturing",
+          slug: "vaccine-manufacturing",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein drugs",
+          slug: "protein-drugs",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Agricultural ও Industrial Biotechnology",
+      slug: "agricultural-o-industrial-biotechnology",
+      summary: "",
+      subtopics: [
+        {
+          title: "Genetically modified crops",
+          slug: "genetically-modified-crops",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Plant genetic engineering",
+          slug: "plant-genetic-engineering",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Disease-resistant plants",
+          slug: "disease-resistant-plants",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Crop improvement",
+          slug: "crop-improvement",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Industrial enzymes (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "industrial-enzymes-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biofuel production (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "biofuel-production-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Biopolymer production",
+          slug: "biopolymer-production",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Microbial factories",
+          slug: "microbial-factories",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Environmental ও Synthetic Biotechnology",
+      slug: "environmental-o-synthetic-biotechnology",
+      summary: "",
+      subtopics: [
+        {
+          title: "Bioremediation (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "bioremediation-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Waste treatment",
+          slug: "waste-treatment",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Pollution control",
+          slug: "pollution-control",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Microbial degradation (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "microbial-degradation-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Synthetic organisms (বায়োটেকনোলজি প্রয়োগ)",
+          slug: "synthetic-organisms-bayoteknolji-pryog",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Engineered biological systems",
+          slug: "engineered-biological-systems",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Programmable cells",
+          slug: "programmable-cells",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter574;

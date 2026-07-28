@@ -1,0 +1,375 @@
+// lib/seedData/biochemistry/5-16-joib-shktibidya-bioenergetics.ts
+//
+// অধ্যায় 5.16 — জৈব শক্তিবিদ্যা (Bioenergetics) (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter516: SeedChapter = {
+  code: "5.16",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "জৈব শক্তিবিদ্যা (Bioenergetics)",
+  chapterOrder: 160,
+  topics: [
+    {
+      title: "Bioenergetics এর ভিত্তি",
+      slug: "bioenergetics-er-bhitti",
+      summary: "",
+      subtopics: [
+        {
+          title: "জীবদেহে শক্তির ধারণা",
+          slug: "jiibdehe-shktir-dharna",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Free energy",
+          slug: "free-energy",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Gibbs free energy (Bioenergetics)",
+          slug: "gibbs-free-energy-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Enthalpy (Bioenergetics)",
+          slug: "enthalpy-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Entropy (Bioenergetics)",
+          slug: "entropy-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Thermodynamics in Biological Systems",
+      slug: "thermodynamics-in-biological-systems",
+      summary: "",
+      subtopics: [
+        {
+          title: "First law of thermodynamics (Bioenergetics)",
+          slug: "first-law-of-thermodynamics-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Second law of thermodynamics (Bioenergetics)",
+          slug: "second-law-of-thermodynamics-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Spontaneous reaction",
+          slug: "spontaneous-reaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Non-spontaneous reaction",
+          slug: "non-spontaneous-reaction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "ATP Chemistry ও Biological Redox",
+      slug: "atp-chemistry-o-biological-redox",
+      summary: "",
+      subtopics: [
+        {
+          title: "ATP structure",
+          slug: "atp-structure",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "ATP hydrolysis",
+          slug: "atp-hydrolysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "ATP synthesis",
+          slug: "atp-synthesis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "High energy phosphate bonds",
+          slug: "high-energy-phosphate-bonds",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oxidation reaction (Bioenergetics)",
+          slug: "oxidation-reaction-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Reduction reaction (Bioenergetics)",
+          slug: "reduction-reaction-bioenergetics",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Redox potential",
+          slug: "redox-potential",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Electron carriers",
+          slug: "electron-carriers",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Electron Transport Chain ও Chemiosmotic Theory",
+      slug: "electron-transport-chain-o-chemiosmotic-theory",
+      summary: "",
+      subtopics: [
+        {
+          title: "Mitochondrial ETC",
+          slug: "mitochondrial-etc",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Complex I, II, III, IV",
+          slug: "complex-i-ii-iii-iv",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Cytochrome system",
+          slug: "cytochrome-system",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Proton gradient",
+          slug: "proton-gradient",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Oxidative phosphorylation",
+          slug: "oxidative-phosphorylation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Proton motive force",
+          slug: "proton-motive-force",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "ATP synthase mechanism",
+          slug: "atp-synthase-mechanism",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Mitochondrial energy production",
+          slug: "mitochondrial-energy-production",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter516;

@@ -1,0 +1,341 @@
+// lib/seedData/biochemistry/5-53-aanbik-bibrtn-molecular-evolution.ts
+//
+// অধ্যায় 5.53 — আণবিক বিবর্তন (Molecular Evolution) (Biochemistry)
+// নোট: এই ফাইলের সাব-টপিকগুলো এখনো placeholder — শুধু title/slug বসানো হয়েছে।
+// content (introduction, theory, applications, notes ইত্যাদি) পরে পূরণ করতে হবে।
+
+import { SeedChapter } from "../types";
+
+const chapter553: SeedChapter = {
+  code: "5.53",
+  category: "biochemistry",
+  structure: "3-level",
+  chapterTitle: "আণবিক বিবর্তন (Molecular Evolution)",
+  chapterOrder: 530,
+  topics: [
+    {
+      title: "Molecular Evolution এর পরিচিতি ও Biomolecule Evolution",
+      slug: "molecular-evolution-er-prichiti-o-biomolecule-evolution",
+      summary: "",
+      subtopics: [
+        {
+          title: "বিবর্তনের আণবিক ভিত্তি",
+          slug: "bibrtner-aanbik-bhitti",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "DNA, RNA ও Protein evolution",
+          slug: "dna-rna-o-protein-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Molecular clock ধারণা",
+          slug: "molecular-clock-dharna",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Evolutionary relationship (Molecular Evolution)",
+          slug: "evolutionary-relationship-molecular-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein evolution",
+          slug: "protein-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Gene duplication",
+          slug: "gene-duplication",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Gene family formation",
+          slug: "gene-family-formation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Conserved sequence",
+          slug: "conserved-sequence",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Molecular Phylogenetics ও Gene Evolution",
+      slug: "molecular-phylogenetics-o-gene-evolution",
+      summary: "",
+      subtopics: [
+        {
+          title: "Phylogenetic tree construction",
+          slug: "phylogenetic-tree-construction",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Sequence comparison",
+          slug: "sequence-comparison",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Evolutionary distance",
+          slug: "evolutionary-distance",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Molecular markers",
+          slug: "molecular-markers",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Mutation and selection",
+          slug: "mutation-and-selection",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Gene birth and death",
+          slug: "gene-birth-and-death",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Horizontal gene transfer (Molecular Evolution)",
+          slug: "horizontal-gene-transfer-molecular-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Genome evolution",
+          slug: "genome-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+
+    {
+      title: "Protein Evolution ও Evolutionary Genomics",
+      slug: "protein-evolution-o-evolutionary-genomics",
+      summary: "",
+      subtopics: [
+        {
+          title: "Amino acid substitution",
+          slug: "amino-acid-substitution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Protein adaptation",
+          slug: "protein-adaptation",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Structural evolution",
+          slug: "structural-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Functional divergence",
+          slug: "functional-divergence",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Comparative genomics (Molecular Evolution)",
+          slug: "comparative-genomics-molecular-evolution",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Genome rearrangement",
+          slug: "genome-rearrangement",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+        {
+          title: "Ancient DNA analysis",
+          slug: "ancient-dna-analysis",
+          estimatedTime: 15,
+          level: "intermediate",
+          summary: "",
+          content: {
+            introduction: "",
+            theory: [],
+            applications: [],
+            notes: [],
+          },
+        },
+      ],
+    },
+  ],
+};
+
+export default chapter553;
